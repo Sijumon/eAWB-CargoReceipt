@@ -1,25 +1,33 @@
 (function (global) {
-    var HomeViewModel, app = global.app = global.app || {};
+    var QueryViewModel, app = global.app = global.app || {};
     
     app.application = new kendo.mobile.Application(document.body, {platform: "ios7"});
     
     /*
-    	Declare HomeViewModel
+    	Declare QueryViewModel
     */
-    HomeViewModel = kendo.data.ObservableObject.extend({
-        
+    QueryViewModel = kendo.data.ObservableObject.extend({
+    	showSettingDialog: function(){
+        	//console.log("================= showSettingDialog()");   
+            var dialog = $("#settingDialog").dialog({
+               width: 230, height: 250, modal: true, resizable: false
+            });
+            dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
+            dialog.prev(".ui-widget-header").css("font-weight","normal");
+            
+        }    
     });
     
     /*
-    	//Declare homeService
+    	//Declare queryService
     */
-    app.homeService = {
+    app.queryService = {
         
         /*
         	init(): set up the view at the first time loaded
         */        
         init: function(){
-            console.log("================= home.js,init()");
+            //console.log("================= query.js,init()");
             /* 
             	Set advertisement
             
@@ -84,10 +92,10 @@
         	show() function
         */        
         show: function () {
-            console.log("================= home.js,show()"); 
+            //console.log("================= query.js,show()"); 
 		},
         
-        viewModel: new HomeViewModel()        
+        viewModel: new QueryViewModel()        
         
     };
     

@@ -8,17 +8,19 @@
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.default.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="kendo/styles/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
     <link href="styles/main.css" rel="stylesheet" />
     <link href="styles/login.css" rel="stylesheet" />
     
     <!--Lib JS-->
     <script src="cordova.js"></script>
     <script src="kendo/js/jquery.min.js"></script>   
+    <script src="kendo/js/jquery-ui-1.9.2.min.js"></script>
     <script src="kendo/js/kendo.all.min.js"></script>
 
     <!--Defined JS-->
     <script src="scripts/ads.js"></script>
-    <script src="scripts/home.js"></script> 
+    <script src="scripts/query.js"></script> 
     <script src="scripts/about_app.js"></script>
     <script src="scripts/about_ccn.js"></script>
     <script src="scripts/forgot_password.js"></script>
@@ -30,11 +32,11 @@
 <body>
         
     <!--Home/login view-->
-    <div id="home"
+    <div id="query"
         data-role="view"     
-        data-init="app.homeService.init"
-        data-show="app.homeService.show"
-        data-model="app.homeService.viewModel"
+        data-init="app.queryService.init"
+        data-show="app.queryService.show"
+        data-model="app.queryService.viewModel"
         data-title="Home">
                 
         <!--Footer-->
@@ -47,7 +49,7 @@
         <!--Content-->
         <div class="view-content" id="homeForm" data-title="Home Form">
           
-          <img src="styles/images/setting.png" class="setting_bg" />
+          <img src="styles/images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
           
           <label class="label_eAWB">e-AWB</label> 
             
@@ -91,6 +93,30 @@
         
     </div>
 	<!--Home/login view-->
+    
+    
+    <!--Setting signin dialog-->
+    <div id="settingDialog" title="Settings" style="display:none; background-color: #484848; border: none; font-weight: normal;">
+          <a type="submit" data-role="button"
+             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+              >Help</a> <br>
+          <hr class="line_bg" />
+          <a type="submit" data-role="button"
+             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+              >About app</a> <br>
+          <hr class="line_bg" />
+          <a type="submit" data-role="button"
+             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+              >About CCN</a> <br>
+          <hr class="line_bg" />
+          <a type="submit" data-role="button"
+             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+              >Terms & Conditions</a> <br>
+          <hr class="line_bg" />
+          <a type="submit" data-role="button"
+             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+              >Sign in</a> <br>
+    </div>
     
     
     <!--Query view-->
