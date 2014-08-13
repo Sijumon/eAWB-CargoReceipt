@@ -50,7 +50,7 @@
         	do the click action of linc user type
         */
         onLincDivAction: function(){
-            console.log("================= onLincDivAction()");
+            //console.log("================= onLincDivAction()");
             $('#linc').attr("style", 'cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_checked.png); width: 120px;');
             $('#lincCheckbox').attr("src", "styles/images/checked.png");
             $('#user').attr("style", "cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
@@ -66,7 +66,7 @@
         	do the click action of user type
         */
         onUserDivAction: function(){
-            console.log("================= onUserDivAction()");   
+            //console.log("================= onUserDivAction()");   
             $('#linc').attr("style", "cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
             $('#lincCheckbox').attr("src", "styles/images/uncheck.png");
             $('#user').attr("style", 'cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;');

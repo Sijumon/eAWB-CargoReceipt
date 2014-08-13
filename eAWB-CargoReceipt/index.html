@@ -308,25 +308,25 @@
           <label class="label_change">Change your password</label>  <br>
           <label class="label_select2">Select the account you wish to request a password change</label>
           
-          <div id="linc" data-bind="click: onLincDivAction" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;">
+          <div id="linc_Forgot" data-bind="click: onLincDivAction_Forgot" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;">
           	<label class="label_linc">CCNHub LINC</label>
               <img src="styles/images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
-              <img id="lincCheckbox" src="styles/images/uncheck.png"  style="margin-left: 1%; margin-bottom: -5%;" />
+              <img id="lincCheckbox_Forgot" src="styles/images/uncheck.png"  style="margin-left: 1%; margin-bottom: -5%;" />
           </div>
           
-          <div id="user" data-bind="click: onUserDivAction" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;">
+          <div id="user_Forgot" data-bind="click: onUserDivAction_Forgot" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;">
           	<label class="label_user">CCNHub user</label>
               <img src="styles/images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
-              <img id="userCheckbox" src="styles/images/checked.png"  style="margin-left: 2%; margin-bottom: -5%;" />
+              <img id="userCheckbox_Forgot" src="styles/images/checked.png"  style="margin-left: 2%; margin-bottom: -5%;" />
           </div>
           
           <label class="label_enter">Enter your CCNhub details below</label>  <br>
             
-          <input id="txtCompanyId" placeholder="Company ID" class="textbox_bg" style="margin-top: 1.5%;" />  
+          <input id="txtCompanyId_Forgot" placeholder="Company ID" class="textbox_bg" style="margin-top: 1.5%;" />  
           
-          <input id="txtEmail" placeholder="Email" class="textbox_bg" style="margin-top: 1.5%;" />  
+          <input id="txtEmail_Forgot" placeholder="Email" class="textbox_bg" style="margin-top: 1.5%;" />  
             
-          <input id="txtDummy" class="textbox_bg" style="margin-top: 1.5%; display: none;" />   
+          <input id="txtDummy_Forgot" class="textbox_bg" style="margin-top: 1.5%; display: none;" />   
             
           <a id="continueBtn" type="submit" data-role="button" data-bind="click: onContinueAction"
                 style="margin-top: 2%; border: none; display:inline-block; color: white; background-color: #48601E; line-height:110%; width: 56%; text-align: center; float: left; margin-left: 22%; font-family: 'Segoe UI Regular','Segoe UI'; font-size: 18px;" 
@@ -389,7 +389,7 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-                <img id="imgHelp" class="footer_bg"  style="cursor: pointer;" />
+                <img id="imgAboutApp" class="footer_bg"  style="cursor: pointer;" />
             </div>
         </div>
         

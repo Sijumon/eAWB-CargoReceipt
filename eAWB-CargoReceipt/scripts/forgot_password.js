@@ -26,7 +26,7 @@
         	do the signin action
         */
         onSignInAction: function(){
-        	console.log("================= onSignInAction()");	
+        	//console.log("================= onSignInAction()");	
             app.application.navigate('#login');
         },
         
@@ -34,31 +34,31 @@
         /*
         	do the click action of linc user type
         */
-        onLincDivAction: function(){
-            console.log("================= onLincDivAction()");
-            $('#linc').attr("style", 'cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_checked.png); width: 120px;');
-            $('#lincCheckbox').attr("src", "styles/images/checked.png");
-            $('#user').attr("style", "cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
-            $('#userCheckbox').attr("src", "styles/images/uncheck.png");
+        onLincDivAction_Forgot: function(){
+            //console.log("================= onLincDivAction()");
+            $('#linc_Forgot').attr("style", 'cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_checked.png); width: 120px;');
+            $('#lincCheckbox_Forgot').attr("src", "styles/images/checked.png");
+            $('#user_Forgot').attr("style", "cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
+            $('#userCheckbox_Forgot').attr("src", "styles/images/uncheck.png");
             app.loginService.viewModel.set("displayUser", false);
-            $('#txtCompanyId').css('display', 'none');
-            $('#txtDummy').css("display","inline");
-            $('#txtDummy').css("visibility","hidden");
+            $('#txtCompanyId_Forgot').css('display', 'none');
+            $('#txtDummy_Forgot').css("display","inline");
+            $('#txtDummy_Forgot').css("visibility","hidden");
         },
         
         
         /*
         	do the click action of user type
         */
-        onUserDivAction: function(){
-            console.log("================= onUserDivAction()");   
-            $('#linc').attr("style", "cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
-            $('#lincCheckbox').attr("src", "styles/images/uncheck.png");
-            $('#user').attr("style", 'cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;');
-            $('#userCheckbox').attr("src", "styles/images/checked.png");
+        onUserDivAction_Forgot: function(){
+            //console.log("================= onUserDivAction()");   
+            $('#linc_Forgot').attr("style", "cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
+            $('#lincCheckbox_Forgot').attr("src", "styles/images/uncheck.png");
+            $('#user_Forgot').attr("style", 'cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;');
+            $('#userCheckbox_Forgot').attr("src", "styles/images/checked.png");
             app.loginService.viewModel.set("displayUser", true);
-            $('#txtCompanyId').attr("style", "display: inline-block; margin-top: 1.5%;");
-            $('#txtDummy').css("display","none");
+            $('#txtCompanyId_Forgot').attr("style", "display: inline-block; margin-top: 1.5%;");
+            $('#txtDummy_Forgot').css("display","none");
             
         }
     });
