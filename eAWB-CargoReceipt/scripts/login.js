@@ -19,18 +19,11 @@
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");            
         },
+                
         
-        
-        onHelp: function(){
-            console.log("================= onHelp()");
-            //$('#settingDialog').dialog('close');
-            //$(this).closest('.ui-dialog-content').dialog('close'); 
-            //$(this).parents(".ui-dialog-content").dialog('close');
-             $("#settingDialog").closest('.ui-dialog-content').dialog('close');
-            app.application.navigate('#help');
-        },
-        
-        
+        /*
+        	do the signin action
+        */
         onSignIn: function(){
         	console.log("================= onSignIn()");	    
         }
