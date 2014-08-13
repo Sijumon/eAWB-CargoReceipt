@@ -20,6 +20,7 @@
 
     <!--Defined JS-->
     <script src="scripts/ads.js"></script>
+    <script src="scripts/login.js"></script>
     <script src="scripts/query.js"></script> 
     <script src="scripts/about_app.js"></script>
     <script src="scripts/about_ccn.js"></script>
@@ -31,12 +32,12 @@
     
 <body>
         
-    <!--Home/login view-->
-    <div id="query"
+    <!--Login view-->
+    <div id="login"
         data-role="view"     
-        data-init="app.queryService.init"
-        data-show="app.queryService.show"
-        data-model="app.queryService.viewModel"
+        data-init="app.loginService.init"
+        data-show="app.loginService.show"
+        data-model="app.loginService.viewModel"
         data-title="Home">
                 
         <!--Footer-->
@@ -92,30 +93,31 @@
         </div>
         
     </div>
-	<!--Home/login view-->
+	<!--Login view-->
     
     
     <!--Setting signin dialog-->
-    <div id="settingDialog" title="Settings" style="display:none; background-color: #484848; border: none; font-weight: normal;">
+    <div id="settingDialog" title="Settings" style="display:none; background-color: #484848; font-weight: normal;">
           <a type="submit" data-role="button"
-             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
-              >Help</a> <br>
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+             href="#help">Help</a> <br>
           <hr class="line_bg" />
           <a type="submit" data-role="button"
-             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
-              >About app</a> <br>
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+             href="#about_app">About app</a> <br>
           <hr class="line_bg" />
           <a type="submit" data-role="button"
-             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
-              >About CCN</a> <br>
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+             href="#about_ccn">About CCN</a> <br>
           <hr class="line_bg" />
           <a type="submit" data-role="button"
-             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
-              >Terms & Conditions</a> <br>
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+             href="#term_condition">Terms & Conditions</a> <br>
           <hr class="line_bg" />
           <a type="submit" data-role="button"
-             style="color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
-              >Sign in</a> <br>
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; "
+             href="#login">Sign in</a> <br>
+          <hr class="line_bigger_bg" /> 
     </div>
     
     

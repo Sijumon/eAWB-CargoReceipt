@@ -79,9 +79,18 @@ body {
     color: #48601e;    
 }
 .line_bg{
-	background:#BEBEBE; 
+	background:#5F5F5F; 
     border:0; 
-    height:1px    
+    height:1px; 
+    margin-left: -16px;
+	width: 120%;
+}
+.line_bigger_bg{
+	background:#5F5F5F; 
+    border:0; 
+    height:15px;
+    margin-left: -16px;
+	width: 120%;
 }
 .label_select{
     margin-left: 10%; 

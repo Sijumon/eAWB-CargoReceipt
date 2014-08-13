@@ -1,27 +1,30 @@
 (function (global) {
-    var QueryViewModel, app = global.app = global.app || {};
+    var LoginViewModel, app = global.app = global.app || {};
     
     app.application = new kendo.mobile.Application(document.body, {platform: "ios7"});
     
     /*
-    	Declare QueryViewModel
+    	Declare LoginViewModel
     */
-    QueryViewModel = kendo.data.ObservableObject.extend({
+    LoginViewModel = kendo.data.ObservableObject.extend({
+        
+        /*
+        	show the setting dialog
+        */
     	showSettingDialog: function(){
         	//console.log("================= showSettingDialog()");   
             var dialog = $("#settingDialog").dialog({
-               width: 230, height: 270, modal: true, resizable: false
+               width: 230, height: 255, modal: true, resizable: false
             });
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
-            dialog.prev(".ui-widget-header").css("font-weight","normal");
-            
+            dialog.prev(".ui-widget-header").css("font-weight","normal");            
         }    
     });
     
     /*
     	//Declare queryService
     */
-    app.queryService = {
+    app.loginService = {
         
         /*
         	init(): set up the view at the first time loaded
@@ -95,7 +98,7 @@
             //console.log("================= query.js,show()"); 
 		},
         
-        viewModel: new QueryViewModel()        
+        viewModel: new LoginViewModel()        
         
     };
     
