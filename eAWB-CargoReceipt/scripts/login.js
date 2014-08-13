@@ -18,7 +18,22 @@
             });
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");            
-        }    
+        },
+        
+        
+        onHelp: function(){
+            console.log("================= onHelp()");
+            //$('#settingDialog').dialog('close');
+            //$(this).closest('.ui-dialog-content').dialog('close'); 
+            //$(this).parents(".ui-dialog-content").dialog('close');
+             $("#settingDialog").closest('.ui-dialog-content').dialog('close');
+            app.application.navigate('#help');
+        },
+        
+        
+        onSignIn: function(){
+        	console.log("================= onSignIn()");	    
+        }
     });
     
     /*
@@ -89,6 +104,32 @@
                 }
             });
 			*/
+            
+            /*
+            	Do the action of setting dialog
+            */
+            $("#helpBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#help');
+            });
+            $("#aboutAppBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#about_app');
+            });
+            $("#aboutCCNBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#about_ccn');
+            });
+            $("#termConditionBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#term_condition');
+            });
+            $("#signinBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#login');
+            });
+            
+            
         }, 
         
         /*
