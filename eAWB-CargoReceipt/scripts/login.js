@@ -20,7 +20,23 @@
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");            
         },
-                
+          
+        
+        /*
+        	move to the forgot_password page
+        */
+        onForgotPasswordAction: function(e){
+            app.application.navigate('#forgot_password', 'slide:right');
+        },
+        
+        
+        /*
+        	move to the term_condition page
+        */
+        onTermConditionAction: function(e){
+            app.application.navigate('#term_condition', 'slide:right');
+        },
+        
         
         /*
         	do the signin action

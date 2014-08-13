@@ -16,14 +16,14 @@
     app.termConditionService = {
         
         /*
-        //init(): set up the view at the first time loaded
+        	init(): set up the view at the first time loaded
         */
         init: function(){
             //console.log("================= init");
             
-            /*
-            	//Set advertisement
-            */
+            /*	  
+            	Set advertisement
+            
             var advertiseIMG = window.localStorage.getItem("advertiseIMG");
             var advertiseURL = window.localStorage.getItem("advertiseURL");
             $('#imgTermCondition').attr('src', advertiseIMG);
@@ -45,6 +45,7 @@
                     window.location.href = arrAdsURL[temp];
 				});
             }, 5000);
+        	*/
         }, 
         
         /*
@@ -52,6 +53,8 @@
         */
         showTermCondition: function () {
             //console.log("================= showTermCondition");
+            /*
+            	Show information
             //Call ws to get the strTermCondition            
             var appToken = window.localStorage.getItem("appToken");
             var url = "http://apidev.ccnhub.com/api/tandc/v1/token=" + appToken;
@@ -75,7 +78,7 @@
                     $("#termConditionDiv").html(strTermCondition);
                 }
               });
-            
+        	*/    
 		},
         
         viewModel: new TermConditionViewModel()        

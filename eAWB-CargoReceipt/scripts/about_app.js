@@ -23,7 +23,7 @@
             
             /*
             	//Set advertisement
-            */            
+                        
             var advertiseIMG = window.localStorage.getItem("advertiseIMG");
             var advertiseURL = window.localStorage.getItem("advertiseURL");
             $('#imgAboutApp').attr('src', advertiseIMG);
@@ -45,6 +45,7 @@
                     window.location.href = arrAdsURL[temp];
 				});
             }, 5000);
+            */
         }, 
         
         /*
@@ -55,7 +56,7 @@
             
             /*
             	//Call ws to get the strAboutApp
-            */
+            
             var appToken = window.localStorage.getItem("appToken");
             var url = "http://apidev.ccnhub.com/api/product/v1/token=" + appToken;
             var strAboutApp;
@@ -73,6 +74,7 @@
                     $("#aboutAppDiv").html(strAboutApp);
                 }
               });
+            */
 		},
         
         viewModel: new AboutAppViewModel()        
