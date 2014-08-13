@@ -7,6 +7,7 @@
     	Declare LoginViewModel
     */
     LoginViewModel = kendo.data.ObservableObject.extend({
+        displayUser: true,
         
         /*
         	show the setting dialog
@@ -26,6 +27,38 @@
         */
         onSignIn: function(){
         	console.log("================= onSignIn()");	    
+        },
+        
+        
+        /*
+        	do the click action of linc user type
+        */
+        onLincDivAction: function(){
+            console.log("================= onLincDivAction()");
+            $('#linc').attr("style", 'cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_checked.png); width: 120px;');
+            $('#lincCheckbox').attr("src", "styles/images/checked.png");
+            $('#user').attr("style", "cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
+            $('#userCheckbox').attr("src", "styles/images/uncheck.png");
+            app.loginService.viewModel.set("displayUser", false);
+            $('#txtCompanyId').css('display', 'none');
+            $('#txtDummy').css("display","inline");
+            $('#txtDummy').css("visibility","hidden");
+        },
+        
+        
+        /*
+        	do the click action of user type
+        */
+        onUserDivAction: function(){
+            console.log("================= onUserDivAction()");   
+            $('#linc').attr("style", "cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
+            $('#lincCheckbox').attr("src", "styles/images/uncheck.png");
+            $('#user').attr("style", 'cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;');
+            $('#userCheckbox').attr("src", "styles/images/checked.png");
+            app.loginService.viewModel.set("displayUser", true);
+            $('#txtCompanyId').attr("style", "display: inline-block; margin-top: 1.5%;");
+            $('#txtDummy').css("display","none");
+            
         }
     });
     
@@ -39,6 +72,9 @@
         */        
         init: function(){
             //console.log("================= query.js,init()");
+            
+            app.loginService.viewModel.set("displayUser", true); 
+            
             /* 
             	Set advertisement
             
