@@ -342,6 +342,9 @@
     <!--Help view-->
     <div id="help"
         data-role="view"
+        data-init="app.helpViewModel.init"
+        data-show="app.helpViewModel.showHelp"
+        data-model="app.helpViewModel.viewModel"
         data-title="Help">
         
         <!--Header-->
@@ -386,7 +389,7 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-                <img id="imgAboutApp" class="footer_bg"  style="cursor: pointer;" />
+                <img id="imgHelp" class="footer_bg"  style="cursor: pointer;" />
             </div>
         </div>
         

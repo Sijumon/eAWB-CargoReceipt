@@ -94,6 +94,7 @@
             /* 
             	Set advertisement
             
+			*/
             var appToken = window.localStorage.getItem("appToken");
             var url = "http://ccnutilitydev.ccnhub.com/advertisement/GetImages/?f=23042014&t=20052014&r=1024x768&o=Portrait&tokenId=";
             url += appToken; 
@@ -148,7 +149,6 @@
                     }, 5000);
                 }
             });
-			*/
             
             /*
             	Do the action of setting dialog

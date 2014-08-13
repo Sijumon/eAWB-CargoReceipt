@@ -23,7 +23,7 @@
             
             /*
             	//Set advertisement
-            
+            */
             var advertiseIMG = window.localStorage.getItem("advertiseIMG");
             var advertiseURL = window.localStorage.getItem("advertiseURL");
             $('#imgAboutCCN').attr('src', advertiseIMG);
@@ -45,7 +45,7 @@
                     window.location.href = arrAdsURL[temp];
 				});
             }, 5000);
-            */
+            
         }, 
         
         /*
