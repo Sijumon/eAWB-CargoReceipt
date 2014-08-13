@@ -11,6 +11,7 @@
     <link href="kendo/styles/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
     <link href="styles/main.css" rel="stylesheet" />
     <link href="styles/login.css" rel="stylesheet" />
+    <link href="styles/forgot_password.css" rel="stylesheet" />
     
     <!--Lib JS-->
     <script src="cordova.js"></script>
@@ -50,7 +51,7 @@
         </div>        
         
         <!--Content-->
-        <div class="view-content" id="homeForm" data-title="Home Form">
+        <div class="view-content" id="loginForm" data-title="Login Form">
           
           <img src="styles/images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
           
@@ -279,16 +280,11 @@
     <!--Forgot password view-->
     <div id="forgot_password"
         data-role="view"
+        data-init="app.forgotPasswordViewModel.init"
+        data-show="app.forgotPasswordViewModel.show"
+        data-model="app.forgotPasswordViewModel.viewModel"
         data-title="Forgot password">
         
-        <!--Header-->
-        <div data-role="header">
-            <div data-role="navbar" style="background-color: #F05D2F">
-                <span data-role="view-title" style="margin-left: -10%; font-family:'Segoe UI Light', 'Segoe UI'; font-size:18px;"></span>
-                
-            </div>
-        </div>
-
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
@@ -297,8 +293,47 @@
         </div>
         
         <!--Content-->
-        <div class="view-content">
-            <div id="forgotPasswordDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>
+        <div class="view-content" id="fotgotPasswordForm" data-title="Forgot Password Form">
+            <img src="styles/images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
+          
+          <label class="label_eAWB">e-AWB</label> 
+            
+          <label class="label_electronic">electronic air waybill</label> <br>
+          
+          <label class="label_power">powered by </label>
+		  <label class="label_ccn">CCN</label>
+          
+          <hr class="line_bg" />
+          
+          <label class="label_change">Change your password</label>  <br>
+          <label class="label_select2">Select the account you wish to request a password change</label>
+          
+          <div id="linc" data-bind="click: onLincDivAction" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;">
+          	<label class="label_linc">CCNHub LINC</label>
+              <img src="styles/images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
+              <img id="lincCheckbox" src="styles/images/uncheck.png"  style="margin-left: 1%; margin-bottom: -5%;" />
+          </div>
+          
+          <div id="user" data-bind="click: onUserDivAction" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;">
+          	<label class="label_user">CCNHub user</label>
+              <img src="styles/images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
+              <img id="userCheckbox" src="styles/images/checked.png"  style="margin-left: 2%; margin-bottom: -5%;" />
+          </div>
+          
+          <label class="label_enter">Enter your CCNhub details below</label>  <br>
+            
+          <input id="txtCompanyId" placeholder="Company ID" class="textbox_bg" style="margin-top: 1.5%;" />  
+          
+          <input id="txtEmail" placeholder="Email" class="textbox_bg" style="margin-top: 1.5%;" />  
+            
+          <input id="txtDummy" class="textbox_bg" style="margin-top: 1.5%; display: none;" />   
+            
+          <a id="continueBtn" type="submit" data-role="button" data-bind="click: onContinueAction"
+                style="margin-top: 2%; border: none; display:inline-block; color: white; background-color: #48601E; line-height:110%; width: 56%; text-align: center; float: left; margin-left: 22%; font-family: 'Segoe UI Regular','Segoe UI'; font-size: 18px;" 
+                >Continue</a> <br>
+            
+          <label class="label_underline" style="float: right; margin-right: 22%;" data-bind="click: onSignInAction">Sign in</label> <br>
+            
          </div>
     </div>
     <!--Forgot password view-->
