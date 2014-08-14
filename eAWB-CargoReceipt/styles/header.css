@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.header_bg{
+    background-color: #88B237;
+}
+.header_text{
+    color: #ffffff;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 28px;
+    font-weight: 300;
+    float: right;
+    margin-right: 10%;
+}
+.img_home{
+    float: left;
+	margin-left: 1%;
+	margin-top: 1%;
+}
+.img_setting{
+    float: right; 
+    margin-right: 1%;
+    margin-top: 1%;
+}
+.label_title_page{
+    color: #74972f;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+.titleDiv{
+    background-color: #F2F2F2;
+    height: 25px;
+}

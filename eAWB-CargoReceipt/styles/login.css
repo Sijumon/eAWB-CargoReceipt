@@ -79,6 +79,13 @@ body {
     font-size:14px; 
     color: #48601e;    
 }
+.line_small_bg{
+	background:#5F5F5F; 
+    border:0; 
+    height:1px; 
+    margin-left: -16px;
+	width: 120%;
+}
 .line_bg{
 	background:#5F5F5F; 
     border:0; 

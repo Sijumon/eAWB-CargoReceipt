@@ -12,6 +12,7 @@
     <link href="styles/main.css" rel="stylesheet" />
     <link href="styles/login.css" rel="stylesheet" />
     <link href="styles/forgot_password.css" rel="stylesheet" />
+    <link href="styles/header.css" rel="stylesheet" />
     
     <!--Lib JS-->
     <script src="cordova.js"></script>
@@ -51,20 +52,20 @@
         </div>        
         
         <!--Content-->
-        <div class="view-content" id="loginForm" data-title="Login Form">
+        <div class="view-content" style="background-color:#88B237 !important; width: 100%; height: 500px;" id="loginForm" data-title="Login Form">
           
           <img src="styles/images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
           
-          <label class="label_eAWB">e-AWB</label> 
+          <label class="label_eAWB">e-AWB</label> <br>
             
           <label class="label_electronic">electronic air waybill</label> <br>
           
           <label class="label_power">powered by </label>
 		  <label class="label_ccn">CCN</label>
           
-          <hr class="line_bg" />
+          <hr class="line_small_bg" />
           
-          <label class="label_select">Select the account you wish to sign in with</label>
+          <label class="label_select">Select the account you wish to sign in with</label> <br>
           
           <div id="linc" data-bind="click: onLincDivAction" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;">
           	<label class="label_linc">CCNHub LINC</label>
@@ -93,8 +94,7 @@
           <label id="fotgotPassword" class="label_underline" data-bind="click: onForgotPasswordAction">Forgot password?</label> <br>
           
           <label id="termAndCondition" class="label_underline" data-bind="click: onTermConditionAction">Terms and Conditions?</label>
-            
-            
+             
         </div>
         
     </div>
@@ -138,57 +138,8 @@
         
         <!--Content-->
         <div class="view-content" id="queryForm" data-title="Query Form">
-          <img src="styles/images/home.png" style="float:left; margin-top: 4%; cursor: pointer;" data-bind="click: backHome" />  
           
-          
-          <br> 
-            
-          <div style="margin-top: -2%; width: 92% !important;">   
-            <label style="font-family:'Segoe UI Light', 'Segoe UI'; font-weight:300; font-size: 1.6em; color: #000000; 
-                margin-left: 5%; width: auto;" for="ddlOrigin">Flight Schedules</label> <br>  
-              
-            <label class="k-label" style="margin-left: 18%;" for="ddlOrigin">Origin</label> <br>      
-            <input id="ddlOrigin" placeholder="Origin airport" 
-              style="cursor: pointer; display:inline-block; line-height:187%; padding-left: 2%; -webkit-border-radius: 5px; border-color: #F05D2F; width: 70%; background: #FFFFFF; background-color: #FFFFFF; margin-top: 0%; margin-left: 18%; border-style: solid; border-width: 1px; 
-                  color: \#C9C9C9; font-family: 'Segoe UI Light','Segoe UI'; font-size: 16px; font-style: normal; font-weight: 300; opacity: 1;"
-              />
-                   
-            <label class="k-label" style="margin-left: 18%; margin-top: 0%;" for="ddlDestination">Destination</label> <br>       
-            <input id="ddlDestination" placeholder="Destination airport" 
-              style="cursor: pointer; display:inline-block; line-height:187%; padding-left: 2%; -webkit-border-radius: 5px; border-color: #F05D2F; width: 70%; background: #FFFFFF; background-color: #FFFFFF; margin-top: 0%; margin-left: 18%; border-style: solid; border-width: 1px; 
-                  color: \#C9C9C9; font-family: 'Segoe UI Light','Segoe UI'; font-size: 16px; font-style: normal; font-weight: 300; opacity: 1;"
-              />
-              
-            <label class="k-label" style="margin-left: 18%; margin-top: 0%;" for="ddlCarrierCode">Airline</label> <br> 
-            <input id="ddlCarrierCode" placeholder="Airline/carrier code" 
-              	style="cursor: pointer; display:inline-block; line-height:187%; padding-left: 2%; -webkit-border-radius: 5px; border-color: #F05D2F; width: 70%; background: #FFFFFF; background-color: #FFFFFF; margin-top: 0%; margin-left: 18%; border-style: solid; border-width: 1px; 
-                  color: \#C9C9C9; font-family: 'Segoe UI Light','Segoe UI'; font-size: 16px; font-style: normal; font-weight: 300; opacity: 1;"
-              />
-            
-            <label class="k-label" style="margin-left: 18%; margin-top: 0%;" for="flight_date">Date</label> <br> 
-            <input id="flight_date" name="flight_date" placeholder="06/01/2014" class="k-input" 
-                type="text" style="padding-left: 2%; cursor: pointer; display:inline-block; line-height:150%; -webkit-border-radius: 5px; border-color: #F05D2F; width: 70%; background: #FFFFFF; background-color: #FFFFFF; margin-top: 0%; margin-left: 18%;"
-            	data-required-msg="Please enter a flight date" validationMessage="Please enter a flight date" required /> 
-            <img src="styles/images/line.png" style="position: fixed; margin-top: 0.8%; margin-right: 3%; margin-left: -15%; " />             
-              
-			<a id="queryBtn" 
-                style="line-height:190%; font-size: 1.1em; background-color: #F05D2F; width: 70%; text-align: center; margin-left: 18%; margin-top: 2%;" 
-                type="submit" data-role="button" class="button" data-bind="click: onQueryAction">
-                Get Schedules
-                
-            </a>
-                        
-          </div>
-            
-        </div>
-        
-        <div id="errorDialog1" style="display:none;">
-              <p>Please input the origin field</p>
-         </div>
-        
-        <div id="errorDialog2" style="display:none;">
-              <p>Please input the destination field</p>
-         </div>
+        </div>  
         
     </div>
 	<!--Query view-->
@@ -252,18 +203,7 @@
         
         <!--Content-->
         <div class="view-content" id="historyForms" data-title="History Forms" >     
-            <span style="float: right; margin-right: 2%; margin-top: 2%; color: #6B6B6B; font-family: 'Segoe UI Regular','Segoe UI'; font-size: 12px;" data-bind="text: numOfRecords"></span > 
-            <br>
-            <hr />
-            
-            <div style="margin-left: 4%; color: #A1A1A1; font-family: 'Segoe UI Light','Segoe UI'; font-size: 12px; font-weight: 300;" data-bind="visible: visibleMsg">To save you search to history, select the option to "Save" when viewing details of a flight schedule</div> 
-            
-            <!-- History list-->
-            <ul id="list"  
-                data-role="listview"
-                data-bind="click: onHistoryListClickAction"
-                data-style="inset" >
-            </ul>        
+                   
          </div>
         
         <!--History template-->   
@@ -345,13 +285,14 @@
         data-init="app.helpViewModel.init"
         data-show="app.helpViewModel.showHelp"
         data-model="app.helpViewModel.viewModel"
-        data-title="Help">
+        data-title="e-AWB">
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #F05D2F">
-                <span data-role="view-title" style="margin-left: -10%; font-family:'Segoe UI Light', 'Segoe UI'; font-size:18px;"></span>
-                
+            <div data-role="navbar" style="background-color: #88B237;">
+                <img src="styles/images/setting.png" class="img_home" />
+                <img src="styles/images/setting.png" class="img_setting" />
+                <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
 
@@ -364,7 +305,13 @@
         
         <!--Content-->
         <div class="view-content">
-            <div id="helpDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>
+            <div class="titleDiv">
+            	<label class="label_title_page" style="margin-left: 45%;">Help</label>	    
+            </div>
+            <div id="helpDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%">
+                
+            </div>
+            
          </div>
     </div>
     <!--Help view-->
@@ -376,13 +323,14 @@
         data-init="app.aboutAppService.init"
         data-show="app.aboutAppService.showAboutApp"
         data-model="app.aboutAppService.viewModel"
-        data-title="About app">
+        data-title="e-AWB">
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #F05D2F">
-                <span data-role="view-title" style="margin-left: -10%; font-family:'Segoe UI Light', 'Segoe UI'; font-size:18px;"></span>
-                
+            <div data-role="navbar" style="background-color: #88B237;">
+                <img src="styles/images/setting.png" class="img_home" />
+                <img src="styles/images/setting.png" class="img_setting" />
+                <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
 
@@ -395,6 +343,9 @@
         
         <!--Content-->
         <div class="view-content">
+            <div class="titleDiv">
+            	<label class="label_title_page" style="margin-left: 40%;">About App</label>	    
+            </div>
             <div id="aboutAppDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>
          </div>
     </div>
@@ -408,13 +359,14 @@
         data-init="app.aboutCCNService.init"
         data-show="app.aboutCCNService.showAboutCCN"
         data-model="app.aboutCCNService.viewModel"
-        data-title="About CCN">
+        data-title="e-AWB">
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #F05D2F">
-                <span data-role="view-title" style="margin-left: -48%; font-family:'Segoe UI Light', 'Segoe UI'; font-size:18px;"></span>
-                
+            <div data-role="navbar" style="background-color: #88B237;">
+                <img src="styles/images/setting.png" class="img_home" />
+                <img src="styles/images/setting.png" class="img_setting" />
+                <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
 
@@ -427,6 +379,9 @@
         
         <!--Content-->
         <div class="view-content" style="position: relative;">
+            <div class="titleDiv">
+            	<label class="label_title_page" style="margin-left: 40%;">About CCN</label>	    
+            </div>
             <div id="aboutCCNDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>       
          </div>
     </div>
@@ -439,12 +394,14 @@
         data-init="app.termConditionService.init"
         data-show="app.termConditionService.showTermCondition"
         data-model="app.termConditionService.viewModel"
-        data-title="Terms & Conditions">
+        data-title="e-AWB">
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #F05D2F">
-                <span data-role="view-title" style="margin-left: -43%; font-family:'Segoe UI Light', 'Segoe UI'; font-size:18px;"></span>
+            <div data-role="navbar" style="background-color: #88B237;">
+                <img src="styles/images/setting.png" class="img_home" />
+                <img src="styles/images/setting.png" class="img_setting" />
+                <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
 
@@ -457,6 +414,9 @@
         
         <!--Content-->
         <div class="view-content" style="position: relative;">
+            <div class="titleDiv">
+            	<label class="label_title_page" style="margin-left: 32%;">Terms & Conditions</label>	    
+            </div>
             <div id="termConditionDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>
          </div>
     </div>

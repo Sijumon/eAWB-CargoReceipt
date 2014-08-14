@@ -249,14 +249,13 @@ body, html {
     background-color: #fff;
     border-color: #ababab;
 }
-
 .km-ios .km-view .km-content {
     background-image: none;
     background: #f0f0f0;
 }
 .km-ios7 .km-view .km-content {
 	overflow: visible !important;
-    background-color:#88B237 !important;
+    background-color:#FFFFFF;
     font-family:'Segoe UI Light', 'Segoe UI';
     font-weight:300;
     font-size:16px;
