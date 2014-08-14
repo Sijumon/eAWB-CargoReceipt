@@ -37,6 +37,25 @@
             app.application.navigate('#term_condition', 'slide:right');
         },
         
+        /*
+        	validate the input form
+        */
+        validateInput: function(userType){
+            if (userType){
+                if ($("#txtCompanyId").val().trim() === '' || $("#txtEmail").val().trim() === '' || $("#txtPassword").val().trim() === ''){
+                	$('#errorMsg').show();
+            		$('#textMsg').hide();
+                    return false;
+                }
+            } else {
+                if ($("#txtEmail").val().trim() === '' || $("#txtPassword").val().trim() === '' ){
+                	$('#errorMsg').show();
+            		$('#textMsg').hide();
+                    return false;
+                }
+            }
+            return true;
+        },
         
         /*
         	do the signin action
@@ -45,8 +64,13 @@
         	//console.log("================= onSignIn()");
             
             //Do validation
-            
-            app.application.navigate('#query', 'slide:right');
+            var userType = app.loginService.viewModel.get("displayUser");
+            var validate = app.loginService.viewModel.validateInput(userType);                        
+            if (validate){
+            	//Call the web service
+                
+            	app.application.navigate('#query', 'slide:right');
+            }
         },
         
         
@@ -93,7 +117,9 @@
         init: function(){
             //console.log("================= query.js,init()");
             
-            app.loginService.viewModel.set("displayUser", true); 
+            app.loginService.viewModel.set("displayUser", true);   
+            $('#textMsg').show();
+            $('#errorMsg').hide();
             
             /* 
             	Set advertisement
