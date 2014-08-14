@@ -181,7 +181,7 @@
             <label class="enter_big">View History</label>  <br>            
             <label class="enter_small">Select below to view a history of your previous AWB queries</label> <br>
             
-            
+            <a id="helpBtn" type="submit" data-role="button" href="#history">History</a>
         </div>  
         
     </div>
@@ -226,22 +226,24 @@
         data-init="app.historyService.listViewHistoryInit"
         data-show="app.historyService.listViewHistoryShow"
         data-model="app.historyService.viewModel"   
-        data-title="History">        
+        data-title="e-AWB">        
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #F05D2F">
-                <span data-role="view-title" style="margin-left: -60%; font-family:'Segoe UI Light', 'Segoe UI'; font-size:18px;"></span>
-                
+            <div data-role="navbar" style="background-color: #88B237;">
+                <img src="styles/images/setting.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
         
+
         <!--Footer-->
         <div data-role="footer">
-            <div data-role="tabstrip">  
-                 <img id="imgHistory" class="footer_bg"  style="cursor: pointer;"/>
+            <div data-role="tabstrip">
+                <img id="imgHistory" class="footer_bg"  style="cursor: pointer;" />
             </div>
-        </div> 
+        </div>
         
         
         <!--Content-->
