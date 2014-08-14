@@ -54,8 +54,8 @@
         showTermCondition: function () {
             //console.log("================= showTermCondition");
             /*
-            	Show information
-            //Call ws to get the strTermCondition            
+            	Call ws to get the strTermCondition            
+            */
             var appToken = window.localStorage.getItem("appToken");
             var url = "http://apidev.ccnhub.com/api/tandc/v1/token=" + appToken;
             //console.log("showTermCondition(), url=" + url);
@@ -78,7 +78,7 @@
                     $("#termConditionDiv").html(strTermCondition);
                 }
               });
-        	*/    
+        	    
 		},
         
         viewModel: new TermConditionViewModel()        

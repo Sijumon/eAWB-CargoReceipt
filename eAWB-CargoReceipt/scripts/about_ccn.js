@@ -22,7 +22,7 @@
             //console.log("================= init");
             
             /*
-            	//Set advertisement
+            	Set advertisement
             */
             var advertiseIMG = window.localStorage.getItem("advertiseIMG");
             var advertiseURL = window.localStorage.getItem("advertiseURL");
@@ -49,14 +49,13 @@
         }, 
         
         /*
-        	//showAboutCCN() function: show the About App information
+        	showAboutCCN() function: show the About App information
         */
         showAboutCCN: function () {
             //console.log("================= showAboutCCN");
             /*
-            	//Set advertisement
-             
-            //Call ws to get the strAboutCCN
+            	Call ws to get the strAboutCCN
+            */  
             var appToken = window.localStorage.getItem("appToken");
             var url = "http://apidev.ccnhub.com/api/aboutccn/v1/token=" + appToken;
             //console.log("showAboutCCN(), url=" + url);
@@ -80,7 +79,7 @@
                     $("#aboutCCNDiv").html(strAboutCCN);
                 }
             });
-            */  
+             
 		},
 
         viewModel: new AboutCCNViewModel()        

@@ -49,14 +49,14 @@
         }, 
         
         /*
-        	//showAboutApp() function: show the About App information
+        	showAboutApp() function: show the About App information
         */        
         showAboutApp: function () {
             //console.log("================= showAboutApp");
             
             /*
-            	//Call ws to get the strAboutApp
-            
+            	Call ws to get the strAboutApp
+            */
             var appToken = window.localStorage.getItem("appToken");
             var url = "http://apidev.ccnhub.com/api/product/v1/token=" + appToken;
             var strAboutApp;
@@ -74,7 +74,7 @@
                     $("#aboutAppDiv").html(strAboutApp);
                 }
               });
-            */
+            
 		},
         
         viewModel: new AboutAppViewModel()        

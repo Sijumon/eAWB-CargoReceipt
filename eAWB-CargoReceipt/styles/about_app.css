@@ -3,3 +3,16 @@ body {
     height: 100%;
     width: 100%;
 }
+.title {
+    color: #F05D2F;
+    font-family: 'Segoe UI Semibold','Segoe UI';
+    font-size: 14px;
+    font-weight: 600;   
+}
+.content_body{
+    margin-top: 5%;  
+    color: #333333;
+    font-family: 'Arial Regular','Arial';
+    font-size: 12px;
+    font-weight: 400;  
+}
