@@ -7,7 +7,35 @@
     	Declare HelpViewModel
     */
     HelpViewModel = kendo.data.ObservableObject.extend({
-               
+        /*
+        	goHome(): go to home view of the application
+        */
+        goHome: function(){
+            var userLoggedIn = window.localStorage.getItem("userLoggedIn");
+            if (userLoggedIn === 'false')
+            	app.application.navigate('#login', 'slide:right');
+            else 
+            	app.application.navigate('#query', 'slide:right'); 
+        },
+        
+        /*
+        	showSettingDialog(): show the setting dialog
+        */
+        showSettingDialog: function(){
+            var userLoggedIn = window.localStorage.getItem("userLoggedIn");
+            var dialog;
+            if (userLoggedIn){
+                dialog = $("#settingDialog").dialog({
+                   width: 230, height: 255, modal: true, resizable: false
+                });
+            } else {
+                dialog = $("#settingSignOutDialog").dialog({
+                   width: 230, height: 255, modal: true, resizable: false
+                });
+            }            
+            dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
+            dialog.prev(".ui-widget-header").css("font-weight","normal");
+        }
     });
     
     /*
@@ -45,6 +73,40 @@
                     window.location.href = arrAdsURL[temp];
 				});
             }, 5000);
+           
+            /*
+            	Do the action of setting dialog
+            */
+            $("#helpBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#help');
+            });
+            $("#aboutAppBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#about_app');
+            });
+            $("#aboutCCNBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#about_ccn');
+            });
+            $("#termConditionBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#term_condition');
+            });
+            $("#signinBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#login');
+            });
+            $("#signoutBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#login');
+            });
             
         }, 
         

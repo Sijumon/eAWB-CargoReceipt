@@ -53,7 +53,9 @@
             		$('#textMsg').hide();
                     return false;
                 }
-            }
+            }            
+            $('#errorMsg').hide();
+            $('#textMsg').show();
             return true;
         },
         
@@ -69,6 +71,7 @@
             if (validate){
             	//Call the web service
                 
+                window.localStorage.setItem("userLoggedIn", true);
             	app.application.navigate('#query', 'slide:right');
             }
         },
@@ -117,6 +120,7 @@
         init: function(){
             //console.log("================= query.js,init()");
             
+            window.localStorage.setItem("userLoggedIn", false);
             app.loginService.viewModel.set("displayUser", true);   
             $('#textMsg').show();
             $('#errorMsg').hide();

@@ -7,10 +7,16 @@
     	Declare QueryViewModel
     */
     QueryViewModel = kendo.data.ObservableObject.extend({
-    	showSettingDialog: function(){
-        	//console.log("================= showSettingDialog()");   
-                        
-        }    
+    	/*
+        	showSettingDialog(): show the setting dialog
+        */
+        showSettingDialog: function(){
+            var dialog = $("#settingSignOutDialog").dialog({
+                   width: 230, height: 255, modal: true, resizable: false
+                });     
+            dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
+            dialog.prev(".ui-widget-header").css("font-weight","normal");
+        }   
     });
     
     /*
@@ -49,6 +55,40 @@
 				});
             }, 5000);
 			
+            /*
+            	Do the action of setting dialog
+            */
+            $("#helpBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#help');
+            });
+            $("#aboutAppBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#about_app');
+            });
+            $("#aboutCCNBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#about_ccn');
+            });
+            $("#termConditionBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#term_condition');
+            });
+            $("#signinBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#login');
+            });
+            $("#signoutBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#login');
+            });
+            
         }, 
         
         /*

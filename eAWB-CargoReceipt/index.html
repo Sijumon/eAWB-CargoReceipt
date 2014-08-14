@@ -124,6 +124,25 @@
           <hr class="line_bigger_bg" /> 
     </div>
     
+    <!--Setting signout dialog-->
+    <div id="settingSignOutDialog" title="Settings" style="display:none; background-color: #484848; font-weight: normal;">
+          <a id="helpBtn" type="submit" data-role="button"
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Help</a> <br>
+          <hr class="line_bg" />
+          <a id="aboutAppBtn" type="submit" data-role="button"
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">About app</a> <br>
+          <hr class="line_bg" />
+          <a id="aboutCCNBtn" type="submit" data-role="button"
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">About CCN</a> <br>
+          <hr class="line_bg" />
+          <a id="termConditionBtn" type="submit" data-role="button"
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Terms & Conditions</a> <br>
+          <hr class="line_bg" />
+          <a id="signoutBtn" type="submit" data-role="button"
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Sign out</a> <br>
+          <hr class="line_bigger_bg" /> 
+    </div>
+    
     
     <!--Query view-->
     <div id="query"
@@ -136,7 +155,7 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/setting.png" class="img_setting" />
+                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>       
@@ -314,15 +333,12 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <a type="submit" data-role="button" class="button" 
-                	style="color: #88B237 !important; margin-top: -2%; margin-left: -38%; height: 30px;" 
-                	href="#login">		  
-                	<img src="styles/images/setting.png" class="img_home" />
-                </a>
-                <img src="styles/images/setting.png" class="img_setting" />
+                <img src="styles/images/setting.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
+        
 
         <!--Footer-->
         <div data-role="footer">
@@ -356,8 +372,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/setting.png" class="img_home" />
-                <img src="styles/images/setting.png" class="img_setting" />
+                <img src="styles/images/setting.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
@@ -392,8 +408,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/setting.png" class="img_home" />
-                <img src="styles/images/setting.png" class="img_setting" />
+                <img src="styles/images/setting.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
@@ -427,8 +443,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/setting.png" class="img_home" />
-                <img src="styles/images/setting.png" class="img_setting" />
+                <img src="styles/images/setting.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
