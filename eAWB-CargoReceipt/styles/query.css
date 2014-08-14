@@ -3,3 +3,62 @@ body {
     height: 100%;
     width: 100%;
 }
+.enter_big{
+    color: #949494;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 20px;
+    font-weight: 300;
+    float: left;
+    clear: left;
+    margin-left: 5%;
+    display:inline-block; 
+    line-height:170%; 
+}
+.enter_small{
+    color: #949494;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-weight: 300;
+    display:inline-block; 
+    line-height:170%; 
+    font-size: 13px;
+    font-style: normal;
+    clear: left;
+    float: left;
+    margin-left: 5%;
+}
+.bg_textbox_query{
+    color: #88b237;
+    font-size: 20px;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-style: normal;
+    font-weight: 300;
+    opacity: 0.498039;
+    text-align: left;   
+    display:inline-block; 
+    line-height: 200%; 
+    padding-left: 2%; 
+    -webkit-border-radius: 5px; 
+    border-color: #88B237; 
+    background: #FFFFFF; 
+    background-color: #FFFFFF; 
+    margin-top: 0%; 
+    border-style: solid; 
+    border-width: 1px; 
+    color: #C9C9C9; 
+    margin-top: 3%;
+}
+.img_query{
+    float: right;
+    margin-right: 10%;
+    margin-left: 5%;
+	margin-top: -13%;
+}
+.label_hor{
+    color: #48601E;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}

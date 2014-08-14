@@ -42,7 +42,11 @@
         	do the signin action
         */
         onSignIn: function(){
-        	console.log("================= onSignIn()");	    
+        	//console.log("================= onSignIn()");
+            
+            //Do validation
+            
+            app.application.navigate('#query', 'slide:right');
         },
         
         

@@ -13,6 +13,7 @@
     <link href="styles/login.css" rel="stylesheet" />
     <link href="styles/forgot_password.css" rel="stylesheet" />
     <link href="styles/header.css" rel="stylesheet" />
+    <link href="styles/query.css" rel="stylesheet" />
     
     <!--Lib JS-->
     <script src="cordova.js"></script>
@@ -124,21 +125,41 @@
     <!--Query view-->
     <div id="query"
         data-role="view"     
-        data-init="app.queryService.initQueryView"
+        data-init="app.queryService.init"
         data-show="app.queryService.show"
         data-model="app.queryService.viewModel"
-        data-title="Query">
+        data-title="e-AWB">
+        
+        <!--Header-->
+        <div data-role="header">
+            <div data-role="navbar" style="background-color: #88B237;">
+                <img src="styles/images/setting.png" class="img_setting" />
+                <span data-role="view-title" class="header_text"></span>
+            </div>
+        </div>       
         
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-               <img id="imgQuery" class="footer_bg"  style="cursor: pointer;"/> 
+                <img id="imgQuery" class="footer_bg"  style="cursor: pointer;" />
             </div>
-        </div>        
+        </div>
         
         <!--Content-->
-        <div class="view-content" id="queryForm" data-title="Query Form">
-          
+        <div class="view-content" style="background-color:#F0F1F1 !important; width: 100%; height: 500px;"  id="queryForm" data-title="Query Form">
+        	<label class="enter_big">Enter Air Waybill number</label>  <br>            
+            <label class="enter_small">Enter your 11-digit air waybill number then select search to continue</label> <br>
+            
+            <input id="firstLetter" class="bg_textbox_query" style="width: 15%; margin-left: 5%; color: #797979;" />
+            <label class="label_hor">-</label>
+            <input id="secondLetter" class="bg_textbox_query" style="width: 50%; color: #797979;" />
+            <img src="styles/images/query.png" class="img_query" /> <br>
+            <hr class="line_small_bg" />
+            
+            <label class="enter_big">View History</label>  <br>            
+            <label class="enter_small">Select below to view a history of your previous AWB queries</label> <br>
+            
+            
         </div>  
         
     </div>
@@ -290,7 +311,11 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/setting.png" class="img_home" />
+                <a type="submit" data-role="button" class="button" 
+                	style="color: #88B237 !important; margin-top: -2%; margin-left: -38%; height: 30px;" 
+                	href="#login">		  
+                	<img src="styles/images/setting.png" class="img_home" />
+                </a>
                 <img src="styles/images/setting.png" class="img_setting" />
                 <span data-role="view-title" class="header_text"></span>
             </div>

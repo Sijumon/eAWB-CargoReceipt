@@ -37,3 +37,9 @@ body {
     background-color: #F2F2F2;
     height: 25px;
 }
+.a_href_home{
+    color: #88B237 !important;
+    margin-top: -2%;
+    margin-left: -38%;
+    height: 30px;
+}
