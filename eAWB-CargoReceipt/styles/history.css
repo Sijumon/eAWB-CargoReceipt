@@ -3,3 +3,51 @@ body {
     height: 100%;
     width: 100%;
 }
+.his_awb_number{
+    color: #515151;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 20px;
+    font-weight: 300;
+    float: left;
+    clear: left;
+    margin-left: 5%;
+}
+.his_datetime{
+    color: #515151;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    text-align: right;
+    float: right;
+    clear: right;
+    margin-right: 5%;
+}
+.label_his_history{
+    color: #e4e4e4;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 14px;
+    margin-left: 5%;
+}
+.his_div_header{
+    background-color: #6B6B6B;
+    display: inline-block;
+    line-height: 170%;
+    width: 100%;
+}
+.label_his_clear_history{
+    color: #d7d7d7;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 18px;
+    line-height: 13px;
+    text-align: center;
+    margin-left: 37%;
+    cursor: pointer;
+}
+.his_div_clear_history{
+    background-color: #787878;
+    display: inline-block;
+    line-height: 200%;
+    width: 100%;
+    cursor: pointer;
+}

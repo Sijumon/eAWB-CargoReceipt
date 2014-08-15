@@ -17,6 +17,7 @@
     <link href="styles/query.css" rel="stylesheet" />
     <link href="styles/query_result.css" rel="stylesheet" />
     <link href="styles/about_app.css" rel="stylesheet" />
+    <link href="styles/history.css" rel="stylesheet" />
     
     <!--Lib JS-->
     <script src="cordova.js"></script>
@@ -272,15 +273,19 @@
         
         
         <!--Content-->
-        <div class="view-content" id="historyForms" data-title="History Forms" >     
-                   
-         </div>
+        <div class="view-content" id="historyForms" data-title="History Forms" >             	
+            <div class="his_div_header">
+            	<label class="label_his_history">History</label>
+            </div>   
+            
+            <div class="his_div_clear_history" data-bind="click: onClearHistoryAction" >
+            	<label class="label_his_clear_history">Clear History</label>
+            </div>
+        </div>
         
         <!--History template-->   
         <script id="history-lw-delete-template" type="text/x-kendo-template">
-            <div>
-                
-            </div>    
+        	    
         </script>
         
     </div>
