@@ -3,3 +3,50 @@ body {
     height: 100%;
     width: 100%;
 }
+.awb_header{
+    color: #48601e;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 14px;
+    margin-left: 5%;
+    float: left;
+    display:inline-block; 
+    line-height: 180%; 
+}
+.awb_text{
+    color: #ffffff;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 28px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: -3%;
+    margin-left: 5%;
+    float: left;
+    display:inline-block; 
+    line-height: 0%; 
+}
+.current_status_header{
+    color: #48601e;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 14px;
+    margin-left: 5%;
+    float: left;
+    margin-top: -10%; 
+    display:inline-block; 
+    line-height: 200%;
+}
+.current_status_text{
+    color: #ffffff;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 20px;
+    font-weight: 300;
+    float: left;
+    margin-left: 5%;
+    margin-top: -20%;
+}
+.img_arrow{
+    float: right;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    margin-top: -13%;
+    cursor: pointer;
+}

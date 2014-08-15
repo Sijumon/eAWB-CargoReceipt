@@ -11,31 +11,27 @@
         	goHome(): go to home view of the application
         */
         goHome: function(){
-            var userLoggedIn = window.localStorage.getItem("userLoggedIn");
-            if (userLoggedIn === 'false')
-            	app.application.navigate('#login', 'slide:right');
-            else 
-            	app.application.navigate('#query', 'slide:right'); 
+            app.application.navigate('#query', 'slide:right'); 
         },
         
         /*
-        	showSettingDialog(): show the setting dialog
+        	showSettingDialog(): show the setting signout dialog
         */
         showSettingDialog: function(){
-            var userLoggedIn = window.localStorage.getItem("userLoggedIn");
-            var dialog;
-            if (userLoggedIn === 'false'){
-                dialog = $("#settingDialog").dialog({
-                   width: 230, height: 255, modal: true, resizable: false
-                });
-            } else {
-                dialog = $("#settingSignOutDialog").dialog({
-                   width: 230, height: 255, modal: true, resizable: false
-                });
-            }            
+            var dialog = $("#settingSignOutDialog").dialog({
+               width: 230, height: 255, modal: true, resizable: false
+            });    
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
-        }       
+        },
+        
+        /*
+        	onArrowAction(): do the action for up & down arrow button
+        */
+        onArrowAction: function(){
+        	//console.log("================= onArrowAction()");   
+            
+        }
     });
     
     /*
