@@ -75,35 +75,46 @@
             }, 5000);
            
             /*
-            	Do the action of setting dialog
+            	Do the action of setting & setting signout dialog
             */
             $("#helpBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#help');
             });
             $("#aboutAppBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#about_app');
             });
             $("#aboutCCNBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#about_ccn');
             });
             $("#termConditionBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
+                app.application.navigate('#term_condition');
+            });
+            $("#helpBtn_signout").on("click", function(){ 
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#help');
+            });
+            $("#aboutAppBtn_signout").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#about_app');
+            });
+            $("#aboutCCNBtn_signout").on("click", function(){ 
+                $('#settingSignOutDialog').dialog('close');
+                app.application.navigate('#about_ccn');
+            });
+            $("#termConditionBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#term_condition');
             });
             $("#signinBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#login');
             });
             $("#signoutBtn").on("click", function(){ 
-                $('#settingDialog').dialog('close');
                 $('#settingSignOutDialog').dialog('close');
                 window.localStorage.setItem("userLoggedIn", false);
                 app.application.navigate('#login');

@@ -75,35 +75,25 @@
             }, 5000);
             
             /*
-            	Do the action of setting dialog
+            	Do the action of setting signout dialog
             */
-            $("#helpBtn").on("click", function(){ 
-                $('#settingDialog').dialog('close');
+            $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#help');
             });
-            $("#aboutAppBtn").on("click", function(){ 
-                $('#settingDialog').dialog('close');
+            $("#aboutAppBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#about_app');
             });
-            $("#aboutCCNBtn").on("click", function(){ 
-                $('#settingDialog').dialog('close');
+            $("#aboutCCNBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#about_ccn');
             });
-            $("#termConditionBtn").on("click", function(){ 
-                $('#settingDialog').dialog('close');
+            $("#termConditionBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#term_condition');
             });
-            $("#signinBtn").on("click", function(){ 
-                $('#settingDialog').dialog('close');
-                $('#settingSignOutDialog').dialog('close');
-                app.application.navigate('#login');
-            });
             $("#signoutBtn").on("click", function(){ 
-                $('#settingDialog').dialog('close');
                 $('#settingSignOutDialog').dialog('close');
                 window.localStorage.setItem("userLoggedIn", false);
                 app.application.navigate('#login');
