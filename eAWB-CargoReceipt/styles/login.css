@@ -178,4 +178,17 @@ body {
     border-width: 1px; 
     margin-left: 10%;
     margin-bottom: 1%;
+    width: 89%;
+}
+.img_sad_icon{
+    margin-left: -5%; 
+    margin-bottom: -2%;
+}
+.img_line{
+    margin-left: -1%; 
+    margin-bottom: -4%;
+}
+.img_option{
+    margin-left: 1%; 
+    margin-bottom: -5%;
 }

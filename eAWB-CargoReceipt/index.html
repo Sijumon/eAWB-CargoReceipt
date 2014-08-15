@@ -71,19 +71,22 @@
           
           <label class="label_select" id="textMsg">Select the account you wish to sign in with</label> 
           
-          <label class="label_error" id="errorMsg">Sorry, your login information is not correct.</label>
+          <label class="label_error" id="errorMsg">
+              <img src="styles/images/sad_icon.png" class="img_sad_icon" />
+              Sorry, your login information is not correct.              
+          </label>
           
           <br>  
           <div id="linc" data-bind="click: onLincDivAction" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;">
           	<label class="label_linc">CCNHub LINC</label>
-              <img src="styles/images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
-              <img id="lincCheckbox" src="styles/images/uncheck.png"  style="margin-left: 1%; margin-bottom: -5%;" />
+              <img src="styles/images/line.png" class="img_line" />
+              <img id="lincCheckbox" src="styles/images/uncheck.png" class="img_option" />
           </div>
           
           <div id="user" data-bind="click: onUserDivAction" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;">
           	<label class="label_user">CCNHub user</label>
-              <img src="styles/images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
-              <img id="userCheckbox" src="styles/images/checked.png"  style="margin-left: 2%; margin-bottom: -5%;" />
+              <img src="styles/images/line.png"  class="img_line" />
+              <img id="userCheckbox" src="styles/images/checked.png" class="img_option" />
           </div>
             
           <input id="txtCompanyId" placeholder="Company ID" class="textbox_bg" style="margin-top: 1.5%;" />  
