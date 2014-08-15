@@ -44,9 +44,16 @@ body {
     margin-top: -20%;
 }
 .img_arrow{
-    float: right;
-    margin-right: 1%;
-    margin-bottom: 1%;
+    margin-left: 88%;
     margin-top: -13%;
     cursor: pointer;
+    z-index: 99;
+    position: absolute;
+}
+.img_arrow_down{
+    margin-left: 88%;
+    margin-top: 1%;
+    cursor: pointer;
+    z-index: 99;
+    position: absolute;
 }

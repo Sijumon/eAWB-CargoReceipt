@@ -206,12 +206,14 @@
                 <img src="styles/images/home.png" class="img_home"  data-bind="click: goHome"/>
                 <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span> <br>
-                <label class="awb_header">AWB no.</label> <br>
-                <label class="awb_text">640-123456789</label> <br>
-                <label class="current_status_header">Current Status</label> <br>
-                <label class="current_status_text">Ready for carriage</label>
-                <img src="styles/images/up.png" class="img_arrow" data-bind="click: onArrowAction"/>
-            </div>
+                <div id="displayDiv">
+                    <label class="awb_header">AWB no.</label> <br>
+                    <label class="awb_text">640-123456789</label> <br>
+                    <label class="current_status_header">Current Status</label> <br>
+                    <label class="current_status_text">Ready for carriage</label>
+                </div>
+            </div>            
+            <img src="styles/images/up.png" class="img_arrow" id="imgArrow" data-bind="click: onArrowAction, visible: visibleArrow"/>
         </div>
 
         <!--Footer-->

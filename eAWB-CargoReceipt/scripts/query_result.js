@@ -7,6 +7,8 @@
     	Declare QueryResultViewModel
     */
     QueryResultViewModel = kendo.data.ObservableObject.extend({
+        visibleArrow: true,
+        
         /*
         	goHome(): go to home view of the application
         */
@@ -28,9 +30,21 @@
         /*
         	onArrowAction(): do the action for up & down arrow button
         */
-        onArrowAction: function(){
+        onArrowAction: function(e){
         	//console.log("================= onArrowAction()");   
-            
+            var item = $(e.target);
+            var src = item.attr("src");
+            if (src === 'styles/images/up.png'){
+                item.attr("src", 'styles/images/down.png');
+                $("#displayDiv").hide();
+                $("#imgArrow").removeClass("img_arrow");
+                $("#imgArrow").addClass("img_arrow_down");
+            } else {
+                item.attr("src", 'styles/images/up.png');
+                $("#displayDiv").show();
+                $("#imgArrow").removeClass("img_arrow_down");
+                $("#imgArrow").addClass("img_arrow");
+            }
         }
     });
     
@@ -45,8 +59,10 @@
         init: function(){
             //console.log("================= init");
             
+            app.queryResultService.viewModel.set("visibleArrow", true);
+            
             /*
-            	//Set advertisement
+            	Set advertisement
             */            
             var advertiseIMG = window.localStorage.getItem("advertiseIMG");
             var advertiseURL = window.localStorage.getItem("advertiseURL");
