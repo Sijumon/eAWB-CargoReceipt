@@ -129,16 +129,16 @@
     
     <!--Setting signout dialog-->
     <div id="settingSignOutDialog" title="Settings" style="display:none; background-color: #484848; font-weight: normal;">
-          <a id="helpBtn" type="submit" data-role="button"
+          <a id="helpBtn_signout" type="submit" data-role="button"
              style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Help</a> <br>
           <hr class="line_bg" />
-          <a id="aboutAppBtn" type="submit" data-role="button"
+          <a id="aboutAppBtn_signout" type="submit" data-role="button"
              style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">About app</a> <br>
           <hr class="line_bg" />
-          <a id="aboutCCNBtn" type="submit" data-role="button"
+          <a id="aboutCCNBtn_signout" type="submit" data-role="button"
              style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">About CCN</a> <br>
           <hr class="line_bg" />
-          <a id="termConditionBtn" type="submit" data-role="button"
+          <a id="termConditionBtn_signout" type="submit" data-role="button"
              style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Terms & Conditions</a> <br>
           <hr class="line_bg" />
           <a id="signoutBtn" type="submit" data-role="button"
@@ -185,7 +185,17 @@
             <label class="enter_big">View History</label>  <br>            
             <label class="enter_small">Select below to view a history of your previous AWB queries</label> <br>
             
-            <a id="helpBtn" type="submit" data-role="button" href="#history">History</a>
+            <!--            
+            <a id="helpBtn" href="#history">
+                <img src="styles/images/bg_history.png" class="img_bg_history" />
+                <label class="label_history">History</label>  <br>            
+                <label class="label_select_here">Select here to view your saved queries</label>  <br>            
+            </a>
+            -->
+            <a id="helpBtn" href="#history">
+                <img src="styles/images/bg_select_history.png" class="img_bg_history" />
+            </a>
+            
         </div>  
         
     </div>

@@ -51,7 +51,7 @@ body {
     float: right;
     margin-right: 10%;
     margin-left: 5%;
-	margin-top: -13%;
+	margin-top: -12.5%;
     cursor: pointer;
 }
 .label_hor{
@@ -82,4 +82,31 @@ body {
     margin-left: 7%;
     margin-bottom: 1%;
     width: 85%;
+}
+.label_history{
+    color: #88b237;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: -70%;
+    float: left;
+    margin-top: 6%;
+    z-index: 99;
+    position: absolute; 
+}
+.label_select_here{
+    color: #949494;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 12px;
+    font-weight: 300;
+    margin-left: 27%;
+    float: left;
+    margin-top: -12%;
+    z-index: 99;
+    position: absolute;  
+}
+.img_bg_history{
+    margin-left: 5%;
+    margin-top: 5%;
+    width: 91%;
 }
