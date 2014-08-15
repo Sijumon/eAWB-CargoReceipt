@@ -52,6 +52,7 @@ body {
     margin-right: 10%;
     margin-left: 5%;
 	margin-top: -13%;
+    cursor: pointer;
 }
 .label_hor{
     color: #48601E;
@@ -61,4 +62,24 @@ body {
     font-weight: 400;
     line-height: normal;
     text-align: center;
+}
+.label_awb_error{
+    color: #cc0000;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-weight: 300;
+    font-style: normal;
+    text-align: center;    
+    display:inline-block; 
+    line-height: 200%; 
+    padding-left: 2%; 
+    -webkit-border-radius: 0px; 
+    border-color: #CC3300; 
+    background: #E7EFD8; 
+    background-color: #E7EFD8; 
+    margin-top: 0%; 
+    border-style: solid; 
+    border-width: 1px; 
+    margin-left: 7%;
+    margin-bottom: 1%;
+    width: 85%;
 }

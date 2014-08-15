@@ -24,7 +24,7 @@
         showSettingDialog: function(){
             var userLoggedIn = window.localStorage.getItem("userLoggedIn");
             var dialog;
-            if (userLoggedIn){
+            if (userLoggedIn === 'false'){
                 dialog = $("#settingDialog").dialog({
                    width: 230, height: 255, modal: true, resizable: false
                 });
@@ -105,6 +105,7 @@
             $("#signoutBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
                 $('#settingSignOutDialog').dialog('close');
+                window.localStorage.setItem("userLoggedIn", false);
                 app.application.navigate('#login');
             });
         }, 

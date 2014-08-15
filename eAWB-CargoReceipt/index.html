@@ -13,7 +13,9 @@
     <link href="styles/login.css" rel="stylesheet" />
     <link href="styles/forgot_password.css" rel="stylesheet" />
     <link href="styles/header.css" rel="stylesheet" />
+    <link href="styles/footer.css" rel="stylesheet" />
     <link href="styles/query.css" rel="stylesheet" />
+    <link href="styles/about_app.css" rel="stylesheet" />
     
     <!--Lib JS-->
     <script src="cordova.js"></script>
@@ -48,12 +50,12 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-               <img id="imgHome" class="footer_bg" style="cursor: pointer;"/> 
+               <img id="imgHome" class="footer_bg"/> 
             </div>
         </div>        
         
         <!--Content-->
-        <div class="view-content" style="background-color:#88B237 !important; width: 100%; height: 500px;" id="loginForm" data-title="Login Form">
+        <div class="view-content" style="background-color:#88B237 !important; width: 100%; height: 1000px;" id="loginForm" data-title="Login Form">
           
           <img src="styles/images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
           
@@ -163,19 +165,20 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-                <img id="imgQuery" class="footer_bg"  style="cursor: pointer;" />
+                <img id="imgQuery" class="footer_bg"/>
             </div>
         </div>
         
         <!--Content-->
         <div class="view-content" style="background-color:#F0F1F1 !important; width: 100%; height: 500px;"  id="queryForm" data-title="Query Form">
-        	<label class="enter_big">Enter Air Waybill number</label>  <br>            
+        	<label class="enter_big" id="enterMsg">Enter Air Waybill number</label>  
+            <label class="label_awb_error" id="errorAWBMsg">Sorry, the air waybill number is invalid</label> <br>            
             <label class="enter_small">Enter your 11-digit air waybill number then select search to continue</label> <br>
             
             <input id="firstLetter" class="bg_textbox_query" style="width: 15%; margin-left: 5%; color: #797979;" />
             <label class="label_hor">-</label>
             <input id="secondLetter" class="bg_textbox_query" style="width: 50%; color: #797979;" />
-            <img src="styles/images/query.png" class="img_query" /> <br>
+            <img src="styles/images/query.png" class="img_query" data-bind="click: onQueryAction"/> <br>
             <hr class="line_small_bg" />
             
             <label class="enter_big">View History</label>  <br>            
@@ -192,25 +195,26 @@
     <div id="query_result"
         data-role="view"
         data-init="app.queryResultService.init"
-        data-show="app.queryResultService.showAboutApp"
+        data-show="app.queryResultService.showQueryResult"
         data-model="app.queryResultService.viewModel"
-        data-title="Cargo Receipt app">
+        data-title="e-AWB">
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #F05D2F">
-                <span data-role="view-title" style="margin-left: -10%; font-family:'Segoe UI Light', 'Segoe UI'; font-size:18px;"></span>
-                
+            <div data-role="navbar" style="background-color: #88B237;">
+                <img src="styles/images/setting.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
 
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-                <img id="imgQueryResult" class="footer_bg"  style="cursor: pointer;" />
+                <img id="imgQueryResult" class="footer_bg"/>
             </div>
         </div>
-        
+                
         <!--Content-->
         <div class="view-content">
             <div id="queryResultDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>
@@ -241,7 +245,7 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-                <img id="imgHistory" class="footer_bg"  style="cursor: pointer;" />
+                <img id="imgHistory" class="footer_bg"/>
             </div>
         </div>
         
@@ -273,7 +277,7 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-                <img id="imgForgotPassword" class="footer_bg"  style="cursor: pointer;" />
+                <img id="imgForgotPassword" class="footer_bg"/>
             </div>
         </div>
         
@@ -345,7 +349,7 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-                <img id="imgHelp" class="footer_bg"  style="cursor: pointer;" />
+                <img id="imgHelp" class="footer_bg"/>
             </div>
         </div>
         
@@ -383,7 +387,7 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">
-                <img id="imgAboutApp" class="footer_bg"  style="cursor: pointer;" />
+                <img id="imgAboutApp" class="footer_bg"/>
             </div>
         </div>
         
@@ -419,7 +423,7 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">  
-                 <img id="imgAboutCCN" class="footer_bg"  style="cursor: pointer;"/>
+                 <img id="imgAboutCCN" class="footer_bg"/>
             </div>
         </div>
         
@@ -454,7 +458,7 @@
         <!--Footer-->
         <div data-role="footer">
             <div data-role="tabstrip">  
-                 <img id="imgTermCondition" class="footer_bg"  style="cursor: pointer;"/>
+                 <img id="imgTermCondition" class="footer_bg"/>
             </div>
         </div>
         

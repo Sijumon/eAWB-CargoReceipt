@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.footer_bg{
+    width: 100%; 
+    margin-bottom: -1%; 
+    background-size: cover;
+    cursor: pointer;
+}
