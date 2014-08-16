@@ -148,7 +148,7 @@
                             strAboutCCN += "<div class='content_body'>" + value.Details + " </div>";
                     });
                     //console.log("strAboutCCN=" + strAboutCCN); 
-                    strAboutCCN += "<img src='styles/images/ccn.png' style='display: inline-block; width: 35%; float: right; margin-bottom: 0%; margin-top: 3%; margin-right: 0%;' /> <br><br>";
+                    strAboutCCN += "<img src='images/ccn.png' style='display: inline-block; width: 35%; float: right; margin-bottom: 0%; margin-top: 3%; margin-right: 0%;' /> <br><br>";
                     $("#aboutCCNDiv").html(strAboutCCN);
                 }
             });

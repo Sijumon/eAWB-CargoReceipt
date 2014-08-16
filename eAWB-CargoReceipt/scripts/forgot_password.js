@@ -36,10 +36,10 @@
         */
         onLincDivAction_Forgot: function(){
             //console.log("================= onLincDivAction()");
-            $('#linc_Forgot').attr("style", 'cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_checked.png); width: 120px;');
-            $('#lincCheckbox_Forgot').attr("src", "styles/images/checked.png");
-            $('#user_Forgot').attr("style", "cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
-            $('#userCheckbox_Forgot').attr("src", "styles/images/uncheck.png");
+            $('#linc_Forgot').attr("style", 'cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(images/bg_checked.png); width: 120px;');
+            $('#lincCheckbox_Forgot').attr("src", "images/checked.png");
+            $('#user_Forgot').attr("style", "cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_uncheck.png); width: 120px;");
+            $('#userCheckbox_Forgot').attr("src", "images/uncheck.png");
             app.loginService.viewModel.set("displayUser", false);
             $('#txtCompanyId_Forgot').css('display', 'none');
             $('#txtDummy_Forgot').css("display","inline");
@@ -52,10 +52,10 @@
         */
         onUserDivAction_Forgot: function(){
             //console.log("================= onUserDivAction()");   
-            $('#linc_Forgot').attr("style", "cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(styles/images/bg_uncheck.png); width: 120px;");
-            $('#lincCheckbox_Forgot').attr("src", "styles/images/uncheck.png");
-            $('#user_Forgot').attr("style", 'cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;');
-            $('#userCheckbox_Forgot').attr("src", "styles/images/checked.png");
+            $('#linc_Forgot').attr("style", "cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(images/bg_uncheck.png); width: 120px;");
+            $('#lincCheckbox_Forgot').attr("src", "images/uncheck.png");
+            $('#user_Forgot').attr("style", 'cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_checked.png); width: 120px;');
+            $('#userCheckbox_Forgot').attr("src", "images/checked.png");
             app.loginService.viewModel.set("displayUser", true);
             $('#txtCompanyId_Forgot').attr("style", "display: inline-block; margin-top: 1.5%;");
             $('#txtDummy_Forgot').css("display","none");

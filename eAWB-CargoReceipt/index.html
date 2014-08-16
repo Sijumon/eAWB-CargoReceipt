@@ -9,15 +9,15 @@
     <link href="kendo/styles/kendo.default.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
     <link href="kendo/styles/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
-    <link href="styles/main.css" rel="stylesheet" />
-    <link href="styles/login.css" rel="stylesheet" />
-    <link href="styles/forgot_password.css" rel="stylesheet" />
-    <link href="styles/header.css" rel="stylesheet" />
-    <link href="styles/footer.css" rel="stylesheet" />
-    <link href="styles/query.css" rel="stylesheet" />
-    <link href="styles/query_result.css" rel="stylesheet" />
-    <link href="styles/about_app.css" rel="stylesheet" />
-    <link href="styles/history.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/login.css" rel="stylesheet" />
+    <link href="css/forgot_password.css" rel="stylesheet" />
+    <link href="css/header.css" rel="stylesheet" />
+    <link href="css/footer.css" rel="stylesheet" />
+    <link href="css/query.css" rel="stylesheet" />
+    <link href="css/query_result.css" rel="stylesheet" />
+    <link href="css/about_app.css" rel="stylesheet" />
+    <link href="css/history.css" rel="stylesheet" />
     
     <!--Lib JS-->
     <script src="cordova.js"></script>
@@ -59,7 +59,7 @@
         <!--Content-->
         <div class="view-content" style="background-color:#88B237 !important; width: 100%; height: 1000px;" id="loginForm" data-title="Login Form">
           
-          <img src="styles/images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
+          <img src="images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
           
           <label class="label_eAWB">e-AWB</label> <br>
             
@@ -73,21 +73,21 @@
           <label class="label_select" id="textMsg">Select the account you wish to sign in with</label> 
           
           <label class="label_error" id="errorMsg">
-              <img src="styles/images/sad_icon.png" class="img_sad_icon" />
+              <img src="images/sad_icon.png" class="img_sad_icon" />
               Sorry, your login information is not correct.              
           </label>
           
           <br>  
-          <div id="linc" data-bind="click: onLincDivAction" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;">
+          <div id="linc" data-bind="click: onLincDivAction" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(images/bg_uncheck.png); width: 120px;">
           	<label class="label_linc">CCNHub LINC</label>
-              <img src="styles/images/line.png" class="img_line" />
-              <img id="lincCheckbox" src="styles/images/uncheck.png" class="img_option" />
+              <img src="images/line.png" class="img_line" />
+              <img id="lincCheckbox" src="images/uncheck.png" class="img_option" />
           </div>
           
-          <div id="user" data-bind="click: onUserDivAction" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;">
+          <div id="user" data-bind="click: onUserDivAction" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_checked.png); width: 120px;">
           	<label class="label_user">CCNHub user</label>
-              <img src="styles/images/line.png"  class="img_line" />
-              <img id="userCheckbox" src="styles/images/checked.png" class="img_option" />
+              <img src="images/line.png"  class="img_line" />
+              <img id="userCheckbox" src="images/checked.png" class="img_option" />
           </div>
             
           <input id="txtCompanyId" placeholder="Company ID" class="textbox_bg" style="margin-top: 1.5%;" />  
@@ -162,7 +162,7 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>       
@@ -177,13 +177,16 @@
         <!--Content-->
         <div class="view-content" style="background-color:#F0F1F1 !important; width: 100%; height: 500px;"  id="queryForm" data-title="Query Form">
         	<label class="enter_big" id="enterMsg">Enter Air Waybill number</label>  
-            <label class="label_awb_error" id="errorAWBMsg">Sorry, the air waybill number is invalid</label> <br>            
+            <label class="label_awb_error" id="errorAWBMsg">
+              <img src="images/sad_icon.png" class="img_sad_icon" />
+              Sorry, the air waybill number is invalid              
+            </label> <br> 
             <label class="enter_small">Enter your 11-digit air waybill number then select search to continue</label> <br>
             
             <input id="firstLetter" class="bg_textbox_query" style="width: 15%; margin-left: 5%; color: #797979;" />
             <label class="label_hor">-</label>
             <input id="secondLetter" class="bg_textbox_query" style="width: 50%; color: #797979;" />
-            <img src="styles/images/query.png" class="img_query" data-bind="click: onQueryAction"/> <br>
+            <img src="images/query.png" class="img_query" data-bind="click: onQueryAction"/> <br>
             <hr class="line_small_bg" />
             
             <label class="enter_big">View History</label>  <br>            
@@ -191,13 +194,13 @@
             
             <!--            
             <a id="helpBtn" href="#history">
-                <img src="styles/images/bg_history.png" class="img_bg_history" />
+                <img src="images/bg_history.png" class="img_bg_history" />
                 <label class="label_history">History</label>  <br>            
                 <label class="label_select_here">Select here to view your saved queries</label>  <br>            
             </a>
             -->
             <a id="helpBtn" href="#history">
-                <img src="styles/images/bg_select_history.png" class="img_bg_history" />
+                <img src="images/bg_select_history.png" class="img_bg_history" />
             </a>
             
         </div>  
@@ -217,8 +220,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/home.png" class="img_home"  data-bind="click: goHome"/>
-                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span> <br>
                 <div id="displayDiv">
                     <label class="awb_header">AWB no.</label> <br>
@@ -227,7 +230,7 @@
                     <label class="current_status_text">Ready for carriage</label>
                 </div>
             </div>            
-            <img src="styles/images/up.png" class="img_arrow" id="imgArrow" data-bind="click: onArrowAction, visible: visibleArrow"/>
+            <img src="images/up.png" class="img_arrow" id="imgArrow" data-bind="click: onArrowAction, visible: visibleArrow"/>
         </div>
 
         <!--Footer-->
@@ -257,8 +260,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/home.png" class="img_home"  data-bind="click: goHome"/>
-                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
@@ -309,7 +312,7 @@
         
         <!--Content-->
         <div class="view-content" id="fotgotPasswordForm" data-title="Forgot Password Form">
-            <img src="styles/images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
+            <img src="images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
           
           <label class="label_eAWB">e-AWB</label> 
             
@@ -323,16 +326,16 @@
           <label class="label_change">Change your password</label>  <br>
           <label class="label_select2">Select the account you wish to request a password change</label>
           
-          <div id="linc_Forgot" data-bind="click: onLincDivAction_Forgot" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(styles/images/bg_uncheck.png); width: 120px;">
+          <div id="linc_Forgot" data-bind="click: onLincDivAction_Forgot" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(images/bg_uncheck.png); width: 120px;">
           	<label class="label_linc">CCNHub LINC</label>
-              <img src="styles/images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
-              <img id="lincCheckbox_Forgot" src="styles/images/uncheck.png"  style="margin-left: 1%; margin-bottom: -5%;" />
+              <img src="images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
+              <img id="lincCheckbox_Forgot" src="images/uncheck.png"  style="margin-left: 1%; margin-bottom: -5%;" />
           </div>
           
-          <div id="user_Forgot" data-bind="click: onUserDivAction_Forgot" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(styles/images/bg_checked.png); width: 120px;">
+          <div id="user_Forgot" data-bind="click: onUserDivAction_Forgot" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_checked.png); width: 120px;">
           	<label class="label_user">CCNHub user</label>
-              <img src="styles/images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
-              <img id="userCheckbox_Forgot" src="styles/images/checked.png"  style="margin-left: 2%; margin-bottom: -5%;" />
+              <img src="images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
+              <img id="userCheckbox_Forgot" src="images/checked.png"  style="margin-left: 2%; margin-bottom: -5%;" />
           </div>
           
           <label class="label_enter">Enter your CCNhub details below</label>  <br>
@@ -365,8 +368,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/home.png" class="img_home"  data-bind="click: goHome"/>
-                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
@@ -404,8 +407,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/home.png" class="img_home"  data-bind="click: goHome"/>
-                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
@@ -440,8 +443,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/home.png" class="img_home"  data-bind="click: goHome"/>
-                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>
@@ -475,8 +478,8 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="styles/images/home.png" class="img_home"  data-bind="click: goHome"/>
-                <img src="styles/images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
         </div>

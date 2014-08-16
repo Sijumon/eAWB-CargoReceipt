@@ -81,7 +81,8 @@ body {
     border-width: 1px; 
     margin-left: 7%;
     margin-bottom: 1%;
-    width: 85%;
+    width: 90%;
+    margin-top: 0.5%;
 }
 .label_history{
     color: #88b237;

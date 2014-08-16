@@ -34,13 +34,13 @@
         	//console.log("================= onArrowAction()");   
             var item = $(e.target);
             var src = item.attr("src");
-            if (src === 'styles/images/up.png'){
-                item.attr("src", 'styles/images/down.png');
+            if (src === 'images/up.png'){
+                item.attr("src", 'images/down.png');
                 $("#displayDiv").hide();
                 $("#imgArrow").removeClass("img_arrow");
                 $("#imgArrow").addClass("img_arrow_down");
             } else {
-                item.attr("src", 'styles/images/up.png');
+                item.attr("src", 'images/up.png');
                 $("#displayDiv").show();
                 $("#imgArrow").removeClass("img_arrow_down");
                 $("#imgArrow").addClass("img_arrow");
