@@ -3,12 +3,14 @@
 <head>
     <title>Cargo Receipt Application</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     
     <!--CSS-->
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.default.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
     <link href="kendo/styles/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+    
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/login.css" rel="stylesheet" />
     <link href="css/forgot_password.css" rel="stylesheet" />
@@ -127,7 +129,8 @@
              style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Terms & Conditions</a> <br>
           <hr class="line_bg" />
           <a id="signinBtn" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Sign in</a> <br>
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Sign in 
+          <img src="images/signin.png" class="img_signin" /> </a> <br>
           <hr class="line_bigger_bg" /> 
     </div>
     
@@ -146,7 +149,8 @@
              style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Terms & Conditions</a> <br>
           <hr class="line_bg" />
           <a id="signoutBtn" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Sign out</a> <br>
+             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Sign out 
+          <img src="images/signout.png" class="img_signout" /> </a> <br>
           <hr class="line_bigger_bg" /> 
     </div>
     
@@ -214,6 +218,7 @@
         data-role="view"
         data-init="app.queryResultService.init"
         data-show="app.queryResultService.showQueryResult"
+        data-after-show="app.queryResultService.afterShowQueryResult"
         data-model="app.queryResultService.viewModel"
         data-title="e-AWB">
         
@@ -242,8 +247,24 @@
                 
         <!--Content-->
         <div class="view-content">
-            <div id="queryResultDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>
-         </div>
+            <div id="divQueryResult">
+                
+            <!--Use google viewer-->
+            	<iframe src="http://docs.google.com/gview?url=http://www.lob.de/pdf/helloworld.pdf&embedded=true"> 
+                </iframe>
+            	<!--
+                <iframe style="float:right;" id="viewer" 
+                    src = "/ViewerJS/#http://www.lob.de/pdf/helloworld.pdf" width='400' height='300' 
+                    allowfullscreen webkitallowfullscreen> </iframe> 
+            	-->
+            </div>
+            <!--
+            <div id="pdf">It appears you don't have Adobe Reader or PDF support in this web browser. 
+                <a href="http://www.lob.de/pdf/helloworld.pdf">Click here to download the PDF</a>                
+            </div>
+            -->
+            
+        </div>
     </div>
     <!--Query result view-->
     

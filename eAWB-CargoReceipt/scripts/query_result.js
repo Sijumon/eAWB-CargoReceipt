@@ -116,9 +116,35 @@
         	showQueryResult() function: show the About App information
         */        
         showQueryResult: function () {
-            //console.log("================= showQueryResult");
-                        
+            //console.log("================= showQueryResult()");
+               
+            /*
+            	Show the pdf file
+            */
+            //http://www.lob.de/pdf/helloworld.pdf
+            
+            
 		},
+       
+        
+        afterShowQueryResult: function(e){
+            //console.log("================= afterShowQueryResult()");
+            /*
+            var myPDF = new PDFObject({ 		
+    			url: "http://www.lob.de/pdf/helloworld.pdf",
+    			pdfOpenParams: {
+    				navpanes: 1,
+    				view: "FitV",
+    				pagemode: "thumbs"
+    			}    		
+    		}).embed("pdf");
+            */
+            
+            //$("#divQueryResult").niceScroll("#pdfIframe",{autohidemode:false});
+            //$("#divQueryResult").niceScroll({cursorcolor:"#00F"});
+			
+        },
+        
         
         viewModel: new QueryResultViewModel()        
         
