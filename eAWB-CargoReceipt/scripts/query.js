@@ -22,8 +22,10 @@
         /*
         	validate the air waybill number
         */
-        validateInput: function(){            
-            if($("#firstLetter").val().length === 3 && $("#secondLetter").val().length === 8){
+        validateInput: function(){  
+            var numberRegex = /^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/;
+            if($("#firstLetter").val().length === 3 && $("#secondLetter").val().length === 8 && 
+            	numberRegex.test($('#firstLetter').val()) && numberRegex.test($('#secondLetter').val())){
                 $('#enterMsg').show();
             	$('#errorAWBMsg').hide();
                 return true;
@@ -42,8 +44,9 @@
         	//console.log("================= onQueryAction()");   
             
             var validate = app.queryService.viewModel.validateInput(); 
+            var awbNumber = $('#firstLetter').val() + "-" + $('#secondLetter').val();
             if (validate){
-            	app.application.navigate('#query_result', 'slide:right');
+            	app.application.navigate('#query_result?awbNumber=' + awbNumber, 'slide:right');
             }
         }
     });
@@ -118,6 +121,18 @@
             $("#firstLetter").keyup(function() {
                 if ($("#firstLetter").val().length === 3)
                 	$("#secondLetter").focus();
+            });            
+            
+            /*
+            	Hide the error message when the firstLetter or the secondLetter get focus
+            */
+            $("#firstLetter").focusin(function() {
+                $('#enterMsg').show();
+            	$('#errorAWBMsg').hide();
+            });
+            $("#secondLetter").focusin(function() {
+                $('#enterMsg').show();
+            	$('#errorAWBMsg').hide();
             });
         }, 
         

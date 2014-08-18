@@ -8,6 +8,7 @@
     */
     QueryResultViewModel = kendo.data.ObservableObject.extend({
         visibleArrow: true,
+        awbNumber: "",
         
         /*
         	goHome(): go to home view of the application
@@ -56,10 +57,13 @@
         /*
         	init(): set up the view at the first time loaded
         */        
-        init: function(){
+        init: function(e){
             //console.log("================= init");
             
             app.queryResultService.viewModel.set("visibleArrow", true);
+            var view = e.view;
+            var awbNumber = view.params.awbNumber;
+            app.queryResultService.viewModel.set("awbNumber", awbNumber);
             
             /*
             	Set advertisement
@@ -123,12 +127,14 @@
             */
             //http://www.lob.de/pdf/helloworld.pdf
             
-            
 		},
        
         
         afterShowQueryResult: function(e){
             //console.log("================= afterShowQueryResult()");
+            //$('#embedURL').gdocsViewer({width: 600, height: 750});
+            //$('#embedURL').gdocsViewer();
+            
             /*
             var myPDF = new PDFObject({ 		
     			url: "http://www.lob.de/pdf/helloworld.pdf",
