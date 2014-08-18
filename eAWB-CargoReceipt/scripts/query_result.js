@@ -9,6 +9,7 @@
     QueryResultViewModel = kendo.data.ObservableObject.extend({
         visibleArrow: true,
         awbNumber: "",
+        currentStatus: "",
         
         /*
         	goHome(): go to home view of the application
@@ -64,6 +65,7 @@
             var view = e.view;
             var awbNumber = view.params.awbNumber;
             app.queryResultService.viewModel.set("awbNumber", awbNumber);
+            app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
             
             /*
             	Set advertisement
