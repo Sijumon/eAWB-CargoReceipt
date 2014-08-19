@@ -12,8 +12,8 @@
         */
         showSettingDialog: function(){
             var dialog = $("#settingSignOutDialog").dialog({
-                   width: 230, height: 255, modal: true, resizable: false
-                });     
+                dialogClass: 'setting_signout_dialog'
+            });     
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
         },
@@ -24,8 +24,8 @@
         */
         validateInput: function(){  
             var numberRegex = /^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/;
-            if($("#firstLetter").val().length === 3 && $("#secondLetter").val().length === 8 && 
-            	numberRegex.test($('#firstLetter').val()) && numberRegex.test($('#secondLetter').val())){
+            if($("#awbPrefix").val().length === 3 && $("#awbSuffix").val().length === 8 && 
+            	numberRegex.test($('#awbPrefix').val()) && numberRegex.test($('#awbSuffix').val())){
                 $('#enterMsg').show();
             	$('#errorAWBMsg').hide();
                 return true;
@@ -44,7 +44,7 @@
         	//console.log("================= onQueryAction()");   
             
             var validate = app.queryService.viewModel.validateInput(); 
-            var param = "?firstLetter=" +  $('#firstLetter').val() + "&secondLetter=" + $('#secondLetter').val();
+            var param = "?awbPrefix=" +  $('#awbPrefix').val() + "&awbSuffix=" + $('#awbSuffix').val();
             if (validate){
             	app.application.navigate('#query_result' + param, 'slide:right');
             }
@@ -118,19 +118,25 @@
             /*
             	automatically switch to the 2nd textfield once user inputs 3 digits in the first textfield
             */
-            $("#firstLetter").keyup(function() {
-                if ($("#firstLetter").val().length === 3)
-                	$("#secondLetter").focus();
-            });            
+            $("#awbPrefix").keyup(function() {
+                if ($("#awbPrefix").val().length === 3)
+                	$("#awbSuffix").focus();
+            });  
             
             /*
-            	Hide the error message when the firstLetter or the secondLetter get focus
+            	Set maxlength of awbPrefix & awbSuffix
             */
-            $("#firstLetter").focusin(function() {
+            $("#awbPrefix").attr('maxlength','3');
+            $("#awbSuffix").attr('maxlength','8');
+            
+            /*
+            	Hide the error message when the awbPrefix or the awbSuffix get focus
+            */
+            $("#awbPrefix").focusin(function() {
                 $('#enterMsg').show();
             	$('#errorAWBMsg').hide();
             });
-            $("#secondLetter").focusin(function() {
+            $("#awbSuffix").focusin(function() {
                 $('#enterMsg').show();
             	$('#errorAWBMsg').hide();
             });

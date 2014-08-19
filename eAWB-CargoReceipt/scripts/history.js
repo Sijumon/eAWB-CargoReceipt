@@ -22,18 +22,10 @@
         	showSettingDialog(): show the setting dialog
         */
         showSettingDialog: function(){
-            var userLoggedIn = window.localStorage.getItem("userLoggedIn");
-            var dialog;
-            if (userLoggedIn === 'false'){
-                dialog = $("#settingDialog").dialog({
-                   width: 230, height: 255, modal: true, resizable: false
-                });
-            } else {
-                dialog = $("#settingSignOutDialog").dialog({
-                   width: 230, height: 255, modal: true, resizable: false
-                });
-            }            
-            dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
+            var dialog = $("#settingSignOutDialog").dialog({
+               dialogClass: 'setting_signout_dialog'
+            });
+        	dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
         }       
     });

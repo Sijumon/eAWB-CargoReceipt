@@ -15,7 +15,7 @@
     	showSettingDialog: function(){
         	//console.log("================= showSettingDialog()");   
             var dialog = $("#settingDialog").dialog({
-               width: 230, height: 255, modal: true, resizable: false
+               dialogClass: 'setting_dialog'
             });
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");            

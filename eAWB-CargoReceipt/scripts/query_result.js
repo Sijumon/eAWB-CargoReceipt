@@ -24,7 +24,7 @@
         */
         showSettingDialog: function(){
             var dialog = $("#settingSignOutDialog").dialog({
-               width: 230, height: 255, modal: true, resizable: false
+               dialogClass: 'setting_signout_dialog'
             });    
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
@@ -120,9 +120,10 @@
         showQueryResult: function (e) {
             //console.log("================= showQueryResult()");
             var view = e.view;
-            var firstLetter = view.params.firstLetter;
-            var secondLetter = view.params.secondLetter;
-            app.queryResultService.viewModel.set("awbNumber", firstLetter + "-" + secondLetter);
+            var awbPrefix = view.params.awbPrefix;
+            var awbSuffix = view.params.awbSuffix;
+            app.queryResultService.viewModel.set("awbNumber", awbPrefix + "-" + awbSuffix);
+            app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
             
             /*
             	Call & parse the web service
@@ -130,16 +131,16 @@
         	
             /*
             	Show the pdf file
-            */
+            
             //http://www.lob.de/pdf/helloworld.pdf
             $('#pdfFile').show();
             $('#fohDiv').hide();
             $('#noResultDiv').hide();
             $('#imgArrow').show();
-            app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
-            
+            */
             /*
             	Show the pdf use pdf.js
+            */
             var url = "http://www.lob.de/pdf/helloworld.pdf";
             PDFJS.getDocument(url).then(function(pdf) {
               // Using promise to fetch the page
@@ -165,7 +166,7 @@
                 page.render(renderContext);
               });
             });
-            */
+            
             
             /*
             	Show the foh information
@@ -187,6 +188,7 @@
             app.queryResultService.viewModel.set("currentStatus", "Unknown");
             */
             
+            //$('a.media').media();
 		},
        
         

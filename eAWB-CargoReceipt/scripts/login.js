@@ -15,7 +15,7 @@
     	showSettingDialog: function(){
         	//console.log("================= showSettingDialog()");   
             var dialog = $("#settingDialog").dialog({
-               width: 230, height: 255, modal: true, resizable: false
+               dialogClass: 'setting_dialog'
             });
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");            
@@ -126,13 +126,19 @@
             $('#errorMsg').hide();
             
             /* 
-            	Set advertisement
-            
+            	Set advertisement            
 			*/
+            var currentdate = new Date();
+            var currentmonth = currentdate.getMonth() + 1;
+            if (currentmonth < 10)
+            	currentmonth = "0" + currentmonth;
+            var datetime = currentdate.getDate().toString() + currentmonth.toString() + currentdate.getFullYear().toString();
+            //TODO: for testing
+            //datetime = "23042014";
+            var param = "?f=" + datetime + "&t=" + datetime + "&r=1024x768&o=Portrait&tokenId=";
             var appToken = window.localStorage.getItem("appToken");
-            var url = "http://ccnutilitydev.ccnhub.com/advertisement/GetImages/?f=23042014&t=20052014&r=1024x768&o=Portrait&tokenId=";
-            url += appToken; 
-            //console.log("=== home page, url=" + url);
+            var url = "http://apidev.ccnhub.com/v1/advertisement/GetImages/" + param + appToken;
+            //console.log("=== login.js, url=" + url);
         	$.ajax({
                 type: "GET",
                 url: url,
