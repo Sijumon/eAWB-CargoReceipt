@@ -8,14 +8,11 @@
     */
     HistoryViewModel = kendo.data.ObservableObject.extend({
         /*
-        	goHome(): go to home view of the application
+        	goHome(): go to query view of the application
         */
         goHome: function(){
-            var userLoggedIn = window.localStorage.getItem("userLoggedIn");
-            if (userLoggedIn === 'false')
-            	app.application.navigate('#login', 'slide:right');
-            else 
-            	app.application.navigate('#query', 'slide:right'); 
+            //app.application.navigate('#query', 'slide:right'); 
+            $("#queryURL").attr('href', '#query');
         },
         
         /*
@@ -43,7 +40,7 @@
             
             /*
             	Set advertisement
-            */            
+            */           
             var advertiseIMG = window.localStorage.getItem("advertiseIMG");
             var advertiseURL = window.localStorage.getItem("advertiseURL");
             $('#imgHistory').attr('src', advertiseIMG);
@@ -65,6 +62,7 @@
                     window.location.href = arrAdsURL[temp];
 				});
             }, 5000);
+             
             
             /*
             	Do the action of setting signout dialog
@@ -98,6 +96,32 @@
         listViewHistoryShow: function () {
             //console.log("================= listViewHistoryShow");
             
+            /*
+            	- Show the historyList
+            */
+            var url = "data/history_data.json";
+            $("#historyList").kendoMobileListView({
+                dataSource: new kendo.data.DataSource({
+                  schema: {
+                    data: function(response) {
+                    	//Parse response data
+                        var responseJSON = $.parseJSON(response);
+                        if (responseJSON == null)
+                        	return [];
+                        
+                        return responseJSON;
+                    }
+                  },
+                  transport: {
+                    read: {
+                      url: url,
+                      dataType: "text"
+                    }
+                  }
+                }),
+                template: $("#history-lw-delete-template").html(),
+                fixedHeaders: true                
+            });
 		},
         
         viewModel: new HistoryViewModel()        

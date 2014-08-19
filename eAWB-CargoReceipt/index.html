@@ -323,7 +323,9 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <a id="queryURL" type="submit">
+                    <img src="images/home.png" class="img_home" data-bind="click: goHome"/>
+                </a>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
@@ -344,6 +346,13 @@
             	<label class="label_his_history">History</label>
             </div>   
             
+            <!-- History list-->
+            <ul id="historyList" 
+                data-role="listview" 
+                data-bind="click: onHistoryListClickAction"
+                data-style="inset" >
+            </ul>
+            
             <div class="his_div_clear_history" data-bind="click: onClearHistoryAction" >
             	<label class="label_his_clear_history">Clear History</label>
             </div>
@@ -351,7 +360,8 @@
         
         <!--History template-->   
         <script id="history-lw-delete-template" type="text/x-kendo-template">
-        	    
+        	<label class="his_awb_number">#=AWBNumber#</label>
+            <label class="his_datetime">#=Datetime#</label>
         </script>
         
     </div>

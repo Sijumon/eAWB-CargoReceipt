@@ -10,18 +10,15 @@ body {
     font-weight: 300;
     float: left;
     clear: left;
-    margin-left: 5%;
 }
 .his_datetime{
     color: #515151;
     font-family: 'Segoe UI Light','Segoe UI';
     font-size: 12px;
     font-weight: 300;
-    line-height: 14px;
+    line-height: 14px !important;
     text-align: right;
-    float: right;
-    clear: right;
-    margin-right: 5%;
+    margin-left: 22%;
 }
 .label_his_history{
     color: #e4e4e4;
