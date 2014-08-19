@@ -65,7 +65,6 @@
             var view = e.view;
             var awbNumber = view.params.awbNumber;
             app.queryResultService.viewModel.set("awbNumber", awbNumber);
-            app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
             
             /*
             	Set advertisement
@@ -128,6 +127,31 @@
             	Show the pdf file
             */
             //http://www.lob.de/pdf/helloworld.pdf
+            $('#pdfFile').show();
+            $('#fohDiv').hide();
+            $('#noResultDiv').hide();
+            $('#imgArrow').show();
+            app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
+            
+            /*
+            	Show the foh information
+            */
+            $('#pdfFile').hide();
+            $('#fohDiv').show();
+            $('#noResultDiv').hide();
+            $('#imgArrow').hide();
+            app.queryResultService.viewModel.set("currentStatus", "Freight on Hand");
+            
+            
+            /*
+            	Show the noResult information
+            */
+            $('#pdfFile').hide();
+            $('#fohDiv').hide();
+            $('#noResultDiv').show();
+            $('#imgArrow').hide();
+            app.queryResultService.viewModel.set("currentStatus", "Unknown");
+            
             
 		},
        
@@ -151,6 +175,10 @@
             //$("#divQueryResult").niceScroll("#pdfIframe",{autohidemode:false});
             //$("#divQueryResult").niceScroll({cursorcolor:"#00F"});
 			
+            //$("#divQueryResult").niceScroll("#pdfFile");
+            //$("#divQueryResult").niceScroll();
+            
+            $("#divQueryResult").niceScroll({cursorcolor:"#FF0000", horizrailenabled: true});
         },
         
         

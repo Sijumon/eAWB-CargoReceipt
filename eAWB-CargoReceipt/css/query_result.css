@@ -56,4 +56,76 @@ body {
     cursor: pointer;
     z-index: 99;
     position: absolute;
-}   
+}  
+.img_warning{
+    margin-left: 48%;
+    margin-top: 1%;
+}
+.label_yourCargoReciept{
+    color: #7fa451;
+    font-family: 'Raleway Regular','Raleway';
+    font-size: 14px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 18%;
+    margin-top: 2%;
+}
+.label_thereis{
+    color: #7fa451;
+    font-family: 'Raleway Regular','Raleway';
+    font-size: 14px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+.label_whyami{
+    color: #000000;
+    font-family: 'Raleway SemiBold','Raleway';
+    font-weight: 600;
+    font-size: 13px;
+    font-style: normal;
+    text-align: left;
+    margin-left: 5%;
+    display:inline-block; 
+    line-height: 300%; 
+}
+.label_yourCarrier{
+    font-family: 'Raleway Regular','Raleway';
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 5%;
+    float: left;
+    clear: left;
+    margin-right: 2%;
+}
+.label_possibleReason{
+    font-family: 'Raleway SemiBold','Raleway';
+    font-weight: 600;
+    text-decoration: underline;
+    font-size: 12px;
+    color: #333333;
+    font-family: 'Arial Regular','Arial';
+    font-style: normal;
+    text-align: left;
+    margin-left: 5%;
+    display:inline-block; 
+    line-height: 300%; 
+}
+.label_textReason{
+    font-size: 12px;
+    color: #333333;
+    font-style: normal;
+    line-height: normal;
+    text-align: left;
+    font-family: 'Raleway Regular','Raleway';
+    font-weight: 400;
+    margin-left: 5%;
+    float: left;
+    clear: left;
+    margin-right: 2%;
+}
