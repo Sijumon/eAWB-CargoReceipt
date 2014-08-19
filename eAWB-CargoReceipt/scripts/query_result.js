@@ -135,23 +135,23 @@
             
             /*
             	Show the foh information
-            */
+            
             $('#pdfFile').hide();
             $('#fohDiv').show();
             $('#noResultDiv').hide();
             $('#imgArrow').hide();
             app.queryResultService.viewModel.set("currentStatus", "Freight on Hand");
-            
+            */
             
             /*
             	Show the noResult information
-            */
+            
             $('#pdfFile').hide();
             $('#fohDiv').hide();
             $('#noResultDiv').show();
             $('#imgArrow').hide();
             app.queryResultService.viewModel.set("currentStatus", "Unknown");
-            
+            */
             
 		},
        
