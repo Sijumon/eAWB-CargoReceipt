@@ -141,10 +141,12 @@
             /*
             	Show the pdf use pdf.js
             */
+            /*
             var url = "http://www.lob.de/pdf/helloworld.pdf";
             PDFJS.getDocument(url).then(function(pdf) {
               // Using promise to fetch the page
               pdf.getPage(1).then(function(page) {
+                alert("1");  
                 var scale = 1.5;
                 var viewport = page.getViewport(scale);
 
@@ -164,9 +166,10 @@
                   viewport: viewport
                 };
                 page.render(renderContext);
+                alert("2");    
               });
             });
-            
+            */
             
             /*
             	Show the foh information

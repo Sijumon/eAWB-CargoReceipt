@@ -252,25 +252,37 @@
         <div class="view-content">
             
             <div id="divQueryResult" style="overflow: auto;">
-                <!-- use pdf.js  
-                	<canvas id="pdfCanvas" style="border:0px solid green; background-color: #000000; width: 100%; height: 100%;"/>
-                -->
-                
-            	<!--Use google viewer--> 
-                <iframe src="http://docs.google.com/gview?url=http://www.lob.de/pdf/helloworld.pdf&embedded=true"
-                    scrolling="yes" horizontalscrolling="yes" verticalscrolling="yes"
-                    seamless="" allowfullscreen="allowfullscreen"
-                    id="pdfFile" style="width: 100%; height: 100%; cursor: pointer;" > 
-                </iframe>
-                 
-                
-                <!--jQuery Media Plugin
-                	<a class="media" href="http://www.lob.de/pdf/helloworld.pdf">PDF File</a> 
-				-->
-                
-                <!--
-                <a href="http://www.lob.de/pdf/helloworld.pdf" id="embedURL"></a>
-                -->
+                <div id="pdfDiv">
+                    <!-- use pdf.js
+                    	<canvas id="pdfCanvas" style="border:0px solid red; background-color: #CC66CC; width: 100%; height: 100%;"/>
+                    -->
+                                    
+                	<!--Use pdf.js viewer-->
+                    <iframe src="http://mozilla.github.com/pdf.js/web/viewer.html?url=http://www.lob.de/pdf/helloworld.pdf"
+                        frameborder="0" id="pdfFile" style="height: 100%; width: 100%;" > 
+                    </iframe>
+                    
+                    <!--Use google viewer
+                    <iframe src="http://docs.google.com/gview?url=http://www.lob.de/pdf/helloworld.pdf&embedded=true" 
+                         style="width:718px; height:700px;" frameborder="0">
+                        
+                    </iframe>
+                    -->
+                    
+                    <!--use verypdf.com
+                    <iframe style="border:medium double rgb(250,0,255); width: 100%; height; 100%;" 
+                        src="http://online.verypdf.com/app/reader/web/viewer.html?url=http://online.verypdf.com/examples/pdfeditor.pdf&noopen=1&noprint=1&nosidebar=1&nofullscreen=1&nodownload=1&noviewbookmark=" >
+                    </iframe>
+                    -->
+                    
+                    <!--jQuery Media Plugin
+                    	<a class="media" href="http://www.lob.de/pdf/helloworld.pdf">PDF File</a> 
+                    -->
+                    
+                    <!--
+                    <a href="http://www.lob.de/pdf/helloworld.pdf" id="embedURL"></a>
+                    -->
+                </div>
                 
                 <div id="fohDiv">
                     <img src="images/warning.png" class="img_warning" /> <br>
