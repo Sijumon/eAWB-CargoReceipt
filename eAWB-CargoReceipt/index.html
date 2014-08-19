@@ -26,7 +26,7 @@
     <script src="kendo/js/jquery.min.js"></script>   
     <script src="kendo/js/jquery-ui-1.9.2.min.js"></script>
     <script src="kendo/js/kendo.all.min.js"></script>
-    <script src="kendo/js/jquery.nicescroll.js"></script>
+    <script src="kendo/js/pdf.js"></script>
     
     <!--Defined JS-->
     <script src="scripts/ads.js"></script>
@@ -226,7 +226,9 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" style="background-color: #88B237;">
-                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <a id="homeURL" type="submit">
+                    <img src="images/home.png" class="img_home" data-bind="click: goHome"/>
+                </a>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span> <br>
                 <div id="displayDiv" class="displayDiv">
@@ -248,15 +250,19 @@
                 
         <!--Content-->
         <div class="view-content">
+            
             <div id="divQueryResult" style="overflow: auto;">
+                <!-- use pdf.js  
+                	<canvas id="pdfCanvas" style="border:0px solid green; background-color: #000000; width: 100%; height: 100%;"/>
+                -->
                 
-            	<!--Use google viewer-->                
-            	<iframe src="http://docs.google.com/gview?url=http://www.lob.de/pdf/helloworld.pdf&embedded=true"
+            	<!--Use google viewer  
+                <iframe src="http://docs.google.com/gview?url=http://www.lob.de/pdf/helloworld.pdf&embedded=true"
                     scrolling="yes" horizontalscrolling="yes" verticalscrolling="yes"
                     seamless="" allowfullscreen="allowfullscreen"
                     id="pdfFile" style="width: 100%; height: 100%; cursor: pointer;" > 
                 </iframe>
-                
+                -->
                 
                 <!--
                 <a href="http://www.lob.de/pdf/helloworld.pdf" id="embedURL"></a>

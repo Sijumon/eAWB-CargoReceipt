@@ -14,8 +14,9 @@
         /*
         	goHome(): go to home view of the application
         */
-        goHome: function(){
-            app.application.navigate('#query', 'slide:right'); 
+        goHome: function(e){
+            //app.application.navigate('#query', 'slide:right'); 
+        	$("#homeURL").attr('href', '#query');
         },
         
         /*
@@ -60,11 +61,6 @@
         */        
         init: function(e){
             //console.log("================= init");
-            
-            app.queryResultService.viewModel.set("visibleArrow", true);
-            var view = e.view;
-            var awbNumber = view.params.awbNumber;
-            app.queryResultService.viewModel.set("awbNumber", awbNumber);
             
             /*
             	Set advertisement
@@ -115,14 +111,23 @@
                 window.localStorage.setItem("userLoggedIn", false);
                 app.application.navigate('#login');
             });
+            
         }, 
         
         /*
         	showQueryResult() function: show the About App information
         */        
-        showQueryResult: function () {
+        showQueryResult: function (e) {
             //console.log("================= showQueryResult()");
-               
+            var view = e.view;
+            var firstLetter = view.params.firstLetter;
+            var secondLetter = view.params.secondLetter;
+            app.queryResultService.viewModel.set("awbNumber", firstLetter + "-" + secondLetter);
+            
+            /*
+            	Call & parse the web service
+            */
+        	
             /*
             	Show the pdf file
             */
@@ -132,6 +137,35 @@
             $('#noResultDiv').hide();
             $('#imgArrow').show();
             app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
+            
+            /*
+            	Show the pdf use pdf.js
+            var url = "http://www.lob.de/pdf/helloworld.pdf";
+            PDFJS.getDocument(url).then(function(pdf) {
+              // Using promise to fetch the page
+              pdf.getPage(1).then(function(page) {
+                var scale = 1.5;
+                var viewport = page.getViewport(scale);
+
+                //
+                // Prepare canvas using PDF page dimensions
+                //
+                var canvas = document.getElementById('pdfCanvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                //
+                // Render PDF page into canvas context
+                //
+                var renderContext = {
+                  canvasContext: context,
+                  viewport: viewport
+                };
+                page.render(renderContext);
+              });
+            });
+            */
             
             /*
             	Show the foh information
@@ -178,7 +212,7 @@
             //$("#divQueryResult").niceScroll("#pdfFile");
             //$("#divQueryResult").niceScroll();
             
-            $("#divQueryResult").niceScroll({cursorcolor:"#FF0000", horizrailenabled: true});
+            //$("#divQueryResult").niceScroll({cursorcolor:"#FF0000", horizrailenabled: true});
         },
         
         

@@ -44,9 +44,9 @@
         	//console.log("================= onQueryAction()");   
             
             var validate = app.queryService.viewModel.validateInput(); 
-            var awbNumber = $('#firstLetter').val() + "-" + $('#secondLetter').val();
+            var param = "?firstLetter=" +  $('#firstLetter').val() + "&secondLetter=" + $('#secondLetter').val();
             if (validate){
-            	app.application.navigate('#query_result?awbNumber=' + awbNumber, 'slide:right');
+            	app.application.navigate('#query_result' + param, 'slide:right');
             }
         }
     });
