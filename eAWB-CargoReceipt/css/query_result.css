@@ -56,7 +56,7 @@ body {
 }
 .img_arrow_down{
     margin-left: 88%;
-    margin-top: 1%;
+    margin-top: 15%;
     cursor: pointer;
     z-index: 99;
     position: absolute;

@@ -131,22 +131,32 @@
         	
             /*
             	Show the pdf file
-            
+            */
             //http://www.lob.de/pdf/helloworld.pdf
-            $('#pdfFile').show();
+            $('#pdfDiv').show();
             $('#fohDiv').hide();
             $('#noResultDiv').hide();
             $('#imgArrow').show();
-            */
+            
+            //TODO: for testing
+            /* */
+            var urlFile = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
+            var urlEncodedFile = encodeURIComponent(urlFile);
+            //console.log("urlEncodedFile= " + urlEncodedFile);
+            urlEncodedFile = "http%3A%2F%2Fasync5.org%2Fmoz%2Fpdfjs.pdf";
+            var iframe = "<iframe src=\"http://mozilla.github.com/pdf.js/web/viewer.html?file=" + urlEncodedFile + 
+            	"\"" + " frameborder=\"0\" style=\"height: 100%; width: 100%\"></iframe>";
+            $("#pdfDiv").html(iframe);
+            
+            
             /*
             	Show the pdf use pdf.js
-            */
+            */            
             /*
             var url = "http://www.lob.de/pdf/helloworld.pdf";
             PDFJS.getDocument(url).then(function(pdf) {
               // Using promise to fetch the page
               pdf.getPage(1).then(function(page) {
-                alert("1");  
                 var scale = 1.5;
                 var viewport = page.getViewport(scale);
 
@@ -166,15 +176,39 @@
                   viewport: viewport
                 };
                 page.render(renderContext);
-                alert("2");    
               });
+            });
+            */
+            
+            /*
+            var url = 'https://github.com/mozilla/pdf.js/blob/master/web/compressed.tracemonkey-pldi-09.pdf';
+            PDFJS.getDocument(url, function getPdfHelloWorld(data) {
+              //
+              // Instantiate PDFDoc with PDF data
+              //
+              var pdf = new PDFJS.PDFDoc(data);
+              var page = pdf.getPage(1);
+              var scale = 1.5;
+
+              //
+              // Prepare canvas using PDF page dimensions
+              //
+              var canvas = document.getElementById('pdfCanvas');
+              var context = canvas.getContext('2d');
+              canvas.height = page.height * scale;
+              canvas.width = page.width * scale;
+
+              //
+              // Render PDF page into canvas context
+              //
+              page.startRendering(context);
             });
             */
             
             /*
             	Show the foh information
             
-            $('#pdfFile').hide();
+            $('#pdfDiv').hide();
             $('#fohDiv').show();
             $('#noResultDiv').hide();
             $('#imgArrow').hide();
@@ -184,7 +218,7 @@
             /*
             	Show the noResult information
             
-            $('#pdfFile').hide();
+            $('#pdfDiv').hide();
             $('#fohDiv').hide();
             $('#noResultDiv').show();
             $('#imgArrow').hide();
@@ -192,10 +226,7 @@
             */
             
             //$('a.media').media();
-		},
-       
-        
-        afterShowQueryResult: function(e){
+            
             //console.log("================= afterShowQueryResult()");
             //$('#embedURL').gdocsViewer({width: 600, height: 750});
             //$('#embedURL').gdocsViewer();
@@ -218,7 +249,7 @@
             //$("#divQueryResult").niceScroll();
             
             //$("#divQueryResult").niceScroll({cursorcolor:"#FF0000", horizrailenabled: true});
-        },
+		},
         
         
         viewModel: new QueryResultViewModel()        

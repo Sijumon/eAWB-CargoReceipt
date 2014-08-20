@@ -148,6 +148,11 @@
                     console.log("============ onHistorySwipe");
                     
                     $(e.touch.currentTarget).hide();
+                    /*
+                    	Call the ws to delete each row of listview
+                    */
+                    
+                    
                     //$(e.touch.target).hide();
                     
                     /*
