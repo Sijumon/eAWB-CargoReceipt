@@ -97,7 +97,7 @@
             //console.log("================= listViewHistoryShow");
             
             /*
-            	- Show the historyList
+            	Show the historyList            
             */
             var url = "data/history_data.json";
             $("#historyList").kendoMobileListView({
@@ -122,6 +122,7 @@
                 template: $("#history-lw-delete-template").html(),
                 fixedHeaders: true                
             });
+            
 		},
         
         viewModel: new HistoryViewModel()        

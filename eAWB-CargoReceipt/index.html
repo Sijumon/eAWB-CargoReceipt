@@ -333,7 +333,10 @@
         
 
         <!--Footer-->
-        <div data-role="footer">
+        <div data-role="footer">            
+            <div class="his_div_clear_history" data-bind="click: onClearHistoryAction" >
+            	<label class="label_his_clear_history">Clear History</label>
+            </div>
             <div data-role="tabstrip">
                 <img id="imgHistory" class="footer_bg"/>
             </div>
@@ -349,13 +352,9 @@
             <!-- History list-->
             <ul id="historyList" 
                 data-role="listview" 
-                data-bind="click: onHistoryListClickAction"
                 data-style="inset" >
             </ul>
             
-            <div class="his_div_clear_history" data-bind="click: onClearHistoryAction" >
-            	<label class="label_his_clear_history">Clear History</label>
-            </div>
         </div>
         
         <!--History template-->   
