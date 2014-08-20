@@ -124,12 +124,6 @@
             });  
             
             /*
-            	Set maxlength of awbPrefix & awbSuffix
-            */
-            $("#awbPrefix").attr('maxlength','3');
-            $("#awbSuffix").attr('maxlength','8');
-            
-            /*
             	Hide the error message when the awbPrefix or the awbSuffix get focus
             */
             $("#awbPrefix").focusin(function() {

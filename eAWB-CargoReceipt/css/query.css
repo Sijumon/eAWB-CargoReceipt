@@ -49,7 +49,7 @@ body {
 }
 .img_query{
     float: right;
-    margin-right: 10%;
+    margin-right: 8%;
     margin-left: 5%;
 	margin-top: -12.5%;
     cursor: pointer;
@@ -57,7 +57,7 @@ body {
 .label_hor{
     color: #48601E;
     font-family: 'Segoe UI Light','Segoe UI';
-    font-size: 13px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;

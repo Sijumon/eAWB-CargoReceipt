@@ -188,9 +188,9 @@
             </label> <br> 
             <label class="enter_small">Enter your 11-digit air waybill number then select search to continue</label> <br>
             
-            <input id="awbPrefix" class="bg_textbox_query" style="width: 15%; margin-left: 5%; color: #797979;" />
+            <input id="awbPrefix" maxlength="3" class="bg_textbox_query" style="width: 15%; margin-left: 5%; color: #797979;" />
             <label class="label_hor">-</label>
-            <input id="awbSuffix" class="bg_textbox_query" style="width: 50%; color: #797979;" />
+            <input id="awbSuffix" maxlength="8" class="bg_textbox_query" style="width: 50%; color: #797979;" />
             <img src="images/query.png" class="img_query" data-bind="click: onQueryAction"/> <br>
             <hr class="line_small_bg" />
             
@@ -257,17 +257,16 @@
                     	<canvas id="pdfCanvas" style="border:0px solid red; background-color: #CC66CC; width: 100%; height: 100%;"/>
                     -->
                                     
-                	<!--Use pdf.js viewer-->
-                    <iframe src="http://mozilla.github.com/pdf.js/web/viewer.html?url=http://www.lob.de/pdf/helloworld.pdf"
+                	<!--Use pdf.js viewer
+                    <iframe src="http://mozilla.github.com/pdf.js/web/viewer.html?url=http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf"
                         frameborder="0" id="pdfFile" style="height: 100%; width: 100%;" > 
                     </iframe>
-                    
-                    <!--Use google viewer
-                    <iframe src="http://docs.google.com/gview?url=http://www.lob.de/pdf/helloworld.pdf&embedded=true" 
-                         style="width:718px; height:700px;" frameborder="0">
-                        
-                    </iframe>
                     -->
+                    
+                    <!--Use google viewer-->
+                    <iframe src="http://docs.google.com/viewer?url=http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf&embedded=true" 
+                         style="width: 100%; height: 100%;" frameborder="0">                        
+                    </iframe>                    
                     
                     <!--use verypdf.com
                     <iframe style="border:medium double rgb(250,0,255); width: 100%; height; 100%;" 
