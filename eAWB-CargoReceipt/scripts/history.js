@@ -145,15 +145,14 @@
                 filter: ">li",
                 enableSwipe: true,
                 swipe: function (e) {
-                    console.log("============ onHistorySwipe");
-                    
-                    $(e.touch.currentTarget).hide();
+                    //console.log("============ onHistorySwipe");
+                	    
                     /*
                     	Call the ws to delete each row of listview
-                    */
+                    */                    
+                    var del = e.touch.currentTarget;
+            		kendo.fx(del).slideIn("right").duration(500).reverse();
                     
-                    
-                    //$(e.touch.target).hide();
                     
                     /*
                 	if ($(e.touch.target).find("[id=delBtn]").css("visibility") == "hidden")
