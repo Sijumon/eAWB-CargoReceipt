@@ -24,7 +24,18 @@
             });
         	dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
-        }       
+        },
+        
+        /*
+        	onClearHistoryAction(): clear all history action
+        */
+        onClearHistoryAction: function(e){
+            //console.log("================= onClearHistoryAction");
+            /*
+            	call the ws to clear all history data
+            */
+            
+        }
     });
     
     /*
@@ -36,7 +47,7 @@
         	listViewHistoryInit(): set up the view at the first time loaded
         */        
         listViewHistoryInit: function(){
-            //console.log("================= listViewHistoryInit");
+            //console.log("================= listViewHistoryInit()");
             
             /*
             	Set advertisement
@@ -93,7 +104,7 @@
         /*
         	listViewHistoryShow() function: show the About App information
         */        
-        listViewHistoryShow: function () {
+        listViewHistoryShow: function (e) {
             //console.log("================= listViewHistoryShow");
             
             /*
@@ -106,10 +117,13 @@
                     data: function(response) {
                     	//Parse response data
                         var responseJSON = $.parseJSON(response);
-                        if (responseJSON == null)
+                        if (responseJSON === null)
                         	return [];
                         
-                        return responseJSON;
+                        var arrHistoryList = app.historyService.parseJSONdata();
+                        arrHistoryList = responseJSON;
+                        
+                        return arrHistoryList;
                     }
                   },
                   transport: {
@@ -123,7 +137,51 @@
                 fixedHeaders: true                
             });
             
+            
+            /*
+            	Enable wipe action for historyList
+            */
+        	$("#historyList").kendoTouch({
+                filter: ">li",
+                enableSwipe: true,
+                swipe: function (e) {
+                    console.log("============ onHistorySwipe");
+                    
+                    $(e.touch.currentTarget).hide();
+                    //$(e.touch.target).hide();
+                    
+                    /*
+                	if ($(e.touch.target).find("[id=delBtn]").css("visibility") == "hidden")
+            		{   
+                        if ($(e.touch.target).find("[id=arrowBtn]").css("display") != "none"){                        	
+                        	$(e.touch.target).find("[id=delBtn]").css("visibility", "visible");
+                    	}                      
+                        $(e.touch.target).find("[id=mapBtn]").css("visibility", "hidden");
+                        $(e.touch.target).find("[id=queryBtn]").css("visibility", "hidden");
+            		} else {
+                        $(e.touch.target).find("[id=delBtn]").css("visibility", "hidden");
+                        $(e.touch.target).find("[id=mapBtn]").css("visibility", "visible");
+                        $(e.touch.target).find("[id=queryBtn]").css("visibility", "visible");
+            		}
+                                    
+                	var button = kendo.fx($(e.touch.currentTarget).find("[data-role=button]"));
+                	button.expand().duration(200).play();
+                    */
+                    
+                }
+            });
 		},
+        
+        
+        /*
+        	parseJSONdata() function: parse string to json array string
+        */
+        parseJSONdata: function(){
+        	var arrHistoryList = "";
+            
+            return arrHistoryList;
+        },
+        
         
         viewModel: new HistoryViewModel()        
         
