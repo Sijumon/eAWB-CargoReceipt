@@ -88,7 +88,7 @@
                     }	     
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
-                   console.log("== ERROR");
+                   console.log("============ validateUserCredential(): ERROR");
                 }
             });
 		},

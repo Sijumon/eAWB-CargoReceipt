@@ -34,7 +34,22 @@
             /*
             	call the ws to clear all history data
             */
-            
+            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=" +
+            			window.localStorage.getItem("appToken");
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                data: "{}",
+                headers: {'Accept': 'application/json'},
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                         
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                   console.log("============ onClearHistoryAction(): ERROR");
+                }
+            });
         }
     });
     
@@ -110,7 +125,7 @@
             /*
             	Show the historyList            
             */
-            //var appToken = window.localStorage.getItem("appToken");
+            var appToken = window.localStorage.getItem("appToken");
             //var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=" + appToken;
             var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=aaa";
             //var url = "data/history_data.json";
@@ -171,11 +186,32 @@
                         $(curRow).addClass("collapsed");
                     }, 600);
                     
+                    /*
+                    	Get the index & value id
+                    */
+                    var id = "";
+                    
                     
                     /*
                     	Call the ws to delete each row of listview
                     */
-                    
+                    var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/"  +
+                    			appToken + "/" + id;
+                    $.ajax({
+                        type: "DELETE",
+                        url: url,
+                        data: "{}",
+                        headers: {'Accept': 'application/json'},
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function(response) {
+                                 
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                           console.log("============ deleteOneRow(): ERROR");
+                        }
+                    });
+                            
                 }
             });
             
