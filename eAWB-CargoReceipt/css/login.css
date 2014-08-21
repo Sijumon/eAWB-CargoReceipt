@@ -3,6 +3,20 @@ body {
     height: 100%;
     width: 100%;
 }
+.btn_signin{
+    margin-top: 4%;
+    border: none !important;
+    display: inline-block;
+    color: white !important;
+    background-color: #48601E !important;
+    line-height: 110%;
+    width: 56%;
+    text-align: center;
+    float: left;
+    margin-left: 22%;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 18px !important;
+}
 .label_underline{
     margin-top: 1%; 
     float: left; 

@@ -13,7 +13,6 @@
     
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/login.css" rel="stylesheet" />
-    <link href="css/forgot_password.css" rel="stylesheet" />
     <link href="css/header.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
     <link href="css/query.css" rel="stylesheet" />
@@ -33,7 +32,6 @@
     <script src="scripts/query.js"></script> 
     <script src="scripts/about_app.js"></script>
     <script src="scripts/about_ccn.js"></script>
-    <script src="scripts/forgot_password.js"></script>
     <script src="scripts/help.js"></script>
     <script src="scripts/history.js"></script>
     <script src="scripts/query_result.js"></script>
@@ -101,15 +99,11 @@
           <input id="txtDummy" class="textbox_bg" style="margin-top: 1.5%; display: none;" />   
             
           <a id="signInBtn" type="submit" data-role="button" data-bind="click: onSignIn"
-                style="margin-top: 2%; border: none; display:inline-block; color: white; background-color: #48601E; line-height:110%; width: 56%; text-align: center; float: left; margin-left: 22%; font-family: 'Segoe UI Regular','Segoe UI'; font-size: 18px;" 
-                >Sign in</a> <br>
-          <!-- 
+                class="btn_signin">Sign in</a> <br>
+          <!--  
           <a id="signInBtn" type="submit" data-role="button" href="#test.html"
-                style="margin-top: 2%; border: none; display:inline-block; color: white; background-color: #48601E; line-height:110%; width: 56%; text-align: center; float: left; margin-left: 22%; font-family: 'Segoe UI Regular','Segoe UI'; font-size: 18px;" 
-                >Test</a> <br>
+                class="btn_signin">Test</a> <br>
           -->
-            
-          <label id="fotgotPassword" class="label_underline" data-bind="click: onForgotPasswordAction">Forgot password?</label> <br>
           
           <label id="termAndCondition" class="label_underline" data-bind="click: onTermConditionAction">Terms and Conditions?</label>
              
@@ -170,7 +164,7 @@
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #88B237;">
+            <div data-role="navbar" class="header_bg">
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
             </div>
@@ -228,7 +222,7 @@
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #88B237;">
+            <div data-role="navbar" class="header_bg">
                 <a id="homeURL" type="submit">
                     <img src="images/home.png" class="img_home" data-bind="click: goHome"/>
                 </a>
@@ -256,42 +250,6 @@
             
             <div id="divQueryResult" style="overflow: auto;">
                 <div id="pdfDiv" style="width: 100%; height: 100%;">
-                    <!--Use pdf.js
-                    	<canvas id="pdfCanvas" 
-                    style="border:0px solid red; background-color: #FFFFFF; width: 100%; height: 100%;"/>
-                    -->
-                    
-                	<!--Use pdf.js viewer
-                    <iframe src="http://mozilla.github.com/pdf.js/web/viewer.html?file=http%3A%2F%2Fasync5.org%2Fmoz%2Fpdfjs.pdf"
-                        frameborder="0" id="pdfFile" style="height: 100%; width: 100%;" > 
-                    </iframe>
-                    -->
-                    
-                    <!--Use pdf.js viewer - the helloworld.pdf 
-                    <iframe src="http://mozilla.github.com/pdf.js/web/viewer.html?file=http://cdn.mozilla.net/pdfjs/helloworld.pdf"
-                        frameborder="0" id="pdfFile" style="height: 100%; width: 100%;" > 
-                    </iframe>
-                    -->
-                    
-                    <!--Use google viewer
-                    <iframe src="http://docs.google.com/viewer?url=http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf&embedded=true" 
-                         id="pdfFile" scrolling="yes" style="width: 100%; height: 100%;" frameborder="0">                        
-                    </iframe>                     
-                    -->
-                    
-                    <!--use verypdf.com
-                    <iframe style="border:medium double rgb(250,0,255); width: 100%; height; 100%;" 
-                        src="http://online.verypdf.com/app/reader/web/viewer.html?url=http://online.verypdf.com/examples/pdfeditor.pdf&noopen=1&noprint=1&nosidebar=1&nofullscreen=1&nodownload=1&noviewbookmark=" >
-                    </iframe>
-                    -->
-                    
-                    <!--jQuery Media Plugin
-                    	<a class="media" href="http://www.lob.de/pdf/helloworld.pdf">PDF File</a> 
-                    -->
-                    
-                    <!--
-                    <a href="http://www.lob.de/pdf/helloworld.pdf" id="embedURL"></a>
-                    -->
                 </div>
                 
                 <div id="fohDiv">
@@ -332,7 +290,7 @@
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #88B237;">
+            <div data-role="navbar" class="header_bg">
                 <a id="queryURL" type="submit">
                     <img src="images/home.png" class="img_home" data-bind="click: goHome"/>
                 </a>
@@ -356,7 +314,7 @@
         <!--Content-->
         <div class="view-content" id="historyForms" data-title="History Forms" >             	
             <div class="his_div_header">
-            	<label class="label_his_history">History</label>
+            	<label class="label_his_history">History - Drag & drop to delete</label>
             </div>   
             
             <!-- History list-->
@@ -368,76 +326,14 @@
         </div>
         
         <!--History template-->   
-        <script id="history-lw-delete-template" type="text/x-kendo-template">
-        	<label class="his_awb_number">#=AWBNumber#</label>
-            <label class="his_datetime">#=Datetime#</label>
-        </script>
+        <script id="history-lw-template" type="text/x-kendo-template">
+            <label class="his_awb_number">#=AWBNumber#</label>
+    		<label class="his_datetime">#=Datetime#</label>
+    	</script>
         
     </div>
     <!--History view-->
-    
-    
-    <!--Forgot password view-->
-    <div id="forgot_password"
-        data-role="view"
-        data-init="app.forgotPasswordViewModel.init"
-        data-show="app.forgotPasswordViewModel.show"
-        data-model="app.forgotPasswordViewModel.viewModel"
-        data-title="Forgot password">
         
-        <!--Footer-->
-        <div data-role="footer">
-            <div data-role="tabstrip">
-                <img id="imgForgotPassword" class="footer_bg"/>
-            </div>
-        </div>
-        
-        <!--Content-->
-        <div class="view-content" id="fotgotPasswordForm" data-title="Forgot Password Form">
-            <img src="images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
-          
-          <label class="label_eAWB">e-AWB</label> 
-            
-          <label class="label_electronic">electronic air waybill</label> <br>
-          
-          <label class="label_power">powered by </label>
-		  <label class="label_ccn">CCN</label>
-          
-          <hr class="line_bg" />
-          
-          <label class="label_change">Change your password</label>  <br>
-          <label class="label_select2">Select the account you wish to request a password change</label>
-          
-          <div id="linc_Forgot" data-bind="click: onLincDivAction_Forgot" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(images/bg_uncheck.png); width: 120px;">
-          	<label class="label_linc">CCNHub LINC</label>
-              <img src="images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
-              <img id="lincCheckbox_Forgot" src="images/uncheck.png"  style="margin-left: 1%; margin-bottom: -5%;" />
-          </div>
-          
-          <div id="user_Forgot" data-bind="click: onUserDivAction_Forgot" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_checked.png); width: 120px;">
-          	<label class="label_user">CCNHub user</label>
-              <img src="images/line.png"  style="margin-left: -1%; margin-bottom: -4%;" />
-              <img id="userCheckbox_Forgot" src="images/checked.png"  style="margin-left: 2%; margin-bottom: -5%;" />
-          </div>
-          
-          <label class="label_enter">Enter your CCNhub details below</label>  <br>
-            
-          <input id="txtCompanyId_Forgot" placeholder="Company ID" class="textbox_bg" style="margin-top: 1.5%;" />  
-          
-          <input id="txtEmail_Forgot" placeholder="Email" class="textbox_bg" style="margin-top: 1.5%;" />  
-            
-          <input id="txtDummy_Forgot" class="textbox_bg" style="margin-top: 1.5%; display: none;" />   
-            
-          <a id="continueBtn" type="submit" data-role="button" data-bind="click: onContinueAction"
-                style="margin-top: 2%; border: none; display:inline-block; color: white; background-color: #48601E; line-height:110%; width: 56%; text-align: center; float: left; margin-left: 22%; font-family: 'Segoe UI Regular','Segoe UI'; font-size: 18px;" 
-                >Continue</a> <br>
-            
-          <label class="label_underline" style="float: right; margin-right: 22%;" data-bind="click: onSignInAction">Sign in</label> <br>
-            
-         </div>
-    </div>
-    <!--Forgot password view-->
-    
     
     <!--Help view-->
     <div id="help"
@@ -449,7 +345,7 @@
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #88B237;">
+            <div data-role="navbar" class="header_bg">
                 <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
@@ -488,7 +384,7 @@
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #88B237;">
+            <div data-role="navbar" class="header_bg">
                 <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
@@ -524,7 +420,7 @@
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #88B237;">
+            <div data-role="navbar"  class="header_bg">
                 <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>
@@ -559,7 +455,7 @@
         
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar" style="background-color: #88B237;">
+            <div data-role="navbar" class="header_bg">
                 <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
                 <span data-role="view-title" class="header_text"></span>

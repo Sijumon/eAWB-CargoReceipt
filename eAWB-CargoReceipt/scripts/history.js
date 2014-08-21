@@ -133,7 +133,7 @@
                     }
                   }
                 }),
-                template: $("#history-lw-delete-template").html(),
+                template: $("#history-lw-template").html(),
                 fixedHeaders: true                
             });
             

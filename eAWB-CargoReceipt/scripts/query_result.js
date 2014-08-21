@@ -143,7 +143,7 @@
             var urlFile = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
             var urlEncodedFile = encodeURIComponent(urlFile);
             //console.log("urlEncodedFile= " + urlEncodedFile);
-            urlEncodedFile = "http%3A%2F%2Fasync5.org%2Fmoz%2Fpdfjs.pdf";
+            //urlEncodedFile = "http%3A%2F%2Fasync5.org%2Fmoz%2Fpdfjs.pdf";
             var iframe = "<iframe src=\"http://mozilla.github.com/pdf.js/web/viewer.html?file=" + urlEncodedFile + 
             	"\"" + " frameborder=\"0\" style=\"height: 100%; width: 100%\"></iframe>";
             $("#pdfDiv").html(iframe);

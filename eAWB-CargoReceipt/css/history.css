@@ -52,7 +52,6 @@ body {
 .wrapper {
   height: 30px;
 }
-
 .item {
   position: absolute;
   background-color: white;
@@ -63,7 +62,6 @@ body {
   margin: 0;
   width: 100%;
 }
-
 .action {
   position: absolute;
   left: 0;
@@ -76,15 +74,12 @@ body {
   background-color: #F1F1F1;
   text-align: center;
 }
-
 .centered {
   margin: auto;
   margin-top: 15px;
   text-align: center;
   color: gray;
 }
-
-
 .km-ios7 .km-list>li.collapsed {
   border: none;
   height: 0;
@@ -92,12 +87,20 @@ body {
   -webkit-transition: all .3s;
   transition: all .3s;
 }
-
 .km-button.btn-archive {
   border: none;
   color: gray;
   background: #F1F1F1;
   margin-top: 5px;
+  float: left;
+  margin-left: 7%;  
 }
-
+.km-button.btn-undo {
+  border: none;
+  color: gray;
+  background: #F1F1F1;
+  margin-top: 5px;
+  float: right;
+  margin-right: 7%;  
+}
 

@@ -26,6 +26,7 @@
     <div class="item" data-role="touch" data-drag="app.events.dragging" data-dragend="app.events.dragend">
       <p>#=ProductName#</p>
     </div>
+    </div>  
   </script>
   
   <script>
@@ -75,7 +76,9 @@
         tap: function(e) {
           // make sure the initial touch wasn't on the archive button
           var initial = e.touch.initialTouch;
+          alert(initial);  
           var target = e.touch.currentTarget;
+           alert(target);
           console.log([{ initial: initial, target: target }]);
           // if we are tapping outside the archive area, cancel the action
           if (initial === target) 
