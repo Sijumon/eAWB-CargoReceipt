@@ -57,17 +57,17 @@
         </div>        
         
         <!--Content-->
-        <div class="view-content" style="background-color:#88B237 !important; width: 100%; height: 1000px;" id="loginForm" data-title="Login Form">
+        <div id="loginForm" data-title="Login Form" class="div_content">
           
           <img src="images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
           
           <label class="label_eAWB">e-AWB</label> <br>
             
           <label class="label_electronic">electronic air waybill</label> <br>
-          
-          <label class="label_power">powered by </label>
-		  <label class="label_ccn">CCN</label>
-          
+          <div class="div_power_ccn">
+              <label class="label_power">powered by </label>
+    		  <label class="label_ccn">CCN</label>
+          </div>
           <hr class="line_small_bg" />
           
           <label class="label_select" id="textMsg">Select the account you wish to sign in with</label> 
@@ -78,13 +78,13 @@
           </label>
           
           <br>  
-          <div id="linc" data-bind="click: onLincDivAction" style="cursor: pointer; float: left; margin-left: 10%; line-height:200%; background-image: url(images/bg_uncheck.png); width: 120px;">
+          <div id="linc" data-bind="click: onLincDivAction" class="div_linc">
           	<label class="label_linc">CCNHub LINC</label>
               <img src="images/line.png" class="img_line" />
               <img id="lincCheckbox" src="images/uncheck.png" class="img_option" />
           </div>
           
-          <div id="user" data-bind="click: onUserDivAction" style="cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_checked.png); width: 120px;">
+          <div id="user" data-bind="click: onUserDivAction" class="div_user">
           	<label class="label_user">CCNHub user</label>
               <img src="images/line.png"  class="img_line" />
               <img id="userCheckbox" src="images/checked.png" class="img_option" />

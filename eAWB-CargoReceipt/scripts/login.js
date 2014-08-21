@@ -82,7 +82,7 @@
         */
         onLincDivAction: function(){
             //console.log("================= onLincDivAction()");
-            $('#linc').attr("style", 'cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(images/bg_checked.png); width: 120px;');
+            $('#linc').attr("style", 'clear: left; cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(images/bg_checked.png); width: 120px;');
             $('#lincCheckbox').attr("src", "images/checked.png");
             $('#user').attr("style", "cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_uncheck.png); width: 120px;");
             $('#userCheckbox').attr("src", "images/uncheck.png");
@@ -98,7 +98,7 @@
         */
         onUserDivAction: function(){
             //console.log("================= onUserDivAction()");   
-            $('#linc').attr("style", "cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(images/bg_uncheck.png); width: 120px;");
+            $('#linc').attr("style", "clear: left; cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(images/bg_uncheck.png); width: 120px;");
             $('#lincCheckbox').attr("src", "images/uncheck.png");
             $('#user').attr("style", 'cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_checked.png); width: 120px;');
             $('#userCheckbox').attr("src", "images/checked.png");
