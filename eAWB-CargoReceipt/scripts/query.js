@@ -12,7 +12,7 @@
         */
         showSettingDialog: function(){
             var dialog = $("#settingSignOutDialog").dialog({
-                dialogClass: 'setting_signout_dialog'
+                dialogClass: 'setting_signout_dialog', modal: true, resizable: false
             });     
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");

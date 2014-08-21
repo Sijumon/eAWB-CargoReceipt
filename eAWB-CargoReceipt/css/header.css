@@ -46,8 +46,8 @@ body {
     height: 30px;
 }
 .setting_dialog{
-    width: 230px, height: 240px, modal: true, resizable: false;
+    
 }
 .setting_signout_dialog{
-    width: 230px, height: 240px, modal: true, resizable: false;
+    
 }

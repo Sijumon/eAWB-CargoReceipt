@@ -26,11 +26,11 @@
             var dialog;
             if (userLoggedIn === 'false'){
                 dialog = $("#settingDialog").dialog({
-                   dialogClass: 'setting_dialog'
+                   dialogClass: 'setting_dialog', modal: true, resizable: false
                 });
             } else {
                 dialog = $("#settingSignOutDialog").dialog({
-                   dialogClass: 'setting_signout_dialog'
+                   dialogClass: 'setting_signout_dialog', modal: true, resizable: false
                 });
             }            
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
