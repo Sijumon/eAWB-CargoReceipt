@@ -214,7 +214,13 @@
                 app.application.navigate('#login');
             });
             
-            
+            /*
+            	Set height of the loginForm div
+            */
+            var deviceHeight = window.localStorage.getItem("deviceHeight");
+            deviceHeight = deviceHeight + "px";
+            //console.log("deviceHeight=" + deviceHeight);
+            $("#loginForm").css("height", deviceHeight);
         }, 
         
         /*

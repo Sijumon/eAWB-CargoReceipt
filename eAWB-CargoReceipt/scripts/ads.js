@@ -8,7 +8,7 @@
         navigator.splashscreen.hide();
         
         /*
-        	//Get device info
+        	Get device info
         */
         //var deviceName = device.name;
         var deviceId = device.uuid;
@@ -16,10 +16,10 @@
         //var deviceOsVersion = device.version;
         window.localStorage.setItem("deviceId", deviceId);
         window.localStorage.setItem("deviceOs", deviceOs);
-        
+        window.localStorage.setItem("deviceHeight", $(window).height());
         
         /*
-        	//Get token of device
+        	Get token of device
         */                    
         //console.log("deviceId=" + deviceId + ", deviceOs=" + deviceOs);
         var appToken;
