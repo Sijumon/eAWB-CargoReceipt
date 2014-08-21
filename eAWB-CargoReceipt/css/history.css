@@ -103,4 +103,6 @@ body {
   float: right;
   margin-right: 7%;  
 }
-
+.swipe_selected_row{
+  background-color: #D6D9D9 !important;	    
+}

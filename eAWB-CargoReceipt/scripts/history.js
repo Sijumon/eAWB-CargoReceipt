@@ -20,7 +20,7 @@
         */
         showSettingDialog: function(){
             var dialog = $("#settingSignOutDialog").dialog({
-               dialogClass: 'setting_signout_dialog'
+               dialogClass: 'setting_signout_dialog', modal: true, resizable: false
             });
         	dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
@@ -146,30 +146,23 @@
                 enableSwipe: true,
                 swipe: function (e) {
                     //console.log("============ onHistorySwipe");
-                	    
+                	
+                    /*
+                    	the UI action: swipe & delete the current row
+                    */                    
+                    var curRow = e.touch.currentTarget;
+                    $(curRow).addClass("swipe_selected_row");
+                    if (e.direction === "left") 
+                        kendo.fx(curRow).slideIn("right").duration(500).reverse();
+                    else
+                        kendo.fx(curRow).slideIn("left").duration(500).reverse();
+                    setInterval(function(){ 
+                        $(curRow).addClass("collapsed");
+                    }, 600);
+                    
+                    
                     /*
                     	Call the ws to delete each row of listview
-                    */                    
-                    var del = e.touch.currentTarget;
-            		kendo.fx(del).slideIn("right").duration(500).reverse();
-                    
-                    
-                    /*
-                	if ($(e.touch.target).find("[id=delBtn]").css("visibility") == "hidden")
-            		{   
-                        if ($(e.touch.target).find("[id=arrowBtn]").css("display") != "none"){                        	
-                        	$(e.touch.target).find("[id=delBtn]").css("visibility", "visible");
-                    	}                      
-                        $(e.touch.target).find("[id=mapBtn]").css("visibility", "hidden");
-                        $(e.touch.target).find("[id=queryBtn]").css("visibility", "hidden");
-            		} else {
-                        $(e.touch.target).find("[id=delBtn]").css("visibility", "hidden");
-                        $(e.touch.target).find("[id=mapBtn]").css("visibility", "visible");
-                        $(e.touch.target).find("[id=queryBtn]").css("visibility", "visible");
-            		}
-                                    
-                	var button = kendo.fx($(e.touch.currentTarget).find("[data-role=button]"));
-                	button.expand().duration(200).play();
                     */
                     
                 }
