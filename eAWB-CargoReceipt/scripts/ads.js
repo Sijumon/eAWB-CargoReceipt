@@ -25,7 +25,7 @@
         var appToken;
         appToken = window.localStorage.getItem("appToken");
         //console.log("appToken=" + appToken);
-        var url = "http://apidev.ccnhub.com/api/activation/v1/productCode=flightschedule/operatingsys=" + deviceOs + "/deviceid=" + deviceId;
+        var url = "http://apidev.ccnhub.com/api/activation/v1/productCode=cargoreceipt/operatingsys=" + deviceOs + "/deviceid=" + deviceId;
         //console.log("url=" + url);
         if (appToken == null || appToken.toString() == "null") { 
             //console.log("Call ws to get the token");

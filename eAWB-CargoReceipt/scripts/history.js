@@ -110,18 +110,29 @@
             /*
             	Show the historyList            
             */
-            var url = "data/history_data.json";
+            //var appToken = window.localStorage.getItem("appToken");
+            //var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=" + appToken;
+            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=aaa";
+            //var url = "data/history_data.json";
+            //console.log("url=" + url);
+            
             $("#historyList").kendoMobileListView({
                 dataSource: new kendo.data.DataSource({
                   schema: {
                     data: function(response) {
+                        //console.log("response=" + response);
+                        
+                        responseJSON = $.parseJSON(response);
                     	//Parse response data
-                        var responseJSON = $.parseJSON(response);
                         if (responseJSON === null)
                         	return [];
+                        var cargoReceiptReportRequests = responseJSON.CargoReceiptReportRequests;
+                        if (cargoReceiptReportRequests === null|| cargoReceiptReportRequests.length === 0)
+                            return [];
                         
-                        var arrHistoryList = app.historyService.parseJSONdata();
-                        arrHistoryList = responseJSON;
+                        var arrHistoryList = app.historyService.parseJSONdata(cargoReceiptReportRequests);
+                        //console.log("arrHistoryList=" + arrHistoryList);
+                        arrHistoryList = $.parseJSON(arrHistoryList);
                         
                         return arrHistoryList;
                     }
@@ -167,18 +178,31 @@
                     
                 }
             });
+            
 		},
         
         
         /*
         	parseJSONdata() function: parse string to json array string
         */
-        parseJSONdata: function(){
-        	var arrHistoryList = "";
-            
+        parseJSONdata: function(cargoReceiptReportRequests){
+            $.each(cargoReceiptReportRequests, function(index,value) {
+            	value.RequestedDate = app.historyService.showDateTime(value.RequestedDate);                
+            });            
+        	var arrHistoryList = JSON.stringify(cargoReceiptReportRequests);
             return arrHistoryList;
         },
         
+        
+        /*
+        	convert UnixTimeStamp to dd MMM yyyy hh:mm
+        */
+        showDateTime: function(timestamp){
+            var dt = new Date(timestamp * 1000);
+            var mmToMonth = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");	
+        	var mm = mmToMonth[dt.getMonth()];
+            return (dt.getDate() + " " + mm + " " + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes());
+        },
         
         viewModel: new HistoryViewModel()        
         

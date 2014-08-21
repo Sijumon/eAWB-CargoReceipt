@@ -222,6 +222,7 @@
         */        
         show: function () {
             //console.log("================= query.js,show()"); 
+            
 		},
         
         viewModel: new LoginViewModel()        
