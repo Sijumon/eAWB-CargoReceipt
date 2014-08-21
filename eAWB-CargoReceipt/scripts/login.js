@@ -20,14 +20,6 @@
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");            
         },
-          
-        
-        /*
-        	move to the forgot_password page
-        */
-        onForgotPasswordAction: function(e){
-            app.application.navigate('#forgot_password', 'slide:right');
-        },
         
         
         /*
@@ -36,6 +28,7 @@
         onTermConditionAction: function(e){
             app.application.navigate('#term_condition', 'slide:right');
         },
+        
         
         /*
         	validate the input form
@@ -59,6 +52,48 @@
             return true;
         },
         
+        
+        /*
+        	validate the user login
+        */
+        validateUserCredential: function(userType){
+            var appToken = window.localStorage.getItem("appToken");
+            var url = "http://apidev.ccnhub.com/api/session/v1/login/token=" + appToken;
+            if (userType){
+            	url += "/companyID=" + $("#txtCompanyId").val().trim() + "/email=" + $("#txtEmail").val().trim() + "/password=" + $("#txtPassword").val().trim();
+            } else {
+                url += "/email=" + $("#txtEmail").val().trim() + "/password=" + $("#txtPassword").val().trim();
+            }
+            //console.log("url=" + url);
+            /*
+            	call the ws to validate user
+            */
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: "{}",
+                headers: {'Accept': 'application/json'},
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    if (response.AuthenticationCode !== null && response.AuthenticationCode !== '' && 
+                    		response.AuthenticationCode.length > 0){
+                        $('#errorMsg').hide();
+                        $('#textMsg').show();
+                        window.localStorage.setItem("userLoggedIn", true);
+                		app.application.navigate('#query', 'slide:right');   
+                    } else {
+                        $('#errorMsg').show();
+                		$('#textMsg').hide();
+                    }	     
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                   console.log("== ERROR");
+                }
+            });
+		},
+        
+        
         /*
         	do the signin action
         */
@@ -67,12 +102,9 @@
             
             //Do validation
             var userType = app.loginService.viewModel.get("displayUser");
-            var validate = app.loginService.viewModel.validateInput(userType);                        
+            var validate = app.loginService.viewModel.validateInput(userType);    
             if (validate){
-            	//Call the web service
-                
-                window.localStorage.setItem("userLoggedIn", true);
-            	app.application.navigate('#query', 'slide:right');
+                app.loginService.viewModel.validateUserCredential(userType);                    
             }
         },
         
