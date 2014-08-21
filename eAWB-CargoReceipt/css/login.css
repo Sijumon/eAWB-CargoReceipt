@@ -231,7 +231,15 @@ body {
     clear: left; cursor: pointer; float: left; margin-left: 10%; line-height:200%; 
     background-image: url(../images/bg_uncheck.png); width: 120px;
 }
+.div_linc_active{
+    clear: left; cursor: pointer; float: left; line-height:200%; margin-left: 10%; 
+    background-image: url(../images/bg_checked.png); width: 120px;
+}
 .div_user{
+    cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
+    background-image: url(../images/bg_uncheck.png); width: 120px;
+}
+.div_user_active{
     cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
     background-image: url(../images/bg_checked.png); width: 120px;
 }

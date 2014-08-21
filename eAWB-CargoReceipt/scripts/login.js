@@ -82,9 +82,9 @@
         */
         onLincDivAction: function(){
             //console.log("================= onLincDivAction()");
-            $('#linc').attr("style", 'clear: left; cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(images/bg_checked.png); width: 120px;');
+            $('#linc').attr('class', 'div_linc_active');
             $('#lincCheckbox').attr("src", "images/checked.png");
-            $('#user').attr("style", "cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_uncheck.png); width: 120px;");
+            $('#user').attr('class', 'div_user');
             $('#userCheckbox').attr("src", "images/uncheck.png");
             app.loginService.viewModel.set("displayUser", false);
             $('#txtCompanyId').css('display', 'none');
@@ -98,9 +98,9 @@
         */
         onUserDivAction: function(){
             //console.log("================= onUserDivAction()");   
-            $('#linc').attr("style", "clear: left; cursor: pointer; float: left; line-height:200%; margin-left: 10%; background-image: url(images/bg_uncheck.png); width: 120px;");
+            $('#linc').attr('class', 'div_linc');
             $('#lincCheckbox').attr("src", "images/uncheck.png");
-            $('#user').attr("style", 'cursor: pointer; float: right; margin-right: 10%; line-height:200%; background-image: url(images/bg_checked.png); width: 120px;');
+            $('#user').attr('class', 'div_user_active');
             $('#userCheckbox').attr("src", "images/checked.png");
             app.loginService.viewModel.set("displayUser", true);
             $('#txtCompanyId').attr("style", "display: inline-block; margin-top: 1.5%;");

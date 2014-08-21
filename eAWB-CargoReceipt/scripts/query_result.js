@@ -124,13 +124,9 @@
             var awbSuffix = view.params.awbSuffix;
             app.queryResultService.viewModel.set("awbNumber", awbPrefix + "-" + awbSuffix);
             app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
-            
+                        
             /*
-            	Call & parse the web service
-            */
-        	
-            /*
-            	Show the pdf file
+            	Show the pdf div
             */
             //http://www.lob.de/pdf/helloworld.pdf
             $('#pdfDiv').show();
@@ -138,119 +134,32 @@
             $('#noResultDiv').hide();
             $('#imgArrow').show();
             
+            /*
+            	Call & parse the web service
+            */
+        	//TODO: get the pdf url 
+            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
+            
+            /*
+            	Show the pdf file
+            */
+            var iframe = app.queryResultService.makeIframeDiv(url);
+            $("#pdfDiv").html(iframe);
+            
+		},
+        
+        
+        /*
+        	makeIframeDiv() function: make the iframe div with url input 
+        */
+        makeIframeDiv: function(url){
+        	var urlEncodedFile = encodeURIComponent(url);
             //TODO: for testing
-            /* */
-            var urlFile = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
-            var urlEncodedFile = encodeURIComponent(urlFile);
-            //console.log("urlEncodedFile= " + urlEncodedFile);
             //urlEncodedFile = "http%3A%2F%2Fasync5.org%2Fmoz%2Fpdfjs.pdf";
             var iframe = "<iframe src=\"http://mozilla.github.com/pdf.js/web/viewer.html?file=" + urlEncodedFile + 
             	"\"" + " frameborder=\"0\" style=\"height: 100%; width: 100%\"></iframe>";
-            $("#pdfDiv").html(iframe);
-            
-            
-            /*
-            	Show the pdf use pdf.js
-            */            
-            /*
-            var url = "http://www.lob.de/pdf/helloworld.pdf";
-            PDFJS.getDocument(url).then(function(pdf) {
-              // Using promise to fetch the page
-              pdf.getPage(1).then(function(page) {
-                var scale = 1.5;
-                var viewport = page.getViewport(scale);
-
-                //
-                // Prepare canvas using PDF page dimensions
-                //
-                var canvas = document.getElementById('pdfCanvas');
-                var context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                //
-                // Render PDF page into canvas context
-                //
-                var renderContext = {
-                  canvasContext: context,
-                  viewport: viewport
-                };
-                page.render(renderContext);
-              });
-            });
-            */
-            
-            /*
-            var url = 'https://github.com/mozilla/pdf.js/blob/master/web/compressed.tracemonkey-pldi-09.pdf';
-            PDFJS.getDocument(url, function getPdfHelloWorld(data) {
-              //
-              // Instantiate PDFDoc with PDF data
-              //
-              var pdf = new PDFJS.PDFDoc(data);
-              var page = pdf.getPage(1);
-              var scale = 1.5;
-
-              //
-              // Prepare canvas using PDF page dimensions
-              //
-              var canvas = document.getElementById('pdfCanvas');
-              var context = canvas.getContext('2d');
-              canvas.height = page.height * scale;
-              canvas.width = page.width * scale;
-
-              //
-              // Render PDF page into canvas context
-              //
-              page.startRendering(context);
-            });
-            */
-            
-            /*
-            	Show the foh information
-            
-            $('#pdfDiv').hide();
-            $('#fohDiv').show();
-            $('#noResultDiv').hide();
-            $('#imgArrow').hide();
-            app.queryResultService.viewModel.set("currentStatus", "Freight on Hand");
-            */
-            
-            /*
-            	Show the noResult information
-            
-            $('#pdfDiv').hide();
-            $('#fohDiv').hide();
-            $('#noResultDiv').show();
-            $('#imgArrow').hide();
-            app.queryResultService.viewModel.set("currentStatus", "Unknown");
-            */
-            
-            //$('a.media').media();
-            
-            //console.log("================= afterShowQueryResult()");
-            //$('#embedURL').gdocsViewer({width: 600, height: 750});
-            //$('#embedURL').gdocsViewer();
-            
-            /*
-            var myPDF = new PDFObject({ 		
-    			url: "http://www.lob.de/pdf/helloworld.pdf",
-    			pdfOpenParams: {
-    				navpanes: 1,
-    				view: "FitV",
-    				pagemode: "thumbs"
-    			}    		
-    		}).embed("pdf");
-            */
-            
-            //$("#divQueryResult").niceScroll("#pdfIframe",{autohidemode:false});
-            //$("#divQueryResult").niceScroll({cursorcolor:"#00F"});
-			
-            //$("#divQueryResult").niceScroll("#pdfFile");
-            //$("#divQueryResult").niceScroll();
-            
-            //$("#divQueryResult").niceScroll({cursorcolor:"#FF0000", horizrailenabled: true});
-		},
-        
+            return iframe;
+        },
         
         viewModel: new QueryResultViewModel()        
         
