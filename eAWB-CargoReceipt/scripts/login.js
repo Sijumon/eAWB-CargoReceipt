@@ -260,8 +260,8 @@
         	show() function
         */        
         show: function () {
-            //console.log("================= query.js,show()"); 
-            
+            //console.log("================= login.js,show()"); 
+            //console.log("===login.js, appToken=" + window.localStorage.getItem("appToken"));            
 		},
         
         viewModel: new LoginViewModel()        
