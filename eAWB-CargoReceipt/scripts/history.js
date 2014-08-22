@@ -30,12 +30,15 @@
         	onClearHistoryAction(): clear all history action
         */
         onClearHistoryAction: function(e){
-            //console.log("================= onClearHistoryAction");
+            //console.log("================= onClearHistoryAction");            
             /*
             	call the ws to clear all history data
             */
-            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=" +
-            			window.localStorage.getItem("appToken");
+            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/" +
+            			window.localStorage.getItem("appToken") + "/";
+            //TODO:
+            url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/aaa/";
+            console.log("===== onClearHistoryAction(), url=" + url);
             $.ajax({
                 type: "DELETE",
                 url: url,
@@ -44,12 +47,20 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                         
+                    console.log("DELETE success");
+                    app.historyService.refreshHistoryList(); 
+                    var delAllDialog = $("#delAllDialog").dialog({
+                       width: 250, height: 60, modal: true, resizable: false
+                    });
+                    delAllDialog.prev(".ui-dialog")('class', 'ui-dialog-history');
+                    delAllDialog.prev(".ui-dialog-content")('class', 'ui-dialog-content-history');
+                    setInterval(function(){ $("#delAllDialog").dialog("close"); },2000);         
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
-                   console.log("============ onClearHistoryAction(): ERROR");
+                   console.log("============ onClearHistoryAction(): ERROR=" + errorThrown);
                 }
             });
+            
         }
     });
     
@@ -57,7 +68,17 @@
     	Declare historyService
     */
     app.historyService = {
-     	
+        /*
+        	Refresh the historyList
+        */        
+        refreshHistoryList: function(){
+            //console.log("================= refreshHistoryList()");
+            var list = $('#historyList').data('kendoMobileListView');
+            list.dataSource.read();   
+            list.refresh();
+        },
+        
+        
         /*
         	listViewHistoryInit(): set up the view at the first time loaded
         */        

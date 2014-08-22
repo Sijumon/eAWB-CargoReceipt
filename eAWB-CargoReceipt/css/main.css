@@ -383,3 +383,6 @@ body, html {
         background-size: 100%;
     }
 }
+.ui-dialog-titlebar {
+    display: none; 
+}

@@ -106,3 +106,21 @@ body {
 .swipe_selected_row{
   background-color: #D6D9D9 !important;	    
 }
+.ui-dialog-history, .ui-dialog-content-history {
+    background-color: #515151 !important;
+    color: #FFFFFF;
+    height: 40px !important;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 0.9em;
+    width: 282px !important;
+    margin-top: -8px;
+    margin-left: 9px;
+    margin-right: 18px;
+}
+.dialogStyle .ui-dialog { 
+    font-size: 62.5%; 
+    background-color: #878787;
+    color: #FFFFFF;
+}
+
+    

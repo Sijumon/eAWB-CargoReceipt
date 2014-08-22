@@ -250,6 +250,7 @@
             	Set height of the loginForm div
             */
             var deviceHeight = window.localStorage.getItem("deviceHeight");
+            deviceHeight = (deviceHeight) * 0.895;
             deviceHeight = deviceHeight + "px";
             //console.log("deviceHeight=" + deviceHeight);
             $("#loginForm").css("height", deviceHeight);
