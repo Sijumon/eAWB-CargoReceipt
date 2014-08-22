@@ -38,7 +38,7 @@
             			window.localStorage.getItem("appToken") + "/";
             //TODO:
             url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/aaa/";
-            console.log("===== onClearHistoryAction(), url=" + url);
+            //console.log("===== onClearHistoryAction(), url=" + url);
             $.ajax({
                 type: "DELETE",
                 url: url,
@@ -226,7 +226,7 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(response) {
-                                 
+                           console.log("============ deleteOneRow(): SUCCESS");      
                         },
                         error: function(XMLHttpRequest, textStatus, errorThrown) {
                            console.log("============ deleteOneRow(): ERROR");

@@ -115,9 +115,33 @@
                 app.application.navigate('#login');
             });
             $("#signoutBtn").on("click", function(){ 
-                $('#settingSignOutDialog').dialog('close');
-                window.localStorage.setItem("userLoggedIn", false);
-                app.application.navigate('#login');
+                var authenticationCode = window.localStorage.getItem("authenticationCode");
+                var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=c2a4ed4e-a9eb-43f2-8eb0-eaa5310a6928/authenticationCode="
+                			+ authenticationCode;
+                alert("signoutBtn, url=" + url);
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    data: "{}",
+                    headers: {'Accept': 'application/json'},
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: function(response) {
+                        alert(response);
+                        console.log(response);
+                        
+                        //if (response.AuthenticationCode !== null && response.AuthenticationCode !== '' && 
+                        //		response.AuthenticationCode.length > 0){
+                        //	$('#settingSignOutDialog').dialog('close');
+                        //    window.localStorage.setItem("userLoggedIn", false);
+                        //    app.application.navigate('#login');       
+                        //}      
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                       console.log("============ validateUserCredential(): ERROR");
+                    }
+                });
+                
             });
         }, 
         

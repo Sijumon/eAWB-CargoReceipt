@@ -1,42 +1,52 @@
 [
     {
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
     {
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
 	{
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
 	{
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
 	{
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
 	{
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
 	{
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
 	{
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
 	{
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     },
 	{
-        "AWBNumber": "123-12345678",
-        "Datetime": "25 May 2014 16:45"
+        "AWBPrefix": "123",
+		"AWBSuffix": "12345678",
+        "RequestedDate": "12345678"
     }
 ]

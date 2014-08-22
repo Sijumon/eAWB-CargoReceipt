@@ -137,6 +137,26 @@
             /*
             	Call & parse the web service
             */
+            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreport/token=" +
+            			window.localStorage.getItem("appToken") + 
+            			"&awbPrefix=" + awbPrefix + "&awbSuffix=" + awbSuffix;
+            console.log("============ showQueryResult(), url=" + url);
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function(response) {
+                    console.log("============ showQueryResult(): SUCCESS");
+                    alert(response);     
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                   console.log("============ showQueryResult(): ERROR");
+                }
+            });
+            
+            
         	//TODO: get the pdf url 
             var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
             

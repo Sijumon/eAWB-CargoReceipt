@@ -59,11 +59,12 @@
         validateUserCredential: function(userType){
             var appToken = window.localStorage.getItem("appToken");
             var url = "http://apidev.ccnhub.com/api/session/v1/login/token=" + appToken;
-            if (userType){
-            	url += "/companyID=" + $("#txtCompanyId").val().trim() + "/email=" + $("#txtEmail").val().trim() + "/password=" + $("#txtPassword").val().trim();
-            } else {
+            //TODO: use the same method to login
+            //if (userType){
+            //	url += "/companyID=" + $("#txtCompanyId").val().trim() + "/email=" + $("#txtEmail").val().trim() + "/password=" + $("#txtPassword").val().trim();
+            //} else {
                 url += "/email=" + $("#txtEmail").val().trim() + "/password=" + $("#txtPassword").val().trim();
-            }
+            //}
             //console.log("url=" + url);
             /*
             	call the ws to validate user
@@ -76,11 +77,13 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    if (response.AuthenticationCode !== null && response.AuthenticationCode !== '' && 
-                    		response.AuthenticationCode.length > 0){
+                    var authenticationCode = response.AuthenticationCode;
+                    if (authenticationCode !== null && authenticationCode !== '' && 
+                    		authenticationCode.length > 0){
                         $('#errorMsg').hide();
                         $('#textMsg').show();
                         window.localStorage.setItem("userLoggedIn", true);
+                        window.localStorage.setItem("authenticationCode", authenticationCode);        
                 		app.application.navigate('#query', 'slide:right');   
                     } else {
                         $('#errorMsg').show();
