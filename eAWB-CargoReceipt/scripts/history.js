@@ -37,7 +37,7 @@
             var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/" +
             			window.localStorage.getItem("appToken") + "/";
             //TODO:
-            url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/aaa/";
+            //url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/aaa/";
             //console.log("===== onClearHistoryAction(), url=" + url);
             $.ajax({
                 type: "DELETE",
@@ -147,8 +147,8 @@
             	Show the historyList            
             */
             var appToken = window.localStorage.getItem("appToken");
-            //var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=" + appToken;
-            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=aaa";
+            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=" + appToken;
+            //var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=aaa";
             //var url = "data/history_data.json";
             //console.log("url=" + url);
             
@@ -193,8 +193,7 @@
                 enableSwipe: true,
                 swipe: function (e) {
                     //console.log("============ onHistorySwipe");
-                	
-                    /*
+                	/*
                     	the UI action: swipe & delete the current row
                     */                    
                     var curRow = e.touch.currentTarget;
@@ -210,12 +209,13 @@
                     /*
                     	Get the index & value id
                     */
-                    var id = "";
-                    
-                    
+                    var index = $(e.touch.currentTarget).index();
+                    //console.log("index=" + index);
+                    var id = $('#historyList').data('kendoMobileListView').dataSource.view()[index].Id;
+                    //console.log("id=" + id);
                     /*
                     	Call the ws to delete each row of listview
-                    */
+                    */ 
                     var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/"  +
                     			appToken + "/" + id;
                     $.ajax({
@@ -226,13 +226,14 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(response) {
-                           console.log("============ deleteOneRow(): SUCCESS");      
+                            //console.log("============ deleteOneRow(): SUCCESS"); 
+                            app.historyService.refreshHistoryList();
                         },
                         error: function(XMLHttpRequest, textStatus, errorThrown) {
-                           console.log("============ deleteOneRow(): ERROR");
+                            console.log("============ deleteOneRow(): ERROR");
                         }
                     });
-                            
+                           
                 }
             });
             
