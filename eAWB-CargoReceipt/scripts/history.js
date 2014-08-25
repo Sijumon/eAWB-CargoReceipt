@@ -59,9 +59,9 @@
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                    console.log("============ onClearHistoryAction(): ERROR=" + errorThrown);
                 }
-            });
-            
+            });            
         }
+        
     });
     
     /*
@@ -212,6 +212,19 @@
         	$("#historyList").kendoTouch({
                 filter: ">li",
                 enableSwipe: true,
+                touchstart: function (e){
+                    //console.log("============ touchstart");
+                    var index = $(e.touch.currentTarget).index();
+                    //console.log("index=" + index);
+                    var dataItem = $('#historyList').data('kendoMobileListView').dataSource.view()[index];
+                    var awbPrefix = dataItem.AWBPrefix;
+                    var awbSuffix = dataItem.AWBSuffix;
+                    //console.log("id=" + id);
+                    var url = "#query_result?awbPrefix=" + awbPrefix + "&awbSuffix=" + awbSuffix;
+                    //console.log("url=" + url);
+                    app.application.navigate(url, 'slide:right');
+                    
+                },
                 swipe: function (e) {
                     //console.log("============ onHistorySwipe");
                 	/*
