@@ -117,7 +117,7 @@
                     data: "{}",
                     headers: {'Accept': 'application/json'},
                     contentType: "application/json; charset=utf-8",
-                    dataType: "text",
+                    dataType: "json",
                     success: function(response) {
                         console.log("============ validateUserCredential(): SUCCCESS"); 
                         if (response.IsSuccess){
