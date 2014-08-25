@@ -126,46 +126,46 @@
             app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
                         
             /*
-            	Show the pdf div
-            */
-            //http://www.lob.de/pdf/helloworld.pdf
-            $('#pdfDiv').show();
-            $('#fohDiv').hide();
-            $('#noResultDiv').hide();
-            $('#imgArrow').show();
-            
-            /*
             	Call & parse the web service
             */
-            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreport/token=" +
+            $('#pdfDiv').hide();
+            $('#fohDiv').hide();
+            $('#noResultDiv').hide();
+            $('#imgArrow').hide();
+            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreport/?token=" +
             			window.localStorage.getItem("appToken") + 
             			"&awbPrefix=" + awbPrefix + "&awbSuffix=" + awbSuffix;
-            console.log("============ showQueryResult(), url=" + url);
+            //console.log("============ showQueryResult(), url=" + url);
             $.ajax({
                 type: "GET",
                 url: url,
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
-                dataType: "text",
+                dataType: "json",
                 success: function(response) {
                     console.log("============ showQueryResult(): SUCCESS");
-                    alert(response);     
+                    if (response.ReportUrl !== null && response.ReportUrl !== ''){ // the rcs case
+                    	$('#pdfDiv').show();
+                        $('#imgArrow').show();
+            			url = response.ReportUrl; 
+                        //TODO: get the pdf url 
+                        //url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
+                        var iframe = app.queryResultService.makeIframeDiv(url);
+                        $("#pdfDiv").html(iframe);
+                    } else {
+                        if (response.StatusCode === 'FOH'){ //foh case
+                            $('#fohDiv').show();
+                            app.queryResultService.viewModel.set("currentStatus", "Freight on Hand");    
+                        } else { // noresult case
+                            $('#fohDiv').hide();
+                            app.queryResultService.viewModel.set("currentStatus", "Unknown");
+                        }
+                    }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                    console.log("============ showQueryResult(): ERROR");
                 }
             });
-            
-            
-        	//TODO: get the pdf url 
-            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
-            
-            /*
-            	Show the pdf file
-            */
-            var iframe = app.queryResultService.makeIframeDiv(url);
-            $("#pdfDiv").html(iframe);
-            
 		},
         
         
