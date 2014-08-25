@@ -107,11 +107,31 @@
                 app.application.navigate('#term_condition');
             });
             $("#signoutBtn").on("click", function(){ 
-                $('#settingSignOutDialog').dialog('close');
-                window.localStorage.setItem("userLoggedIn", false);
-                app.application.navigate('#login');
-            });
-            
+                var authenticationCode = window.localStorage.getItem("authenticationCode");
+                var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=" + window.localStorage.getItem("appToken")
+                			+ "/authenticationCode=" + authenticationCode;
+                //console.log("signoutBtn, url=" + url);
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    data: "{}",
+                    headers: {'Accept': 'application/json'},
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: function(response) {
+                        console.log("============ validateUserCredential(): SUCCCESS"); 
+                        if (response.IsSuccess){
+                        	$('#settingSignOutDialog').dialog('close');
+                            window.localStorage.setItem("userLoggedIn", false);
+                            app.application.navigate('#login');       
+                        }      
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                       console.log("============ validateUserCredential(): ERROR");
+                       //$('#settingSignOutDialog').dialog('close'); 
+                    }
+                });
+            });            
         }, 
         
         /*
@@ -143,7 +163,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    console.log("============ showQueryResult(): SUCCESS");
+                    //console.log("============ showQueryResult(): SUCCESS");
                     if (response.ReportUrl !== null && response.ReportUrl !== ''){ // the rcs case
                     	$('#pdfDiv').show();
                         $('#imgArrow').show();

@@ -113,8 +113,7 @@
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
                 var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=" + window.localStorage.getItem("appToken")
                 			+ "/authenticationCode=" + authenticationCode;
-                alert("signoutBtn, url=" + url);
-                console.log("signoutBtn, url=" + url);
+                //console.log("signoutBtn, url=" + url);
                 $.ajax({
                     type: "GET",
                     url: url,

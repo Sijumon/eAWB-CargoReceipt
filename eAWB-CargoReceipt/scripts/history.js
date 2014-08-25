@@ -131,9 +131,30 @@
                 app.application.navigate('#term_condition');
             });
             $("#signoutBtn").on("click", function(){ 
-                $('#settingSignOutDialog').dialog('close');
-                window.localStorage.setItem("userLoggedIn", false);
-                app.application.navigate('#login');
+                var authenticationCode = window.localStorage.getItem("authenticationCode");
+                var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=" + window.localStorage.getItem("appToken")
+                			+ "/authenticationCode=" + authenticationCode;
+                //console.log("signoutBtn, url=" + url);
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    data: "{}",
+                    headers: {'Accept': 'application/json'},
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: function(response) {
+                        console.log("============ validateUserCredential(): SUCCCESS"); 
+                        if (response.IsSuccess){
+                        	$('#settingSignOutDialog').dialog('close');
+                            window.localStorage.setItem("userLoggedIn", false);
+                            app.application.navigate('#login');       
+                        }      
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                       console.log("============ validateUserCredential(): ERROR");
+                       //$('#settingSignOutDialog').dialog('close'); 
+                    }
+                });
             });
         }, 
         
@@ -194,7 +215,7 @@
                 swipe: function (e) {
                     //console.log("============ onHistorySwipe");
                 	/*
-                    	the UI action: swipe & delete the current row
+                    	the UI action: swipe & collapse the current row
                     */                    
                     var curRow = e.touch.currentTarget;
                     $(curRow).addClass("swipe_selected_row");
@@ -213,6 +234,7 @@
                     //console.log("index=" + index);
                     var id = $('#historyList').data('kendoMobileListView').dataSource.view()[index].Id;
                     //console.log("id=" + id);
+                    
                     /*
                     	Call the ws to delete each row of listview
                     */ 
