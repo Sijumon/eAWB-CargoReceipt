@@ -85,7 +85,7 @@
                 $('#imgQueryResult').click(function(e) {
                     window.location.href = arrAdsURL[temp];
 				});
-            }, 5000);
+            }, 2500);
             
             /*
             	Do the action of setting signout dialog

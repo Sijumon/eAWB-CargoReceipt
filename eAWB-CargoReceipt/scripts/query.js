@@ -88,7 +88,7 @@
                 $('#imgQuery').click(function(e) {
                     window.location.href = arrAdsURL[temp];
 				});
-            }, 5000);		
+            }, 2500);		
             
             /*
             	Do the action of setting signout dialog
@@ -123,19 +123,16 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "text",
                     success: function(response) {
-                        alert(response);
-                        console.log(response);
-                        
-                        //if (response.AuthenticationCode !== null && response.AuthenticationCode !== '' && 
-                        //		response.AuthenticationCode.length > 0){
-                        //	$('#settingSignOutDialog').dialog('close');
-                        //    window.localStorage.setItem("userLoggedIn", false);
-                        //    app.application.navigate('#login');       
-                        //}      
+                        console.log("============ validateUserCredential(): SUCCCESS"); 
+                        if (response.IsSuccess){
+                        	$('#settingSignOutDialog').dialog('close');
+                            window.localStorage.setItem("userLoggedIn", false);
+                            app.application.navigate('#login');       
+                        }      
                     },
                     error: function(XMLHttpRequest, textStatus, errorThrown) {
                        console.log("============ validateUserCredential(): ERROR");
-                       $('#settingSignOutDialog').dialog('close'); 
+                       //$('#settingSignOutDialog').dialog('close'); 
                     }
                 });
             });

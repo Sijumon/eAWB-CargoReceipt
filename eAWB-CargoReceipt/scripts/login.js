@@ -145,7 +145,7 @@
     });
     
     /*
-    	//Declare queryService
+    	Declare loginService
     */
     app.loginService = {
         
@@ -170,7 +170,7 @@
             var datetime = currentdate.getDate().toString() + currentmonth.toString() + currentdate.getFullYear().toString();
             //TODO: for testing
             //datetime = "23042014";
-            var param = "?f=" + datetime + "&t=" + datetime + "&r=1024x768&o=Portrait&tokenId=";
+            var param = "?f=" + datetime + "&t=" + datetime + "&r=1024x768&o=Portrait&token=";
             var appToken = window.localStorage.getItem("appToken");
             var url = "http://apidev.ccnhub.com/v1/advertisement/GetImages/" + param + appToken;
             //console.log("=== login.js, url=" + url);
@@ -221,7 +221,7 @@
                         $('#imgHome').click(function(e) {
                             window.location.href = arrAdsURL[temp];
 						});
-                    }, 5000);
+                    }, 2500);
                 }
             });
             
