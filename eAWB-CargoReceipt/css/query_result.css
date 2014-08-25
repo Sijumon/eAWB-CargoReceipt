@@ -48,15 +48,17 @@ body {
     line-height: 100%;    
 }
 .img_arrow{
-    margin-left: 88%;
-    margin-top: -13%;
+    right: 0;
+    margin-right: 1%;
+    margin-top: -45px;
     cursor: pointer;
     z-index: 99;
     position: absolute;
 }
 .img_arrow_down{
-    margin-left: 88%;
-    margin-top: 15%;
+    right: 0;
+    margin-right: 1%;
+    margin-top: 60px;
     cursor: pointer;
     z-index: 99;
     position: absolute;

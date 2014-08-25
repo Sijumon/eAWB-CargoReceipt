@@ -155,6 +155,8 @@
                 $('#enterMsg').show();
             	$('#errorAWBMsg').hide();
             });
+            
+            $("#queryForm").css("height", window.localStorage.getItem("deviceHeight"));
         }, 
         
         /*

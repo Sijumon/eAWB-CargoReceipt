@@ -256,6 +256,7 @@
             deviceHeight = (deviceHeight) * 0.895;
             deviceHeight = deviceHeight + "px";
             //console.log("deviceHeight=" + deviceHeight);
+            window.localStorage.setItem("deviceHeight", deviceHeight);
             $("#loginForm").css("height", deviceHeight);
         }, 
         
