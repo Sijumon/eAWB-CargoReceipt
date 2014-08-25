@@ -26,7 +26,7 @@ body {
     float: left;
     margin-left: 5%;
 }
-.bg_textbox_query{
+.bg_textbox_awb_prefix{
     color: #88b237;
     font-size: 20px;
     font-family: 'Segoe UI Light','Segoe UI';
@@ -41,18 +41,39 @@ body {
     border-color: #88B237; 
     background: #FFFFFF; 
     background-color: #FFFFFF; 
-    margin-top: 0%; 
     border-style: solid; 
     border-width: 1px; 
     color: #C9C9C9; 
-    margin-top: 3%;
+    width: 15%; margin-left: 5%; color: #797979;
+}
+.bg_textbox_awb_suffix{
+    color: #88b237;
+    font-size: 20px;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-style: normal;
+    font-weight: 300;
+    opacity: 0.498039;
+    text-align: left;   
+    display:inline-block; 
+    line-height: 180%; 
+    padding-left: 2%; 
+    -webkit-border-radius: 5px; 
+    border-color: #88B237; 
+    background: #FFFFFF; 
+    background-color: #FFFFFF; 
+    border-style: solid; 
+    border-width: 1px; 
+    color: #C9C9C9; 
+    margin-left: 1%;
+    width: 50%; color: #797979;
 }
 .img_query{
-    float: right;
-    margin-right: 8%;
-    margin-left: 5%;
-	margin-top: -12.5%;
+    margin-left: 1%;
+    margin-bottom: -10px;
     cursor: pointer;
+}
+.div_query_awb{
+    width: 100%; margin-top: 1%; float:left; clear:both;
 }
 .label_hor{
     color: #48601E;
@@ -62,6 +83,7 @@ body {
     font-weight: 400;
     line-height: normal;
     text-align: center;
+    margin-left: 1%;
 }
 .label_awb_error{
     color: #cc0000;

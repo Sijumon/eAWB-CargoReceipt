@@ -196,10 +196,13 @@
             </label> <br> 
             <label class="enter_small">Enter your 11-digit air waybill number then select search to continue</label> <br>
             
-            <input id="awbPrefix" maxlength="3" class="bg_textbox_query" style="width: 15%; margin-left: 5%; color: #797979;" />
-            <label class="label_hor">-</label>
-            <input id="awbSuffix" maxlength="8" class="bg_textbox_query" style="width: 50%; color: #797979;" />
-            <img src="images/query.png" class="img_query" data-bind="click: onQueryAction"/> <br>
+            <div class="div_query_awb">
+                <input id="awbPrefix" maxlength="3" class="bg_textbox_awb_prefix" />
+                <label class="label_hor">-</label>
+                <input id="awbSuffix" maxlength="8" class="bg_textbox_awb_suffix" /> 
+                <img src="images/query.png" class="img_query" data-bind="click: onQueryAction"/> 
+            </div>
+            
             <hr class="line_small_bg" />
             
             <label class="enter_big">View History</label>  <br>            
