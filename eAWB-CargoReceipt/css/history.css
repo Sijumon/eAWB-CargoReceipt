@@ -18,7 +18,9 @@ body {
     font-weight: 300;
     line-height: 14px !important;
     text-align: right;
-    margin-left: 22%;
+    margin-right: 2%;
+    margin-top: 10px;
+    float: right;
 }
 .label_his_history{
     color: #e4e4e4;
