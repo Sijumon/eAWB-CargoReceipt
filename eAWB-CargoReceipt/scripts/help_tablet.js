@@ -151,7 +151,6 @@
             $('.swiper-container_tablet').swiper({
                 pagination: '.pagination_tablet',
     			paginationClickable: true,
-                paginationElement: 'span',
                 mode: 'horizontal'
             });
             
