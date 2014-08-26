@@ -15,3 +15,25 @@ body {
     font-size: 14px;
     font-weight: 300; 
 }
+.label_header{
+    color: #74972f;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+.label_content{
+    color: #5e5e5e;
+    font-family: 'Segoe UI Light','Segoe UI';
+    font-size: 14px;
+    font-weight: 300;
+    font-style: normal;
+    line-height: normal;
+    text-align: left;
+    margin-left: 0%;
+    margin-right: 0%;
+}

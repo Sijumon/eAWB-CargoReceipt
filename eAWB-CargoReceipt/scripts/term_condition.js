@@ -164,9 +164,10 @@
             		var responseJSON = response;
                     var strTermCondition = "";
                     $.each(responseJSON.TermsAndConditions, function(index,value) {
-                        strTermCondition += "<br><div class='title'>" + value.Sequence + " " + value.Title + " </div>";
+                        strTermCondition += "<div class='label_header'>" + value.Sequence + " " + value.Title + " </div>";
                         if (value.Details != null)
-                            strTermCondition += "<div class='content_body'>" + value.Details + " </div>";  
+                            strTermCondition += "<div class='label_content'>" + value.Details + " </div>";  
+                        strTermCondition += "<br>";
                     });
                     //console.log("strTermCondition=" + strTermCondition);         
                     $("#termConditionDiv").html(strTermCondition);

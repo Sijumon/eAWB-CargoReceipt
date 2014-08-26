@@ -162,8 +162,8 @@
                 dataType: "json",
                 success: function(response) {
                     var responseJSON = response;
-                    strAboutApp = "<div class='title'>" + responseJSON.Name + " </div>";
-                    strAboutApp += "<div class='content_body'>" + responseJSON.Details + " </div>";
+                    strAboutApp = "<div class='label_header'>" + responseJSON.Name + " </div>";
+                    strAboutApp += "<div class='label_content'>" + responseJSON.Details + " </div>";
             		//console.log("strAboutApp=" + strAboutApp);    
                     $("#aboutAppDiv").html(strAboutApp);
                 }
