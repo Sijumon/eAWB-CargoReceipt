@@ -1,77 +1,61 @@
 (function (global) {
-    var QueryViewModel, app = global.app = global.app || {};
+    var HelpTabletViewModel, app = global.app = global.app || {};
     
     app.application = new kendo.mobile.Application(document.body, {platform: "ios7"});
     
     /*
-    	Declare QueryViewModel
+    	Declare HelpTabletViewModel
     */
-    QueryViewModel = kendo.data.ObservableObject.extend({
-    	/*
+    HelpTabletViewModel = kendo.data.ObservableObject.extend({
+        /*
+        	goHome(): go to home view of the application
+        */
+        goHome: function(){
+            var userLoggedIn = window.localStorage.getItem("userLoggedIn");
+            if (userLoggedIn === 'false')
+            	app.application.navigate('#login', 'slide:right');
+            else 
+            	app.application.navigate('#query', 'slide:right'); 
+        },
+        
+        /*
         	showSettingDialog(): show the setting dialog
         */
         showSettingDialog: function(){
-            var dialog = $("#settingSignOutDialog").dialog({
-                dialogClass: 'setting_signout_dialog', modal: true, resizable: false
-            });     
+            var userLoggedIn = window.localStorage.getItem("userLoggedIn");
+            var dialog;
+            if (userLoggedIn === 'false'){
+                dialog = $("#settingDialog").dialog({
+                   dialogClass: 'setting_dialog', modal: true, resizable: false
+                });
+            } else {
+                dialog = $("#settingSignOutDialog").dialog({
+                   dialogClass: 'setting_signout_dialog', modal: true, resizable: false
+                });
+            }            
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
-        },
-        
-        
-        /*
-        	validate the air waybill number
-        */
-        validateInput: function(){  
-            var numberRegex = /^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/;
-            if($("#awbPrefix").val().length === 3 && $("#awbSuffix").val().length === 8 && 
-            	numberRegex.test($('#awbPrefix').val()) && numberRegex.test($('#awbSuffix').val())){
-                $('#enterMsg').show();
-            	$('#errorAWBMsg').hide();
-                return true;
-            } else {
-                $('#enterMsg').hide();
-            	$('#errorAWBMsg').show();
-                return false;
-            }
-        },
-        
-        
-        /*
-        	onQueryAction(): do the query action
-        */
-        onQueryAction: function(){
-        	//console.log("================= onQueryAction()");   
-            
-            var validate = app.queryService.viewModel.validateInput(); 
-            var param = "?awbPrefix=" +  $('#awbPrefix').val() + "&awbSuffix=" + $('#awbSuffix').val();
-            if (validate){
-            	app.application.navigate('#query_result' + param, 'slide:right');
-            }
         }
     });
     
     /*
-    	Declare queryService
+    	Declare helpTabletViewModel
     */
-    app.queryService = {
-        
+    app.helpTabletViewModel = {
+     	
         /*
         	init(): set up the view at the first time loaded
         */        
         init: function(){
-            //console.log("================= query.js,init()");
-            
-            $('#enterMsg').show();
-            $('#errorAWBMsg').hide();
+            //console.log("================= init");
             
             /*
             	Set advertisement
-            */    
+            */            
             var advertiseIMG = window.localStorage.getItem("advertiseIMG");
             var advertiseURL = window.localStorage.getItem("advertiseURL");
-            $('#imgQuery').attr('src', advertiseIMG);
-            $('#imgQuery').click(function(e) {
+            $('#imgHelpTablet').attr('src', advertiseIMG);
+            $('#imgHelpTablet').click(function(e) {
                 window.location.href = advertiseURL;
 			});
             
@@ -84,23 +68,37 @@
             	index += 1;
                 temp = index % length;
                 imgSrc = arrAdsImg[temp];
-                $('#imgQuery').attr('src', imgSrc);
-                $('#imgQuery').click(function(e) {
+                $('#imgHelpTablet').attr('src', imgSrc);
+                $('#imgHelpTablet').click(function(e) {
                     window.location.href = arrAdsURL[temp];
 				});
-            }, 2500);		
-            
+            }, 2500);
+           
             /*
-            	Do the action of setting signout dialog
+            	Do the action of setting & setting signout dialog
             */
+            $("#helpBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#help');
+            });
+            $("#aboutAppBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#about_app');
+            });
+            $("#aboutCCNBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#about_ccn');
+            });
+            $("#termConditionBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#term_condition');
+            });
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                if (window.localStorage.getItem("deviceHeight") > 500)
-                	app.application.navigate('#help');
-                else
-                	app.application.navigate('#help_tablet');
+                app.application.navigate('#help');
             });
             $("#aboutAppBtn_signout").on("click", function(){ 
+                $('#settingDialog').dialog('close');
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#about_app');
             });
@@ -111,6 +109,10 @@
             $("#termConditionBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#term_condition');
+            });
+            $("#signinBtn").on("click", function(){ 
+                $('#settingDialog').dialog('close');
+                app.application.navigate('#login');
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
@@ -139,38 +141,23 @@
                 });
             });
             
-            /*
-            	automatically switch to the 2nd textfield once user inputs 3 digits in the first textfield
-            */
-            $("#awbPrefix").keyup(function() {
-                if ($("#awbPrefix").val().length === 3)
-                	$("#awbSuffix").focus();
-            });  
-            
-            /*
-            	Hide the error message when the awbPrefix or the awbSuffix get focus
-            */
-            $("#awbPrefix").focusin(function() {
-                $('#enterMsg').show();
-            	$('#errorAWBMsg').hide();
-            });
-            $("#awbSuffix").focusin(function() {
-                $('#enterMsg').show();
-            	$('#errorAWBMsg').hide();
-            });
-            
-            var height = window.localStorage.getItem("deviceHeight") + "px";
-            $("#queryForm").css("height", height);
         }, 
         
         /*
-        	show() function
+        	showHelp() function: show the About App information
         */        
-        show: function () {
-            //console.log("================= query.js,show()"); 
+        showHelp: function () {
+            //console.log("================= showHelp");
+            $('.swiper-container_tablet').swiper({
+                pagination: '.pagination_tablet',
+    			paginationClickable: true,
+                paginationElement: 'span',
+                mode: 'horizontal'
+            });
+            
 		},
         
-        viewModel: new QueryViewModel()        
+        viewModel: new HelpTabletViewModel()        
         
     };
     

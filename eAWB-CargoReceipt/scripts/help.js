@@ -148,29 +148,14 @@
         */        
         showHelp: function () {
             //console.log("================= showHelp");
+            $('.swiper-container').swiper({
+                pagination: '.pagination',
+    			paginationClickable: true,
+                paginationElement: 'span',
+                mode: 'horizontal'
+            });
             
-            /*
-            	//Call ws to get the strAboutApp
-            
-            var appToken = window.localStorage.getItem("appToken");
-            var url = "http://apidev.ccnhub.com/api/product/v1/token=" + appToken;
-            var strAboutApp;
-            $.ajax({
-                type: "GET",
-                url: url,
-                headers: {'Accept': 'application/json'},
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(response) {
-                    var responseJSON = response;
-                    strAboutApp = "<div class='title'>" + responseJSON.Name + " </div>";
-                    strAboutApp += "<div class='content_body'>" + responseJSON.Details + " </div>";
-            		//console.log("strAboutApp=" + strAboutApp);    
-                    $("#aboutAppDiv").html(strAboutApp);
-                }
-              });
-            */
-		},
+    	},
         
         viewModel: new HelpViewModel()        
         

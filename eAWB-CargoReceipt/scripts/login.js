@@ -230,7 +230,11 @@
             */
             $("#helpBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                app.application.navigate('#help');
+                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
+                if (height > 500)
+                	app.application.navigate('#help_tablet'); 
+                else
+                	app.application.navigate('#help');
             });
             $("#aboutAppBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
@@ -253,11 +257,10 @@
             	Set height of the loginForm div
             */
             var deviceHeight = window.localStorage.getItem("deviceHeight");
-            deviceHeight = (deviceHeight) * 0.895;
-            deviceHeight = deviceHeight + "px";
+            deviceHeight = (deviceHeight) * 0.9;
             //console.log("deviceHeight=" + deviceHeight);
             window.localStorage.setItem("deviceHeight", deviceHeight);
-            $("#loginForm").css("height", deviceHeight);
+            $("#loginForm").css("height", deviceHeight + "px");
         }, 
         
         /*

@@ -10,7 +10,9 @@
     <link href="kendo/styles/kendo.default.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
     <link href="kendo/styles/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+    <link href="kendo/styles/idangerous.swiper.css" rel="stylesheet" />
     
+    <!--Defined CSS-->
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/login.css" rel="stylesheet" />
     <link href="css/header.css" rel="stylesheet" />
@@ -26,6 +28,7 @@
     <script src="kendo/js/jquery.min.js"></script>   
     <script src="kendo/js/jquery-ui-1.9.2.min.js"></script>
     <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="kendo/js/idangerous.swiper.js"></script>
     
     <!--Defined JS-->
     <script src="scripts/ads.js"></script>
@@ -34,6 +37,7 @@
     <script src="scripts/about_app.js"></script>
     <script src="scripts/about_ccn.js"></script>
     <script src="scripts/help.js"></script>
+    <script src="scripts/help_tablet.js"></script>
     <script src="scripts/history.js"></script>
     <script src="scripts/query_result.js"></script>
     <script src="scripts/term_condition.js"></script>
@@ -114,7 +118,7 @@
             
           <a id="signInBtn" type="submit" data-role="button" data-bind="click: onSignIn"
                 class="btn_signin">Sign in</a> <br>
-          
+                      
           <label id="termAndCondition" class="label_underline" data-bind="click: onTermConditionAction">Terms and Conditions?</label>
              
         </div>
@@ -376,58 +380,160 @@
         </div>
         
         <!--Content-->
-        <div class="view-content">
+        <div class="view-content" id="helpForm">
             <div class="titleDiv">
             	<label class="label_title_page" style="margin-left: 45%;">Help</label>	    
             </div>
-            <div id="helpDiv">
-            	<label class="label_header_help">1. Login</label> <br>
-                <label class="label_content_help">To access the features of this app, you need to login using your CCNhub credentials or CCNhub LINC account</label> <br>
-                <img src="images/help_login.png" class="img_help_normal" style="margin-left: 16%;" /> <br>
-                
-                <label class="label_header_help">2. Air Waybill Query</label> <br>
-                <label class="label_content_help">On successful login, enter the air waybill number you wish to query, then select search</label> <br>
-                <img src="images/help_airwaybill.png" class="img_help_normal" style="margin-left: 10%;" /> <br>
-                
-                <label class="label_header_help">3. Query History</label> <br>
-                <label class="label_content_help">Alternatively, you can select the "History" to view a list of Air Waybill numbers you previously quried.</label> <br>
-                <img src="images/help_query_history.png" class="img_help_normal" style="margin-left: 9%;" /> <br>
-                
-                <label class="label_header_help">4. Query Result</label> <br>
-                <label class="label_content_help">With a valid Air Waybill specified, you will be able to view the status of your shipment: </label> <br>
-                <label class="label_sub_header_help">i. Ready for carriage</label> <br>
-                <label class="label_content_help">This will be accompanied by a cargo receipt</label> <br>
-                <label class="label_content_help">Selecting the collapse/expand  buttons                 toggles between displaying/hiding the information area</label> <br>
-                <img src="images/help_ready_for_carriage.png" class="img_help_normal" style="margin-left: 16%;" /> <br>
-                
-                <label class="label_sub_header_help">i. Ready for carriage</label> <br>
-                <label class="label_content_help">This will be accompanied by a cargo receipt</label> <br>
-                <label class="label_content_help">Selecting the collapse/expand  buttons                 toggles between displaying/hiding the information area</label> <br>
-                <img src="images/help_ready_for_carriage.png" class="img_help_normal" style="margin-left: 16%;" /> <br>
-                 
-                <label class="label_sub_header_help">ii. Freight on Hand</label> <br>
-                <label class="label_content_help">Where the current status of your consignment is FOH i.e. there is some weight discrepancies between your declared cargo and the actual physical consignment, Your carriar will issue a FOH status. For this status, there is no Cargo Receipt available.</label> <br>
-                <img src="images/help_freight_on_hand.png" class="img_help_normal" style="margin-left: 9%;" /> <br>
-                <label class="label_content_help">You will be required to correct your declaration in order to recieve your cargor receipt.</label> <br>
-					                
-                <label class="label_header_help">5. History</label> <br>
-                <label class="label_content_help">Perform a query from your history</label> <br>
-                <label class="label_sub_header_help">Select an Air Waybill from the list to query for the status of your shipment</label> <br>
-                <img src="images/help_history.png" class="img_help_normal" style="margin-left: 16%;" /> <br>
-                
-                <label class="label_content_help">Delete a record</label> <br>
-                <label class="label_sub_header_help">You can delete history records individualy by swiping (to left or right) across the record</label> <br>
-                <img src="images/help_delete a record.png" class="img_help_normal" style="margin-left: 9%;" /> <br>
-                
-                <label class="label_content_help">Clear History</label> <br>
-                <label class="label_sub_header_help">To clear all your previous queries, select the "Clear History botton.</label> <br>
-                <img src="images/help_clear_history.png" class="img_help_normal" style="margin-left: 16%;" /> <br>
-                
+            <div id="helpDiv" class="swiper-container">
+        	  <div class="swiper-wrapper">
+            	  <div class="swiper-slide"> 
+            			<label class="label_header_help">1. Login</label> <br>
+            			<label class="label_content_help">To access the features of this app, you need to login using your CCNhub credentials or CCNhub LINC account</label> <br>
+            			<img src="images/help_login.png" class="img_help_normal" style="margin-left: 16%;" /> 
+            	  </div>
+            	  
+                  <div class="swiper-slide">
+            			<label class="label_header_help">2. Air Waybill Query</label> <br>
+            			<label class="label_content_help">On successful login, enter the air waybill number you wish to query, then select search</label> <br>
+            			<img src="images/help_airwaybill.png" class="img_help_normal" style="margin-left: 10%;" /> 
+            	  </div>
+            	  
+                  <div class="swiper-slide"> 
+            			<label class="label_header_help">3. Query History</label> <br>
+            			<label class="label_content_help">Alternatively, you can select the "History" to view a list of Air Waybill numbers you previously quried.</label> <br>
+            			<img src="images/help_query_history.png" class="img_help_normal" style="margin-left: 9%;" />
+            	  </div>
+            	  
+            	  <div class="swiper-slide"> 
+            			<label class="label_header_help">4. Query Result</label> <br>
+            			<label class="label_content_help">With a valid Air Waybill specified, you will be able to view the status of your shipment: </label> <br>
+            			<label class="label_sub_header_help">i. Ready for carriage</label> <br>
+            			<label class="label_content_help">This will be accompanied by a cargo receipt</label> <br>
+            			<label class="label_content_help">Selecting the collapse/expand  buttons toggles between displaying/hiding the information area</label> <br>
+            	  </div>
+            	  
+                  <div class="swiper-slide"> 
+            			<img src="images/help_ready_for_carriage.png" class="img_help_normal" style="margin-left: 16%;" /> 
+            	  </div>
+                  
+            	  <div class="swiper-slide"> 
+            			<label class="label_sub_header_help">ii. Freight on Hand</label> <br>
+            			<label class="label_content_help">Where the current status of your consignment is FOH i.e. there is some weight discrepancies between your declared cargo and the actual physical consignment, Your carriar will issue a FOH status. For this status, there is no Cargo Receipt available.</label> <br>
+            	  </div>
+            	
+                  <div class="swiper-slide"> 
+            			<img src="images/help_freight_on_hand.png" class="img_help_normal" style="margin-left: 9%;" /> <br>
+            			<label class="label_content_help">You will be required to correct your declaration in order to recieve your cargor receipt.</label>
+            	  </div>
+                  
+            	  <div class="swiper-slide"> 
+            			<label class="label_header_help">5. History</label> <br>
+            			<label class="label_content_help">Perform a query from your history</label> <br>
+            			<label class="label_sub_header_help">Select an Air Waybill from the list to query for the status of your shipment</label> <br>
+            			<img src="images/help_history.png" class="img_help_normal" style="margin-left: 16%;" /> 
+            	  </div>
+            	  
+            	  <div class="swiper-slide"> 
+            			<label class="label_content_help">Delete a record</label> <br>
+            			<label class="label_sub_header_help">You can delete history records individualy by swiping (to left or right) across the record</label> <br>
+            			<img src="images/help_delete a record.png" class="img_help_normal" style="margin-left: 9%;" /> 
+            	  </div>
+            	  
+            	  <div class="swiper-slide"> 
+            			<label class="label_content_help">Clear History</label> <br>
+            			<label class="label_sub_header_help">To clear all your previous queries, select the "Clear History botton.</label> <br>
+            			<img src="images/help_clear_history.png" class="img_help_normal" style="margin-left: 16%;" /> 
+            	  </div>
+            	  
+              </div>
+              <div class="pagination"></div>
+                   
             </div>
             
          </div>
     </div>
     <!--Help view-->
+    
+    
+    <!--Help tablet view-->
+    <div id="help_tablet"
+        data-role="view"
+        data-init="app.helpTabletViewModel.init"
+        data-show="app.helpTabletViewModel.showHelp"
+        data-model="app.helpTabletViewModel.viewModel"
+        data-title="e-AWB">
+        
+        <!--Header-->
+        <div data-role="header">
+            <div data-role="navbar" class="header_bg">
+                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <span data-role="view-title" class="header_text"></span>
+            </div>
+        </div>
+        
+
+        <!--Footer-->
+        <div data-role="footer">
+            <div data-role="tabstrip">
+                <img id="imgHelpTablet" class="footer_bg"/>
+            </div>
+        </div>
+        
+        <!--Content-->
+        <div class="view-content" id="helpForm">
+            <div class="titleDiv">
+            	<label class="label_title_page" style="margin-left: 48%;">Help</label>	    
+            </div>
+            <div id="helpTabletDiv" class="swiper-container_tablet" style="">
+        	  <div class="swiper-wrapper">
+            	  <div class="swiper-slide"> 
+            			<label class="label_header_help">1. Login</label> <br>
+            			<label class="label_content_help">To access the features of this app, you need to login using your CCNhub credentials or CCNhub LINC account</label> <br>
+            			<img src="images/help_login.png" class="img_help_normal" style="margin-left: 36%;" /> 
+                        <label class="label_header_help">2. Air Waybill Query</label> <br>
+            			<label class="label_content_help">On successful login, enter the air waybill number you wish to query, then select search</label> <br>
+            			<img src="images/help_airwaybill.png" class="img_help_normal" style="margin-left: 34%;" /> 
+            			<label class="label_header_help">3. Query History</label> <br>
+            			<label class="label_content_help">Alternatively, you can select the "History" to view a list of Air Waybill numbers you previously quried.</label> <br>
+            			<img src="images/help_query_history.png" class="img_help_normal" style="margin-left: 34%;" />
+            	  </div>
+            	  
+                  <div class="swiper-slide">
+            			<label class="label_header_help">4. Query Result</label> <br>
+            			<label class="label_content_help">With a valid Air Waybill specified, you will be able to view the status of your shipment: </label> <br>
+            			<label class="label_sub_header_help">i. Ready for carriage</label> <br>
+            			<label class="label_content_help">This will be accompanied by a cargo receipt</label> <br>
+            			<label class="label_content_help">Selecting the collapse/expand  buttons toggles between displaying/hiding the information area</label> <br>
+            			<img src="images/help_ready_for_carriage.png" class="img_help_normal" style="margin-left: 36%;" /> 
+            			<label class="label_sub_header_help">ii. Freight on Hand</label> <br>
+            			<label class="label_content_help">Where the current status of your consignment is FOH i.e. there is some weight discrepancies between your declared cargo and the actual physical consignment, Your carriar will issue a FOH status. For this status, there is no Cargo Receipt available.</label> <br>
+            			<img src="images/help_freight_on_hand.png" class="img_help_normal" style="margin-left: 34%;" /> <br>
+            			<label class="label_content_help">You will be required to correct your declaration in order to recieve your cargor receipt.</label>
+            	  </div>
+            	  
+                  <div class="swiper-slide"> 
+           			<label class="label_header_help">5. History</label> <br>
+            			<label class="label_content_help">Perform a query from your history</label> <br>
+            			<label class="label_sub_header_help">Select an Air Waybill from the list to query for the status of your shipment</label> <br>
+            			<img src="images/help_history.png" class="img_help_normal" style="margin-left: 36%;" /> 
+            			<label class="label_content_help">Delete a record</label> <br>
+            			<label class="label_sub_header_help">You can delete history records individualy by swiping (to left or right) across the record</label> <br>
+            			<img src="images/help_delete a record.png" class="img_help_normal" style="margin-left: 33%;" /> 
+            			<label class="label_content_help">Clear History</label> <br>
+            			<label class="label_sub_header_help">To clear all your previous queries, select the "Clear History botton.</label> <br>
+            			<img src="images/help_clear_history.png" class="img_help_normal" style="margin-left: 36%;" /> 
+                  </div>
+              </div>
+              
+              <div class="pagination_tablet"></div>
+            
+            </div>
+                
+            
+         </div>
+    </div>
+    <!--Help tablet view-->
     
     
     <!--About app view-->
@@ -463,7 +569,6 @@
          </div>
     </div>
     <!--About app view-->
-    
     
     
     <!--About CCN view-->
