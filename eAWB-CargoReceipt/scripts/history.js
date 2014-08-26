@@ -116,7 +116,11 @@
             */
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                app.application.navigate('#help');
+                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
+                if (height > 500)
+                	app.application.navigate('#help_tablet'); 
+                else
+                	app.application.navigate('#help');
             });
             $("#aboutAppBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');

@@ -22,12 +22,14 @@ body {
     float: left;
 	margin-left: 1%;
 	margin-top: 1%;
+    margin-bottom: 1%;
     cursor: pointer;
 }
 .img_setting{
     float: right; 
     margin-right: 1%;
     margin-top: 1%;
+    margin-bottom: 1%;
     cursor: pointer;
 }
 .label_title_page{
