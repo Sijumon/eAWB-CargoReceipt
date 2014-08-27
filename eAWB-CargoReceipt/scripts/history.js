@@ -132,6 +132,7 @@
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
                 var url = window.localStorage.getItem("logoutWS");
+                url = url.replace("{environment}", window.localStorage.getItem("environment"));
                 url = url.replace("{token}", window.localStorage.getItem("appToken"));
                 url = url.replace("{authenticationCode}", authenticationCode);
                 //console.log("signoutBtn, url=" + url);
@@ -284,6 +285,7 @@
         */
         getURL: function(appToken){
             var url = window.localStorage.getItem("historyListWS");
+            url = url.replace("{environment}", window.localStorage.getItem("environment"));
             url = url.replace("{token}", appToken);
             return url;
         },
@@ -294,6 +296,7 @@
         */
         getDeleteOneRowURL: function(appToken, id){
             var url = window.localStorage.getItem("deleteOneRowWS");
+            url = url.replace("{environment}", window.localStorage.getItem("environment"));
             url = url.replace("{token}", appToken);
             url = url.replace("{id}", id);
             return url;
@@ -305,6 +308,7 @@
         */
         getDeleteAllRowsURL: function(appToken){
             var url = window.localStorage.getItem("deleteAllRowsWS");
+            url = url.replace("{environment}", window.localStorage.getItem("environment"));
             url = url.replace("{token}", appToken);
             return url;
         },

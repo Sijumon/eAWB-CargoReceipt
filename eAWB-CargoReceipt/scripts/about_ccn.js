@@ -122,6 +122,7 @@
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
                 var url = window.localStorage.getItem("logoutWS");
+                url = url.replace("{environment}", window.localStorage.getItem("environment"));
                 url = url.replace("{token}", window.localStorage.getItem("appToken"));
                 url = url.replace("{authenticationCode}", authenticationCode);
                 //console.log("signoutBtn, url=" + url);
@@ -187,6 +188,7 @@
         */
         getURL: function(appToken){
             var url = window.localStorage.getItem("aboutCCNWS");
+            url = url.replace("{environment}", window.localStorage.getItem("environment"));
             url = url.replace("{token}", appToken);
             return url;
         },

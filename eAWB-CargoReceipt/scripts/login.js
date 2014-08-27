@@ -151,12 +151,14 @@
             //TODO: use the same method to login
             //if (userType){
             //    url = window.localStorage.getItem("lincUserLoginWS");
+            //    url = url.replace("{environment}", window.localStorage.getItem("environment"));
             //    url = url.replace("{token}", appToken);
             //    url = url.replace("{companyID}", $("#txtCompanyId").val().trim());
             //    url = url.replace("{email}", $("#txtEmail").val().trim());
             //    url = url.replace("{token}", $("#txtPassword").val().trim());
             //} else {
                 url = window.localStorage.getItem("lincLoginWS");
+            	url = url.replace("{environment}", window.localStorage.getItem("environment"));
                 url = url.replace("{token}", appToken);
                 url = url.replace("{email}", $("#txtEmail").val().trim());
             //    url = url.replace("{token}", $("#txtPassword").val().trim());
