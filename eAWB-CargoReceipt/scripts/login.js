@@ -185,34 +185,43 @@
                     var responseJSON = $.parseJSON(response);
             		var advertiseIMG = responseJSON[0].Url;
                     var advertiseURL = responseJSON[0].Redirect;
+                    var advertiseDuration = responseJSON[0].Duration;
                     $('#imgHome').attr('src', advertiseIMG);
                     $('#imgHome').click(function(e) {
                         window.location.href = advertiseURL;
 					});
                     
-                    var arrAdsImg = [], arrAdsURL = [], strArrAdsImg = "", strArrAdsURL = "";
+                    var arrAdsImg = [], arrAdsURL = [], strArrAdsImg = "", strArrAdsURL = "",
+                    	arrAdsDuration = [], strArrAdsDuration = "";
                     var length = responseJSON.length;
                     $.each(responseJSON, function(index,value) {
                     	arrAdsImg.push(value.Url);
                         strArrAdsImg += "\"" + value.Url + "\",";
                         arrAdsURL.push(value.Redirect);
                         strArrAdsURL += "\"" + value.Redirect + "\",";
+                        arrAdsDuration.push(value.Duration);
+                        strArrAdsDuration += "\"" + value.Duration + "\",";
                     });
                     strArrAdsImg = strArrAdsImg.substring(0,strArrAdsImg.length - 1);
                     strArrAdsImg = "[" + strArrAdsImg + "]";
                     strArrAdsURL = strArrAdsURL.substring(0,strArrAdsURL.length - 1);
                     strArrAdsURL = "[" + strArrAdsURL + "]";
+                    strArrAdsDuration = strArrAdsDuration.substring(0,strArrAdsDuration.length - 1);
+                    strArrAdsDuration = "[" + strArrAdsDuration + "]";
                                             
                     //Set to local storage
                     //window.localStorage.setItem("advertiseURL", advertiseURL);
                     window.localStorage.setItem("advertiseIMG", advertiseIMG);
                     window.localStorage.setItem("advertiseURL", advertiseURL);
+                    window.localStorage.setItem("advertiseDuration", advertiseDuration);
+                    window.localStorage.setItem("strArrAdsDuration", strArrAdsDuration);
                     window.localStorage.setItem("strArrAdsImg", strArrAdsImg);
                     window.localStorage.setItem("strArrAdsURL", strArrAdsURL);
                     
+                    
                     //Show footer info: href & show the ads for each 5 seconds
                     //$('#link').attr('href', advertiseURL);
-                    var index = 0, temp, imgSrc;                    
+                    var index = 0, temp = 0, imgSrc;                    
                     setInterval(function() {
                     	index += 1;
                         temp = index % length;
@@ -221,7 +230,7 @@
                         $('#imgHome').click(function(e) {
                             window.location.href = arrAdsURL[temp];
 						});
-                    }, 2500);
+                    }, (arrAdsDuration[temp] * 1000));
                 }
             });
             

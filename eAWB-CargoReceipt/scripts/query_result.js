@@ -74,9 +74,10 @@
             
             var arrAdsImg = $.parseJSON(window.localStorage.getItem("strArrAdsImg"));
             var arrAdsURL = $.parseJSON(window.localStorage.getItem("strArrAdsURL"));
+            var arrAdsDuration = $.parseJSON(window.localStorage.getItem("strArrAdsDuration"));
             var length = arrAdsImg.length;
             
-            var index = 0, temp, imgSrc;                    
+            var index = 0, temp = 0, imgSrc;                    
             setInterval(function() {
             	index += 1;
                 temp = index % length;
@@ -85,7 +86,7 @@
                 $('#imgQueryResult').click(function(e) {
                     window.location.href = arrAdsURL[temp];
 				});
-            }, 2500);
+            }, (arrAdsDuration[temp] * 1000));
             
             /*
             	Do the action of setting signout dialog

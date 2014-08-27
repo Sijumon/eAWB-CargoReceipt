@@ -28,6 +28,13 @@ body {
     font-size: 14px;
     margin-left: 5%;
 }
+.label_his_drag_drop {
+    color: #e4e4e4;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 14px;
+    float: right;
+    margin-right: 5%;
+}
 .his_div_header{
     background-color: #6B6B6B;
     display: inline-block;
@@ -123,6 +130,4 @@ body {
     font-size: 62.5%; 
     background-color: #878787;
     color: #FFFFFF;
-}
-
-    
+}   

@@ -7,6 +7,8 @@
     	Declare HistoryViewModel
     */
     HistoryViewModel = kendo.data.ObservableObject.extend({
+        strNumOfRecord: 0,
+        
         /*
         	goHome(): go to query view of the application
         */
@@ -48,13 +50,8 @@
                 dataType: "json",
                 success: function(response) {
                     console.log("DELETE success");
+                    app.historyService.viewModel.set("strNumOfRecord", 0);
                     app.historyService.refreshHistoryList(); 
-                    var delAllDialog = $("#delAllDialog").dialog({
-                       width: 250, height: 60, modal: true, resizable: false
-                    });
-                    delAllDialog.prev(".ui-dialog")('class', 'ui-dialog-history');
-                    delAllDialog.prev(".ui-dialog-content")('class', 'ui-dialog-content-history');
-                    setInterval(function(){ $("#delAllDialog").dialog("close"); },2000);         
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                    console.log("============ onClearHistoryAction(): ERROR=" + errorThrown);
@@ -97,9 +94,10 @@
             
             var arrAdsImg = $.parseJSON(window.localStorage.getItem("strArrAdsImg"));
             var arrAdsURL = $.parseJSON(window.localStorage.getItem("strArrAdsURL"));
+            var arrAdsDuration = $.parseJSON(window.localStorage.getItem("strArrAdsDuration"));
             var length = arrAdsImg.length;
             
-            var index = 0, temp, imgSrc;                    
+            var index = 0, temp = 0, imgSrc;                    
             setInterval(function() {
             	index += 1;
                 temp = index % length;
@@ -108,7 +106,7 @@
                 $('#imgHistory').click(function(e) {
                     window.location.href = arrAdsURL[temp];
 				});
-            }, 2500);
+            }, (arrAdsDuration[temp] * 1000));
              
             
             /*
@@ -216,6 +214,7 @@
         	$("#historyList").kendoTouch({
                 filter: ">li",
                 enableSwipe: true,
+                /*
                 touchstart: function (e){
                     //console.log("============ touchstart");
                     var index = $(e.touch.currentTarget).index();
@@ -229,6 +228,7 @@
                     app.application.navigate(url, 'slide:right');
                     
                 },
+                */
                 swipe: function (e) {
                     //console.log("============ onHistorySwipe");
                 	/*
@@ -257,6 +257,10 @@
                     */ 
                     var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/"  +
                     			appToken + "/" + id;
+                    var numOfRecord = app.historyService.viewModel.get("strNumOfRecord");
+                    numOfRecord -= 1;
+                    app.historyService.viewModel.set("strNumOfRecord", numOfRecord);
+                    
                     $.ajax({
                         type: "DELETE",
                         url: url,
@@ -283,6 +287,7 @@
         	parseJSONdata() function: parse string to json array string
         */
         parseJSONdata: function(cargoReceiptReportRequests){
+            app.historyService.viewModel.set("strNumOfRecord", cargoReceiptReportRequests.length);
             $.each(cargoReceiptReportRequests, function(index,value) {
             	value.RequestedDate = app.historyService.showDateTime(value.RequestedDate);                
             });            
