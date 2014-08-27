@@ -49,12 +49,12 @@ body {
 .pagination {
   position: absolute;
   z-index: 20;
-  left: 10px;
+  left: 26%;
   bottom: 0px;
 }
 .pagination_tablet {
   position: absolute;
   z-index: 20;
-  left: 10px;
+  left: 50%;
   bottom: 0px;
 }
