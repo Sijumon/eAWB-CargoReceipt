@@ -116,8 +116,9 @@
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
-                var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=" + window.localStorage.getItem("appToken")
-                			+ "/authenticationCode=" + authenticationCode;
+                var url = window.localStorage.getItem("logoutWS");
+                url = url.replace("{token}", window.localStorage.getItem("appToken"));
+                url = url.replace("{authenticationCode}", authenticationCode);
                 //console.log("signoutBtn, url=" + url);
                 $.ajax({
                     type: "GET",

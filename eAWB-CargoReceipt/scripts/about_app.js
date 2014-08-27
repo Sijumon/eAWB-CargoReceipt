@@ -39,7 +39,7 @@
     });
     
     /*
-    	//Declare aboutAppService
+    	Declare aboutAppService
     */
     app.aboutAppService = {
      	
@@ -121,8 +121,9 @@
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
-                var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=" + window.localStorage.getItem("appToken")
-                			+ "/authenticationCode=" + authenticationCode;
+                var url = window.localStorage.getItem("logoutWS");
+                url = url.replace("{token}", window.localStorage.getItem("appToken"));
+                url = url.replace("{authenticationCode}", authenticationCode);
                 //console.log("signoutBtn, url=" + url);
                 $.ajax({
                     type: "GET",
@@ -157,8 +158,8 @@
             	Call ws to get the strAboutApp
             */
             var appToken = window.localStorage.getItem("appToken");
-            var url = "http://apidev.ccnhub.com/api/product/v1/token=" + appToken;
-            var strAboutApp;
+            var url = app.aboutAppService.getURL(appToken);
+            var strAboutApp = "";
             $.ajax({
                 type: "GET",
                 url: url,
@@ -169,12 +170,20 @@
                     var responseJSON = response;
                     strAboutApp = "<div class='label_header'>" + responseJSON.Name + " </div>";
                     strAboutApp += "<div class='label_content'>" + responseJSON.Details + " </div>";
-            		//console.log("strAboutApp=" + strAboutApp);    
-                    $("#aboutAppDiv").html(strAboutApp);
+            		$("#aboutAppDiv").html(strAboutApp);
                 }
               });
             
 		},
+        
+        /*
+        	get WS url 
+        */
+        getURL: function(appToken){
+            var url = window.localStorage.getItem("aboutAppWS");
+            url = url.replace("{token}", appToken);
+            return url;
+        },
         
         viewModel: new AboutAppViewModel()        
         

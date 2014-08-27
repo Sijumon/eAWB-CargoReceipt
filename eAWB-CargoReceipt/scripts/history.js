@@ -36,10 +36,7 @@
             /*
             	call the ws to clear all history data
             */
-            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/" +
-            			window.localStorage.getItem("appToken") + "/";
-            //TODO:
-            //url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/aaa/";
+            var url = app.historyService.getDeleteAllRowsURL(window.localStorage.getItem("appToken"));
             //console.log("===== onClearHistoryAction(), url=" + url);
             $.ajax({
                 type: "DELETE",
@@ -134,8 +131,9 @@
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
-                var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=" + window.localStorage.getItem("appToken")
-                			+ "/authenticationCode=" + authenticationCode;
+                var url = window.localStorage.getItem("logoutWS");
+                url = url.replace("{token}", window.localStorage.getItem("appToken"));
+                url = url.replace("{authenticationCode}", authenticationCode);
                 //console.log("signoutBtn, url=" + url);
                 $.ajax({
                     type: "GET",
@@ -170,7 +168,7 @@
             	Show the historyList            
             */
             var appToken = window.localStorage.getItem("appToken");
-            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=" + appToken;
+            var url = app.historyService.getURL(appToken);
             //var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=aaa";
             //var url = "data/history_data.json";
             //console.log("url=" + url);
@@ -255,8 +253,7 @@
                     /*
                     	Call the ws to delete each row of listview
                     */ 
-                    var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/"  +
-                    			appToken + "/" + id;
+                    var url = app.historyService.getDeleteOneRowURL(appToken, id);
                     var numOfRecord = app.historyService.viewModel.get("strNumOfRecord");
                     numOfRecord -= 1;
                     app.historyService.viewModel.set("strNumOfRecord", numOfRecord);
@@ -281,6 +278,36 @@
             });
             
 		},
+        
+        /*
+        	get WS url 
+        */
+        getURL: function(appToken){
+            var url = window.localStorage.getItem("historyListWS");
+            url = url.replace("{token}", appToken);
+            return url;
+        },
+        
+        
+        /*
+        	get WS delete one row url 
+        */
+        getDeleteOneRowURL: function(appToken, id){
+            var url = window.localStorage.getItem("deleteOneRowWS");
+            url = url.replace("{token}", appToken);
+            url = url.replace("{id}", id);
+            return url;
+        },
+        
+        
+        /*
+        	get WS url 
+        */
+        getDeleteAllRowsURL: function(appToken){
+            var url = window.localStorage.getItem("deleteAllRowsWS");
+            url = url.replace("{token}", appToken);
+            return url;
+        },
         
         
         /*

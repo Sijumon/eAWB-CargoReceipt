@@ -1,0 +1,46 @@
+[
+    {
+        "Name": "Advertisement ws",
+        "Url": "http://apidev.ccnhub.com/api/activation/v1/productCode=cargoreceipt/operatingsys={deviceOs}/deviceid={deviceId}"
+    },
+    {
+        "Name": "CCNHub Linc login ws",
+        "Url": "http://apidev.ccnhub.com/api/session/v1/login/token={token}/email={email}/password={password}"
+    },
+	{
+        "Name": "CCNHub Linc user login ws",
+        "Url": "http://apidev.ccnhub.com/api/session/v1/login/token={token}/companyID={companyID}/email={email}/password={password}"
+    },
+	{
+        "Name": "Logout ws",
+        "Url": "http://apidev.ccnhub.com/api/session/v1/logout/token={token}/authenticationCode={authenticationCode}"
+    },
+	{
+        "Name": "History list ws",
+        "Url": "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token={token}"
+    },
+	{
+        "Name": "Delete one record ws",
+        "Url": "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/{token}/{id}"
+    },
+	{
+        "Name": "Delete all records ws",
+        "Url": "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/{token}/"
+    },
+	{
+        "Name": "Get Cargo Receipt Report ws",
+        "Url": "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreport/?token={token}&awbPrefix={awbPrefix}&awbSuffix={awbSuffix}"
+    },
+	{
+        "Name": "About app ws",
+        "Url": "http://apidev.ccnhub.com/api/product/v1/token={token}"
+    },
+	{
+        "Name": "About CCN ws",
+        "Url": "http://apidev.ccnhub.com/api/aboutccn/v1/token={token}"
+    },
+	{
+        "Name": "Terms & conditions ws",
+        "Url": "http://apidev.ccnhub.com/api/tandc/v1/token={token}"
+    }
+]

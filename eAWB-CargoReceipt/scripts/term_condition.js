@@ -121,8 +121,9 @@
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
-                var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=" + window.localStorage.getItem("appToken")
-                			+ "/authenticationCode=" + authenticationCode;
+                var url = window.localStorage.getItem("logoutWS");
+                url = url.replace("{token}", window.localStorage.getItem("appToken"));
+                url = url.replace("{authenticationCode}", authenticationCode);
                 //console.log("signoutBtn, url=" + url);
                 $.ajax({
                     type: "GET",
@@ -148,15 +149,15 @@
         }, 
         
         /*
-        //showTermCondition() function: show the Term&Condition information
+        	showTermCondition() function: show the Term&Condition information
         */
         showTermCondition: function () {
             //console.log("================= showTermCondition");
             /*
             	Call ws to get the strTermCondition            
             */
-            var appToken = window.localStorage.getItem("appToken");
-            var url = "http://apidev.ccnhub.com/api/tandc/v1/token=" + appToken;
+            var appToken = window.localStorage.getItem("appToken"); 
+            var url = app.termConditionService.getURL(appToken);
             //console.log("showTermCondition(), url=" + url);
             $.ajax({
                 type: "GET",
@@ -180,6 +181,15 @@
               });
         	    
 		},
+        
+        /*
+        	get WS url 
+        */
+        getURL: function(appToken){
+            var url = window.localStorage.getItem("termConditionWS");
+            url = url.replace("{token}", appToken);
+            return url;
+        },
         
         viewModel: new TermConditionViewModel()        
         

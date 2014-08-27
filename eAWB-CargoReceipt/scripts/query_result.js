@@ -113,8 +113,9 @@
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
-                var url = "http://apidev.ccnhub.com/api/session/v1/logout/token=" + window.localStorage.getItem("appToken")
-                			+ "/authenticationCode=" + authenticationCode;
+                var url = window.localStorage.getItem("logoutWS");
+                url = url.replace("{token}", window.localStorage.getItem("appToken"));
+                url = url.replace("{authenticationCode}", authenticationCode);
                 //console.log("signoutBtn, url=" + url);
                 $.ajax({
                     type: "GET",
@@ -157,9 +158,7 @@
             $('#fohDiv').hide();
             $('#noResultDiv').hide();
             $('#imgArrow').hide();
-            var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreport/?token=" +
-            			window.localStorage.getItem("appToken") + 
-            			"&awbPrefix=" + awbPrefix + "&awbSuffix=" + awbSuffix;
+            var url = app.queryResultService.getURL(window.localStorage.getItem("appToken"), awbPrefix, awbSuffix);
             //console.log("============ showQueryResult(), url=" + url);
             $.ajax({
                 type: "GET",
@@ -204,6 +203,18 @@
             var iframe = "<iframe src=\"http://mozilla.github.com/pdf.js/web/viewer.html?file=" + urlEncodedFile + 
             	"\"" + " frameborder=\"0\" style=\"height: 100%; width: 100%\"></iframe>";
             return iframe;
+        },
+        
+        
+        /*
+        	get WS url 
+        */
+        getURL: function(appToken, awbPrefix, awbSuffix){
+            var url = window.localStorage.getItem("getCargoReportWS");
+            url = url.replace("{token}", appToken);
+            url = url.replace("{awbPrefix}", awbPrefix);
+            url = url.replace("{awbSuffix}", awbSuffix);
+            return url;
         },
         
         viewModel: new QueryResultViewModel()        

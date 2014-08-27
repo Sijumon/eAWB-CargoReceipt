@@ -58,14 +58,8 @@
         */
         validateUserCredential: function(userType){
             var appToken = window.localStorage.getItem("appToken");
-            var url = "http://apidev.ccnhub.com/api/session/v1/login/token=" + appToken;
-            //TODO: use the same method to login
-            //if (userType){
-            //	url += "/companyID=" + $("#txtCompanyId").val().trim() + "/email=" + $("#txtEmail").val().trim() + "/password=" + $("#txtPassword").val().trim();
-            //} else {
-                url += "/email=" + $("#txtEmail").val().trim() + "/password=" + $("#txtPassword").val().trim();
-            //}
-            //console.log("url=" + url);
+            var url = app.loginService.getURL(appToken, userType);
+            //console.log("validateUserCredential(), url=" + url);
             /*
             	call the ws to validate user
             */
@@ -148,6 +142,28 @@
     	Declare loginService
     */
     app.loginService = {
+        
+        /*
+        	get WS url 
+        */
+        getURL: function(appToken, userType){
+            var url;
+            //TODO: use the same method to login
+            //if (userType){
+            //    url = window.localStorage.getItem("lincUserLoginWS");
+            //    url = url.replace("{token}", appToken);
+            //    url = url.replace("{companyID}", $("#txtCompanyId").val().trim());
+            //    url = url.replace("{email}", $("#txtEmail").val().trim());
+            //    url = url.replace("{token}", $("#txtPassword").val().trim());
+            //} else {
+                url = window.localStorage.getItem("lincLoginWS");
+                url = url.replace("{token}", appToken);
+                url = url.replace("{email}", $("#txtEmail").val().trim());
+            //    url = url.replace("{token}", $("#txtPassword").val().trim());
+            //}
+            
+            return url;
+        },
         
         /*
         	init(): set up the view at the first time loaded
@@ -270,14 +286,48 @@
             //console.log("deviceHeight=" + deviceHeight);
             window.localStorage.setItem("deviceHeight", deviceHeight);
             $("#loginForm").css("height", deviceHeight + "px");
+            
+            /*
+            	Parse the xml and store the ws link
+            */
+            app.loginService.parseXMLtoURL();
         }, 
         
         /*
         	show() function
         */        
         show: function () {
-            //console.log("================= login.js,show()"); 
-            //console.log("===login.js, appToken=" + window.localStorage.getItem("appToken"));            
+            //console.log("================= login.js,show()");            
+		},
+        
+        
+        /*
+        	parseXMLtoURL() function: parse XML file and store the ws url link
+        */        
+        parseXMLtoURL: function () {
+            //console.log("================= login.js,parseXMLtoURL()");    
+            $.ajax({
+                type: "GET",
+                url: "config/web_services.json",
+                contentType: "application/json;",                
+                headers: {'Accept': 'application/json'},
+                dataType: "json",
+                success: function(response)
+                {
+                    window.localStorage.setItem("advertisementWS", response[0].Url);
+                    window.localStorage.setItem("lincLoginWS", response[1].Url);
+                    window.localStorage.setItem("lincUserLoginWS", response[2].Url); 
+                    window.localStorage.setItem("logoutWS", response[3].Url);
+                    window.localStorage.setItem("historyListWS", response[4].Url);
+                    window.localStorage.setItem("deleteOneRowWS", response[5].Url);
+                    window.localStorage.setItem("deleteAllRowsWS", response[6].Url);
+                    window.localStorage.setItem("getCargoReportWS", response[7].Url);
+                    window.localStorage.setItem("aboutAppWS", response[8].Url);
+                    window.localStorage.setItem("aboutCCNWS", response[9].Url);
+                    window.localStorage.setItem("termConditionWS", response[10].Url);
+                }
+            });
+            
 		},
         
         viewModel: new LoginViewModel()        
