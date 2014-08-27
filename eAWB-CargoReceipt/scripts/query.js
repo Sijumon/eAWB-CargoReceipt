@@ -97,7 +97,7 @@
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
                 var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 500)
+                if (height > 700)
                 	app.application.navigate('#help_tablet'); 
                 else
                 	app.application.navigate('#help');

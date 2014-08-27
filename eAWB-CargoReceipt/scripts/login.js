@@ -239,7 +239,7 @@
                     
                     //Show footer info: href & show the ads for each 5 seconds
                     //$('#link').attr('href', advertiseURL);
-                    var index = 0, temp = 0, imgSrc;                    
+                    var index = 0, temp = 0, imgSrc                    
                     setInterval(function() {
                     	index += 1;
                         temp = index % length;
@@ -258,7 +258,7 @@
             $("#helpBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
                 var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 500)
+                if (height > 700)
                 	app.application.navigate('#help_tablet'); 
                 else
                 	app.application.navigate('#help');

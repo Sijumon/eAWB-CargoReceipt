@@ -142,7 +142,7 @@ body {
     line-height:200%;
     margin-left: 10%; 
     background-image: url(images/bg_uncheck.png); 
-    width: 120px;    
+    width: 116px;    
 }
 .div_checked{
     cursor: pointer; 
@@ -150,11 +150,11 @@ body {
     margin-right: 13%; 
     line-height:200%; 
     background-image: url(images/bg_checked.png); 
-    width: 120px;
+    width: 116px;
 }
 .label_linc{
     cursor: pointer; 
-    margin-left: 5%; 
+    margin-left: 2%; 
     color: #FFFFFF; 
     font-family: 'Segoe UI Light','Segoe UI'; 
     font-size: 14px; 
@@ -165,7 +165,7 @@ body {
 }
 .label_user{
     cursor: pointer; 
-    margin-left: 5%; 
+    margin-left: 2%; 
     color: #FFFFFF; 
     font-family: 'Segoe UI Light','Segoe UI'; 
     font-size: 14px; 
@@ -211,11 +211,11 @@ body {
     margin-bottom: -1%;
 }
 .img_line{
-    margin-left: -1%; 
+    margin-left: -2%; 
     margin-bottom: -4%;
 }
 .img_option{
-    margin-left: 1%; 
+    margin-left: -1%; 
     margin-bottom: -5%;
 }
 .img_signin{
@@ -228,17 +228,17 @@ body {
 }
 .div_linc{
     clear: left; cursor: pointer; float: left; margin-left: 10%; line-height:200%; 
-    background-image: url(../images/bg_uncheck.png); width: 120px;
+    background-image: url(../images/bg_uncheck.png); width: 118px;
 }
 .div_linc_active{
     clear: left; cursor: pointer; float: left; line-height:200%; margin-left: 10%; 
-    background-image: url(../images/bg_checked.png); width: 120px;
+    background-image: url(../images/bg_checked.png); width: 118px;
 }
 .div_user{
     cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
-    background-image: url(../images/bg_uncheck.png); width: 120px;
+    background-image: url(../images/bg_uncheck.png); width: 116px;
 }
 .div_user_active{
     cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
-    background-image: url(../images/bg_checked.png); width: 120px;
+    background-image: url(../images/bg_checked.png); width: 116px;
 }
