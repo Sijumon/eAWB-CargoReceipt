@@ -96,7 +96,10 @@
             });
             $("#termConditionBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                app.application.navigate('#term_condition');
+                if (height > 700)
+                	app.application.navigate('#term_condition_tablet'); 
+                else
+                	app.application.navigate('#term_condition');
             });
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
