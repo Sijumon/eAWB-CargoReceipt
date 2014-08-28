@@ -127,7 +127,11 @@
             });
             $("#termConditionBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                app.application.navigate('#term_condition');
+                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
+                if (height > 700)
+                	app.application.navigate('#term_condition_tablet'); 
+                else
+                	app.application.navigate('#term_condition');
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");

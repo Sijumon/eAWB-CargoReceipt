@@ -21,6 +21,7 @@
     <link href="css/query_result.css" rel="stylesheet" />
     <link href="css/about_app.css" rel="stylesheet" />
     <link href="css/about_ccn.css" rel="stylesheet" />
+    <link href="css/terms_conditions.css" rel="stylesheet" /> 
     <link href="css/history.css" rel="stylesheet" />
     <link href="css/help.css" rel="stylesheet" />
     
@@ -41,7 +42,8 @@
     <script src="scripts/help_tablet.js"></script>
     <script src="scripts/history.js"></script>
     <script src="scripts/query_result.js"></script>
-    <script src="scripts/term_condition.js"></script>
+    <script src="scripts/term_condition.js"></script> 
+    <script src="scripts/term_condition_tablet.js"></script>
     
 </head>
     
@@ -652,10 +654,37 @@
             <div class="titleDiv">
             	<label class="label_title_page" style="margin-left: 32%;">Terms & Conditions</label>	    
             </div>
-            <div class="swiper-container-termCondition">
+            <div id="termConditionDiv" class="swiper-container-termCondition">
         	  <div class="swiper-wrapper">
                   <div class="swiper-slide"> 
-              		<div id="termConditionDiv" class="div_content_static"></div>     
+              		<div id="termDiv_part1" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part2" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part3" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part4" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part5" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part6" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part7" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part8" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part9" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termDiv_part10" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
                   </div>
               </div>  
               <div class="pagination_termCondition"></div>  
@@ -664,6 +693,55 @@
          </div>
     </div>
     <!--Term & condition view-->
+    
+    
+    <!--Term & condition tablet view-->
+    <div id="term_condition_tablet"
+        data-role="view"
+        data-init="app.termConditionTabletService.init"
+        data-show="app.termConditionTabletService.showTermCondition"
+        data-model="app.termConditionTabletService.viewModel"
+        data-title="e-AWB">
         
+        <!--Header-->
+        <div data-role="header">
+            <div data-role="navbar" class="header_bg">
+                <img src="images/home.png" class="img_home"  data-bind="click: goHome"/>
+                <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
+                <span data-role="view-title" class="header_text"></span>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <div data-role="footer">
+            <div data-role="tabstrip">  
+                 <img id="imgTermConditionTablet" class="footer_bg"/>
+            </div>
+        </div>
+        
+        <!--Content-->
+        <div class="view-content" style="position: relative;">
+            <div class="titleDiv">
+            	<label class="label_title_page" style="margin-left: 43%;">Terms & Conditions</label>	    
+            </div>
+            <div id="termConditionTabletDiv" class="swiper-container-termCondition_tablet">
+        	  <div class="swiper-wrapper">
+                  <div class="swiper-slide"> 
+              		<div id="termConditionDiv_part1" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termConditionDiv_part2" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="termConditionDiv_part3" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+              </div>  
+              <div class="pagination_termCondition_tablet"></div>  
+            </div>
+            
+         </div>
+    </div>
+    <!--Term & condition tablet view-->
+    
 </body>
 </html>

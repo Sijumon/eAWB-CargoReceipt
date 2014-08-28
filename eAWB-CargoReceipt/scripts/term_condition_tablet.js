@@ -1,12 +1,12 @@
 (function (global) {
-    var TermConditionViewModel, app = global.app = global.app || {};
+    var TermConditionTabletViewModel, app = global.app = global.app || {};
     
     app.application = new kendo.mobile.Application(document.body, {platform: "ios7"});
     
     /*
-    	Declare TermConditionViewModel
+    	Declare TermConditionTabletViewModel
     */
-    TermConditionViewModel = kendo.data.ObservableObject.extend({
+    TermConditionTabletViewModel = kendo.data.ObservableObject.extend({
         /*
         	goHome(): go to home view of the application
         */
@@ -39,9 +39,9 @@
     });
     
     /*
-    	//Declare termConditionService
+    	Declare termConditionTabletService
     */
-    app.termConditionService = {
+    app.termConditionTabletService = {
         
         /*
         	init(): set up the view at the first time loaded
@@ -54,8 +54,8 @@
             */
             var advertiseIMG = window.localStorage.getItem("advertiseIMG");
             var advertiseURL = window.localStorage.getItem("advertiseURL");
-            $('#imgTermCondition').attr('src', advertiseIMG);
-            $('#imgTermCondition').click(function(e) {
+            $('#imgTermConditionTablet').attr('src', advertiseIMG);
+            $('#imgTermConditionTablet').click(function(e) {
                 window.location.href = advertiseURL;
 			});
             
@@ -69,8 +69,8 @@
             	index += 1;
                 temp = index % length;
                 imgSrc = arrAdsImg[temp];
-                $('#imgTermCondition').attr('src', imgSrc);
-                $('#imgTermCondition').click(function(e) {
+                $('#imgTermConditionTablet').attr('src', imgSrc);
+                $('#imgTermConditionTablet').click(function(e) {
                     window.location.href = arrAdsURL[temp];
 				});
             }, (arrAdsDuration[temp] * 1000));
@@ -180,33 +180,18 @@
                             strTermCondition += "<div class='label_content'>" + value.Details + " </div>";  
                         strTermCondition += "<br>";
                     });
-                    //console.log("strTermCondition=" + strTermCondition);    
+                    //console.log("strTermCondition=" + strTermCondition);         
                     
-                    var index = strTermCondition.length/10;
-                    var strTermsConditions_part1 = strTermCondition.substring(0, index + 4).trim();
-                    var strTermsConditions_part2 = strTermCondition.substring(index + 5, 2 * index + 115).trim();
-                    var strTermsConditions_part3 = strTermCondition.substring(2 * index + 116, 3 * index + 20).trim();
-                    var strTermsConditions_part4 = strTermCondition.substring(3 * index + 21, 4 * index + 10).trim();
-                    var strTermsConditions_part5 = strTermCondition.substring(4 * index + 11, 5 * index - 3).trim();
-                    var strTermsConditions_part6 = strTermCondition.substring(5 * index - 2, 6 * index - 33).trim();
-                    var strTermsConditions_part7 = strTermCondition.substring(6 * index - 33, 7 * index - 100).trim();
-                    var strTermsConditions_part8 = strTermCondition.substring(7 * index - 80, 8 * index - 2).trim();
-                    var strTermsConditions_part9 = strTermCondition.substring(8 * index - 1, 9 * index + 2).trim();
-                    var strTermsConditions_part10 = strTermCondition.substring(9 * index + 3).trim();
-                    $("#termDiv_part1").html(strTermsConditions_part1);
-                    $("#termDiv_part2").html(strTermsConditions_part2);
-                    $("#termDiv_part3").html(strTermsConditions_part3);
-                    $("#termDiv_part4").html(strTermsConditions_part4);
-                    $("#termDiv_part5").html(strTermsConditions_part5);
-                    $("#termDiv_part6").html(strTermsConditions_part6);
-                    $("#termDiv_part7").html(strTermsConditions_part7);
-                    $("#termDiv_part8").html(strTermsConditions_part8);
-                    $("#termDiv_part9").html(strTermsConditions_part9);
-                    $("#termDiv_part9").html(strTermsConditions_part9);
-                    $("#termDiv_part10").html(strTermsConditions_part10);
+                    var index = strTermCondition.length/3;
+                    var strTermsConditions_part1 = strTermCondition.substring(0, index + 428).trim();
+                    var strTermsConditions_part2 = strTermCondition.substring(index + 429, 3 * index - 1155).trim();
+                    var strTermsConditions_part3 = strTermCondition.substring(3 * index - 1154);
+                    $("#termConditionDiv_part1").html(strTermsConditions_part1);
+                    $("#termConditionDiv_part2").html(strTermsConditions_part2);
+                    $("#termConditionDiv_part3").html(strTermsConditions_part3);
                     
-                    $('.swiper-container-termCondition').swiper({
-                        pagination: '.pagination_termCondition',
+                    $('.swiper-container-termCondition_tablet').swiper({
+                        pagination: '.pagination_termCondition_tablet',
             			paginationClickable: true,
                         mode: 'horizontal'
                     });
@@ -226,7 +211,7 @@
             return url;
         },
         
-        viewModel: new TermConditionViewModel()        
+        viewModel: new TermConditionTabletViewModel()        
         
     };
     
