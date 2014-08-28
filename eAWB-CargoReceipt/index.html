@@ -20,6 +20,7 @@
     <link href="css/query.css" rel="stylesheet" />
     <link href="css/query_result.css" rel="stylesheet" />
     <link href="css/about_app.css" rel="stylesheet" />
+    <link href="css/about_ccn.css" rel="stylesheet" />
     <link href="css/history.css" rel="stylesheet" />
     <link href="css/help.css" rel="stylesheet" />
     
@@ -487,7 +488,7 @@
             <div class="titleDiv">
             	<label class="label_title_page" style="margin-left: 48%;">Help</label>	    
             </div>
-            <div id="helpTabletDiv" class="swiper-container_tablet" style="">
+            <div id="helpTabletDiv" class="swiper-container_tablet">
         	  <div class="swiper-wrapper">
             	  <div class="swiper-slide"> 
             			<label class="label_header_help">1. Login</label> <br>
@@ -567,7 +568,7 @@
             <div class="titleDiv">
             	<label class="label_title_page" style="margin-left: 40%;">About App</label>	    
             </div>
-            <div id="aboutAppDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>
+            <div id="aboutAppDiv" class="div_content_static"></div>
          </div>
     </div>
     <!--About app view-->
@@ -601,8 +602,22 @@
         <div class="view-content" style="position: relative;">
             <div class="titleDiv">
             	<label class="label_title_page" style="margin-left: 40%;">About CCN</label>	    
-            </div>
-            <div id="aboutCCNDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>       
+            </div>     
+            <div id="aboutCCNDiv" class="swiper-container-aboutccn">
+        	  <div class="swiper-wrapper">
+                  <div class="swiper-slide"> 
+              		<div id="aboutCCNDiv_part1" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="aboutCCNDiv_part2" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+                  <div class="swiper-slide"> 
+              		<div id="aboutCCNDiv_part3" class="label_content" style="margin-left: 5%; margin-right: 5%;"></div>     
+                  </div>
+              </div>  
+              <div class="pagination_aboutccn"></div>  
+            </div>            
+            <div id="aboutCCNTabletDiv" class="div_content_static"></div>
          </div>
     </div>
     <!--About CCN view-->
@@ -637,7 +652,15 @@
             <div class="titleDiv">
             	<label class="label_title_page" style="margin-left: 32%;">Terms & Conditions</label>	    
             </div>
-            <div id="termConditionDiv" style="margin-top: 5%; margin-left: 5%; margin-right: 5%"></div>
+            <div class="swiper-container-termCondition">
+        	  <div class="swiper-wrapper">
+                  <div class="swiper-slide"> 
+              		<div id="termConditionDiv" class="div_content_static"></div>     
+                  </div>
+              </div>  
+              <div class="pagination_termCondition"></div>  
+            </div>
+            
          </div>
     </div>
     <!--Term & condition view-->

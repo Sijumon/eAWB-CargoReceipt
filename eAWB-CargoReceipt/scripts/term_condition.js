@@ -178,6 +178,13 @@
                     });
                     //console.log("strTermCondition=" + strTermCondition);         
                     $("#termConditionDiv").html(strTermCondition);
+                    
+                    $('.swiper-container-termCondition').swiper({
+                        pagination: '.pagination_termCondition',
+            			paginationClickable: true,
+                        mode: 'horizontal'
+                    });
+                    
                 }
               });
         	    

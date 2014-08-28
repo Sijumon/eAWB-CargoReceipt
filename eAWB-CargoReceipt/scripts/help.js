@@ -148,19 +148,18 @@
                 });
             });
             
+            $('.swiper-container').swiper({
+                pagination: '.pagination',
+    			paginationClickable: true,
+                mode: 'horizontal'
+            });
         }, 
         
         /*
         	showHelp() function: show the About App information
         */        
         showHelp: function () {
-            //console.log("================= showHelp");
-            $('.swiper-container').swiper({
-                pagination: '.pagination',
-    			paginationClickable: true,
-                mode: 'horizontal'
-            });
-            
+            //console.log("================= showHelp");            
     	},
         
         viewModel: new HelpViewModel()        

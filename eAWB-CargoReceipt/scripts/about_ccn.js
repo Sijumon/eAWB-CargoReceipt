@@ -7,6 +7,10 @@
     	//Declare AboutCCNViewModel
     */     
     AboutCCNViewModel = kendo.data.ObservableObject.extend({
+        strAboutCCN_part1: "",
+        strAboutCCN_part2: "",
+        strAboutCCN_part3: "",
+        
         /*
         	goHome(): go to home view of the application
         */
@@ -159,8 +163,9 @@
             */  
             var appToken = window.localStorage.getItem("appToken");
             var url = app.aboutCCNService.getURL(appToken);
-            //console.log("showAboutCCN(), url=" + url);
-            
+            //console.log("showAboutCCN(), url=" + url);            
+            var height = parseFloat(window.localStorage.getItem("deviceHeight"));
+                        
             $.ajax({
                 type: "GET",
                 url: url,
@@ -177,7 +182,31 @@
                     });
                     //console.log("strAboutCCN=" + strAboutCCN); 
                     strAboutCCN += "<img src='images/ccn.png' style='display: inline-block; width: 35%; float: right; margin-bottom: 0%; margin-top: 3%; margin-right: 0%;' /> <br><br>";
-                    $("#aboutCCNDiv").html(strAboutCCN);
+                    
+                    if (height > 700){
+                        $('#aboutCCNDiv').hide();
+            			$('#aboutCCNTabletDiv').show();
+                        $("#aboutCCNTabletDiv").html(strAboutCCN);
+                    } else {
+                        $('#aboutCCNDiv').show();
+            			$('#aboutCCNTabletDiv').hide();
+                        
+                        var index = strAboutCCN.length/3;
+                        var strAboutCCN_part1 = strAboutCCN.substring(0, index-1).trim();
+                        var strAboutCCN_part2 = strAboutCCN.substring(index, 2 * index - 1).trim();
+                        var strAboutCCN_part3 = strAboutCCN.substring(2 * index);
+                        $("#aboutCCNDiv_part1").html(strAboutCCN_part1);
+                        $("#aboutCCNDiv_part2").html(strAboutCCN_part2);
+                        $("#aboutCCNDiv_part3").html(strAboutCCN_part3);
+                        
+                        $('.swiper-container-aboutccn').swiper({
+                            pagination: '.pagination_aboutccn',
+                			paginationClickable: true,
+                            mode: 'horizontal'
+                        });
+                        
+                    }                    
+                    
                 }
             });
              

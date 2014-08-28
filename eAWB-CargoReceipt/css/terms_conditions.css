@@ -3,3 +3,13 @@ body {
     height: 100%;
     width: 100%;
 }
+.pagination_termCondition {
+  position: absolute;
+  z-index: 20;
+  left: 26%;
+  bottom: 0px;
+}
+.swiper-container-termCondition {
+	width: 100%;
+	height: 340px;
+}
