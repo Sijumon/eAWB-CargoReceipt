@@ -12,14 +12,6 @@
         currentStatus: "",
         
         /*
-        	goHome(): go to home view of the application
-        */
-        goHome: function(e){
-            //app.application.navigate('#query', 'slide:right'); 
-        	$("#homeURL").attr('href', '#query');
-        },
-        
-        /*
         	showSettingDialog(): show the setting signout dialog
         */
         showSettingDialog: function(){

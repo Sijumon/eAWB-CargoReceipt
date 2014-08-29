@@ -8,15 +8,7 @@
     */
     HistoryViewModel = kendo.data.ObservableObject.extend({
         strNumOfRecord: 0,
-        
-        /*
-        	goHome(): go to query view of the application
-        */
-        goHome: function(){
-            //app.application.navigate('#query', 'slide:right'); 
-            $("#queryURL").attr('href', '#query');
-        },
-        
+                
         /*
         	showSettingDialog(): show the setting dialog
         */
