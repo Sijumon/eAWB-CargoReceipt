@@ -99,19 +99,19 @@
           </label>
           
           <br>  
-          <div id="linc" data-bind="click: onLincDivAction" class="div_linc">
+          <div id="linc" data-bind="click: onLincDivAction" class="div_linc_active">
           	<label class="label_linc">CCNHub LINC</label>
               <img src="images/line.png" class="img_line" />
-              <img id="lincCheckbox" src="images/uncheck.png" class="img_option" />
+              <img id="lincCheckbox" src="images/checked.png" class="img_option" /> 
           </div>
           
-          <div id="user" data-bind="click: onUserDivAction" class="div_user_active">
+          <div id="user" data-bind="click: onUserDivAction" class="div_user">
           	<label class="label_user">CCNHub user</label>
               <img src="images/line.png"  class="img_line" />
-              <img id="userCheckbox" src="images/checked.png" class="img_option" />
+              <img id="userCheckbox" src="images/uncheck.png" class="img_option" />
           </div>
             
-          <input id="txtCompanyId" placeholder="Company ID" class="textbox_bg" style="margin-top: 1.5%;" />  
+          <input id="txtCompanyId" placeholder="Company ID" class="textbox_bg" style="margin-top: 1.5%; display: none;" />  
           
           <input id="txtEmail" placeholder="Email" class="textbox_bg" style="margin-top: 1.5%;" />  
             
@@ -121,7 +121,12 @@
             
           <a id="signInBtn" type="submit" data-role="button" data-bind="click: onSignIn"
                 class="btn_signin">Sign in</a> <br>
-                      
+            
+          <!--   
+          <a id="signInBtn" type="submit" data-role="button" href="#test.html"
+                class="btn_signin">Test</a> <br>  
+          -->
+            
           <label id="termAndCondition" class="label_underline" data-bind="click: onTermConditionAction">Terms and Conditions?</label>
              
         </div>

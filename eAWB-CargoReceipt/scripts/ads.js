@@ -8,7 +8,8 @@
         app.application = new kendo.mobile.Application(document.body, {platform: "ios7"});
         navigator.splashscreen.hide();
         
-        //console.log("==ads.js, deviceready()");
+        console.log("==ads.js, deviceready()");
+        console.log("window.localStorage.getItem(\"userLoggedIn\")=" + window.localStorage.getItem("userLoggedIn"));
         /*
         	Get device info
         */
@@ -37,7 +38,7 @@
                 dataType: "json",
                 error: function(xhr, ajaxOptions, thrownError) {
                    console.log("error status: " + xhr.status);
-               },
+                },
                 success: function(response) {
             		appToken = response.Token;	
             		window.localStorage.setItem("appToken", appToken);
@@ -46,7 +47,10 @@
                 }
             });
         } else {
-            app.application.navigate('#login', 'slide:right');  
+            if (window.localStorage.getItem("userLoggedIn"))
+            	app.application.navigate('#query', 'slide:right');  
+            else
+            	app.application.navigate('#login', 'slide:right');  
         }
         
         

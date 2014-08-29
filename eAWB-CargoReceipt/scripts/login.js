@@ -7,7 +7,7 @@
     	Declare LoginViewModel
     */
     LoginViewModel = kendo.data.ObservableObject.extend({
-        displayUser: true,
+        displayUser: false,
         
         /*
         	show the setting dialog
@@ -181,7 +181,7 @@
             //console.log("================= query.js,init()");
             
             window.localStorage.setItem("userLoggedIn", false);
-            app.loginService.viewModel.set("displayUser", true);   
+            app.loginService.viewModel.set("displayUser", false);   
             $('#textMsg').show();
             $('#errorMsg').hide();
             

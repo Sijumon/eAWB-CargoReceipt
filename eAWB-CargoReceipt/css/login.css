@@ -256,3 +256,6 @@ body {
     cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
     background-image: url(../images/bg_checked.png); width: 116px;
 }
+.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
