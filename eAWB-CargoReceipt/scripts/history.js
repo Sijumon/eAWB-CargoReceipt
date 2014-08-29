@@ -8,7 +8,19 @@
     */
     HistoryViewModel = kendo.data.ObservableObject.extend({
         strNumOfRecord: 0,
-                
+
+        onHistoryListClickAction: function(e){
+        	//console.log("================= onHistoryListClickAction()");            
+            var index = $(e.item).index();  
+            var dataItem = $('#historyList').data('kendoMobileListView').dataSource.view()[index];
+            var awbPrefix = dataItem.AWBPrefix;
+            var awbSuffix = dataItem.AWBSuffix;
+            //console.log("id=" + id);
+            var url = "#query_result?awbPrefix=" + awbPrefix + "&awbSuffix=" + awbSuffix;
+            //console.log("url=" + url);
+            app.application.navigate(url, 'slide:right');
+        },
+        
         /*
         	showSettingDialog(): show the setting dialog
         */
@@ -24,7 +36,7 @@
         	onClearHistoryAction(): clear all history action
         */
         onClearHistoryAction: function(e){
-            //console.log("================= onClearHistoryAction");            
+            //console.log("================= onClearHistoryAction()");            
             /*
             	call the ws to clear all history data
             */
@@ -170,37 +182,6 @@
             //var url = "data/history_data.json";
             //console.log("url=" + url);
             
-            $("#historyList").kendoMobileListView({
-                dataSource: new kendo.data.DataSource({
-                  schema: {
-                    data: function(response) {
-                        //console.log("response=" + response);
-                        
-                        responseJSON = $.parseJSON(response);
-                    	//Parse response data
-                        if (responseJSON === null)
-                        	return [];
-                        var cargoReceiptReportRequests = responseJSON.CargoReceiptReportRequests;
-                        if (cargoReceiptReportRequests === null|| cargoReceiptReportRequests.length === 0)
-                            return [];
-                        
-                        var arrHistoryList = app.historyService.parseJSONdata(cargoReceiptReportRequests);
-                        //console.log("arrHistoryList=" + arrHistoryList);
-                        arrHistoryList = $.parseJSON(arrHistoryList);
-                        
-                        return arrHistoryList;
-                    }
-                  },
-                  transport: {
-                    read: {
-                      url: url,
-                      dataType: "text"
-                    }
-                  }
-                }),
-                template: $("#history-lw-template").html(),
-                fixedHeaders: true                
-            });
             
             
             /*
@@ -209,21 +190,6 @@
         	$("#historyList").kendoTouch({
                 filter: ">li",
                 enableSwipe: true,
-                /*
-                touchstart: function (e){
-                    //console.log("============ touchstart");
-                    var index = $(e.touch.currentTarget).index();
-                    //console.log("index=" + index);
-                    var dataItem = $('#historyList').data('kendoMobileListView').dataSource.view()[index];
-                    var awbPrefix = dataItem.AWBPrefix;
-                    var awbSuffix = dataItem.AWBSuffix;
-                    //console.log("id=" + id);
-                    var url = "#query_result?awbPrefix=" + awbPrefix + "&awbSuffix=" + awbSuffix;
-                    //console.log("url=" + url);
-                    app.application.navigate(url, 'slide:right');
-                    
-                },
-                */
                 swipe: function (e) {
                     //console.log("============ onHistorySwipe");
                 	/*
@@ -273,6 +239,39 @@
                            
                 }
             });
+            
+            $("#historyList").kendoMobileListView({
+                dataSource: new kendo.data.DataSource({
+                  schema: {
+                    data: function(response) {
+                        //console.log("response=" + response);
+                        
+                        responseJSON = $.parseJSON(response);
+                    	//Parse response data
+                        if (responseJSON === null)
+                        	return [];
+                        var cargoReceiptReportRequests = responseJSON.CargoReceiptReportRequests;
+                        if (cargoReceiptReportRequests === null|| cargoReceiptReportRequests.length === 0)
+                            return [];
+                        
+                        var arrHistoryList = app.historyService.parseJSONdata(cargoReceiptReportRequests);
+                        //console.log("arrHistoryList=" + arrHistoryList);
+                        arrHistoryList = $.parseJSON(arrHistoryList);
+                        
+                        return arrHistoryList;
+                    }
+                  },
+                  transport: {
+                    read: {
+                      url: url,
+                      dataType: "text"
+                    }
+                  }
+                }),
+                template: $("#history-lw-template").html(),
+                fixedHeaders: true                
+            });
+            
             
 		},
         
