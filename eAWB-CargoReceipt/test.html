@@ -77,7 +77,7 @@
           // make sure the initial touch wasn't on the archive button
           var initial = e.touch.initialTouch;
           var target = e.touch.currentTarget;
-          console.table([{ initial: initial, target: target }]);
+          console.log([{ initial: initial, target: target }]);
           // if we are tapping outside the archive area, cancel the action
           if (initial === target) 
           {

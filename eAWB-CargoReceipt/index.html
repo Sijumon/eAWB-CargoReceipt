@@ -122,7 +122,7 @@
           <a id="signInBtn" type="submit" data-role="button" data-bind="click: onSignIn"
                 class="btn_signin">Sign in</a> <br>
             
-          <!--   
+          <!--    
           <a id="signInBtn" type="submit" data-role="button" href="#test.html"
                 class="btn_signin">Test</a> <br>  
           -->
@@ -273,6 +273,12 @@
         <!--Content-->
         <div class="view-content">            
             <div id="divQueryResult" style="overflow: auto;">
+                <!--Use google viewer
+                    <iframe src="http://docs.google.com/viewer?url=http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf&embedded=true" 
+                         id="pdfFile" scrolling="yes" style="width: 100%; height: 100%;" frameborder="0">                        
+                    </iframe>                     
+                -->    
+                
                 <div id="pdfDiv" style="width: 100%; height: 100%;">
                 </div>
                 
@@ -293,7 +299,8 @@
                     <label class="label_possibleReason">Possible reasons</label> <br>                       
                     <label class="label_textReason">1. The Consol manifest has not been sent to your carrier</label>    <br>
                     <label class="label_textReason">2. Your freight carrier has received your consiment but is yet to send a confirmation</label>
-                </div>                
+                </div>     
+                
             </div>            
         </div>
 		

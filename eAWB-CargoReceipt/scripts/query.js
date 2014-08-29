@@ -141,6 +141,7 @@
                     dataType: "json",
                     success: function(response) {
                         console.log("============ validateUserCredential(): SUCCCESS"); 
+                        //console.log("response=" + JSON.stringify(response));
                         if (response.IsSuccess){
                         	$('#settingSignOutDialog').dialog('close');
                             window.localStorage.setItem("userLoggedIn", false);
