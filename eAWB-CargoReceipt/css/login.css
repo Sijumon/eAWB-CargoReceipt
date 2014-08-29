@@ -132,12 +132,12 @@ body {
 	width: 120%;
 }
 .line_bigger_bg{
-	background:#5F5F5F; 
-    border:0; 
-    height:15px;
-    margin-left: -16px;
-    margin-bottom: -7px;
-	width: 120%;
+	background: #5F5F5F;
+    border: 0;
+    height: 13%;
+    margin-left: -10%;
+    margin-top: 10%;
+    width: 120%;
 }
 .label_select{
     margin-left: 10%; 

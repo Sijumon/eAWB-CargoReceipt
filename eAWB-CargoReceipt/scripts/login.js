@@ -14,8 +14,15 @@
         */
     	showSettingDialog: function(){
         	//console.log("================= showSettingDialog()");   
+            var height = $(window).height();
+            var width = $(window).width() * 0.8
+            if (height > 700){
+                height = 270;
+            } else {
+                height = 244;
+            }
             var dialog = $("#settingDialog").dialog({
-               dialogClass: 'setting_dialog', modal: true, resizable: false
+               width: width, height: height, modal: true, resizable: false
             });
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");            
