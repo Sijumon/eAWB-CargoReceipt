@@ -186,7 +186,7 @@
                             $('#fohDiv').show();
                             app.queryResultService.viewModel.set("currentStatus", "Freight on Hand");    
                         } else { // noresult case
-                            $('#fohDiv').hide();
+                            $('#noResultDiv').show();
                             app.queryResultService.viewModel.set("currentStatus", "Unknown");
                         }
                     }
