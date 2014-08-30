@@ -37,27 +37,37 @@
         */
         onClearHistoryAction: function(e){
             //console.log("================= onClearHistoryAction()");            
-            /*
-            	call the ws to clear all history data
-            */
-            var url = app.historyService.getDeleteAllRowsURL(window.localStorage.getItem("appToken"));
-            //console.log("===== onClearHistoryAction(), url=" + url);
-            $.ajax({
-                type: "DELETE",
-                url: url,
-                data: "{}",
-                headers: {'Accept': 'application/json'},
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(response) {
-                    console.log("DELETE success");
-                    app.historyService.viewModel.set("strNumOfRecord", 0);
-                    app.historyService.refreshHistoryList(); 
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                   console.log("============ onClearHistoryAction(): ERROR=" + errorThrown);
+            $("#delAllDialog").dialog({
+                modal: true, resizable: false,
+                buttons: {
+                    "Delete all": function() {
+                    	$( this ).dialog( "close" );
+                        var url = app.historyService.getDeleteAllRowsURL(window.localStorage.getItem("appToken"));
+                        //console.log("===== onClearHistoryAction(), url=" + url);
+                        $.ajax({
+                            type: "DELETE",
+                            url: url,
+                            data: "{}",
+                            headers: {'Accept': 'application/json'},
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function(response) {
+                                console.log("DELETE success");
+                                app.historyService.viewModel.set("strNumOfRecord", 0);
+                                app.historyService.refreshHistoryList(); 
+                            },
+                            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                               console.log("============ onClearHistoryAction(): ERROR=" + errorThrown);
+                            }
+                        });        
+                    },
+                    Cancel: function() {
+                      $( this ).dialog( "close" );
+                    }
                 }
-            });            
+            });
+            
+                
         }
         
     });
