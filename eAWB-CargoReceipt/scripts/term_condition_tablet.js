@@ -35,11 +35,13 @@
                 dialog = $("#settingDialog").dialog({
                    width: width, height: height, modal: true, resizable: false
                 });
+                window.localStorage.setItem("openSettingDialog", true);
             } else {
                 dialog = $("#settingSignOutDialog").dialog({
                    width: width, height: height, modal: true, resizable: false
                 });
-            }            
+        		window.localStorage.setItem("openSettingSignoutDialog", true);
+            }           
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
         } 
@@ -169,6 +171,8 @@
         */
         showTermCondition: function () {
             //console.log("================= showTermCondition");
+            app.termConditionTabletService.closeDialog();
+            
             /*
             	Call ws to get the strTermCondition            
             */
@@ -220,6 +224,21 @@
             url = url.replace("{environment}", window.localStorage.getItem("environment"));
             url = url.replace("{token}", appToken);
             return url;
+        },
+        
+        
+        /*
+        	closeDialog(): close the current dialog
+        */
+        closeDialog: function(){
+        	if (window.localStorage.getItem("openSettingDialog") === 'true'){ 
+            	window.localStorage.setItem("openSettingDialog", false);
+                $('#settingDialog').dialog('close');
+            } 
+            if(window.localStorage.getItem("openSettingSignoutDialog") === 'true'){
+                window.localStorage.setItem("openSettingSignoutDialog", false);
+                $('#settingSignOutDialog').dialog('close');
+            }
         },
         
         viewModel: new TermConditionTabletViewModel()        

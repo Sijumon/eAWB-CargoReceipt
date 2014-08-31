@@ -24,6 +24,7 @@
             var dialog = $("#settingDialog").dialog({
                width: width, height: height, modal: true, resizable: false
             });
+            window.localStorage.setItem("openSettingDialog", true);
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");            
         },
@@ -299,7 +300,7 @@
             //console.log("deviceHeight=" + deviceHeight);
             window.localStorage.setItem("deviceHeight", deviceHeight);
             $("#loginForm").css("height", deviceHeight + "px");
-            
+                        
             /*
             	Parse the xml and store the ws link
             */
@@ -310,9 +311,24 @@
         	show() function
         */        
         show: function () {
-            //console.log("================= login.js,show()");            
+            //console.log("================= login.js,show()");
+            app.loginService.closeDialog();
 		},
         
+        
+        /*
+        	closeDialog(): close the current dialog
+        */
+        closeDialog: function(){
+        	if (window.localStorage.getItem("openSettingDialog") === 'true'){ 
+            	window.localStorage.setItem("openSettingDialog", false);
+                $('#settingDialog').dialog('close');
+            } 
+            if(window.localStorage.getItem("openSettingSignoutDialog") === 'true'){
+                window.localStorage.setItem("openSettingSignoutDialog", false);
+                $('#settingSignOutDialog').dialog('close');
+            }
+        },
         
         /*
         	parseXMLtoURL() function: parse XML file and store the ws url link

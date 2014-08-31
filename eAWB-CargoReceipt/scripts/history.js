@@ -28,6 +28,7 @@
             var dialog = $("#settingSignOutDialog").dialog({
                dialogClass: 'setting_signout_dialog', modal: true, resizable: false
             });
+            window.localStorage.setItem("openSettingSignoutDialog", true);
         	dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
         },
@@ -182,6 +183,7 @@
         */        
         listViewHistoryShow: function (e) {
             //console.log("================= listViewHistoryShow");
+            app.historyService.closeDialog();
             
             /*
             	Show the historyList            
@@ -319,6 +321,16 @@
             
             
 		},
+                
+        /*
+        	closeDialog(): close the current dialog
+        */
+        closeDialog: function(){
+            if(window.localStorage.getItem("openSettingSignoutDialog") === 'true'){
+                window.localStorage.setItem("openSettingSignoutDialog", false);
+                $('#settingSignOutDialog').dialog('close');
+            }
+        },
         
         /*
         	get WS url 

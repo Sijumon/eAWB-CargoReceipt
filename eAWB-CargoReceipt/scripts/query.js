@@ -21,6 +21,7 @@
             var dialog = $("#settingSignOutDialog").dialog({
                 width: width, height: height, modal: true, resizable: false
             });     
+            window.localStorage.setItem("openSettingSignoutDialog", true);
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");
             dialog.prev(".ui-widget-header").css("font-weight","normal");
         },
@@ -185,7 +186,19 @@
         */        
         show: function () {
             //console.log("================= query.js,show()"); 
+            app.queryService.closeDialog();
 		},
+               
+        
+        /*
+        	closeDialog(): close the current dialog
+        */
+        closeDialog: function(){
+            if(window.localStorage.getItem("openSettingSignoutDialog") === 'true'){
+                window.localStorage.setItem("openSettingSignoutDialog", false);
+                $('#settingSignOutDialog').dialog('close');
+            }
+        },
         
         viewModel: new QueryViewModel()        
         

@@ -19,7 +19,9 @@
         window.localStorage.setItem("deviceOs", deviceOs);
         window.localStorage.setItem("deviceHeight", $(window).height());
         window.localStorage.setItem("environment", "apidev"); 
-                
+        window.localStorage.setItem("openSettingDialog", false);
+        window.localStorage.setItem("openSettingSignoutDialog", false);
+        
         /*
         	Get token of device
         */                    
