@@ -191,9 +191,12 @@
 			*/
             var currentdate = new Date();
             var currentmonth = currentdate.getMonth() + 1;
+            var curDate = currentdate.getDate();
+            if (curDate < 10)
+            	curDate = "0" + curDate;
             if (currentmonth < 10)
             	currentmonth = "0" + currentmonth;
-            var datetime = currentdate.getDate().toString() + currentmonth.toString() + currentdate.getFullYear().toString();
+            var datetime = curDate.toString() + currentmonth.toString() + currentdate.getFullYear().toString();
             //TODO: for testing
             //datetime = "23042014";
             var param = "?f=" + datetime + "&t=" + datetime + "&r=1024x768&o=Portrait&token=";
