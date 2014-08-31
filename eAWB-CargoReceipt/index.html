@@ -212,7 +212,9 @@
                 <input id="awbPrefix" maxlength="3" class="bg_textbox_awb_prefix" />
                 <label class="label_hor">-</label>
                 <input id="awbSuffix" maxlength="8" class="bg_textbox_awb_suffix" /> 
-                <img src="images/query.png" class="img_query" data-bind="click: onQueryAction"/> 
+                <a type="submit" data-role="button" data-bind="click: onQueryAction" class="a_query">
+                    <img src="images/query.png" class="img_query"/>
+            	</a>               
             </div>
             
             <hr class="line_small_bg" />
@@ -248,7 +250,7 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" class="header_bg">
-                <a id="homeURL" type="submit" href="#query">
+                <a href="#query">
                     <img src="images/home.png" class="img_home"/>
                 </a>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>
@@ -319,7 +321,7 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" class="header_bg">
-                <a id="queryURL" type="submit" href="#query">
+                <a href="#query">
                     <img src="images/home.png" class="img_home"/>
                 </a>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>

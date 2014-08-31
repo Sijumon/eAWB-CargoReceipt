@@ -70,9 +70,13 @@ body {
     margin-left: 1%;
     width: 50%; color: #797979;
 }
+.a_query{
+    padding: 0 !important; 
+    border: 0 !important;
+}
 .img_query{
     margin-left: 1%;
-    margin-bottom: -10px;
+    margin-bottom: -8px;
     cursor: pointer;
 }
 .div_query_awb{

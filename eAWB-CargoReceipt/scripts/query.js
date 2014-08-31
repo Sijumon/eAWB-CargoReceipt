@@ -47,13 +47,14 @@
         /*
         	onQueryAction(): do the query action
         */
-        onQueryAction: function(){
+        onQueryAction: function(e){
         	//console.log("================= onQueryAction()");   
             
             var validate = app.queryService.viewModel.validateInput(); 
             var param = "?awbPrefix=" +  $('#awbPrefix').val() + "&awbSuffix=" + $('#awbSuffix').val();
             if (validate){
-            	app.application.navigate('#query_result' + param, 'slide:right');
+            	//app.application.navigate('#query_result' + param, 'slide:right');
+                $(e.target).attr('href', '#query_result' + param);
             }
         }
     });
