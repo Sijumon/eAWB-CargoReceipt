@@ -193,62 +193,97 @@
             //console.log("url=" + url);
             
             
-            
-            /*
-            	Enable wipe action for historyList
-            */
-        	$("#historyList").kendoTouch({
-                filter: ">li",
-                enableSwipe: true,
-                swipe: function (e) {
-                    //console.log("============ onHistorySwipe");
-                	/*
-                    	the UI action: swipe & collapse the current row
-                    */                    
-                    var curRow = e.touch.currentTarget;
-                    $(curRow).addClass("swipe_selected_row");
-                    if (e.direction === "left") 
-                        kendo.fx(curRow).slideIn("right").duration(500).reverse();
-                    else
-                        kendo.fx(curRow).slideIn("left").duration(500).reverse();
-                    setInterval(function(){ 
-                        $(curRow).addClass("collapsed");
-                    }, 600);
-                    
-                    /*
-                    	Get the index & value id
-                    */
-                    var index = $(e.touch.currentTarget).index();
-                    //console.log("index=" + index);
-                    var id = $('#historyList').data('kendoMobileListView').dataSource.view()[index].Id;
-                    //console.log("id=" + id);
-                    
-                    /*
-                    	Call the ws to delete each row of listview
-                    */ 
-                    var url = app.historyService.getDeleteOneRowURL(appToken, id);
-                    var numOfRecord = app.historyService.viewModel.get("strNumOfRecord");
-                    numOfRecord -= 1;
-                    app.historyService.viewModel.set("strNumOfRecord", numOfRecord);
-                    
-                    $.ajax({
-                        type: "DELETE",
-                        url: url,
-                        data: "{}",
-                        headers: {'Accept': 'application/json'},
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function(response) {
-                            //console.log("============ deleteOneRow(): SUCCESS"); 
-                            app.historyService.refreshHistoryList();
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                            console.log("============ deleteOneRow(): ERROR");
-                        }
-                    });
-                           
+            app.events = {
+                dragging: function(e) {
+                    //console.log("=============== dragging()");
+                    var left = e.sender.element.position().left;
+                    if (left <= 0) {
+                        e.sender.element.css("left", "0");
+                    } 
+                    var right = e.sender.element.position().right;
+                    if (right <= 0) {
+                        e.sender.element.css("right", "0");
+                    }  
+                },
+                dragend: function(e) {
+                    //console.log("==================== dragend()");
+                    var el = e.sender.element;
+                    // get the listview width 
+                    var width = $("ul").width();
+                    // set a threshold of 75% of the width
+                    var threshold = (width * .25);          
+                    // if the item is less than 75% of the way across, slide it out
+                    if (Math.abs(el.position().left) > threshold) {
+                        kendo.fx(el).slideIn("right").duration(500).reverse();
+                    } else {
+                        kendo.fx(el).slideIn("left").duration(500).reverse();  
+                        //el.animate({ left: 0 });
+                    }
+                },
+                swipe: function(e) {
+                    //console.log("============== swipe()");  
+                    var del = e.sender.element;
+                    if (e.direction === "left") {
+                        kendo.fx(del).slideIn("right").duration(500).reverse();
+                    } else {
+                        kendo.fx(del).slideIn("left").duration(500).reverse();  
+                    }
+                },
+                tap: function(e) {
+                    console.log("========== tap()");  
+                    // make sure the initial touch wasn't on the archive button
+                    var initial = e.touch.initialTouch;
+                    var target = e.touch.currentTarget;
+                    var strInitial = initial.toString();
+                    //alert("strInitial=" + strInitial);
+                    //alert("initial=" + initial);
+                    //alert("target=" + target);
+                    //console.log("initial=" + initial);
+                    //console.log("target=" + target);
+                    //alert("initial=" + initial.attr("id"));
+                    //alert("target=" + target.attr("id"));
+                    // if we are tapping outside the archive area, cancel the action
+                    if (initial === target || (strInitial.indexOf("Label") > -1)) {
+                        // get the closest item and slide it back in
+                        var item = e.sender.element.siblings();
+                        item.css({ left: 0 });
+                        kendo.fx(item).slideIn("left").duration(500).play();
+                    } else {
+                        /*
+                        	Call the ws to delete the current index record
+                        */
+                        var index = e.sender.element.closest("li").index();
+                        //console.log("index=" + index);
+                        var id = $('#historyList').data('kendoMobileListView').dataSource.view()[index].Id;
+                        //console.log("id=" + id);
+                        var url = app.historyService.getDeleteOneRowURL(appToken, id);
+                        var numOfRecord = app.historyService.viewModel.get("strNumOfRecord");
+                        numOfRecord -= 1;
+                        app.historyService.viewModel.set("strNumOfRecord", numOfRecord);
+                        
+                        $.ajax({
+                            type: "DELETE",
+                            url: url,
+                            data: "{}",
+                            headers: {'Accept': 'application/json'},
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function(response) {
+                                //console.log("============ deleteOneRow(): SUCCESS"); 
+                                e.sender.element.closest("li").addClass("collapsed");
+                                app.historyService.refreshHistoryList();
+                            },
+                            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                console.log("============ deleteOneRow(): ERROR");
+                            }
+                        });
+                        
+                        
+                    }
+                    e.event.stopPropagation();
                 }
-            });
+            };
+            
             
             $("#historyList").kendoMobileListView({
                 dataSource: new kendo.data.DataSource({

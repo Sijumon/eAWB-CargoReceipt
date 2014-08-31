@@ -359,8 +359,16 @@
         
         <!--History template-->   
         <script id="history-lw-template" type="text/x-kendo-template">
-            <label class="his_awb_number">#=AWBPrefix#-#=AWBSuffix#</label>
-    		<label class="his_datetime">#=RequestedDate#</label>
+            <div class="wrapper">
+        		<div class="action" data-role="touch" data-tap="app.events.tap">
+        			<a id="archiveBtn" data-role="button" class="btn-archive" data-icon="action">Archive</a>
+            		<label class="his_undo">UNDO</label> 
+        		</div>
+        		<div class="item" data-role="touch" data-drag="app.events.dragging" data-dragend="app.events.dragend">
+        			<label id="awbNumcer" class="his_awb_number">#=AWBPrefix#-#=AWBSuffix#</label>
+        			<label id="requestedDate" class="his_datetime">#=RequestedDate#</label>
+        		</div>
+        	</div>
     	</script>
         
     </div>
