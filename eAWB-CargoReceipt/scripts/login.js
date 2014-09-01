@@ -22,7 +22,8 @@
                 height = 244;
             }
             var dialog = $("#settingDialog").dialog({
-               width: width, height: height, modal: true, resizable: false
+                width: width, height: height, modal: true, resizable: false
+                ,open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#settingDialog").dialog('close'); }); }
             });
             window.localStorage.setItem("openSettingDialog", true);
             dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");

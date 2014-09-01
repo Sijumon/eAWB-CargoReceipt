@@ -240,6 +240,16 @@ body {
     float: right;
 	margin-top: -1%;
 }
+.img_signin:hover{
+    float: right;
+	margin-top: -1%;
+    background-color: #5F5F5F !important;
+}
+.img_signout:hover{
+    float: right;
+	margin-top: -1%;
+    background-color: #5F5F5F !important;
+}
 .div_linc{
     clear: left; cursor: pointer; float: left; margin-left: 10%; line-height:200%; 
     background-image: url(../images/bg_uncheck.png); width: 118px;

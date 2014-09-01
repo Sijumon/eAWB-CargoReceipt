@@ -18,6 +18,15 @@ body {
     float: right;
     margin-right: 10%;
 }
+.setting_item_bg{
+    text-decoration: none; cursor: pointer; color: #88b237 !important; 
+    font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left;
+}
+.setting_item_bg:hover{
+    text-decoration: none; cursor: pointer; color: #88b237 !important; 
+    background-color: #5F5F5F !important;
+    font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left;
+}
 .img_home{
     float: left;
 	margin-left: 1%;

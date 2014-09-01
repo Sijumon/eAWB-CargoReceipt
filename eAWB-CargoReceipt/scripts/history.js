@@ -25,8 +25,16 @@
         	showSettingDialog(): show the setting dialog
         */
         showSettingDialog: function(){
+            var height = $(window).height();
+            var width = $(window).width() * 0.8
+            if (height > 700){
+                height = 270;
+            } else {
+                height = 244;
+            }
             var dialog = $("#settingSignOutDialog").dialog({
-               dialogClass: 'setting_signout_dialog', modal: true, resizable: false
+                width: width, height: height, modal: true, resizable: false
+                ,open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#settingSignOutDialog").dialog('close'); }); }
             });
             window.localStorage.setItem("openSettingSignoutDialog", true);
         	dialog.prev(".ui-dialog-titlebar").css("background","#5E5E5E");

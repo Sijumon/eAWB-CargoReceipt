@@ -137,41 +137,33 @@
     
     <!--Setting signin dialog-->
     <div id="settingDialog" title="Settings" style="display:none; background-color: #484848; font-weight: normal;">
-          <a id="helpBtn" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Help</a> <br>
+          <a id="helpBtn" type="submit" data-role="button" class="setting_item_bg">Help</a> <br>
           <hr class="line_bg" />
-          <a id="aboutAppBtn" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">About app</a> <br>
+          <a id="aboutAppBtn" type="submit" data-role="button" class="setting_item_bg">About app</a> <br>
           <hr class="line_bg" />
-          <a id="aboutCCNBtn" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">About CCN</a> <br>
+          <a id="aboutCCNBtn" type="submit" data-role="button" class="setting_item_bg">About CCN</a> <br>
           <hr class="line_bg" />
-          <a id="termConditionBtn" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Terms & Conditions</a> <br>
+          <a id="termConditionBtn" type="submit" data-role="button" class="setting_item_bg">Terms & Conditions</a> <br>
           <hr class="line_bg" />
-          <a id="signinBtn" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Sign in 
-          <img src="images/signin.png" class="img_signin" /> </a> <br>
+          <a id="signinBtn" type="submit" data-role="button" class="setting_item_bg">Sign in 
+          	<img src="images/signin.png" class="img_signin" />               
+          </a> <br>
           <hr class="line_bigger_bg" /> 
     </div>
     
     <!--Setting signout dialog-->
     <div id="settingSignOutDialog" title="Settings" style="display:none; background-color: #484848; font-weight: normal;">
-          <a id="helpBtn_signout" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Help</a> <br>
+          <a id="helpBtn_signout" type="submit" data-role="button" class="setting_item_bg">Help</a> <br>
           <hr class="line_bg" />
-          <a id="aboutAppBtn_signout" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">About app</a> <br>
+          <a id="aboutAppBtn_signout" type="submit" data-role="button" class="setting_item_bg">About app</a> <br>
           <hr class="line_bg" />
-          <a id="aboutCCNBtn_signout" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">About CCN</a> <br>
+          <a id="aboutCCNBtn_signout" type="submit" data-role="button" class="setting_item_bg">About CCN</a> <br>
           <hr class="line_bg" />
-          <a id="termConditionBtn_signout" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Terms & Conditions</a> <br>
+          <a id="termConditionBtn_signout" type="submit" data-role="button" class="setting_item_bg">Terms & Conditions</a> <br>
           <hr class="line_bg" />
-          <a id="signoutBtn" type="submit" data-role="button"
-             style="text-decoration: none; cursor: pointer; color: #88b237; font-family: 'Raleway Regular','Raleway'; font-size: 20px; text-align: left; ">Sign out 
-          <img src="images/signout.png" class="img_signout" /> </a> <br>
+          <a id="signoutBtn" type="submit" data-role="button" class="setting_item_bg">Sign out 
+          	<img src="images/signout.png" class="img_signout" />               
+          </a> <br>
           <hr class="line_bigger_bg" /> 
     </div>
     
@@ -363,7 +355,7 @@
         <script id="history-lw-template" type="text/x-kendo-template">
             <div class="wrapper">
         		<div class="action" data-role="touch" data-tap="app.events.tap">
-        			<a id="archiveBtn" data-role="button" class="btn-archive" data-icon="action">Archive</a>
+        			<a id="archiveBtn" data-role="button" class="btn-archive" data-icon="action">Delete</a>
             		<label class="his_undo">UNDO</label> 
         		</div>
         		<div class="item" data-role="touch" data-drag="app.events.dragging" data-dragend="app.events.dragend">
