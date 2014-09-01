@@ -177,13 +177,16 @@
                 success: function(response) {
                     //console.log("============ showQueryResult(): SUCCESS");
                     if (response.ReportUrl !== null && response.ReportUrl !== ''){ // the rcs case
-                    	$('#pdfDiv').show();
+                        $('#pdfDiv').show();
                         $('#imgArrow').show();
             			url = response.ReportUrl; 
                         //TODO: get the pdf url 
                         //url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
                         var iframe = app.queryResultService.makeIframeDiv(url);
                         $("#pdfDiv").html(iframe);
+                        $("#pdfDiv").bind('touchy-pinch', function (e, $target, data) {
+                            $target.css({'webkitTransform':'scale(' + data.scale + ',' + data.scale + ')'});
+                        });
                     } else {
                         if (response.StatusCode === 'FOH'){ //foh case
                             $('#fohDiv').show();
