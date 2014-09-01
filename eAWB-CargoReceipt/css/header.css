@@ -66,3 +66,9 @@ body {
 .setting_signout_dialog{
     width: 70%; height: 30%;
 }
+.portrait {
+    -webkit-transform: rotate(90deg);
+}
+.portrait-onready {
+    -webkit-transform: rotate(90deg);
+}

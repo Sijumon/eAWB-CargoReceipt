@@ -172,6 +172,36 @@
     			paginationClickable: true,
                 mode: 'horizontal'
             });
+            
+            $(window).bind('orientationchange', function(){
+                //alert("orientation=" + window.orientation);
+                //if (Math.abs(window.orientation) !== 90){
+                //   $(document.body).addClass('portrait');
+                //} 
+                //else {
+                //   $(document.body).removeClass('portrait').removeClass('portrait-onready'); 
+                //}
+                
+                //$('head').append( '<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;">' );
+                //var portrait = (window.orientation % 180 === 0);
+    			//$("body").css("-webkit-transform", !portrait ? "rotate(-90deg)" : "");
+                
+                //if (window.orientation % 180 === 0){
+                //   $(document.body).css("-webkit-transform-origin", "")
+                //       .css("-webkit-transform", "");               
+                //} 
+                //else {                   
+                //   if ( window.orientation > 0) { //clockwise
+                //     $(document.body).css("-webkit-transform-origin", "200px 190px")
+                //       .css("-webkit-transform",  "rotate(-90deg)");  
+                //   }
+                //   else {
+                //     $(document.body).css("-webkit-transform-origin", "380px 290px")
+                //       .css("-webkit-transform",  "rotate(90deg)"); 
+                //   }
+                //}
+                
+            });
         }, 
         
         /*
@@ -181,6 +211,8 @@
             //console.log("================= showHelp"); 
             app.helpViewModel.closeDialog();            
     	},
+        
+       
         
         /*
         	closeDialog(): close the current dialog
