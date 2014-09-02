@@ -31,7 +31,8 @@
     <script src="kendo/js/jquery-ui-1.9.2.min.js"></script>
     <script src="kendo/js/kendo.all.min.js"></script>
     <script src="kendo/js/idangerous.swiper.js"></script>
-    <script src="kendo/js/jquery.touchy.js"></script>
+    <script src="kendo/js/hammer.js"></script>
+    <script src="kendo/js/jquery.hammer.js"></script>
     
     <!--Defined JS-->
     <script src="scripts/ads.js"></script>
@@ -129,7 +130,7 @@
           -->
             
           <label id="termAndCondition" class="label_underline" data-bind="click: onTermConditionAction">Terms and Conditions?</label>
-             
+                         
         </div>
         
     </div>
@@ -295,6 +296,11 @@
                     <label class="label_textReason">1. The Consol manifest has not been sent to your carrier</label>    <br>
                     <label class="label_textReason">2. Your freight carrier has received your consiment but is yet to send a confirmation</label>
                 </div>     
+                                
+                <!--Loader-->
+                <div id="loader" class="loader_bg" >
+                    <img src="images/loader.gif"/>
+                </div>
                 
             </div>            
         </div>

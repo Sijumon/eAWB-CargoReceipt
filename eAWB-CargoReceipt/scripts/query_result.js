@@ -159,21 +159,29 @@
             app.queryResultService.viewModel.set("awbNumber", awbPrefix + "-" + awbSuffix);
             app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
                         
-            /*
-            	Call & parse the web service
-            */
+            
             $('#pdfDiv').hide();
             $('#fohDiv').hide();
             $('#noResultDiv').hide();
             $('#imgArrow').hide();
             var url = app.queryResultService.getURL(window.localStorage.getItem("appToken"), awbPrefix, awbSuffix);
             //console.log("============ showQueryResult(), url=" + url);
+            /*
+            	Call & parse the web service
+            */
             $.ajax({
                 type: "GET",
                 url: url,
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
+                beforeSend : function() {
+                	$("#loader").show(); //show loader            
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("============ showQueryResult(): ERROR");
+                    $("#loader").hide(); //hide loader 
+                },
                 success: function(response) {
                     //console.log("============ showQueryResult(): SUCCESS");
                     if (response.ReportUrl !== null && response.ReportUrl !== ''){ // the rcs case
@@ -184,9 +192,15 @@
                         //url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
                         var iframe = app.queryResultService.makeIframeDiv(url);
                         $("#pdfDiv").html(iframe);
-                        $("#pdfDiv").bind('touchy-pinch', function (e, $target, data) {
-                            $target.css({'webkitTransform':'scale(' + data.scale + ',' + data.scale + ')'});
-                        });
+                        
+                        //$("#pdfIframe").panzoom();
+                        //$("#pdfDiv").panzoom();
+                        
+                        //var mc = new Hammer.Manager(document.getElementById('pdfDiv'));
+                        //var pinch = new Hammer.Pinch();
+                        //mc.add([pinch]);
+                        
+                        $("#loader").hide(); //hide loader 
                     } else {
                         if (response.StatusCode === 'FOH'){ //foh case
                             $('#fohDiv').show();
@@ -195,12 +209,12 @@
                             $('#noResultDiv').show();
                             app.queryResultService.viewModel.set("currentStatus", "Unknown");
                         }
+                        $("#loader").hide(); //hide loader 
                     }
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                   console.log("============ showQueryResult(): ERROR");
                 }
             });
+            
+            
 		},
         
         /*
@@ -220,7 +234,7 @@
         	var urlEncodedFile = encodeURIComponent(url);
             //TODO: for testing
             //urlEncodedFile = "http%3A%2F%2Fasync5.org%2Fmoz%2Fpdfjs.pdf";
-            var iframe = "<iframe src=\"http://mozilla.github.com/pdf.js/web/viewer.html?file=" + urlEncodedFile + 
+            var iframe = "<iframe id=\"pdfIframe\" src=\"http://mozilla.github.com/pdf.js/web/viewer.html?file=" + urlEncodedFile + 
             	"\"" + " frameborder=\"0\" style=\"height: 100%; width: 100%\"></iframe>";
             return iframe;
         },

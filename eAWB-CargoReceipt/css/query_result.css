@@ -135,3 +135,6 @@ body {
     clear: left;
     margin-right: 2%;
 }
+.loader_bg{
+    margin-left: 15%; margin-top: 30%;
+}
