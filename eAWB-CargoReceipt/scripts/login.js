@@ -68,7 +68,7 @@
         validateUserCredential: function(userType){
             var appToken = window.localStorage.getItem("appToken");
             var url = app.loginService.getURL(appToken, userType);
-            //console.log("validateUserCredential(), url=" + url);
+            console.log("validateUserCredential(), url=" + url);
             /*
             	call the ws to validate user
             */
@@ -94,7 +94,7 @@
                     }	     
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
-                   console.log("============ validateUserCredential(): ERROR");
+                   console.log("============ validateUserCredential(): ERROR-" + errorThrown);
                 }
             });
 		},
@@ -170,7 +170,7 @@
             	url = url.replace("{environment}", window.localStorage.getItem("environment"));
                 url = url.replace("{token}", appToken);
                 url = url.replace("{email}", $("#txtEmail").val().trim());
-            //    url = url.replace("{token}", $("#txtPassword").val().trim());
+                url = url.replace("{password}", $("#txtPassword").val().trim());
             //}
             
             return url;
