@@ -166,6 +166,39 @@
                     }
                 });
             });
+            
+            /*
+            	Apply the orientation change: portrait & landscape mode
+            */
+            $(window).bind('orientationchange', function(e){
+                //console.log("orientation=" + window.orientation);
+                if (Math.abs(window.orientation) !== 90){
+                	//console.log("portrait");
+                    $('#term_condition').removeAttr('style');
+                    $('#term_condition').removeClass('help_landscape');
+                } 
+                else { //landscape mode
+                    //console.log("landscape");                    
+                    var height = window.localStorage.getItem("oriHeight");
+                    var width = window.localStorage.getItem("oriWidth");
+                    //console.log("height=" + height + ", width=" + width);
+                    height = (height > width) ? height : width;
+                    height = parseInt(height) + 20;
+                    var paddingLeft = "";
+                    if (height < 500){
+                        paddingLeft = "padding-left: 37%;";
+                    } else {
+                        if (window.localStorage.getItem("deviceOs") === 'iOS')
+                        	paddingLeft = "padding-left: 47%;";
+                        else
+                            paddingLeft = "padding-left: 43%;";
+                    }
+                    var style = "width: " + height + "px; height: " + height + "px; " + paddingLeft;
+                    //console.log("style=" + style);
+                    $('#term_condition').attr("style", style);
+                    $('#term_condition').addClass('help_landscape');
+                }        
+            });
         }, 
         
         /*

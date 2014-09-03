@@ -7,7 +7,7 @@ body {
   position: absolute;
   z-index: 20;
   left: 50%;
-  bottom: 0px;
+  bottom: -10px;
 }
 .swiper-container-termCondition_tablet {
 	width: 100%;

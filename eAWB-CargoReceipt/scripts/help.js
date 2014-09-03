@@ -166,42 +166,46 @@
                     }
                 });
             });
-            
+                         
             $('.swiper-container').swiper({
                 pagination: '.pagination',
     			paginationClickable: true,
                 mode: 'horizontal'
             });
             
-            $(window).bind('orientationchange', function(){
-                //alert("orientation=" + window.orientation);
-                //if (Math.abs(window.orientation) !== 90){
-                //   $(document.body).addClass('portrait');
-                //} 
-                //else {
-                //   $(document.body).removeClass('portrait').removeClass('portrait-onready'); 
-                //}
-                
-                //$('head').append( '<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;">' );
-                //var portrait = (window.orientation % 180 === 0);
-    			//$("body").css("-webkit-transform", !portrait ? "rotate(-90deg)" : "");
-                
-                //if (window.orientation % 180 === 0){
-                //   $(document.body).css("-webkit-transform-origin", "")
-                //       .css("-webkit-transform", "");               
-                //} 
-                //else {                   
-                //   if ( window.orientation > 0) { //clockwise
-                //     $(document.body).css("-webkit-transform-origin", "200px 190px")
-                //       .css("-webkit-transform",  "rotate(-90deg)");  
-                //   }
-                //   else {
-                //     $(document.body).css("-webkit-transform-origin", "380px 290px")
-                //       .css("-webkit-transform",  "rotate(90deg)"); 
-                //   }
-                //}
-                
+            /*
+            	Apply the orientation change: portrait & landscape mode
+            */
+            $(window).bind('orientationchange', function(e){
+                //console.log("orientation=" + window.orientation);
+                if (Math.abs(window.orientation) !== 90){
+                	//alert("portrait");
+                    $('#help').removeAttr('style');
+                    $('#help').removeClass('help_landscape');
+                } 
+                else { //landscape mode
+                    //alert("landscape");                    
+                    var height = window.localStorage.getItem("oriHeight");
+                    var width = window.localStorage.getItem("oriWidth");
+                    //console.log("height=" + height + ", width=" + width);
+                    height = (height > width) ? height : width;
+                    height = parseInt(height) + 20;
+                    var paddingLeft = "";
+                    if (height < 500){
+                        paddingLeft = "padding-left: 37%;";
+                    } else {
+                        if (window.localStorage.getItem("deviceOs") === 'iOS')
+                        	paddingLeft = "padding-left: 47%;";
+                        else
+                            paddingLeft = "padding-left: 43%;";
+                    }
+                    var style = "width: " + height + "px; height: " + height + "px; " + paddingLeft;
+                    //console.log("style=" + style);
+                    $('#help').attr("style", style);
+                    $('#help').addClass('help_landscape');
+                }        
             });
+            
         }, 
         
         /*

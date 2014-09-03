@@ -173,6 +173,35 @@
                 mode: 'horizontal'
             });
           
+            /*
+            	Apply the orientation change: portrait & landscape mode
+            */
+            $(window).bind('orientationchange', function(e){
+                //console.log("orientation=" + window.orientation);
+                if (Math.abs(window.orientation) !== 90){
+                	//alert("portrait");
+                    $('#help_tablet').removeAttr('style');
+                    $('#help_tablet').removeClass('help_landscape');
+                } 
+                else { //landscape mode
+                    //alert("landscape");                    
+                    var height = parseInt(window.localStorage.getItem("oriHeight"));
+                    var width = parseInt(window.localStorage.getItem("oriWidth"));                    
+                    console.log("height=" + height + ", width=" + width);
+                    height = (height > width) ? height : width;
+                    height = parseInt(height) + 20;
+                    var paddingLeft = "";
+                    if (window.localStorage.getItem("deviceOs") === 'iOS')
+                    	paddingLeft = "padding-left: 27%;";
+                    else
+                        paddingLeft = "padding-left: 42%;";
+                    var style = "width: " + height + "px; height: " + height + "px; " + paddingLeft;
+                    console.log("style=" + style);
+                    $('#help_tablet').attr("style", style);
+                    $('#help_tablet').addClass('help_landscape');
+                }        
+            });
+            
         }, 
         
         /*

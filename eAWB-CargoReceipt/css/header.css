@@ -72,3 +72,6 @@ body {
 .portrait-onready {
     -webkit-transform: rotate(90deg);
 }
+.help_landscape{
+    -webkit-transform: rotate(-90deg) !important;
+}

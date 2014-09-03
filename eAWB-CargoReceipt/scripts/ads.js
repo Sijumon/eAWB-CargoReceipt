@@ -17,6 +17,8 @@
         var deviceOs = device.platform;
         window.localStorage.setItem("deviceId", deviceId);
         window.localStorage.setItem("deviceOs", deviceOs);
+        window.localStorage.setItem("oriWidth", $(window).width());
+        window.localStorage.setItem("oriHeight", $(window).height());
         window.localStorage.setItem("deviceHeight", $(window).height());
         window.localStorage.setItem("environment", "apidev"); 
         window.localStorage.setItem("openSettingDialog", false);
