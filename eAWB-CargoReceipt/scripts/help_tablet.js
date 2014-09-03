@@ -187,16 +187,16 @@
                     //alert("landscape");                    
                     var height = parseInt(window.localStorage.getItem("oriHeight"));
                     var width = parseInt(window.localStorage.getItem("oriWidth"));                    
-                    console.log("height=" + height + ", width=" + width);
+                    //console.log("height=" + height + ", width=" + width);
                     height = (height > width) ? height : width;
                     height = parseInt(height) + 20;
                     var paddingLeft = "";
                     if (window.localStorage.getItem("deviceOs") === 'iOS')
                     	paddingLeft = "padding-left: 27%;";
                     else
-                        paddingLeft = "padding-left: 42%;";
+                        paddingLeft = "padding-left: 43%;";
                     var style = "width: " + height + "px; height: " + height + "px; " + paddingLeft;
-                    console.log("style=" + style);
+                    //console.log("style=" + style);
                     $('#help_tablet').attr("style", style);
                     $('#help_tablet').addClass('help_landscape');
                 }        

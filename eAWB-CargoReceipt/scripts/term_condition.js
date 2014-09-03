@@ -179,8 +179,8 @@
                 } 
                 else { //landscape mode
                     //console.log("landscape");                    
-                    var height = window.localStorage.getItem("oriHeight");
-                    var width = window.localStorage.getItem("oriWidth");
+                    var height = parseInt(window.localStorage.getItem("oriHeight"));
+                    var width = parseInt(window.localStorage.getItem("oriWidth")); 
                     //console.log("height=" + height + ", width=" + width);
                     height = (height > width) ? height : width;
                     height = parseInt(height) + 20;

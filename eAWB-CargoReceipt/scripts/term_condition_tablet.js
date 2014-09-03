@@ -180,8 +180,8 @@
                 else { //landscape mode
                     //alert("landscape");                    
                     var height = parseInt(window.localStorage.getItem("oriHeight"));
-                    var width = parseInt(window.localStorage.getItem("oriWidth"));                    
-                    console.log("height=" + height + ", width=" + width);
+                    var width = parseInt(window.localStorage.getItem("oriWidth"));                     
+                    //console.log("height=" + height + ", width=" + width);
                     height = (height > width) ? height : width;
                     height = parseInt(height) + 20;
                     var paddingLeft = "";
@@ -190,7 +190,7 @@
                     else
                         paddingLeft = "padding-left: 42%;";
                     var style = "width: " + height + "px; height: " + height + "px; " + paddingLeft;
-                    console.log("style=" + style);
+                    //console.log("style=" + style);
                     $('#term_condition_tablet').attr("style", style);
                     $('#term_condition_tablet').addClass('help_landscape');
                 }        
