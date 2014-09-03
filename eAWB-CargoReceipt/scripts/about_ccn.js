@@ -32,7 +32,7 @@
             if (height > 700){
                 height = 270;
             } else {
-                height = 244;
+                height = 230;
             }
             var dialog;
             if (userLoggedIn === 'false'){

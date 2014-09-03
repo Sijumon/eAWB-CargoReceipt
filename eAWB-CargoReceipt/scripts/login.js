@@ -19,7 +19,7 @@
             if (height > 700){
                 height = 270;
             } else {
-                height = 244;
+                height = 230;
             }
             var dialog = $("#settingDialog").dialog({
                 width: width, height: height, modal: true, resizable: false

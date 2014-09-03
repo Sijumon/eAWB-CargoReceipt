@@ -7,6 +7,7 @@ body {
     display: inline-block;
     line-height: 150%;
     float: left;
+    clear: left;
 }
 .awb_header{
     color: #48601e;

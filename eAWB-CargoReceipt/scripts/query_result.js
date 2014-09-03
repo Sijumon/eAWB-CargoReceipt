@@ -20,7 +20,7 @@
             if (height > 700){
                 height = 270;
             } else {
-                height = 244;
+                height = 230;
             }
             var dialog = $("#settingSignOutDialog").dialog({
                 width: width, height: height, modal: true, resizable: false
@@ -188,8 +188,6 @@
                         $('#pdfDiv').show();
                         $('#imgArrow').show();
             			url = response.ReportUrl; 
-                        //TODO: get the pdf url 
-                        //url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/Reports/176_58528750.pdf";
                         var iframe = app.queryResultService.makeIframeDiv(url);
                         $("#pdfDiv").html(iframe);
                         
@@ -199,6 +197,36 @@
                         //var mc = new Hammer.Manager(document.getElementById('pdfDiv'));
                         //var pinch = new Hammer.Pinch();
                         //mc.add([pinch]);
+                        /*
+                        Ext.onReady(function(){
+                            Ext.tip.QuickTipManager.init();
+                            
+                            Ext.create('Ext.ux.panel.PDF', {
+                                title    : 'PDF Panel',
+                                width    : 489,
+                                height   : 633,
+                                pageScale: 0.75,                                           // Initial scaling of the PDF. 1 = 100%
+                                src      : url, // URL to the PDF - Same Domain or Server with CORS Support
+                                renderTo : Ext.getBody()
+                            });
+                        });	
+                        */
+                        
+                        /*
+                        Ext.application({
+                            views : [
+                                'Ext.ux.panel.PDF'
+                            ],
+                            launch: function() {
+                                Ext.Viewport.add({
+                                    xtype     : 'pdfpanel',
+                                    fullscreen: true,
+                                    layout    : 'fit',
+                                    src       : 'http://cdn.mozilla.net/pdfjs/tracemonkey.pdf', // URL to the PDF - Same Domain or Server with CORS Support
+                                });
+                            }
+                        });
+                        */
                         
                         $("#loader").hide(); //hide loader 
                     } else {
