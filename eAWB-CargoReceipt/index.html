@@ -76,7 +76,7 @@
         data-title="Home">
                 
         <!--Footer-->
-        <div data-role="footer">
+        <div id="loginFooter" data-role="footer">
             <div data-role="tabstrip">
                <img id="imgHome" class="footer_bg"/> 
             </div>
@@ -84,7 +84,7 @@
         
         <!--Content-->
         <div id="loginForm" data-title="Login Form" class="div_content">
-          
+          <div id="upperDiv">
           <img src="images/setting.png" class="setting_bg" data-bind="click: showSettingDialog"/>
           
           <label class="label_eAWB">e-AWB</label> <br>
@@ -103,7 +103,9 @@
               Sorry, your login information is not correct.              
           </label>
           
-          <br>  
+          <br> 
+          </div>
+            
           <div id="linc" data-bind="click: onLincDivAction" class="div_linc_active">
           	<label class="label_linc">CCNHub LINC</label>
               <img src="images/line.png" class="img_line" />

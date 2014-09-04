@@ -296,6 +296,12 @@
                 app.application.navigate('#login');
             });
             
+            //Slideup
+            $("#txtEmail").focusin(function() {
+                $("#upperDiv").slideUp();
+                $("#loginFooter").hide();                
+            });            
+            
             /*
             	Set height of the loginForm div
             */
