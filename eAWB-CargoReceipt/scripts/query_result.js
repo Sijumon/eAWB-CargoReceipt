@@ -194,35 +194,17 @@
                         //$("#pdfIframe").panzoom();
                         //$("#pdfDiv").panzoom();
                         
-                        //var mc = new Hammer.Manager(document.getElementById('pdfDiv'));
-                        //var pinch = new Hammer.Pinch();
-                        //mc.add([pinch]);
-                        /*
-                        Ext.onReady(function(){
-                            Ext.tip.QuickTipManager.init();
-                            
-                            Ext.create('Ext.ux.panel.PDF', {
-                                title    : 'PDF Panel',
-                                width    : 489,
-                                height   : 633,
-                                pageScale: 0.75,                                           // Initial scaling of the PDF. 1 = 100%
-                                src      : url, // URL to the PDF - Same Domain or Server with CORS Support
-                                renderTo : Ext.getBody()
-                            });
-                        });	
-                        */
-                        
                         /*
                         Ext.application({
                             views : [
                                 'Ext.ux.panel.PDF'
-                            ],
-                            launch: function() {
+                            ],                            
+                            launch: function() {                                
                                 Ext.Viewport.add({
                                     xtype     : 'pdfpanel',
-                                    fullscreen: true,
+                                    fullscreen: false,
                                     layout    : 'fit',
-                                    src       : 'http://cdn.mozilla.net/pdfjs/tracemonkey.pdf', // URL to the PDF - Same Domain or Server with CORS Support
+                                    src       : url // URL to the PDF - Same Domain or Server with CORS Support
                                 });
                             }
                         });

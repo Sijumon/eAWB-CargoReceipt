@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Cargo Receipt Application</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     
     <!--CSS-->
@@ -11,8 +11,8 @@
     <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
     <link href="kendo/styles/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
     <link href="kendo/styles/idangerous.swiper.css" rel="stylesheet" />
-    <link href="kendo/styles/ext-all.css" rel="stylesheet" />
-    <link href="kendo/styles/TextLayerBuilder.css" rel="stylesheet" />
+    <link href="kendo/styles/sencha-touch.css" rel="stylesheet" />
+    
     
     <!--Defined CSS-->
     <link href="css/main.css" rel="stylesheet" />
@@ -33,11 +33,13 @@
     <script src="kendo/js/jquery-ui-1.9.2.min.js"></script>
     <script src="kendo/js/kendo.all.min.js"></script>
     <script src="kendo/js/idangerous.swiper.js"></script>
-    <!--
+    <!-- 
     <script src="kendo/js/sencha-touch-all.js"></script>
-    <script src="kendo/js/compatibility.js"></script>
-    <script src="kendo/js/pdf.js"></script>
     -->
+    <script src="kendo/js/compatibility.js"></script>    
+    <script src="kendo/js/pdf.js"></script>
+    <script src="kendo/js/pdf.worker.js"></script>
+    <script src="kendo/js/ux/PDF.js"></script>
     
     <!--Defined JS-->
     <script src="scripts/ads.js"></script>
@@ -133,9 +135,8 @@
             
           <!--     
           <a id="signInBtn" type="submit" data-role="button" href="#query_result?awbPrefix=006&awbSuffix=83251302"
-                class="btn_signin">Test</a> <br>  
-          -->
-            
+                class="btn_signin">Test</a> <br>            
+          -->  
           <label id="termAndCondition" class="label_underline" data-bind="click: onTermConditionAction">Terms and Conditions?</label>
                          
         </div>
