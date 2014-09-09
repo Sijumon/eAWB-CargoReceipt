@@ -68,7 +68,7 @@
         validateUserCredential: function(userType){
             var appToken = window.localStorage.getItem("appToken");
             var url = app.loginService.getURL(appToken, userType);
-            console.log("validateUserCredential(), url=" + url);
+            //console.log("validateUserCredential(), url=" + url);
             /*
             	call the ws to validate user
             */
@@ -187,22 +187,10 @@
             $('#textMsg').show();
             $('#errorMsg').hide();
             
-            /* 
-            	Set advertisement            
-			*/
-            var currentdate = new Date();
-            var currentmonth = currentdate.getMonth() + 1;
-            var curDate = currentdate.getDate();
-            if (curDate < 10)
-            	curDate = "0" + curDate;
-            if (currentmonth < 10)
-            	currentmonth = "0" + currentmonth;
-            var datetime = curDate.toString() + currentmonth.toString() + currentdate.getFullYear().toString();
-            //TODO: for testing
-            //datetime = "23042014";
-            var param = "?f=" + datetime + "&t=" + datetime + "&r=1024x768&o=Portrait&token=";
-            var appToken = window.localStorage.getItem("appToken");
-            var url = "http://apidev.ccnhub.com/v1/advertisement/GetImages/" + param + appToken;
+            /*
+            	Set advertisement             
+            */
+            var url = app.loginService.getAdsURL();
             //console.log("=== login.js, url=" + url);
         	$.ajax({
                 type: "GET",
@@ -321,6 +309,25 @@
             app.loginService.closeDialog();
 		},
         
+        /*
+        	get WS url 
+        */
+        getAdsURL: function(){
+            var currentdate = new Date();
+            var currentmonth = currentdate.getMonth() + 1;
+            var curDate = currentdate.getDate();
+            if (curDate < 10)
+            	curDate = "0" + curDate;
+            if (currentmonth < 10)
+            	currentmonth = "0" + currentmonth;
+            var datetime = curDate.toString() + currentmonth.toString() + currentdate.getFullYear().toString();
+            var url = window.localStorage.getItem("getAdvertisementWS");
+            url = url.replace("{environment}", window.localStorage.getItem("environment"));
+            url = url.replace("{fromDateTime}", datetime);
+            url = url.replace("{toDateTime}", datetime);
+            url = url.replace("{token}", window.localStorage.getItem("appToken"));
+            return url;
+        },
         
         /*
         	closeDialog(): close the current dialog

@@ -42,5 +42,9 @@
 	{
         "Name": "Terms & conditions ws",
         "Url": "http://{environment}.ccnhub.com/api/tandc/v1/token={token}"
+    },
+	{
+        "Name": "Get advertisement ws",
+        "Url": "http://{environment}.ccnhub.com/v1/advertisement/GetImages/?f={fromDateTime}&t={toDateTime}&r=1024x768&o=Portrait&token={token}"
     }
 ]

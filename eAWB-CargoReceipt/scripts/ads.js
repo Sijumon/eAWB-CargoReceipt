@@ -53,6 +53,7 @@
                 window.localStorage.setItem("aboutAppWS", response[8].Url);
                 window.localStorage.setItem("aboutCCNWS", response[9].Url);
                 window.localStorage.setItem("termConditionWS", response[10].Url);
+                window.localStorage.setItem("getAdvertisementWS", response[11].Url);
                 
                 /*
                 	Get token of device
@@ -65,7 +66,7 @@
                 url = url.replace("{environment}", window.localStorage.getItem("environment"));
                 url = url.replace("{deviceOs}", deviceOs);
                 url = url.replace("{deviceId}", deviceId);                
-                console.log("url=" + url);
+                //console.log("ad.js, url=" + url);
                 if (appToken === null || appToken.toString() === "null") { 
                 	$.ajax({
                         type: "GET",
