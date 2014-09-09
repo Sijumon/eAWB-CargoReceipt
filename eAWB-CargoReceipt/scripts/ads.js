@@ -30,39 +30,69 @@
         Ext.application({
             //Do nothing
         });    
-        
+                
         /*
-        	Get token of device
-        */                    
-        var appToken;
-        appToken = window.localStorage.getItem("appToken");
-        //console.log("===ad.js, appToken=" + appToken);
-        var url = "http://apidev.ccnhub.com/api/activation/v1/productCode=cargoreceipt/operatingsys=" + deviceOs + "/deviceid=" + deviceId;
-        //console.log("url=" + url);
-        if (appToken === null || appToken.toString() === "null") { 
-        	$.ajax({
-                type: "GET",
-                url: url,
-                contentType: "application/json;",                
-                headers: {'Accept': 'application/json'},
-                timeout : '60000', //timeout = 60 seconds
-                dataType: "json",
-                error: function(xhr, ajaxOptions, thrownError) {
-                   console.log("error status: " + xhr.status);
-                },
-                success: function(response) {
-            		appToken = response.Token;	
-            		window.localStorage.setItem("appToken", appToken);
-                    //console.log("===ad.js, after call ws, appToken=" + appToken);
-                    app.application.navigate('#login', 'slide:right'); 
-                }
-            });
-        } else {
-            if (window.localStorage.getItem("userLoggedIn") === 'true')
-            	app.application.navigate('#query', 'slide:right');  
-            else
-            	app.application.navigate('#login', 'slide:right');  
-        }
+        	Parse the xml and store the ws link
+        */
+        $.ajax({
+            type: "GET",
+            url: "config/web_services.json",
+            contentType: "application/json;",                
+            headers: {'Accept': 'application/json'},
+            dataType: "json",
+            success: function(response)
+            {
+                window.localStorage.setItem("advertisementWS", response[0].Url);
+                window.localStorage.setItem("lincLoginWS", response[1].Url);
+                window.localStorage.setItem("lincUserLoginWS", response[2].Url); 
+                window.localStorage.setItem("logoutWS", response[3].Url);
+                window.localStorage.setItem("historyListWS", response[4].Url);
+                window.localStorage.setItem("deleteOneRowWS", response[5].Url);
+                window.localStorage.setItem("deleteAllRowsWS", response[6].Url);
+                window.localStorage.setItem("getCargoReportWS", response[7].Url);
+                window.localStorage.setItem("aboutAppWS", response[8].Url);
+                window.localStorage.setItem("aboutCCNWS", response[9].Url);
+                window.localStorage.setItem("termConditionWS", response[10].Url);
+                
+                /*
+                	Get token of device
+                */                    
+                var appToken;
+                appToken = window.localStorage.getItem("appToken");
+                //console.log("===ad.js, appToken=" + appToken);
+                //var url = "http://apidev.ccnhub.com/api/activation/v1/productCode=cargoreceipt/operatingsys=" + deviceOs + "/deviceid=" + deviceId;
+                var url = response[0].Url;
+                url = url.replace("{environment}", window.localStorage.getItem("environment"));
+                url = url.replace("{deviceOs}", deviceOs);
+                url = url.replace("{deviceId}", deviceId);                
+                console.log("url=" + url);
+                if (appToken === null || appToken.toString() === "null") { 
+                	$.ajax({
+                        type: "GET",
+                        url: url,
+                        contentType: "application/json;",                
+                        headers: {'Accept': 'application/json'},
+                        timeout : '60000', //timeout = 60 seconds
+                        dataType: "json",
+                        error: function(xhr, ajaxOptions, thrownError) {
+                           console.log("error status: " + xhr.status);
+                        },
+                        success: function(response) {
+                    		appToken = response.Token;	
+                    		window.localStorage.setItem("appToken", appToken);
+                            //console.log("===ad.js, after call ws, appToken=" + appToken);
+                            app.application.navigate('#login', 'slide:right'); 
+                        }
+                    });
+                } else {
+                    if (window.localStorage.getItem("userLoggedIn") === 'true')
+                    	app.application.navigate('#query', 'slide:right');  
+                    else
+                    	app.application.navigate('#login', 'slide:right');  
+                }              
+                
+            }
+        });
         
         
     }, false);

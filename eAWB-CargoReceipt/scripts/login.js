@@ -310,11 +310,7 @@
             //console.log("deviceHeight=" + deviceHeight);
             window.localStorage.setItem("deviceHeight", deviceHeight);
             $("#loginForm").css("height", deviceHeight + "px");
-                        
-            /*
-            	Parse the xml and store the ws link
-            */
-            app.loginService.parseXMLtoURL();
+            
         }, 
         
         /*
@@ -340,34 +336,6 @@
             }
         },
         
-        /*
-        	parseXMLtoURL() function: parse XML file and store the ws url link
-        */        
-        parseXMLtoURL: function () {
-            //console.log("================= login.js,parseXMLtoURL()");    
-            $.ajax({
-                type: "GET",
-                url: "config/web_services.json",
-                contentType: "application/json;",                
-                headers: {'Accept': 'application/json'},
-                dataType: "json",
-                success: function(response)
-                {
-                    window.localStorage.setItem("advertisementWS", response[0].Url);
-                    window.localStorage.setItem("lincLoginWS", response[1].Url);
-                    window.localStorage.setItem("lincUserLoginWS", response[2].Url); 
-                    window.localStorage.setItem("logoutWS", response[3].Url);
-                    window.localStorage.setItem("historyListWS", response[4].Url);
-                    window.localStorage.setItem("deleteOneRowWS", response[5].Url);
-                    window.localStorage.setItem("deleteAllRowsWS", response[6].Url);
-                    window.localStorage.setItem("getCargoReportWS", response[7].Url);
-                    window.localStorage.setItem("aboutAppWS", response[8].Url);
-                    window.localStorage.setItem("aboutCCNWS", response[9].Url);
-                    window.localStorage.setItem("termConditionWS", response[10].Url);
-                }
-            });
-            
-		},
         
         viewModel: new LoginViewModel()        
         
