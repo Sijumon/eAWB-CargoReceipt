@@ -145,3 +145,9 @@ body {
     font-family: 'Segoe UI Regular','Segoe UI';
     font-size: 20px;    
 }
+.ext-viewport_zoom_out{
+    width: 100% !important; height: 100% !important; margin-top: 0% !important;
+}
+.ext-viewport_zoom_in{
+	width: 100% !important; height: 100% !important; margin-top: 50% !important;    
+}

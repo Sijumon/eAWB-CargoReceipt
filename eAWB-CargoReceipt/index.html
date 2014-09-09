@@ -39,7 +39,6 @@
     <script src="kendo/js/sencha-touch-all.js"></script> 
     <script src="kendo/js/compatibility.js"></script>    
     <script src="kendo/js/pdf.js"></script>
-    <script src="kendo/js/pdf.worker.js"></script>
     <script src="kendo/js/ux/PDF.js"></script>
     
     <!--Defined JS-->
@@ -137,7 +136,8 @@
           <!--     
           <a id="signInBtn" type="submit" data-role="button" href="#query_result?awbPrefix=006&awbSuffix=83251302"
                 class="btn_signin">Test</a> <br>            
-          -->  
+          -->
+            
           <label id="termAndCondition" class="label_underline" data-bind="click: onTermConditionAction">Terms and Conditions?</label>
                          
         </div>
@@ -253,7 +253,7 @@
         <!--Header-->
         <div data-role="header">
             <div data-role="navbar" class="header_bg">
-                <a href="#query">
+                <a id="homeBtn" type="submit" data-bind="click: onHome">
                     <img src="images/home.png" class="img_home"/>
                 </a>
                 <img src="images/setting.png" class="img_setting"  data-bind="click: showSettingDialog"/>

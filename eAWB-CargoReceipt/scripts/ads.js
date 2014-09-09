@@ -25,6 +25,13 @@
         window.localStorage.setItem("openSettingSignoutDialog", false);
         
         /*
+        	Setup the Sencha touch application
+        */
+        Ext.application({
+            //Do nothing
+        });    
+        
+        /*
         	Get token of device
         */                    
         var appToken;

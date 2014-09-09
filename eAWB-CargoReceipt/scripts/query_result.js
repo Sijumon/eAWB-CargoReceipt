@@ -12,6 +12,15 @@
         currentStatus: "",
         
         /*
+        	Move to query view
+        */
+        onHome: function(e){
+        	$("#ext-viewport").hide();
+            Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+            $("#homeBtn").attr('href', '#query');
+        },
+        
+        /*
         	showSettingDialog(): show the setting signout dialog
         */
         showSettingDialog: function(){
@@ -40,11 +49,13 @@
             var src = item.attr("src");
             if (src === 'images/up.png'){
                 item.attr("src", 'images/down.png');
+                //$("#ext-viewport").attr('class', 'ext-viewport_zoom_out');
                 $("#displayDiv").hide();
                 $("#imgArrow").removeClass("img_arrow");
                 $("#imgArrow").addClass("img_arrow_down");
             } else {
                 item.attr("src", 'images/up.png');
+                //$("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
                 $("#displayDiv").show();
                 $("#imgArrow").removeClass("img_arrow_down");
                 $("#imgArrow").addClass("img_arrow");
@@ -93,6 +104,8 @@
             	Do the action of setting signout dialog
             */
             $("#helpBtn_signout").on("click", function(){ 
+                $("#ext-viewport").hide();
+                Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
                 $('#settingSignOutDialog').dialog('close');
                 var height = parseFloat(window.localStorage.getItem("deviceHeight"));
                 if (height > 700)
@@ -101,14 +114,20 @@
                 	app.application.navigate('#help');
             });
             $("#aboutAppBtn_signout").on("click", function(){ 
+                $("#ext-viewport").hide();
+                Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#about_app');
             });
             $("#aboutCCNBtn_signout").on("click", function(){ 
+                $("#ext-viewport").hide();
+                Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
                 $('#settingSignOutDialog').dialog('close');
                 app.application.navigate('#about_ccn');
             });
             $("#termConditionBtn_signout").on("click", function(){ 
+                $("#ext-viewport").hide();
+                Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
                 $('#settingSignOutDialog').dialog('close');
                 var height = parseFloat(window.localStorage.getItem("deviceHeight"));
                 if (height > 700)
@@ -117,6 +136,8 @@
                 	app.application.navigate('#term_condition');
             });
             $("#signoutBtn").on("click", function(){ 
+                $("#ext-viewport").hide();
+                Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
                 var url = window.localStorage.getItem("logoutWS");
                 url = url.replace("{environment}", window.localStorage.getItem("environment"));
@@ -190,51 +211,25 @@
                         $('#pdfDiv').show();
                         $('#imgArrow').show();
             			url = response.ReportUrl; 
-                        var iframe = app.queryResultService.makeIframeDiv(url);
-                        $("#pdfDiv").html(iframe);
-                        
-                        //$("#pdfIframe").panzoom();
-                        //$("#pdfDiv").panzoom();
+                        //console.log("query_result, url=" + url);
+                        /* 
+                        	Render pdf url file with pdf.js framework
+                        */
+                        //var iframe = app.queryResultService.makeIframeDiv(url);
+                        //$("#pdfDiv").html(iframe);
                         
                         /* 
                         	Render pdf url file supports pinch to zoom action
-                        
-                        Ext.Loader.setConfig({ disableCaching: false });
-                        Ext.Ajax.setDisableCaching(false);  
-                        Ext.application({
-                            views : [
-                                'Ext.ux.panel.PDF'
-                            ],                            
-                            launch: function() {                                
-                                Ext.Viewport.add({
-                                    xtype     : 'pdfpanel',
-                                    fullscreen: false,
-                                    layout    : 'fit',
-                                    src       : url, // URL to the PDF - Same Domain or Server with CORS Support
-                                    hidePagingtoolbar: true
-                                });
-                            }
-                        });
                         */
-                        
-                        /* 
-                        Ext.application({
-                            views : [
-                                'Ext.ux.panel.PDF'
-                            ],                            
-                            launch: function() {                                
-                                Ext.Viewport.add({
-                                    xtype     : 'pdfpanel',
-                                    fullscreen: false,
-                                    layout    : 'fit',
-                                    src       : url, // URL to the PDF - Same Domain or Server with CORS Support
-                                    hidePagingtoolbar: true
-                                });
-                            }
-                        });
-                        */
-                        
-                        
+                        $("#ext-viewport").show();
+                        Ext.Viewport.add({
+                            xtype     : 'pdfpanel',
+                            fullscreen: false,
+                            layout    : 'fit',
+                            src       : url, // URL to the PDF - Same Domain or Server with CORS Support
+                            hidePagingtoolbar: true
+                        });                       
+                                                
                         $("#loader").hide(); //hide loader 
                     } else {
                         if (response.StatusCode === 'FOH'){ //foh case
