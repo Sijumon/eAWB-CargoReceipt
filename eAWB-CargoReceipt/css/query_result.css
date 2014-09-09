@@ -149,5 +149,8 @@ body {
     width: 100% !important; height: 100% !important; margin-top: 0% !important;
 }
 .ext-viewport_zoom_in{
-	width: 100% !important; height: 100% !important; margin-top: 50% !important;    
+	width: 100% !important; height: 100% !important; margin-top: 35% !important;    
+}
+.ext-viewport_zoom_in_tablet{
+	width: 100% !important; height: 100% !important; margin-top: 10% !important;    
 }

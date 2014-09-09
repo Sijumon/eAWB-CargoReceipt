@@ -49,13 +49,16 @@
             var src = item.attr("src");
             if (src === 'images/up.png'){
                 item.attr("src", 'images/down.png');
-                //$("#ext-viewport").attr('class', 'ext-viewport_zoom_out');
+                $("#ext-viewport").attr('class', 'ext-viewport_zoom_out');
                 $("#displayDiv").hide();
                 $("#imgArrow").removeClass("img_arrow");
                 $("#imgArrow").addClass("img_arrow_down");
             } else {
                 item.attr("src", 'images/up.png');
-                //$("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
+                if ($(window).height() < 700)
+                	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
+                else
+                	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
                 $("#displayDiv").show();
                 $("#imgArrow").removeClass("img_arrow_down");
                 $("#imgArrow").addClass("img_arrow");
@@ -229,7 +232,11 @@
                             src       : url, // URL to the PDF - Same Domain or Server with CORS Support
                             hidePagingtoolbar: true
                         });                       
-                                                
+						if ($(window).height() < 700)
+                        	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
+                        else
+                        	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
+                        
                         $("#loader").hide(); //hide loader 
                     } else {
                         if (response.StatusCode === 'FOH'){ //foh case
