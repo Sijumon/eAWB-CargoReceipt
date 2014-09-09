@@ -4,6 +4,8 @@
     <title>Cargo Receipt Application</title>
     <meta charset="utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
     
     <!--CSS-->
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
@@ -33,9 +35,8 @@
     <script src="kendo/js/jquery-ui-1.9.2.min.js"></script>
     <script src="kendo/js/kendo.all.min.js"></script>
     <script src="kendo/js/idangerous.swiper.js"></script>
-    <!-- 
-    <script src="kendo/js/sencha-touch-all.js"></script>
-    -->
+    <!-- -->        
+    <script src="kendo/js/sencha-touch-all.js"></script> 
     <script src="kendo/js/compatibility.js"></script>    
     <script src="kendo/js/pdf.js"></script>
     <script src="kendo/js/pdf.worker.js"></script>
@@ -304,7 +305,12 @@
                     <label class="label_textReason">1. The Consol manifest has not been sent to your carrier</label>    <br>
                     <label class="label_textReason">2. Your freight carrier has received your consiment but is yet to send a confirmation</label>
                 </div>     
-                                
+                
+                <!--ErrorDiv-->
+                <div id="errorDiv" style="display: none;">
+                    <label class="query_result_nodata">No result data</label>
+                </div>
+                
                 <!--Loader-->
                 <div id="loader" class="loader_bg" >
                     <img src="images/loader.gif"/>
@@ -363,6 +369,16 @@
                 style="cursor: pointer"
                 data-style="inset" >
             </ul>
+            
+            <!--Error History Div-->
+            <div id="errorHistoryDiv" style="display: none;">
+                <label class="query_result_nodata">No result data</label>
+            </div>
+            
+            <!--Loader-->
+            <div id="loader_history" class="loader_bg" >
+                <img src="images/loader.gif"/>
+            </div>
             
         </div>
         

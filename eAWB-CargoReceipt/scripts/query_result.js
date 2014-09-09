@@ -151,7 +151,7 @@
         */        
         showQueryResult: function (e) {
             //console.log("================= showQueryResult()");
-            app.queryResultService.closeDialog();
+            app.queryResultService.closeDialog();            
             
             var view = e.view;
             var awbPrefix = view.params.awbPrefix;
@@ -159,7 +159,7 @@
             app.queryResultService.viewModel.set("awbNumber", awbPrefix + "-" + awbSuffix);
             app.queryResultService.viewModel.set("currentStatus", "Ready for carriage");
                         
-            
+            $('#errorDiv').hide();
             $('#pdfDiv').hide();
             $('#fohDiv').hide();
             $('#noResultDiv').hide();
@@ -175,12 +175,14 @@
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
+                timeout : '40000', //timeout = 40 seconds
                 beforeSend : function() {
                 	$("#loader").show(); //show loader            
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log("============ showQueryResult(): ERROR");
                     $("#loader").hide(); //hide loader 
+                    $('#errorDiv').show();
                 },
                 success: function(response) {
                     //console.log("============ showQueryResult(): SUCCESS");
@@ -194,7 +196,11 @@
                         //$("#pdfIframe").panzoom();
                         //$("#pdfDiv").panzoom();
                         
-                        /*
+                        /* 
+                        	Render pdf url file supports pinch to zoom action
+                        
+                        Ext.Loader.setConfig({ disableCaching: false });
+                        Ext.Ajax.setDisableCaching(false);  
                         Ext.application({
                             views : [
                                 'Ext.ux.panel.PDF'
@@ -204,11 +210,30 @@
                                     xtype     : 'pdfpanel',
                                     fullscreen: false,
                                     layout    : 'fit',
-                                    src       : url // URL to the PDF - Same Domain or Server with CORS Support
+                                    src       : url, // URL to the PDF - Same Domain or Server with CORS Support
+                                    hidePagingtoolbar: true
                                 });
                             }
                         });
                         */
+                        
+                        /* 
+                        Ext.application({
+                            views : [
+                                'Ext.ux.panel.PDF'
+                            ],                            
+                            launch: function() {                                
+                                Ext.Viewport.add({
+                                    xtype     : 'pdfpanel',
+                                    fullscreen: false,
+                                    layout    : 'fit',
+                                    src       : url, // URL to the PDF - Same Domain or Server with CORS Support
+                                    hidePagingtoolbar: true
+                                });
+                            }
+                        });
+                        */
+                        
                         
                         $("#loader").hide(); //hide loader 
                     } else {

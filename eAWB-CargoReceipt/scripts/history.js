@@ -192,17 +192,15 @@
         listViewHistoryShow: function (e) {
             //console.log("================= listViewHistoryShow");
             app.historyService.closeDialog();
+            $('#errorHistoryDiv').hide();
             
             /*
             	Show the historyList            
             */
             var appToken = window.localStorage.getItem("appToken");
             var url = app.historyService.getURL(appToken);
-            //var url = "http://apidev.ccnhub.com/v1/CargoReceipt.WebAPI/cargoreceiptreporthistory/?token=aaa";
-            //var url = "data/history_data.json";
             //console.log("url=" + url);
-            
-            
+                        
             app.events = {
                 dragging: function(e) {
                     //console.log("=============== dragging()");
@@ -245,13 +243,7 @@
                     var initial = e.touch.initialTouch;
                     var target = e.touch.currentTarget;
                     var strInitial = initial.toString();
-                    //alert("strInitial=" + strInitial);
-                    //alert("initial=" + initial);
-                    //alert("target=" + target);
-                    //console.log("initial=" + initial);
-                    //console.log("target=" + target);
-                    //alert("initial=" + initial.attr("id"));
-                    //alert("target=" + target.attr("id"));
+                    
                     // if we are tapping outside the archive area, cancel the action
                     if (initial === target || (strInitial.indexOf("Label") > -1)) {
                         // get the closest item and slide it back in
@@ -279,9 +271,9 @@
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function(response) {
-                                //console.log("============ deleteOneRow(): SUCCESS"); 
+                                console.log("============ deleteOneRow(): SUCCESS"); 
                                 e.sender.element.closest("li").addClass("collapsed");
-                                app.historyService.refreshHistoryList();
+                                //app.historyService.refreshHistoryList();
                             },
                             error: function(XMLHttpRequest, textStatus, errorThrown) {
                                 console.log("============ deleteOneRow(): ERROR");
@@ -295,38 +287,49 @@
             };
             
             
-            $("#historyList").kendoMobileListView({
-                dataSource: new kendo.data.DataSource({
-                  schema: {
-                    data: function(response) {
-                        //console.log("response=" + response);
-                        
-                        responseJSON = $.parseJSON(response);
-                    	//Parse response data
-                        if (responseJSON === null)
-                        	return [];
-                        var cargoReceiptReportRequests = responseJSON.CargoReceiptReportRequests;
-                        if (cargoReceiptReportRequests === null|| cargoReceiptReportRequests.length === 0)
-                            return [];
-                        
-                        var arrHistoryList = app.historyService.parseJSONdata(cargoReceiptReportRequests);
-                        //console.log("arrHistoryList=" + arrHistoryList);
-                        arrHistoryList = $.parseJSON(arrHistoryList);
-                        
-                        return arrHistoryList;
-                    }
-                  },
-                  transport: {
-                    read: {
-                      url: url,
-                      dataType: "text"
-                    }
-                  }
-                }),
-                template: $("#history-lw-template").html(),
-                fixedHeaders: true                
+            /*
+            	Call & parse the web service
+            */
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                timeout : '30000', //timeout = 30 seconds
+                beforeSend : function() {
+                	$("#loader_history").show(); //show loader            
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("============ showQueryResult(): ERROR");
+                    $("#loader_history").hide(); //hide loader 
+                    $('#errorHistoryDiv').show();
+                },
+                success: function(response) {
+                	console.log("============ showQueryResult(): SUCCESS");
+                    
+                    responseJSON = response;
+                    var arrHistoryList = "[]";
+                	//Parse response data
+                    if (responseJSON === null)
+                    	arrHistoryList = "[]";
+                    var cargoReceiptReportRequests = responseJSON.CargoReceiptReportRequests;
+                    if (cargoReceiptReportRequests === null || cargoReceiptReportRequests === '[]' || cargoReceiptReportRequests.length === 0)
+                        arrHistoryList = "[]";
+                    
+                    arrHistoryList = app.historyService.parseJSONdata(cargoReceiptReportRequests);
+                    //console.log("arrHistoryList=" + arrHistoryList);
+                    arrHistoryList = $.parseJSON(arrHistoryList);
+                    
+                	$("#historyList").kendoMobileListView({
+                        dataSource: arrHistoryList,
+                        template: $("#history-lw-template").html(),
+                        fixedHeaders: true                
+                    });
+                    
+                    $("#loader_history").hide(); //hide loader                     
+                }
             });
-            
             
 		},
                 

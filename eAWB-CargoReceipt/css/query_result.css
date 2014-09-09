@@ -139,3 +139,9 @@ body {
 .loader_bg{
     margin-left: 40%; margin-top: 30%;
 }
+.query_result_nodata{
+	margin-left: 35%; margin-top: 30%;
+    color: #48601e;
+    font-family: 'Segoe UI Regular','Segoe UI';
+    font-size: 20px;    
+}
