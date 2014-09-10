@@ -250,21 +250,24 @@ body {
 	margin-top: -1%;
     background-color: #5F5F5F !important;
 }
+.div_clear{
+	clear: left;     
+}
 .div_linc{
-    clear: left; cursor: pointer; float: left; margin-left: 10%; line-height:200%; 
-    background-image: url(../images/bg_uncheck.png); width: 118px;
+    cursor: pointer; float: left; margin-left: 10%; line-height:200%; 
+    background-image: url(../images/bg_uncheck.png); width: 113px;
 }
 .div_linc_active{
-    clear: left; cursor: pointer; float: left; line-height:200%; margin-left: 10%; 
-    background-image: url(../images/bg_checked.png); width: 118px;
+    cursor: pointer; float: left; line-height:200%; margin-left: 10%; 
+    background-image: url(../images/bg_checked.png); width: 113px;
 }
 .div_user{
     cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
-    background-image: url(../images/bg_uncheck.png); width: 116px;
+    background-image: url(../images/bg_uncheck.png); width: 113px;
 }
 .div_user_active{
     cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
-    background-image: url(../images/bg_checked.png); width: 116px;
+    background-image: url(../images/bg_checked.png); width: 113px;
 }
 .ui-dialog-titlebar-close {
   visibility: hidden;

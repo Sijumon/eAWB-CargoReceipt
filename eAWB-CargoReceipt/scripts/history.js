@@ -63,7 +63,7 @@
                             success: function(response) {
                                 console.log("DELETE success");
                                 app.historyService.viewModel.set("strNumOfRecord", 0);
-                                app.historyService.refreshHistoryList(); 
+                                app.historyService.removeAllHistoryList(); 
                             },
                             error: function(XMLHttpRequest, textStatus, errorThrown) {
                                console.log("============ onClearHistoryAction(): ERROR=" + errorThrown);
@@ -86,6 +86,17 @@
     */
     app.historyService = {
         /*
+        	Remove all the historyList 
+        */        
+        removeAllHistoryList: function(){
+            //console.log("================= removeAllHistoryList()");
+            var list = $('#historyList').data('kendoMobileListView');
+            list.dataSource.data([]);
+            list.refresh();
+        },
+        
+        
+        /*
         	Refresh the historyList
         */        
         refreshHistoryList: function(){
@@ -94,7 +105,6 @@
             list.dataSource.read();   
             list.refresh();
         },
-        
         
         /*
         	listViewHistoryInit(): set up the view at the first time loaded

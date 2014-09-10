@@ -162,9 +162,14 @@
             	automatically switch to the 2nd textfield once user inputs 3 digits in the first textfield
             */
             $("#awbPrefix").keyup(function() {
-                if ($("#awbPrefix").val().length === 3)
+                if ($("#awbPrefix").val().length === 3){
                 	$("#awbSuffix").focus();
+                }    
             });  
+            
+            $("awbPrefix").focusout(function(){
+            	$("#awbSuffix").focus();
+            });
             
             /*
             	Hide the error message when the awbPrefix or the awbSuffix get focus
