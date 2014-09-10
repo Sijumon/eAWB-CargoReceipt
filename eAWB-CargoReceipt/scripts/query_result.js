@@ -49,7 +49,10 @@
             var src = item.attr("src");
             if (src === 'images/up.png'){
                 item.attr("src", 'images/down.png');
-                $("#ext-viewport").attr('class', 'ext-viewport_zoom_out');
+                if ($(window).height() < 700)
+                	$("#ext-viewport").attr('class', 'ext-viewport_zoom_out');
+                else
+                	$("#ext-viewport").attr('class', 'ext-viewport_zoom_out_tablet');
                 $("#displayDiv").hide();
                 $("#imgArrow").removeClass("img_arrow");
                 $("#imgArrow").addClass("img_arrow_down");

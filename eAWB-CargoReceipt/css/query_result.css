@@ -146,10 +146,13 @@ body {
     font-size: 20px;    
 }
 .ext-viewport_zoom_out{
-    width: 100% !important; height: 100% !important; margin-top: 0% !important;
+    width: 100% !important; height: 100% !important; margin-top: 10% !important;
 }
 .ext-viewport_zoom_in{
-	width: 100% !important; height: 100% !important; margin-top: 35% !important;    
+	width: 100% !important; height: 100% !important; margin-top: 45% !important;    
+}
+.ext-viewport_zoom_out_tablet{
+    width: 100% !important; height: 100% !important; margin-top: 0% !important;
 }
 .ext-viewport_zoom_in_tablet{
 	width: 100% !important; height: 100% !important; margin-top: 10% !important;    
