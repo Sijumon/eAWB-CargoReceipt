@@ -55,8 +55,8 @@ body {
     font-style: normal; 
     font-weight: normal; 
     height: 40px; 
-    margin-left: 10%; 
-    width: 80%;
+    margin-left: 6%; 
+    width: 88%;
 }
 .button_bg{
     margin-top: 2%; 
@@ -92,7 +92,7 @@ body {
 .label_electronic{
 	display: inline-block;
     line-height: 100%;
-    margin-right: 15%;
+    margin-right: 20%;
     float: right;
     clear: right;
     color: #ffffff;
@@ -140,7 +140,7 @@ body {
     width: 120%;
 }
 .label_select{
-    margin-left: 10%; 
+    margin-left: 6%; 
     color: #48601e; 
     font-family: 'Segoe UI Light','Segoe UI'; 
     font-size: 14px; 
@@ -229,7 +229,7 @@ body {
     margin-bottom: -4%;
 }
 .img_option{
-    margin-left: -1%; 
+    margin-left: 0%; 
     margin-bottom: -5%;
 }
 .img_signin{
@@ -251,23 +251,27 @@ body {
     background-color: #5F5F5F !important;
 }
 .div_clear{
-	clear: left;     
+	clear: both;     
 }
 .div_linc{
-    cursor: pointer; float: left; margin-left: 10%; line-height:200%; 
-    background-image: url(../images/bg_uncheck.png); width: 113px;
+    cursor: pointer; float: left; margin-left: 6%; line-height:200%; 
+    background-image: url(../images/bg_uncheck.png);
+    width: 125px;
 }
 .div_linc_active{
-    cursor: pointer; float: left; line-height:200%; margin-left: 10%; 
-    background-image: url(../images/bg_checked.png); width: 113px;
+    cursor: pointer; float: left; line-height:200%; margin-left: 6%; 
+    background-image: url(../images/bg_checked.png);
+    width: 125px;
 }
 .div_user{
-    cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
-    background-image: url(../images/bg_uncheck.png); width: 113px;
+    cursor: pointer; float: right; margin-right: 6%; line-height:200%; 
+    background-image: url(../images/bg_uncheck.png);
+    width: 125px;
 }
 .div_user_active{
-    cursor: pointer; float: right; margin-right: 10%; line-height:200%; 
-    background-image: url(../images/bg_checked.png); width: 113px;
+    cursor: pointer; float: right; margin-right: 6%; line-height:200%; 
+    background-image: url(../images/bg_checked.png);
+    width: 125px;
 }
 .ui-dialog-titlebar-close {
   visibility: hidden;
