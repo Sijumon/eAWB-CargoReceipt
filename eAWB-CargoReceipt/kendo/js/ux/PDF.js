@@ -150,6 +150,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
 
     initViewer: function() {
+        console.log("=== initViewer()");
         var me = this,
             scroller = me.getScrollable().getScroller(),
             element = me.element;
@@ -201,6 +202,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
     
     setSrc: function(src) {
+        console.log("== setSrc(), src=" + src);
         var me = this;
         me.config.src = src;
         if(src !== null) {
@@ -252,24 +254,32 @@ Ext.define('Ext.ux.panel.PDF', {
     },
     
     showLoader: function() {
+        //console.log("==== showLoader()");
         var me = this;
-        me.setMasked({
-            xtype : 'loadmask',
-            message : me.getLoadingMessage()
-        });
+        /*
+        	Invisible the loader
+        */
+        //me.setMasked({
+        //    xtype : 'loadmask',
+        //    message : me.getLoadingMessage()
+        //});
         return me;
     },
     
     hideLoader: function() {
+        console.log("===== hideLoader()");
         var me = this;
         me.setMasked(false);
         return me;
     },
 
     loadPdf: function(src, data, password) {
+        //console.log("======= loadPdf(), src=" + src);
+        
         var me = this;
         
         src = src || me.getSrc();
+        src = window.localStorage.getItem("reportUrl");
         data = data || me.getData();
         password = password || me.getPassword();
         
@@ -278,7 +288,8 @@ Ext.define('Ext.ux.panel.PDF', {
         }
             
         var params = { password: password };
-            
+        console.log("========== loadPdf(), src=" + src);
+        
         if (me.canvasEl) {
         
             me.isLoading = true;
@@ -300,6 +311,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
     
     onLoad: function(el, e){
+        console.log("======= onLoad()");
         var me = this, isEmpty;
         
         isEmpty = me.pdfDoc.numPages === 0;
@@ -373,6 +385,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
 
     onPdfLoad : function() {
+        console.log("==== onPdfLoad()");
         var me = this,
             parentElement = me.parent.element;
 

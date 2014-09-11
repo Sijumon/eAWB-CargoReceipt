@@ -213,11 +213,13 @@
                 },
                 success: function(response) {
                     //console.log("============ showQueryResult(): SUCCESS");
-                    if (response.ReportUrl !== null && response.ReportUrl !== ''){ // the rcs case
+                    var url = response.ReportUrl;
+                    console.log("query_result, url=" + url);
+                    if (url !== null && url !== ''){ // the rcs case
                         $('#pdfDiv').show();
                         $('#imgArrow').show();
-            			url = response.ReportUrl; 
-                        //console.log("query_result, url=" + url);
+                        
+                        window.localStorage.setItem("reportUrl", url);
                         /* 
                         	Render pdf url file with pdf.js framework
                         */
@@ -227,18 +229,20 @@
                         /* 
                         	Render pdf url file supports pinch to zoom action
                         */
-                        $("#ext-viewport").show();
                         Ext.Viewport.add({
                             xtype     : 'pdfpanel',
                             fullscreen: false,
                             layout    : 'fit',
                             src       : url, // URL to the PDF - Same Domain or Server with CORS Support
                             hidePagingtoolbar: true
-                        });                       
-						if ($(window).height() < 700)
+                        }); 
+                        
+                        if ($(window).height() < 700)
                         	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
                         else
                         	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
+                        
+                        $("#ext-viewport").show();
                         
                         $("#loader").hide(); //hide loader 
                     } else {
