@@ -286,7 +286,12 @@
             
             //Slideup
             $("#txtEmail").focusin(function() {
-                $("#upperDiv").slideUp();
+                //$("#upperDiv").slideUp();    
+                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
+                if (height > 700)
+                    $("#loginForm").css("margin-top", "-20%");
+                else
+                	$("#loginForm").css("margin-top", "-35%");
                 $("#loginFooter").hide();                
             });            
             
