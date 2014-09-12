@@ -150,7 +150,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
 
     initViewer: function() {
-        console.log("=== initViewer()");
+        //console.log("=== initViewer()");
         var me = this,
             scroller = me.getScrollable().getScroller(),
             element = me.element;
@@ -202,7 +202,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
     
     setSrc: function(src) {
-        console.log("== setSrc(), src=" + src);
+        //console.log("== setSrc(), src=" + src);
         var me = this;
         me.config.src = src;
         if(src !== null) {
@@ -267,7 +267,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
     
     hideLoader: function() {
-        console.log("===== hideLoader()");
+        //console.log("===== hideLoader()");
         var me = this;
         me.setMasked(false);
         return me;
@@ -288,7 +288,7 @@ Ext.define('Ext.ux.panel.PDF', {
         }
             
         var params = { password: password };
-        console.log("========== loadPdf(), src=" + src);
+        //console.log("========== loadPdf(), src=" + src);
         
         if (me.canvasEl) {
         
@@ -311,7 +311,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
     
     onLoad: function(el, e){
-        console.log("======= onLoad()");
+        //console.log("======= onLoad()");
         var me = this, isEmpty;
         
         isEmpty = me.pdfDoc.numPages === 0;
@@ -385,7 +385,7 @@ Ext.define('Ext.ux.panel.PDF', {
     },
 
     onPdfLoad : function() {
-        console.log("==== onPdfLoad()");
+        //console.log("==== onPdfLoad()");
         var me = this,
             parentElement = me.parent.element;
 

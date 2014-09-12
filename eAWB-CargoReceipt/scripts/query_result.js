@@ -214,10 +214,17 @@
                 success: function(response) {
                     //console.log("============ showQueryResult(): SUCCESS");
                     var url = response.ReportUrl;
-                    console.log("query_result, url=" + url);
+                    //console.log("query_result, url=" + url);
                     if (url !== null && url !== ''){ // the rcs case
+                        /*
+                            Show the pdf div & arrow button
+                        */
                         $('#pdfDiv').show();
+                        $('#imgArrow').attr("src", 'images/up.png');
+                        $("#imgArrow").removeClass("img_arrow_down");
+                        $("#imgArrow").addClass("img_arrow");
                         $('#imgArrow').show();
+                        $("#displayDiv").show();
                         
                         window.localStorage.setItem("reportUrl", url);
                         /* 
@@ -236,7 +243,7 @@
                             src       : url, // URL to the PDF - Same Domain or Server with CORS Support
                             hidePagingtoolbar: true
                         }); 
-                        
+                                                
                         if ($(window).height() < 700)
                         	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
                         else

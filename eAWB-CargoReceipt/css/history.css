@@ -144,3 +144,8 @@ body {
     color: #FF0000;
     cursor: pointer;
 }
+.his_dummy_href{
+    width: 100%;
+    padding: 0 !important; 
+    border: 0 !important;
+}

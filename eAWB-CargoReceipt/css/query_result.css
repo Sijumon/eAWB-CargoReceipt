@@ -48,22 +48,6 @@ body {
     margin-bottom: 10%;
     line-height: 100%;    
 }
-.img_arrow{
-    right: 0;
-    margin-right: 1%;
-    margin-top: -45px;
-    cursor: pointer;
-    z-index: 99;
-    position: absolute;
-}
-.img_arrow_down{
-    right: 0;
-    margin-right: 1%;
-    margin-top: 60px;
-    cursor: pointer;
-    z-index: 99;
-    position: absolute;
-}  
 .img_warning{
     margin-left: 48%;
     margin-top: 1%;
@@ -145,15 +129,38 @@ body {
     font-family: 'Segoe UI Regular','Segoe UI';
     font-size: 20px;    
 }
+.footer_index{
+    z-index: 99 !important;
+}
+.img_arrow{
+    right: 0;
+    margin-right: 1%;
+    margin-top: -45px;
+    cursor: pointer;
+    z-index: 90;
+    position: absolute;
+}
+.img_arrow_down{
+    right: 0;
+    margin-right: 1%;
+    margin-top: 60px;
+    cursor: pointer;
+    z-index: 90;
+    position: absolute;
+}
 .ext-viewport_zoom_out{
-    width: 100% !important; height: 100% !important; margin-top: 10% !important;
+    width: 100% !important; height: 100% !important; margin-top: 14% !important; 
+    z-index: 69;
 }
 .ext-viewport_zoom_in{
-	width: 100% !important; height: 100% !important; margin-top: 45% !important;    
+	width: 100% !important; height: 100% !important; margin-top: 55% !important; 
+    z-index: 69;
 }
 .ext-viewport_zoom_out_tablet{
-    width: 100% !important; height: 100% !important; margin-top: 0% !important;
+    width: 100% !important; height: 100% !important; margin-top: 8% !important; 
+    z-index: 69;
 }
 .ext-viewport_zoom_in_tablet{
-	width: 100% !important; height: 100% !important; margin-top: 10% !important;    
-}
+	width: 100% !important; height: 100% !important; margin-top: 27% !important; 
+    z-index: 69;
+}  

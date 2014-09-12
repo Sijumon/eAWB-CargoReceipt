@@ -18,7 +18,9 @@
             //console.log("id=" + id);
             var url = "#query_result?awbPrefix=" + awbPrefix + "&awbSuffix=" + awbSuffix;
             //console.log("url=" + url);
-            app.application.navigate(url, 'slide:right');
+            //app.application.navigate(url, 'slide:right');
+            $("#dummyBtn").attr('href', url);
+            $("#dummyBtn").trigger('click');            
         },
         
         /*
@@ -316,7 +318,7 @@
                     $('#errorHistoryDiv').show();
                 },
                 success: function(response) {
-                	console.log("============ showQueryResult(): SUCCESS");
+                	//console.log("============ showQueryResult(): SUCCESS");
                     
                     responseJSON = response;
                     var arrHistoryList = "[]";

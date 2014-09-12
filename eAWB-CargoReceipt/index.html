@@ -270,7 +270,7 @@
         </div>
 
         <!--Footer-->
-        <div data-role="footer">
+        <div data-role="footer" class="footer_index">
             <div data-role="tabstrip">
                 <img id="imgQueryResult" class="footer_bg"/>
             </div>
@@ -364,12 +364,14 @@
             </div>   
             
             <!-- History list-->
-            <ul id="historyList" 
-                data-role="listview" 
-                data-bind="click: onHistoryListClickAction"
-                style="cursor: pointer"
-                data-style="inset" >
-            </ul>
+            <a id="dummyBtn" type="submit" class="his_dummy_href">
+                <ul id="historyList" 
+                    data-role="listview" 
+                    data-bind="click: onHistoryListClickAction"
+                    style="cursor: pointer"
+                    data-style="inset" >
+                </ul>
+            </a>
             
             <!--Error History Div-->
             <div id="errorHistoryDiv" style="display: none;">
