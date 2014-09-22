@@ -28,6 +28,8 @@ body {
     float: left;
     width: 100%;
     margin-top: -3%;
+    cursor: none;
+    text-decoration: none;
 }
 .current_status_header{
     color: #48601e;

@@ -170,7 +170,13 @@
                        //$('#settingSignOutDialog').dialog('close'); 
                     }
                 });
-            });            
+            });  
+            
+            $("#awbNumber").on("click", function(e){ 
+                e.preventDefault();
+                e.stopPropagation();
+            });
+            
         }, 
         
         /*
