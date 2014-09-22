@@ -164,3 +164,7 @@ body {
 	width: 100% !important; height: 100% !important; margin-top: 27% !important; 
     z-index: 69;
 }  
+.x-innerhtml{
+    width: 100%;
+    background-color: #FFFFFF !important;
+}
