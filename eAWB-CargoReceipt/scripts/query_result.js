@@ -9,7 +9,9 @@
     QueryResultViewModel = kendo.data.ObservableObject.extend({
         visibleArrow: true,
         awbNumber: "",
+        showPdf: true,
         currentStatus: "",
+        portraitMode: true,
         
         /*
         	Move to query view
@@ -49,19 +51,28 @@
             var src = item.attr("src");
             if (src === 'images/up.png'){
                 item.attr("src", 'images/down.png');
-                if ($(window).height() < 700)
-                	$("#ext-viewport").attr('class', 'ext-viewport_zoom_out');
-                else
+                if ($(window).height() < 700) 
+                    $("#ext-viewport").attr('class', 'ext-viewport_zoom_out');
+                else 
                 	$("#ext-viewport").attr('class', 'ext-viewport_zoom_out_tablet');
+                    
                 $("#displayDiv").hide();
                 $("#imgArrow").removeClass("img_arrow");
                 $("#imgArrow").addClass("img_arrow_down");
             } else {
                 item.attr("src", 'images/up.png');
-                if ($(window).height() < 700)
-                	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
-                else
-                	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
+                if ($(window).height() < 700) {
+                    if (app.queryResultService.viewModel.get("portraitMode"))
+                	    $("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
+                    else
+                        $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_landscape');
+                }
+                else {
+                	if (app.queryResultService.viewModel.get("portraitMode"))
+                        $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
+                    else
+                        $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_landscape_tablet');
+                }
                 $("#displayDiv").show();
                 $("#imgArrow").removeClass("img_arrow_down");
                 $("#imgArrow").addClass("img_arrow");
@@ -177,6 +188,34 @@
                 e.stopPropagation();
             });
             
+            /*
+            	Apply the orientation change: portrait & landscape mode
+            */
+            $(window).bind('orientationchange', function(e){
+                var height = $(window).height();
+                if (app.queryResultService.viewModel.get("showPdf")){
+                    //console.log("orientation=" + window.orientation);
+                    if (Math.abs(window.orientation) !== 90){
+                    	//console.log("============== portrait");
+                        app.queryResultService.viewModel.set("portraitMode", true);
+                        $("#queryResultFooter").show();
+                        if (height < 700)
+                            $("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
+                        else 
+                            $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
+                    } 
+                    else { //landscape mode
+                        //console.log("=============== landscape");
+                        app.queryResultService.viewModel.set("portraitMode", false);
+                        $("#queryResultFooter").hide();
+                        if (height < 700)
+                            $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_landscape');
+                        else
+                            $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_landscape_tablet');
+                    }    
+                }
+                        
+            });    
         }, 
         
         /*
@@ -222,6 +261,8 @@
                     var url = response.ReportUrl;
                     //console.log("query_result, url=" + url);
                     if (url !== null && url !== ''){ // the rcs case
+                        app.queryResultService.viewModel.set("showPdf", true);
+                        
                         /*
                             Show the pdf div & arrow button
                         */
@@ -259,6 +300,7 @@
                         
                         $("#loader").hide(); //hide loader 
                     } else {
+                        app.queryResultService.viewModel.set("showPdf", false);
                         if (response.StatusCode === 'FOH'){ //foh case
                             $('#fohDiv').show();
                             app.queryResultService.viewModel.set("currentStatus", "Freight on Hand");    

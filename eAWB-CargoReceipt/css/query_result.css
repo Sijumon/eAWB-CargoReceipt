@@ -158,12 +158,24 @@ body {
 	width: 100% !important; height: 100% !important; margin-top: 55% !important; 
     z-index: 69;
 }
+.ext-viewport_zoom_in_landscape{
+	width: 100% !important; height: 100% !important; margin-top: 32% !important; 
+    z-index: 69;
+}
+.ext-viewport_zoom_out_landscape{
+    width: 100% !important; height: 100% !important; margin-top: 14% !important; 
+    z-index: 69;
+}
 .ext-viewport_zoom_out_tablet{
     width: 100% !important; height: 100% !important; margin-top: 8% !important; 
     z-index: 69;
 }
 .ext-viewport_zoom_in_tablet{
 	width: 100% !important; height: 100% !important; margin-top: 27% !important; 
+    z-index: 69;
+}  
+.ext-viewport_zoom_in_landscape_tablet{
+	width: 100% !important; height: 100% !important; margin-top: 20% !important; 
     z-index: 69;
 }  
 .x-innerhtml{
