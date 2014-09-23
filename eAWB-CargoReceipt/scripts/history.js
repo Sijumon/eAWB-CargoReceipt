@@ -294,6 +294,7 @@
                         
                         
                     }
+                    e.event.preventDefault();
                     e.event.stopPropagation();
                 }
             };
