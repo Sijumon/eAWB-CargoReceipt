@@ -18,7 +18,6 @@ body {
     position: absolute;
     z-index: 20;
     left: 26%;
-	bottom: -10px;
 }
 .swiper-container-termCondition {
 	width: 100%;

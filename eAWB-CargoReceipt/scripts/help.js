@@ -23,8 +23,8 @@
         */
         showSettingDialog: function(){
             var userLoggedIn = window.localStorage.getItem("userLoggedIn");
-            var height = $(window).height();
-            var width = $(window).width() * 0.8
+            var height = window.localStorage.getItem("oriHeight");
+            var width = window.localStorage.getItem("oriWidth") * 0.8;
             if (height > 700){
                 height = 270;
             } else {
@@ -167,7 +167,11 @@
                 });
             });
                          
-            $('.swiper-container').swiper({
+            var height = window.localStorage.getItem("oriHeight") * 0.7;
+            height = height + "px";
+            //console.log("height=" + height);
+            $('.swiper-container-help').css('height', height);
+            $('.swiper-container-help').swiper({
                 pagination: '.pagination',
     			paginationClickable: true,
                 mode: 'horizontal'
@@ -175,7 +179,7 @@
             
             /*
             	Apply the orientation change: portrait & landscape mode
-            */
+            
             $(window).bind('orientationchange', function(e){
                 //console.log("orientation=" + window.orientation);
                 if (Math.abs(window.orientation) !== 90){
@@ -205,7 +209,7 @@
                     $('#help').addClass('help_landscape');
                 }        
             });
-            
+            */
         }, 
         
         /*
@@ -213,10 +217,8 @@
         */        
         showHelp: function () {
             //console.log("================= showHelp"); 
-            app.helpViewModel.closeDialog();            
+            app.helpViewModel.closeDialog();  
     	},
-        
-       
         
         /*
         	closeDialog(): close the current dialog

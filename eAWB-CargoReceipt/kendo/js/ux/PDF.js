@@ -814,13 +814,15 @@ Ext.define('Ext.ux.panel.PDF', {
             resize: me.resize,
             scope: me
         });
-        me.canvasEl.un({
-            doubletap : me.onDoubleTap,
-            pinchstart : me.onPagePinchStart,
-            pinch : me.onPagePinch,
-            pinchend : me.onPagePinchEnd,
-            scope : me
-        });
+        if (typeof(me.canvasEl) !== "undefined" && me.canvasEl !== null){
+            me.canvasEl.un({
+                doubletap : me.onDoubleTap,
+                pinchstart : me.onPagePinchStart,
+                pinch : me.onPagePinch,
+                pinchend : me.onPagePinchEnd,
+                scope : me
+            });
+        }
         
         Ext.destroy(me.getScrollable(), me.figEl, me.canvasEl);
         

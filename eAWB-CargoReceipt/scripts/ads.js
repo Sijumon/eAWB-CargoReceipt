@@ -17,13 +17,21 @@
         var deviceOs = device.platform;
         window.localStorage.setItem("deviceId", deviceId);
         window.localStorage.setItem("deviceOs", deviceOs);
-        window.localStorage.setItem("oriWidth", $(window).width());
-        window.localStorage.setItem("oriHeight", $(window).height());
-        window.localStorage.setItem("deviceHeight", $(window).height());
+        var width, height, temp;
+        width = $(window).width();
+        height = $(window).height();
+        if (width > height){
+            temp = width;
+            width = height;
+            height = temp;
+        }
+        window.localStorage.setItem("oriWidth", width);
+        window.localStorage.setItem("oriHeight", height);
+        window.localStorage.setItem("deviceHeight", height);
         window.localStorage.setItem("environment", "apidev"); 
         window.localStorage.setItem("openSettingDialog", false);
         window.localStorage.setItem("openSettingSignoutDialog", false);
-        
+                
         /*
         	Setup the Sencha touch application
         */

@@ -27,8 +27,8 @@
         */
         showSettingDialog: function(){
             var userLoggedIn = window.localStorage.getItem("userLoggedIn");
-            var height = $(window).height();
-            var width = $(window).width() * 0.8
+            var height = window.localStorage.getItem("oriHeight");
+            var width = window.localStorage.getItem("oriWidth") * 0.8;
             if (height > 700){
                 height = 270;
             } else {
@@ -173,7 +173,7 @@
             
             /*
             	Apply the orientation change: portrait & landscape mode
-            */
+            
             $(window).bind('orientationchange', function(e){
                 //console.log("orientation=" + window.orientation);
                 if (Math.abs(window.orientation) !== 90){
@@ -203,7 +203,7 @@
                     $('#about_ccn').addClass('help_landscape');
                 }        
             });
-            
+            */
         }, 
         
         /*
@@ -243,6 +243,10 @@
             			$('#aboutCCNTabletDiv').show();
                         $("#aboutCCNTabletDiv").html(strAboutCCN);
                     } else {
+                        var height = window.localStorage.getItem("oriHeight") * 0.65;
+                        height = height + "px";
+                        //console.log("height=" + height);
+                        $('.swiper-container-aboutccn').css('height', height);
                         $('#aboutCCNDiv').show();
             			$('#aboutCCNTabletDiv').hide();
                         

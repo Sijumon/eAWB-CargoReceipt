@@ -23,8 +23,8 @@
         */
         showSettingDialog: function(){
             var userLoggedIn = window.localStorage.getItem("userLoggedIn");
-            var height = $(window).height();
-            var width = $(window).width() * 0.8
+            var height = window.localStorage.getItem("oriHeight");
+            var width = window.localStorage.getItem("oriWidth") * 0.8;
             if (height > 700){
                 height = 270;
             } else {
@@ -196,8 +196,7 @@
               });
             
 		},
-        
-        
+                
         /*
         	closeDialog(): close the current dialog
         */
