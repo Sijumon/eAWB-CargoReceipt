@@ -257,11 +257,7 @@
             */
             $("#helpBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#help_tablet'); 
-                else
-                	app.application.navigate('#help');
+                app.application.navigate('#help');
             });
             $("#aboutAppBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
@@ -273,11 +269,7 @@
             });
             $("#termConditionBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
-                	app.application.navigate('#term_condition');
+                app.application.navigate('#term_condition');
             });
             $("#signinBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
@@ -303,7 +295,11 @@
             //console.log("deviceHeight=" + deviceHeight);
             window.localStorage.setItem("deviceHeight", deviceHeight);
             $("#loginForm").css("height", deviceHeight + "px");
-            
+           
+            /*
+                Remove the style attr of ext-viewport
+            */
+            $("#ext-viewport").removeAttr('style');
         }, 
         
         /*

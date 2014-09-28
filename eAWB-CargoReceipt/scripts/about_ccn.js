@@ -95,11 +95,7 @@
             */
             $("#helpBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#help_tablet'); 
-                else
-                	app.application.navigate('#help');
+                app.application.navigate('#help');
             });
             $("#aboutAppBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
@@ -111,11 +107,7 @@
             });
             $("#termConditionBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
-                	app.application.navigate('#term_condition');
+                app.application.navigate('#term_condition');
             });
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
@@ -132,11 +124,7 @@
             });
             $("#termConditionBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
-                	app.application.navigate('#term_condition');
+                app.application.navigate('#term_condition');
             });
             $("#signinBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
@@ -219,7 +207,6 @@
             var appToken = window.localStorage.getItem("appToken");
             var url = app.aboutCCNService.getURL(appToken);
             //console.log("showAboutCCN(), url=" + url);            
-            var height = parseFloat(window.localStorage.getItem("deviceHeight"));
                         
             $.ajax({
                 type: "GET",
@@ -237,35 +224,8 @@
                     });
                     //console.log("strAboutCCN=" + strAboutCCN); 
                     strAboutCCN += "<img src='images/ccn.png' style='display: inline-block; width: 35%; float: right; margin-bottom: 0%; margin-top: 3%; margin-right: 0%;' /> <br><br>";
-                    
-                    if (height > 700){
-                        $('#aboutCCNDiv').hide();
-            			$('#aboutCCNTabletDiv').show();
-                        $("#aboutCCNTabletDiv").html(strAboutCCN);
-                    } else {
-                        var height = window.localStorage.getItem("oriHeight") * 0.65;
-                        height = height + "px";
-                        //console.log("height=" + height);
-                        $('.swiper-container-aboutccn').css('height', height);
-                        $('#aboutCCNDiv').show();
-            			$('#aboutCCNTabletDiv').hide();
-                        
-                        var index = strAboutCCN.length/3;
-                        var strAboutCCN_part1 = strAboutCCN.substring(0, index-1).trim();
-                        var strAboutCCN_part2 = strAboutCCN.substring(index, 2 * index - 1).trim();
-                        var strAboutCCN_part3 = strAboutCCN.substring(2 * index);
-                        $("#aboutCCNDiv_part1").html(strAboutCCN_part1);
-                        $("#aboutCCNDiv_part2").html(strAboutCCN_part2);
-                        $("#aboutCCNDiv_part3").html(strAboutCCN_part3);
-                        
-                        $('.swiper-container-aboutccn').swiper({
-                            pagination: '.pagination_aboutccn',
-                			paginationClickable: true,
-                            mode: 'horizontal'
-                        });
-                        
-                    }                    
-                    
+                    $("#aboutCCNDiv").html(strAboutCCN);
+                
                 }
             });
              

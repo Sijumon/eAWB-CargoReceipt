@@ -31,7 +31,9 @@
         window.localStorage.setItem("environment", "apidev"); 
         window.localStorage.setItem("openSettingDialog", false);
         window.localStorage.setItem("openSettingSignoutDialog", false);
-                
+        //console.log("======= width=" + width);
+        //console.log("======= height=" + height);
+        
         /*
         	Setup the Sencha touch application
         */

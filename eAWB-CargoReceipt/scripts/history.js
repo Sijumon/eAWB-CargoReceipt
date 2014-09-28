@@ -146,11 +146,7 @@
             */
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#help_tablet'); 
-                else
-                	app.application.navigate('#help');
+                app.application.navigate('#help');
             });
             $("#aboutAppBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
@@ -162,11 +158,7 @@
             });
             $("#termConditionBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
-                	app.application.navigate('#term_condition');
+                app.application.navigate('#term_condition');
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
@@ -204,6 +196,7 @@
         listViewHistoryShow: function (e) {
             //console.log("================= listViewHistoryShow");
             app.historyService.closeDialog();
+            app.historyService.closeViewport();
             $('#errorHistoryDiv').hide();
             
             /*
@@ -345,7 +338,15 @@
             });
             
 		},
-                
+          
+        /*
+        	closeViewport(): close the current viewport
+        */
+        closeViewport: function(){
+            $("#ext-viewport").hide();
+            Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);    
+        },
+        
         /*
         	closeDialog(): close the current dialog
         */

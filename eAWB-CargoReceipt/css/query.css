@@ -118,22 +118,24 @@ body {
     font-family: 'Segoe UI Light','Segoe UI';
     font-size: 20px;
     font-weight: 300;
-    margin-left: -70%;
+    clear: left;
     float: left;
+    left: 25%;
     margin-top: 6%;
     z-index: 99;
-    position: absolute; 
+    position: absolute;
 }
-.label_select_here{
+.label_select_here{    
     color: #949494;
     font-family: 'Segoe UI Light','Segoe UI';
     font-size: 12px;
     font-weight: 300;
-    margin-left: 27%;
+    clear: left;
     float: left;
-    margin-top: -12%;
+    left: 25%;
+    margin-top: -10%;
     z-index: 99;
-    position: absolute;  
+    position: absolute;
 }
 .img_bg_history{
     margin-left: 5%;

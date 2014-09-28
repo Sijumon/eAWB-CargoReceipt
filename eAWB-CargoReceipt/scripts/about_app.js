@@ -107,11 +107,7 @@
             });
             $("#termConditionBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
-                	app.application.navigate('#term_condition');
+                app.application.navigate('#term_condition');
             });
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');

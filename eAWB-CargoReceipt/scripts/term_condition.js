@@ -91,11 +91,7 @@
             */
             $("#helpBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#help_tablet'); 
-                else
-                	app.application.navigate('#help');
+                app.application.navigate('#help');
             });
             $("#aboutAppBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
@@ -107,11 +103,7 @@
             });
             $("#termConditionBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
-                	app.application.navigate('#term_condition');
+                app.application.navigate('#term_condition');
             });
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
@@ -128,11 +120,7 @@
             });
             $("#termConditionBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
-                	app.application.navigate('#term_condition');
+                app.application.navigate('#term_condition');
             });
             $("#signinBtn").on("click", function(){ 
                 $('#settingDialog').dialog('close');
@@ -232,41 +220,7 @@
                         strTermCondition += "<br>";
                     });
                     //console.log("strTermCondition=" + strTermCondition);    
-                    
-                    var height = window.localStorage.getItem("oriHeight") * 0.65;
-                    height = height + "px";
-                    //console.log("height=" + height);
-                    $('.swiper-container-termCondition').css('height', height);
-                    
-                    var index = strTermCondition.length/10;
-                    var strTermsConditions_part1 = strTermCondition.substring(0, index + 4).trim();
-                    var strTermsConditions_part2 = strTermCondition.substring(index + 5, 2 * index + 115).trim();
-                    var strTermsConditions_part3 = strTermCondition.substring(2 * index + 116, 3 * index + 20).trim();
-                    var strTermsConditions_part4 = strTermCondition.substring(3 * index + 21, 4 * index + 10).trim();
-                    var strTermsConditions_part5 = strTermCondition.substring(4 * index + 11, 5 * index - 3).trim();
-                    var strTermsConditions_part6 = strTermCondition.substring(5 * index - 2, 6 * index - 33).trim();
-                    var strTermsConditions_part7 = strTermCondition.substring(6 * index - 33, 7 * index - 100).trim();
-                    var strTermsConditions_part8 = strTermCondition.substring(7 * index - 80, 8 * index - 2).trim();
-                    var strTermsConditions_part9 = strTermCondition.substring(8 * index - 1, 9 * index + 2).trim();
-                    var strTermsConditions_part10 = strTermCondition.substring(9 * index + 3).trim();
-                    $("#termDiv_part1").html(strTermsConditions_part1);
-                    $("#termDiv_part2").html(strTermsConditions_part2);
-                    $("#termDiv_part3").html(strTermsConditions_part3);
-                    $("#termDiv_part4").html(strTermsConditions_part4);
-                    $("#termDiv_part5").html(strTermsConditions_part5);
-                    $("#termDiv_part6").html(strTermsConditions_part6);
-                    $("#termDiv_part7").html(strTermsConditions_part7);
-                    $("#termDiv_part8").html(strTermsConditions_part8);
-                    $("#termDiv_part9").html(strTermsConditions_part9);
-                    $("#termDiv_part9").html(strTermsConditions_part9);
-                    $("#termDiv_part10").html(strTermsConditions_part10);
-                    
-                    $('.swiper-container-termCondition').swiper({
-                        pagination: '.pagination_termCondition',
-            			paginationClickable: true,
-                        mode: 'horizontal'
-                    });
-                    
+                    $("#termConditionDiv").html(strTermCondition);                    
                 }
               });
         	    

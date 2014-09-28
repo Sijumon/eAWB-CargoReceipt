@@ -55,7 +55,26 @@
             var validate = app.queryService.viewModel.validateInput(); 
             var param = "?awbPrefix=" +  $('#awbPrefix').val() + "&awbSuffix=" + $('#awbSuffix').val();
             if (validate){
-            	//app.application.navigate('#query_result' + param, 'slide:right');
+                /*
+                    close the keyboard 
+                */
+                $('awbPrefix').blur();
+                $('awbSuffix').blur();
+                var field = document.createElement('input');
+                field.setAttribute('type', 'text');
+                document.body.appendChild(field);
+                setTimeout(function() {
+                    field.focus();
+                    setTimeout(function() {
+                        field.setAttribute('style', 'display:none;');
+                    }, 50);
+                }, 50);
+                
+                //app.queryService.hideKeyboard();
+            	
+                /*
+                    Move to query result view
+                */
                 $(e.target).attr('href', '#query_result' + param);
             }
         }
@@ -65,6 +84,38 @@
     	Declare queryService
     */
     app.queryService = {
+        
+        /*
+            hideKeyboard(): hide the keyboard
+        */
+        hideKeyboard: function(){
+            setTimeout(function() {
+                //creating temp field
+                var field = document.createElement('input');
+                field.setAttribute('type', 'text');
+                //hiding temp field from peoples eyes
+                //-webkit-user-modify is nessesary for Android 4.x
+                field.setAttribute('style', 'position:absolute; top: 0px; opacity: 0; -webkit-user-modify: read-write-plaintext-only; left:0px;');
+                document.body.appendChild(field);
+
+                //adding onfocus event handler for out temp field
+                field.onfocus = function(){
+                  //this timeout of 200ms is nessasary for Android 2.3.x
+                  setTimeout(function() {
+
+                    field.setAttribute('style', 'display:none;');
+                    setTimeout(function() {
+                      document.body.removeChild(field);
+                      document.body.focus();
+                    }, 14);
+
+                  }, 200);
+                };
+                //focusing it
+                field.focus();
+
+            }, 50);    
+        },
         
         /*
         	init(): set up the view at the first time loaded
@@ -106,11 +157,7 @@
             */
             $("#helpBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#help_tablet'); 
-                else
-                	app.application.navigate('#help');
+                app.application.navigate('#help');
             });
             $("#aboutAppBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
@@ -122,11 +169,7 @@
             });
             $("#termConditionBtn_signout").on("click", function(){ 
                 $('#settingSignOutDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
-                	app.application.navigate('#term_condition');
+                app.application.navigate('#term_condition');
             });
             $("#signoutBtn").on("click", function(){ 
                 var authenticationCode = window.localStorage.getItem("authenticationCode");
@@ -166,10 +209,17 @@
                     if (window.localStorage.getItem("deviceOs") === 'iOS'){
                         //Do nothing
                     } else {
+                        $("#awbPrefix").blur();
                     	$("#awbSuffix").focus();     
                     }                    
                 }    
             });  
+            $("#awbSuffix").keyup(function(e) {
+                if ($("#awbSuffix").val().length === 8){
+                    $("#awbSuffix").blur();
+                    $("#queryBtn").focus(); 
+                }    
+            }); 
             
             /*
             	Hide the error message when the awbPrefix or the awbSuffix get focus
@@ -193,8 +243,16 @@
         show: function () {
             //console.log("================= query.js,show()"); 
             app.queryService.closeDialog();
+            app.queryService.closeViewport();
 		},
                
+        /*
+        	closeViewport(): close the current viewport
+        */
+        closeViewport: function(){
+            $("#ext-viewport").hide();
+            Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);    
+        },
         
         /*
         	closeDialog(): close the current dialog

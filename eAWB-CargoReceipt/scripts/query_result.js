@@ -12,6 +12,8 @@
         showPdf: true,
         currentStatus: "",
         portraitMode: true,
+        headerHeight: 0,
+        displayDivHeight: 0,
         
         /*
         	Move to query view
@@ -49,30 +51,33 @@
         	//console.log("================= onArrowAction()");   
             var item = $(e.target);
             var src = item.attr("src");
+            var height = window.localStorage.getItem("oriHeight");
+            var headerHeight = app.queryResultService.viewModel.get("headerHeight");
+            var displayDivHeight = app.queryResultService.viewModel.get("displayDivHeight");
+            console.log("=== onArrowAction(), headerHeight=" + headerHeight);
+            console.log("==== onArrowAction(), displayDivHeight=" + displayDivHeight);
+                        
             if (src === 'images/up.png'){
                 item.attr("src", 'images/down.png');
-                if ($(window).height() < 700) 
-                    $("#ext-viewport").attr('class', 'ext-viewport_zoom_out');
-                else 
-                	$("#ext-viewport").attr('class', 'ext-viewport_zoom_out_tablet');
-                    
+                
+                var headerHeightTemp = parseInt(headerHeight) - parseInt(displayDivHeight);
+                headerHeightTemp = headerHeightTemp + "px !important";
+                var style = "width: 100% !important; height: " + height + "px !important; margin-top: " + headerHeightTemp;
+                console.log("=== click up arrow, style=" + style);
+                $('#ext-viewport').attr("style", style);
+                      
                 $("#displayDiv").hide();
                 $("#imgArrow").removeClass("img_arrow");
                 $("#imgArrow").addClass("img_arrow_down");
             } else {
                 item.attr("src", 'images/up.png');
-                if ($(window).height() < 700) {
-                    if (app.queryResultService.viewModel.get("portraitMode"))
-                	    $("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
-                    else
-                        $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_landscape');
-                }
-                else {
-                	if (app.queryResultService.viewModel.get("portraitMode"))
-                        $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
-                    else
-                        $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_landscape_tablet');
-                }
+                
+                headerHeightTemp = parseInt(headerHeight);
+                headerHeightTemp = headerHeightTemp + "px !important";
+                style = "width: 100% !important; height: " + height + "px !important; margin-top: " + headerHeightTemp;
+                console.log("====== click down arrow, style=" + style);
+                $('#ext-viewport').attr("style", style);
+                                
                 $("#displayDiv").show();
                 $("#imgArrow").removeClass("img_arrow_down");
                 $("#imgArrow").addClass("img_arrow");
@@ -124,11 +129,7 @@
                 $("#ext-viewport").hide();
                 Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
                 $('#settingSignOutDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#help_tablet'); 
-                else
-                	app.application.navigate('#help');
+                app.application.navigate('#help');
             });
             $("#aboutAppBtn_signout").on("click", function(){ 
                 $("#ext-viewport").hide();
@@ -146,10 +147,6 @@
                 $("#ext-viewport").hide();
                 Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
                 $('#settingSignOutDialog').dialog('close');
-                var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                	app.application.navigate('#term_condition_tablet'); 
-                else
                 	app.application.navigate('#term_condition');
             });
             $("#signoutBtn").on("click", function(){ 
@@ -188,30 +185,45 @@
                 e.stopPropagation();
             });
             
+            var headerHeight = $("#headerDiv").height();
+            var displayDivHeight = $("#displayDiv").height();
+            app.queryResultService.viewModel.set("headerHeight", headerHeight);
+            app.queryResultService.viewModel.set("displayDivHeight", displayDivHeight);
+                    
             /*
             	Apply the orientation change: portrait & landscape mode
             */
             $(window).bind('orientationchange', function(e){
-                var height = $(window).height();
+                var height = window.localStorage.getItem("oriHeight");
                 if (app.queryResultService.viewModel.get("showPdf")){
                     //console.log("orientation=" + window.orientation);
+                    
+                    $("#displayDiv").show();
+                    $("#imgArrow").removeClass("img_arrow_down");
+                    $("#imgArrow").addClass("img_arrow");
+                    $("#imgArrow").attr("src", 'images/up.png');
+                    
+                    headerHeight = $("#headerDiv").height();
+                    displayDivHeight = $("#displayDiv").height();
+                    app.queryResultService.viewModel.set("headerHeight", headerHeight);
+                    app.queryResultService.viewModel.set("displayDivHeight", displayDivHeight);
+                                
+                    headerHeight = parseInt(headerHeight);
+                    headerHeight = headerHeight + "px !important";
+                    var style = "width: 100% !important; height: " + height + "px !important; margin-top: " + headerHeight;
+                    //console.log("style=" + style);
+                    $('#ext-viewport').attr("style", style); 
+                    
                     if (Math.abs(window.orientation) !== 90){
                     	//console.log("============== portrait");
                         app.queryResultService.viewModel.set("portraitMode", true);
                         $("#queryResultFooter").show();
-                        if (height < 700)
-                            $("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
-                        else 
-                            $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
                     } 
                     else { //landscape mode
-                        //console.log("=============== landscape");
+                        //console.log("=============== landscape");                        
                         app.queryResultService.viewModel.set("portraitMode", false);
                         $("#queryResultFooter").hide();
-                        if (height < 700)
-                            $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_landscape');
-                        else
-                            $("#ext-viewport").attr('class', 'ext-viewport_zoom_in_landscape_tablet');
+                                               
                     }    
                 }
                         
@@ -274,11 +286,6 @@
                         $("#displayDiv").show();
                         
                         window.localStorage.setItem("reportUrl", url);
-                        /* 
-                        	Render pdf url file with pdf.js framework
-                        */
-                        //var iframe = app.queryResultService.makeIframeDiv(url);
-                        //$("#pdfDiv").html(iframe);
                         
                         /* 
                         	Render pdf url file supports pinch to zoom action
@@ -290,12 +297,15 @@
                             src       : url, // URL to the PDF - Same Domain or Server with CORS Support
                             hidePagingtoolbar: true
                         }); 
-                                                
-                        if ($(window).height() < 700)
-                        	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in');
-                        else
-                        	$("#ext-viewport").attr('class', 'ext-viewport_zoom_in_tablet');
                         
+                        console.log("=== headerHeight=" + app.queryResultService.viewModel.get("headerHeight"));
+                        console.log("==== displayDivHeight=" + app.queryResultService.viewModel.get("displayDivHeight"));
+                        
+                        var headerHeight = $("#headerDiv").height();
+                        var style = "width: 100% !important; height: 100% !important; margin-top: " + headerHeight + "px !important";
+                        console.log("===== style=" + style);
+                        $('#ext-viewport').attr("style", style);
+                                                      
                         $("#ext-viewport").show();
                         
                         $("#loader").hide(); //hide loader 
@@ -331,8 +341,6 @@
         */
         makeIframeDiv: function(url){
         	var urlEncodedFile = encodeURIComponent(url);
-            //TODO: for testing
-            //urlEncodedFile = "http%3A%2F%2Fasync5.org%2Fmoz%2Fpdfjs.pdf";
             var iframe = "<iframe id=\"pdfIframe\" src=\"http://mozilla.github.com/pdf.js/web/viewer.html?file=" + urlEncodedFile + 
             	"\"" + " frameborder=\"0\" style=\"height: 100%; width: 100%\"></iframe>";
             return iframe;
