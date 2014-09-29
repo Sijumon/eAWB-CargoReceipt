@@ -55,11 +55,13 @@
             var validate = app.queryService.viewModel.validateInput(); 
             var param = "?awbPrefix=" +  $('#awbPrefix').val() + "&awbSuffix=" + $('#awbSuffix').val();
             if (validate){
-                /*
-                    close the keyboard 
-                */
+                 
+                
                 $('awbPrefix').blur();
                 $('awbSuffix').blur();
+                /*
+                    close the keyboard
+                
                 var field = document.createElement('input');
                 field.setAttribute('type', 'text');
                 document.body.appendChild(field);
@@ -69,6 +71,7 @@
                         field.setAttribute('style', 'display:none;');
                     }, 50);
                 }, 50);
+                */
                 
                 //app.queryService.hideKeyboard();
             	
@@ -89,6 +92,7 @@
             hideKeyboard(): hide the keyboard
         */
         hideKeyboard: function(){
+            console.log("============ hideKeyboard()");
             setTimeout(function() {
                 //creating temp field
                 var field = document.createElement('input');
@@ -251,7 +255,9 @@
         */
         closeViewport: function(){
             $("#ext-viewport").hide();
-            Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);    
+            if (typeof(Ext.Viewport.getActiveItem()) !== "undefined" && Ext.Viewport.getActiveItem() !== null){
+                Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);                 
+            }               
         },
         
         /*
