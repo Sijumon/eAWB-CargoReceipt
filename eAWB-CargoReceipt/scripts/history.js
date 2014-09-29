@@ -344,8 +344,9 @@
         */
         closeViewport: function(){
             $("#ext-viewport").hide();
-            if (typeof(Ext.Viewport.getActiveItem()) !== "undefined" && Ext.Viewport.getActiveItem() !== null){
-                Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);                 
+            if (typeof(Ext.Viewport) !== "undefined" && Ext.Viewport !== null &&
+            	    typeof(Ext.Viewport.getActiveItem()) !== "undefined" && Ext.Viewport.getActiveItem() !== null){
+            	Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);                 
             }     
         },
         
