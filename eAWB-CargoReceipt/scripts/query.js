@@ -55,8 +55,6 @@
             var validate = app.queryService.viewModel.validateInput(); 
             var param = "?awbPrefix=" +  $('#awbPrefix').val() + "&awbSuffix=" + $('#awbSuffix').val();
             if (validate){
-                 
-                
                 $('awbPrefix').blur();
                 $('awbSuffix').blur();
                 /*
@@ -213,15 +211,13 @@
                     if (window.localStorage.getItem("deviceOs") === 'iOS'){
                         //Do nothing
                     } else {
-                        $("#awbPrefix").blur();
                     	$("#awbSuffix").focus();     
                     }                    
                 }    
             });  
             $("#awbSuffix").keyup(function(e) {
                 if ($("#awbSuffix").val().length === 8){
-                    $("#awbSuffix").blur();
-                    $("#queryBtn").focus(); 
+                    $("#awbSuffix").blur(); 
                 }    
             }); 
             

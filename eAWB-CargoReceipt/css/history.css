@@ -6,7 +6,7 @@ body {
 .his_awb_number{
     color: #515151;
     font-family: 'Segoe UI Light','Segoe UI';
-    font-size: 20px;
+    font-size: larger;
     font-weight: 300;
     cursor: pointer;
     float: left;
@@ -16,12 +16,12 @@ body {
 .his_datetime{
     color: #515151;
     font-family: 'Segoe UI Light','Segoe UI';
-    font-size: 12px;
+    font-size: small;
     font-weight: 300;
     line-height: 14px !important;
     text-align: right;
     margin-right: 2%;
-    margin-top: 10px;
+    margin-top: 2.5%;
     cursor: pointer;
     float: right;
 }
@@ -148,4 +148,13 @@ body {
     width: 100%;
     padding: 0 !important; 
     border: 0 !important;
+}
+.his_align_center{
+    width:100%; text-align:center;
+    margin-top: 42%;
+}
+.his_align_center_tablet{
+    position: absolute;
+    width:100%; text-align:center;
+    margin-top: 47%;
 }

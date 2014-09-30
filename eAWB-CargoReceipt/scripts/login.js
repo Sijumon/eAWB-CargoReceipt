@@ -105,6 +105,8 @@
         */
         onSignIn: function(){
         	//console.log("================= onSignIn()");
+            $("#loginForm").css("margin-top", "0%");
+            $("#loginFooter").show();
             
             //Do validation
             var userType = app.loginService.viewModel.get("displayUser");
@@ -280,9 +282,7 @@
             $("#txtEmail").focusin(function() {
                 //$("#upperDiv").slideUp();    
                 var height = parseFloat(window.localStorage.getItem("deviceHeight"));
-                if (height > 700)
-                    $("#loginForm").css("margin-top", "-20%");
-                else
+                if (height <= 700)
                 	$("#loginForm").css("margin-top", "-35%");
                 $("#loginFooter").hide();                
             });            
@@ -307,7 +307,7 @@
         */        
         show: function () {
             //console.log("================= login.js,show()");
-            app.loginService.closeDialog();
+            app.loginService.closeDialog();            
 		},
         
         /*

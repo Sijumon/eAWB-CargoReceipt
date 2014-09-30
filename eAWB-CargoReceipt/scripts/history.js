@@ -296,6 +296,10 @@
             /*
             	Call & parse the web service
             */
+            if (window.localStorage.getItem("oriHeight") > 700)
+                $("#loader_history").attr('class', 'his_align_center_tablet');
+            else
+                $("#loader_history").attr('class', 'his_align_center');
             $.ajax({
                 type: "GET",
                 url: url,
