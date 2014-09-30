@@ -29,7 +29,7 @@
         */
         showSettingDialog: function(){
             var height = $(window).height();
-            var width = $(window).width() * 0.8
+            var width = $(window).width() * 0.8;
             if (height > 700){
                 height = 270;
             } else {
@@ -54,16 +54,42 @@
             var height = window.localStorage.getItem("oriHeight");
             var headerHeight = app.queryResultService.viewModel.get("headerHeight");
             var displayDivHeight = app.queryResultService.viewModel.get("displayDivHeight");
-            console.log("=== onArrowAction(), headerHeight=" + headerHeight);
-            console.log("==== onArrowAction(), displayDivHeight=" + displayDivHeight);
-                        
+            //console.log("=== onArrowAction(), headerHeight=" + headerHeight);
+            //console.log("==== onArrowAction(), displayDivHeight=" + displayDivHeight);
+            if (app.queryResultService.viewModel.get("portraitMode")){
+                if (window.localStorage.getItem("oriHeight") > 700){
+                    if (window.localStorage.getItem("deviceOs") === 'Android')
+                        headerHeight = headerHeight - 130;
+                    else
+                        headerHeight = headerHeight - 40;
+                }
+                else {
+                    if (window.localStorage.getItem("deviceOs") === 'Android')
+                        headerHeight = headerHeight - 50;
+                    else{
+                        if (window.localStorage.getItem("oriHeight") > 500)
+                            headerHeight = headerHeight - 70;
+                        else
+                            headerHeight = headerHeight - 30;
+                    }    
+                }                        
+            } else {
+                if (window.localStorage.getItem("oriHeight") < 700){
+                    if (window.localStorage.getItem("deviceOs") === 'iOS'){
+                        if (window.localStorage.getItem("oriHeight") > 500)
+                            headerHeight = headerHeight - 70;
+                        else
+                            headerHeight = headerHeight - 30;
+                    }
+                }
+            }
             if (src === 'images/up.png'){
                 item.attr("src", 'images/down.png');
                 
                 var headerHeightTemp = parseInt(headerHeight) - parseInt(displayDivHeight);
                 headerHeightTemp = headerHeightTemp + "px !important";
                 var style = "width: 100% !important; height: " + height + "px !important; margin-top: " + headerHeightTemp;
-                console.log("=== click up arrow, style=" + style);
+                //console.log("=== click up arrow, style=" + style);
                 $('#ext-viewport').attr("style", style);
                       
                 $("#displayDiv").hide();
@@ -75,7 +101,7 @@
                 headerHeightTemp = parseInt(headerHeight);
                 headerHeightTemp = headerHeightTemp + "px !important";
                 style = "width: 100% !important; height: " + height + "px !important; margin-top: " + headerHeightTemp;
-                console.log("====== click down arrow, style=" + style);
+                //console.log("====== click down arrow, style=" + style);
                 $('#ext-viewport').attr("style", style);
                                 
                 $("#displayDiv").show();
@@ -209,22 +235,42 @@
                     app.queryResultService.viewModel.set("displayDivHeight", displayDivHeight);
                                 
                     headerHeight = parseInt(headerHeight);
-                    headerHeight = headerHeight + "px !important";
-                    var style = "width: 100% !important; height: " + height + "px !important; margin-top: " + headerHeight;
-                    //console.log("style=" + style);
-                    $('#ext-viewport').attr("style", style); 
-                    
                     if (Math.abs(window.orientation) !== 90){
                     	//console.log("============== portrait");
+                        if (window.localStorage.getItem("oriHeight") > 700){
+                            if (window.localStorage.getItem("deviceOs") === 'Android')
+                                headerHeight = headerHeight - 130;
+                            else
+                                headerHeight = headerHeight - 40;
+                        }
+                        else {
+                            if (window.localStorage.getItem("deviceOs") === 'iOS' && window.localStorage.getItem("oriHeight") < 500)
+                                headerHeight = headerHeight - 30;
+                            else
+                                headerHeight = headerHeight - 50;
+                        }
                         app.queryResultService.viewModel.set("portraitMode", true);
                         $("#queryResultFooter").show();
                     } 
                     else { //landscape mode
-                        //console.log("=============== landscape");                        
+                        //console.log("=============== landscape"); 
+                        if (window.localStorage.getItem("oriHeight") < 700){
+                            if (window.localStorage.getItem("deviceOs") === 'iOS'){
+                                if (window.localStorage.getItem("oriHeight") > 500)
+                                    headerHeight = headerHeight - 70;
+                                else
+                                    headerHeight = headerHeight - 30;    
+                            }                                
+                        } else {
+                            
+                        }
                         app.queryResultService.viewModel.set("portraitMode", false);
-                        $("#queryResultFooter").hide();
-                                               
-                    }    
+                        $("#queryResultFooter").hide();                                               
+                    }
+                    headerHeight = headerHeight + "px !important";
+                    var style = "width: 100% !important; height: " + height + "px !important; margin-top: " + headerHeight;
+                    //console.log("style=" + style);
+                    $('#ext-viewport').attr("style", style);                     
                 }
                         
             });    
@@ -298,12 +344,27 @@
                             hidePagingtoolbar: true
                         }); 
                         
-                        console.log("=== headerHeight=" + app.queryResultService.viewModel.get("headerHeight"));
-                        console.log("==== displayDivHeight=" + app.queryResultService.viewModel.get("displayDivHeight"));
-                        
+                        //console.log("=== headerHeight=" + app.queryResultService.viewModel.get("headerHeight"));
+                        //console.log("==== displayDivHeight=" + app.queryResultService.viewModel.get("displayDivHeight"));
                         var headerHeight = $("#headerDiv").height();
+                        if (window.localStorage.getItem("oriHeight") > 700){
+                            if (window.localStorage.getItem("deviceOs") === 'Android')
+                                headerHeight = headerHeight - 130;
+                            else
+                                headerHeight = headerHeight - 40;
+                        }
+                        else {
+                            if (window.localStorage.getItem("deviceOs") === 'Android')
+                                headerHeight = headerHeight - 50;
+                            else{
+                                if (window.localStorage.getItem("oriHeight") > 500)
+                                    headerHeight = headerHeight - 70;
+                                else
+                                    headerHeight = headerHeight - 30;
+                            }    
+                        }
                         var style = "width: 100% !important; height: 100% !important; margin-top: " + headerHeight + "px !important";
-                        console.log("===== style=" + style);
+                        //console.log("===== style=" + style);
                         $('#ext-viewport').attr("style", style);
                                                       
                         $("#ext-viewport").show();
