@@ -208,7 +208,10 @@
                     var advertiseDuration = responseJSON[0].Duration;
                     $('#imgHome').attr('src', advertiseIMG);
                     $('#imgHome').click(function(e) {
-                        window.location.href = advertiseURL;
+                        var win = window.open(advertiseURL, '_blank');
+                        win.focus();
+                        e.preventDefault();
+                        e.stopPropagation();
 					});
                     
                     var arrAdsImg = [], arrAdsURL = [], strArrAdsImg = "", strArrAdsURL = "",

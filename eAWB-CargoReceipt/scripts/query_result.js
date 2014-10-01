@@ -126,7 +126,10 @@
             var advertiseURL = window.localStorage.getItem("advertiseURL");
             $('#imgQueryResult').attr('src', advertiseIMG);
             $('#imgQueryResult').click(function(e) {
-                window.location.href = advertiseURL;
+                var win = window.open(advertiseURL, '_blank');
+                win.focus();
+                e.preventDefault();
+                e.stopPropagation();
 			});
             
             var arrAdsImg = $.parseJSON(window.localStorage.getItem("strArrAdsImg"));
@@ -141,7 +144,10 @@
                 imgSrc = arrAdsImg[temp];
                 $('#imgQueryResult').attr('src', imgSrc);
                 $('#imgQueryResult').click(function(e) {
-                    window.open(arrAdsURL[temp]);
+                    var win = window.open(arrAdsURL[temp], '_blank');
+                    win.focus();
+                    e.preventDefault();
+                    e.stopPropagation();
 				});
             }, (arrAdsDuration[temp] * 1000));
             
