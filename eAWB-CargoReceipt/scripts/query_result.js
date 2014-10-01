@@ -76,10 +76,7 @@
             } else {
                 if (window.localStorage.getItem("oriHeight") < 700){
                     if (window.localStorage.getItem("deviceOs") === 'iOS'){
-                        if (window.localStorage.getItem("oriHeight") > 500)
-                            headerHeight = headerHeight - 70;
-                        else
-                            headerHeight = headerHeight - 30;
+                        headerHeight = headerHeight - 20;
                     }
                 }
             }
@@ -144,7 +141,7 @@
                 imgSrc = arrAdsImg[temp];
                 $('#imgQueryResult').attr('src', imgSrc);
                 $('#imgQueryResult').click(function(e) {
-                    window.location.href = arrAdsURL[temp];
+                    window.open(arrAdsURL[temp]);
 				});
             }, (arrAdsDuration[temp] * 1000));
             
