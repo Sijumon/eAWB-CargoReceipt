@@ -226,20 +226,19 @@
                 var height = window.localStorage.getItem("oriHeight");
                 if (app.queryResultService.viewModel.get("showPdf")){
                     //console.log("orientation=" + window.orientation);
-                    
-                    $("#displayDiv").show();
-                    $("#imgArrow").removeClass("img_arrow_down");
-                    $("#imgArrow").addClass("img_arrow");
-                    $("#imgArrow").attr("src", 'images/up.png');
-                    
-                    headerHeight = $("#headerDiv").height();
-                    displayDivHeight = $("#displayDiv").height();
-                    app.queryResultService.viewModel.set("headerHeight", headerHeight);
-                    app.queryResultService.viewModel.set("displayDivHeight", displayDivHeight);
                                 
                     headerHeight = parseInt(headerHeight);
                     if (Math.abs(window.orientation) !== 90){
                     	//console.log("============== portrait");
+                        $("#displayDiv").show();
+                        $("#imgArrow").removeClass("img_arrow_down");
+                        $("#imgArrow").addClass("img_arrow");
+                        $("#imgArrow").attr("src", 'images/up.png');
+                        headerHeight = $("#headerDiv").height();
+                        displayDivHeight = $("#displayDiv").height();
+                        app.queryResultService.viewModel.set("displayDivHeight", displayDivHeight);
+                        app.queryResultService.viewModel.set("headerHeight", headerHeight);
+                    
                         if (window.localStorage.getItem("oriHeight") > 700){
                             if (window.localStorage.getItem("deviceOs") === 'Android')
                                 headerHeight = headerHeight - 130;
@@ -257,6 +256,14 @@
                     } 
                     else { //landscape mode
                         //console.log("=============== landscape"); 
+                        $("#displayDiv").hide();
+                        $("#imgArrow").removeClass("img_arrow"); 
+                        $("#imgArrow").addClass("img_arrow_down");
+                        $("#imgArrow").attr("src", 'images/down.png');
+                        headerHeight = $("#headerDiv").height();
+                        //app.queryResultService.viewModel.set("displayDivHeight", 0);
+                        //app.queryResultService.viewModel.set("headerHeight", headerHeight);
+                        
                         if (window.localStorage.getItem("oriHeight") < 700){
                             if (window.localStorage.getItem("deviceOs") === 'iOS'){
                                 if (window.localStorage.getItem("oriHeight") > 500)
