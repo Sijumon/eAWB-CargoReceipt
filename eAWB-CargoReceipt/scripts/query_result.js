@@ -59,7 +59,7 @@
             if (app.queryResultService.viewModel.get("portraitMode")){
                 if (window.localStorage.getItem("oriHeight") > 700){
                     if (window.localStorage.getItem("deviceOs") === 'Android')
-                        headerHeight = headerHeight - 130;
+                        headerHeight = headerHeight - 70;
                     else
                         headerHeight = headerHeight - 40;
                 }
@@ -241,7 +241,7 @@
                     
                         if (window.localStorage.getItem("oriHeight") > 700){
                             if (window.localStorage.getItem("deviceOs") === 'Android')
-                                headerHeight = headerHeight - 130;
+                                headerHeight = headerHeight - 70;
                             else
                                 headerHeight = headerHeight - 40;
                         }
@@ -359,7 +359,7 @@
                         var headerHeight = $("#headerDiv").height();
                         if (window.localStorage.getItem("oriHeight") > 700){
                             if (window.localStorage.getItem("deviceOs") === 'Android')
-                                headerHeight = headerHeight - 130;
+                                headerHeight = headerHeight - 70;
                             else
                                 headerHeight = headerHeight - 40;
                         }
