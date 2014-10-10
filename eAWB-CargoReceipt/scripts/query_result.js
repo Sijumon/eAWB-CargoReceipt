@@ -218,7 +218,7 @@
             var displayDivHeight = $("#displayDiv").height();
             app.queryResultService.viewModel.set("headerHeight", headerHeight);
             app.queryResultService.viewModel.set("displayDivHeight", displayDivHeight);
-                    
+                        
             /*
             	Apply the orientation change: portrait & landscape mode
             */
@@ -292,6 +292,16 @@
         showQueryResult: function (e) {
             //console.log("================= showQueryResult()");
             app.queryResultService.closeDialog();            
+            
+            /*
+                Check orientation mode at the page load
+            */
+            var viewportWidth = window.innerWidth;
+            var viewportHeight = window.innerHeight;
+            if (viewportWidth > viewportHeight)
+                $("#queryResultFooter").hide(); 
+            else
+                $("#queryResultFooter").show(); 
             
             var view = e.view;
             var awbPrefix = view.params.awbPrefix;
