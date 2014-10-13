@@ -58,7 +58,10 @@
             //console.log("==== onArrowAction(), displayDivHeight=" + displayDivHeight);
             if (app.queryResultService.viewModel.get("portraitMode")){
                 if (window.localStorage.getItem("oriHeight") > 700){
-                    headerHeight = headerHeight - 40;
+                   if (window.localStorage.getItem("deviceOs") === 'Android')
+                    	headerHeight = headerHeight - 120;
+                   else
+                    	headerHeight = headerHeight - 40;
                 }
                 else {
                     if (window.localStorage.getItem("deviceOs") === 'Android')
@@ -237,7 +240,10 @@
                         app.queryResultService.viewModel.set("headerHeight", headerHeight);
                     
                         if (window.localStorage.getItem("oriHeight") > 700){
-                            headerHeight = headerHeight - 40;
+                            if (window.localStorage.getItem("deviceOs") === 'Android')
+                            	headerHeight = headerHeight - 120;
+                            else
+                            	headerHeight = headerHeight - 40;
                         }
                         else {
                             if (window.localStorage.getItem("deviceOs") === 'iOS' && window.localStorage.getItem("oriHeight") < 500)
@@ -261,7 +267,7 @@
                         if (window.localStorage.getItem("oriHeight") < 700){
                             if (window.localStorage.getItem("deviceOs") === 'iOS'){
                                 if (window.localStorage.getItem("oriHeight") > 500)
-                                    headerHeight = headerHeight - 70;
+                                    headerHeight = headerHeight - 120;
                                 else
                                     headerHeight = headerHeight - 30;    
                             }                                
@@ -362,7 +368,10 @@
                         //console.log("==== displayDivHeight=" + app.queryResultService.viewModel.get("displayDivHeight"));
                         var headerHeight = $("#headerDiv").height();
                         if (window.localStorage.getItem("oriHeight") > 700){
-                            headerHeight = headerHeight - 40;
+                            if (window.localStorage.getItem("deviceOs") === 'Android')
+                            	headerHeight = headerHeight - 120;
+                            else
+                            	headerHeight = headerHeight - 40;
                         }
                         else {
                             if (window.localStorage.getItem("deviceOs") === 'Android')
