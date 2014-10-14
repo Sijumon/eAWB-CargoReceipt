@@ -78,6 +78,9 @@
                     if (window.localStorage.getItem("deviceOs") === 'iOS'){
                         headerHeight = headerHeight - 20;
                     }
+                } else {
+                    if (window.localStorage.getItem("deviceOs") === 'Android')
+                        headerHeight = headerHeight - 120;
                 }
             }
             if (src === 'images/up.png'){
@@ -272,7 +275,8 @@
                                     headerHeight = headerHeight - 30;    
                             }                                
                         } else {
-                            
+                            if (window.localStorage.getItem("deviceOs") === 'Android')
+                            	headerHeight = headerHeight - 100;
                         }
                         app.queryResultService.viewModel.set("portraitMode", false);
                         $("#queryResultFooter").hide();                                               
