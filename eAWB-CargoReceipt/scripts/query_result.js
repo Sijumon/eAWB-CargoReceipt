@@ -59,7 +59,7 @@
             if (app.queryResultService.viewModel.get("portraitMode")){
                 if (window.localStorage.getItem("oriHeight") > 700){
                    if (window.localStorage.getItem("deviceOs") === 'Android')
-                    	headerHeight = headerHeight - 60;
+                    	headerHeight = headerHeight - 100;
                    else
                     	headerHeight = headerHeight - 40;
                 }
@@ -80,7 +80,7 @@
                     }
                 } else {
                     if (window.localStorage.getItem("deviceOs") === 'Android')
-                        headerHeight = headerHeight - 60;
+                        headerHeight = headerHeight - 100;
                 }
             }
             if (src === 'images/up.png'){
@@ -244,7 +244,7 @@
                     
                         if (window.localStorage.getItem("oriHeight") > 700){
                             if (window.localStorage.getItem("deviceOs") === 'Android')
-                            	headerHeight = headerHeight - 60;
+                            	headerHeight = headerHeight - 100;
                             else
                             	headerHeight = headerHeight - 40;
                         }
@@ -276,7 +276,7 @@
                             }                                
                         } else {
                             if (window.localStorage.getItem("deviceOs") === 'Android')
-                            	headerHeight = headerHeight - 60;
+                            	headerHeight = headerHeight - 100;
                         }
                         app.queryResultService.viewModel.set("portraitMode", false);
                         $("#queryResultFooter").hide();                                               
@@ -373,7 +373,7 @@
                         var headerHeight = $("#headerDiv").height();
                         if (window.localStorage.getItem("oriHeight") > 700){
                             if (window.localStorage.getItem("deviceOs") === 'Android')
-                            	headerHeight = headerHeight - 60;
+                            	headerHeight = headerHeight - 100;
                             else
                             	headerHeight = headerHeight - 40;
                         }
